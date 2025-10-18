@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Admin\EmailManagementController;
 use App\Http\Controllers\Admin\EmailSettingsController;
+use App\Http\Controllers\Admin\DepartmentController;
 // use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\AdminController;
 
@@ -24,7 +25,15 @@ Route::middleware(['web'])->group(function () {
 		//ChangePassword
 		// Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password');
 		// Route::post('/change-password', [ChangePasswordController::class, 'save_data'])->name('change-password-save');
-
+		
+		// Department
+		Route::get('/department', [DepartmentController::class, 'index'])->name('department');
+		Route::post('/save-department-code', [DepartmentController::class, 'save_department_code'])->name('save-department-code');
+		Route::post('/department-code-update-status',[DepartmentController::class,'update_status'])->name('department-code-update-status');
+		Route::post('/edit-department-code',[DepartmentController::class,'edit_product_code'])->name('edit-department-code');
+		Route::post('/getDeleteDepartment',[DepartmentController::class,'delete_department_code'])->name('getDeleteDepartment');
+		Route::post('/deleteDepartmentList',[DepartmentController::class,'delete_department_list'])->name('deleteDepartmentList');
+		
 		//EmailSettings
 		Route::get('/email-settings', [EmailSettingsController::class, 'index'])->name('email-settings');
 		Route::post('/email-settings', [EmailSettingsController::class, 'save_data'])->name('email-settings-save');
