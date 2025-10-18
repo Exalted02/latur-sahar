@@ -6,10 +6,10 @@
 					<div class="success-popup-icon bg-danger" id="delete-prospect-msg">
 						<i class="la la-trash-restore"></i>
 					</div>
-					<h3>{{ __('are_you_sure') }}, {{ __('you_want_delete') }}</h3>
-					<p>{{ __('product_code') }} "<span id="list_code_name"></span>" {{ __('from_your_account') }}</p>
+					<h3>{{ __('Are you sure') }}, {{ __('you want delete') }}</h3>
+					<p>{{ __('Department') }} "<span id="list_code_name"></span>" {{ __('from your account') }}</p>
 					<div class="col-lg-12 text-center form-wizard-button">
-						<a href="#" class="button btn-lights" data-bs-dismiss="modal">{{ __('not_now') }}</a>
+						<a href="#" class="button btn-lights" data-bs-dismiss="modal">{{ __('not now') }}</a>
 						<a href="javascript:void(0);" class="btn btn-primary data-id-pcode-list" data-url="{{ route('admin.deleteDepartmentList') }}">{{ __('okay') }}</a>
 					</div>
 				</div>
@@ -31,6 +31,7 @@
 							</div>
 							<div class="modal-body">
 								<form id="frmdepartnment" action="{{ route('admin.save-department-code') }}">
+								<input type="hidden" id="id" name="id">
 									<div class="row">
 										<div class="col-sm-12">
 											<div class="input-block mb-3">
@@ -44,7 +45,7 @@
 										<div class="col-sm-12">
 											<div class="input-block mb-3">
 												<label class="col-form-label">{{ __('Address') }}<span class="text-danger">*</span></label>
-												<input class="form-control" type="text" name="address" id="address">
+												<textarea class="form-control" name="address" id="address"></textarea>
 												<div class="invalid-feedback">{{ __('please_enter') }} {{ __('address')}}.</div>
 											</div>
 										</div>
@@ -60,11 +61,11 @@
 <!-- /Add product code -->
 
 <!--- edit product code -->
-<div id="edit_product_code" class="modal custom-modal fade" role="dialog">
+<div id="edit_department" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">{{ __('edit_new_stage') }}</h5>
+								<h5 class="modal-title">{{ __('Edit department') }}</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -75,9 +76,18 @@
 									<div class="row">
 										<div class="col-sm-12">
 											<div class="input-block mb-3">
-												<label class="col-form-label">{{ __('name') }}<span class="text-danger">*</span></label>
-												<input class="form-control" type="text" name="code_name" id="edit_code_name">
-												<div class="invalid-feedback">{{ __('please_enter') }} {{ __('product_code')}}.</div>
+												<label class="col-form-label">{{ __('Name') }}<span class="text-danger">*</span></label>
+												<input class="form-control" type="text" name="name" id="dname">
+												<div class="invalid-feedback">{{ __('please_enter') }} {{ __('name')}}.</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="input-block mb-3">
+												<label class="col-form-label">{{ __('Address') }}<span class="text-danger">*</span></label>
+												<input class="form-control" type="text" name="address" id="address">
+												<div class="invalid-feedback">{{ __('please_enter') }} {{ __('address')}}.</div>
 											</div>
 										</div>
 									</div>

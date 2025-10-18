@@ -9,6 +9,7 @@ $(document).ready(function() {
 	$(document).on('click','.save-department-code', function(){
 		let codeName = $('#name').val().trim();
 		let address = $('#address').val().trim();
+		let id = $('#id').val().trim();
 		let isValid = true;
 		$('.invalid-feedback').hide();
 		$('.form-control').removeClass('is-invalid');
@@ -40,7 +41,14 @@ $(document).ready(function() {
 						$('#name').addClass('is-invalid');
 						$('#name').next('.invalid-feedback').text(response.message).show();
 					} else {
-						$('#success_msg').modal('show');
+						if(id == '')
+						{
+							$('#success_msg').modal('show');
+						}
+						else{
+							$('#updt_success_msg').modal('show');
+						}
+						
 						setTimeout(() => {
 							window.location.reload();
 						}, "2000");
@@ -50,9 +58,13 @@ $(document).ready(function() {
 		}
 	});
 	
+$(document).on('click','.add_department', function(){
+	$('#name').val('');
+	$('#address').val('');
+	$('#id').val('');
+});
 
-
-$(document).on('click','.edit-product-code', function(){
+$(document).on('click','.edit-department-code', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
 	//alert(URL);
@@ -62,10 +74,11 @@ $(document).on('click','.edit-product-code', function(){
 		data: {id:id, _token: csrfToken},
 		dataType: 'json',
 		success: function(response) {
-			//alert(response.state);
+			//alert(response.address);
 			$('#id').val(response.id);
-			$('#edit_code_name').val(response.code_name);
-			$('#edit_product_code').modal('show');
+			$('#name').val(response.name);
+			$('#address').val(response.address);
+			$('#add_department').modal('show');
 			//alert(JSON.stringify(response));
 			
 		},
@@ -111,7 +124,7 @@ $(document).on('click','.update-product-code-form', function(){
 
 
 
-$(document).on('click','.delete-product-code', function(){
+$(document).on('click','.delete-department-code', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
 	//alert(id);alert(URL);

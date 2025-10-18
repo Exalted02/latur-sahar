@@ -31,7 +31,7 @@
 						<div class="form-sort">
 							<a href="javascript:void(0);" class="list-view btn btn-link" data-bs-toggle="modal" data-bs-target="#import"><i class="fa-solid fa-file-import"></i>{{ __('import') }}</a>
 						</div>--}}
-						<a href="#" class="btn add-btn p_code_add" data-bs-toggle="modal" data-bs-target="#add_department"><i class="la la-plus-circle"></i> {{ __('Add department') }}</a>
+						<a href="#" class="btn add-btn add_department" data-bs-toggle="modal" data-bs-target="#add_department"><i class="la la-plus-circle"></i> {{ __('Add department') }}</a>
 					</div>
 				</div>
 			</div>

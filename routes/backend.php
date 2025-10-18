@@ -30,7 +30,7 @@ Route::middleware(['web'])->group(function () {
 		Route::get('/department', [DepartmentController::class, 'index'])->name('department');
 		Route::post('/save-department-code', [DepartmentController::class, 'save_department_code'])->name('save-department-code');
 		Route::post('/department-code-update-status',[DepartmentController::class,'update_status'])->name('department-code-update-status');
-		Route::post('/edit-department-code',[DepartmentController::class,'edit_product_code'])->name('edit-department-code');
+		Route::post('/edit-department-code',[DepartmentController::class,'edit_department_code'])->name('edit-department-code');
 		Route::post('/getDeleteDepartment',[DepartmentController::class,'delete_department_code'])->name('getDeleteDepartment');
 		Route::post('/deleteDepartmentList',[DepartmentController::class,'delete_department_list'])->name('deleteDepartmentList');
 		
