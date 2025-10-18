@@ -31,6 +31,10 @@
 					<a href="{{ route('admin.department') }}"><i class="fa-regular fa-envelope"></i> <span>Department</span></a>
 				</li>
 				
+				<li class="{{ request()->routeIs('admin.grievance') ? 'active' : '' }}">
+					<a href="{{ route('admin.grievance') }}"><i class="fa-regular fa-envelope"></i> <span>Grievance Type</span></a>
+				</li>
+				
 				<li class="{{ request()->routeIs('admin.email-management','admin.email-management-edit') ? 'active' : '' }}">
 					<a href="{{ route('admin.email-management') }}"><i class="fa-regular fa-envelope"></i> <span>Email Management</span></a>
 				</li>

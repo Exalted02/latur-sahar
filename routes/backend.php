@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\EmailManagementController;
 use App\Http\Controllers\Admin\EmailSettingsController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\GrievanceController;
 // use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\AdminController;
 
@@ -33,6 +34,14 @@ Route::middleware(['web'])->group(function () {
 		Route::post('/edit-department-code',[DepartmentController::class,'edit_department_code'])->name('edit-department-code');
 		Route::post('/getDeleteDepartment',[DepartmentController::class,'delete_department_code'])->name('getDeleteDepartment');
 		Route::post('/deleteDepartmentList',[DepartmentController::class,'delete_department_list'])->name('deleteDepartmentList');
+		
+		// Grievance Type
+		Route::get('/grievance', [GrievanceController::class, 'index'])->name('grievance');
+		Route::post('/save-grievance', [GrievanceController::class, 'save_grievance'])->name('save-grievance');
+		Route::post('/grievance-update-status',[GrievanceController::class,'update_status'])->name('grievance-update-status');
+		Route::post('/edit-grievance',[GrievanceController::class,'edit_grievance'])->name('edit-grievance');
+		Route::post('/getDeleteGrievance',[GrievanceController::class,'delete_grievance'])->name('getDeleteGrievance');
+		Route::post('/deleteGrievanceList',[GrievanceController::class,'delete_grievance_list'])->name('deleteGrievanceList');
 		
 		//EmailSettings
 		Route::get('/email-settings', [EmailSettingsController::class, 'index'])->name('email-settings');
