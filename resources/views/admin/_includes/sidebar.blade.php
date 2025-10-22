@@ -28,15 +28,15 @@
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.department') ? 'active' : '' }}">
-					<a href="{{ route('admin.department') }}"><i class="fa-regular fa-envelope"></i> <span>Department</span></a>
+					<a href="{{ route('admin.department') }}"><i class="fa-regular fa-building"></i> <span>Department</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.grievance') ? 'active' : '' }}">
-					<a href="{{ route('admin.grievance') }}"><i class="fa-regular fa-envelope"></i> <span>Grievance Type</span></a>
+					<a href="{{ route('admin.grievance') }}"><i class="fa-solid fa-triangle-exclamation"></i> <span>Grievance Type</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.user') ? 'active' : '' }}">
-					<a href="{{ route('admin.user') }}"><i class="fa-regular fa-envelope"></i> <span>Users</span></a>
+					<a href="{{ route('admin.user') }}"><i class="fa-regular fa-user"></i> <span>Users</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.email-management','admin.email-management-edit') ? 'active' : '' }}">
