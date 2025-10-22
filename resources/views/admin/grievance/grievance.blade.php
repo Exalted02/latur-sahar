@@ -117,8 +117,10 @@
 @endsection 
 @section('scripts')
 @include('_includes.footer')
+<link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
 <script src="{{ url('admin-assets/js/page/grievance.js') }}"></script>
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>
+<script src="{{ url('admin-assets/js/select2.min.js') }}"></script>
 <script>
 $(document).ready(function() {
 	
