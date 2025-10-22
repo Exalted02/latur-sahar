@@ -1,8 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-@php 
-//echo "<pre>";print_r($product_code);die;
-@endphp
+
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 	<!-- Page Content -->
@@ -130,12 +128,6 @@
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>
 <script>
 $(document).ready(function() {
-	
-	$(document).on('click',".reset-button", function(){
-		window.location.href = "/product-code";
-	});
-	
-	
 	
 	if ($.fn.DataTable.isDataTable('.datatable')) {
 		$('.datatable').DataTable().destroy(); // Destroy existing instance

@@ -77,8 +77,6 @@ $(document).ready(function() {
 			isValid = false;
 		}
 		
-		
-		
 		if (isValid) {
 			var form = $("#frmuser");
 			var URL = $('#frmuser').attr('action');
@@ -100,7 +98,6 @@ $(document).ready(function() {
 						}
 						else{
 							$('#updt_success_msg').modal('show');
-							$('#updt_success_msg').modal('show');
 						}
 						
 						setTimeout(() => {
@@ -113,17 +110,6 @@ $(document).ready(function() {
 	});
 	
 $(document).on('click','.add_user', function(){
-	
-	//setTimeout(function () {
-		//$('.select');
-		setTimeout(function () {
-			$('.select').select2({
-				minimumResultsForSearch: 0,
-				width: '100%'
-			});
-		}, 100);
-	//}, 100);
-						
 	$('#name').val('');
 	$('#department').val('');
 	$('#user_type').val('');

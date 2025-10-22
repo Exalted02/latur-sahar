@@ -1,8 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-@php 
-//echo "<pre>";print_r($product_code);die;
-@endphp
+
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 	<!-- Page Content -->
