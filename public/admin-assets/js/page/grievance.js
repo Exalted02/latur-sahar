@@ -6,19 +6,19 @@ Version      : 4.0
 
 $(document).ready(function() {
 	
-	$(document).on('click','.save-user', function(){
+	$(document).on('click','.save-grievance', function(){
 		let department = $('#department').val().trim();
 		let name = $('#name').val().trim();
-		let user_type = $('#user_type').val().trim();
-		let mobile = $('#mobile').val().trim();
-		let email = $('#email').val().trim();
-		let password = $('#password').val().trim();
-		let ward_prabhag_no = $('#ward_prabhag_no').val().trim();
-		let post = $('#post').val().trim();
 		let id = $('#id').val().trim();
 		let isValid = true;
 		$('.invalid-feedback').hide();
 		$('.form-control').removeClass('is-invalid');
+		if (department === '')
+		{
+			$('#department').addClass('is-invalid');
+			$('#department').next('.invalid-feedback').show();
+			isValid = false;
+		}
 		
 		if (name === '')
 		{
@@ -27,59 +27,9 @@ $(document).ready(function() {
 			isValid = false;
 		}
 		
-		if (user_type === '')
-		{
-			$('#user_type').addClass('is-invalid');
-			$('#user_type').next('.invalid-feedback').show();
-			isValid = false;
-		}
-		
-		
-		if (department === '')
-		{
-			$('#department').addClass('is-invalid');
-			$('#department').next('.invalid-feedback').show();
-			isValid = false;
-		}
-		
-		if (mobile === '')
-		{
-			$('#mobile').addClass('is-invalid');
-			$('#mobile').next('.invalid-feedback').show();
-			isValid = false;
-		}
-		
-		if (email === '')
-		{
-			$('#email').addClass('is-invalid');
-			$('#email').next('.invalid-feedback').show();
-			isValid = false;
-		}
-		
-		if (id == '' && password === '')
-		{
-			$('#password').addClass('is-invalid');
-			$('#password').next('.invalid-feedback').show();
-			isValid = false;
-		}
-		
-		if (ward_prabhag_no === '')
-		{
-			$('#ward_prabhag_no').addClass('is-invalid');
-			$('#ward_prabhag_no').next('.invalid-feedback').show();
-			isValid = false;
-		}
-		
-		if (post === '')
-		{
-			$('#post').addClass('is-invalid');
-			$('#post').next('.invalid-feedback').show();
-			isValid = false;
-		}
-		
 		if (isValid) {
-			var form = $("#frmuser");
-			var URL = $('#frmuser').attr('action');
+			var form = $("#frmgrievance");
+			var URL = $('#frmgrievance').attr('action');
 			//alert(URL);
 			$.ajax({
 				url: URL,
@@ -91,12 +41,13 @@ $(document).ready(function() {
 						$('#name').addClass('is-invalid');
 						$('#name').next('.invalid-feedback').text(response.message).show();
 					} else {
-						$('#add_user').hide();
+						$('#add_grievance').hide();
 						if(id == '')
 						{
 							$('#success_msg').modal('show');
 						}
 						else{
+							$('#updt_success_msg').modal('show');
 							$('#updt_success_msg').modal('show');
 						}
 						
@@ -109,23 +60,17 @@ $(document).ready(function() {
 		}
 	});
 	
-$(document).on('click','.add_user', function(){
+$(document).on('click','.add_grievance', function(){
 	$('#name').val('');
 	$('#department').val('');
-	$('#user_type').val('');
-	$('#mobile').val('');
-	$('#email').val('');
-	$('#password').val('');
-	$('#ward_prabhag_no').val('');
-	$('#post').val('');
 	$('#id').val('');
-	$('#add_user .modal-title').text('Add user');
+	$('#add_grievance .modal-title').text('Add grievance');
 });
 
-$(document).on('click','.edit-user', function(){
+$(document).on('click','.edit-grievance', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
-	$('#add_user .modal-title').text('Edit user');
+	$('#add_grievance .modal-title').text('Edit grievance');
 	//alert(URL);
 	$.ajax({
 		url: URL,
@@ -136,23 +81,54 @@ $(document).on('click','.edit-user', function(){
 			//alert(response.department);
 			$('#id').val(response.id);
 			$('#name').val(response.name);
-			$('#user_type').val(response.user_type).trigger('change');
 			$('#department').val(response.department).trigger('change');
-			$('#mobile').val(response.mobile);
-			$('#email').val(response.email);
-			//$('#password').val(response.password);
-			$('#ward_prabhag_no').val(response.ward_prabhag_no);
-			$('#post').val(response.post);
-			$('#add_user').modal('show');
+			$('#add_grievance').modal('show');
 			//alert(JSON.stringify(response));
 			
 		},
 	});
 }); 
 
+$(document).on('click','.update-product-code-form', function(){
+	
+	let stageName = $('#edit_code_name').val().trim();
+	//let createdDate = $('#created_date').val().trim();
+	let isValid = true;
+	$('.invalid-feedback').hide();
+	$('.form-control').removeClass('is-invalid');
+	if (stageName === '') 
+	{
+		$('#edit_code_name').addClass('is-invalid');
+		$('#edit_code_name').next('.invalid-feedback').show();
+		isValid = false;
+	}
+	if (isValid) {
+		var form = $("#frmeditproductcode");
+		var URL = $('#frmeditproductcode').attr('action');
+		$.ajax({
+			url: URL,
+			type: "POST",
+			data: form.serialize() + '&_token=' + csrfToken,
+			//dataType: 'json',
+			success: function(response) {
+				if (!response.success) {
+					$('#edit_code_name').addClass('is-invalid');
+					$('#edit_code_name').next('.invalid-feedback').text(response.message).show();
+				}
+				else{
+					$('#updt_success_msg').modal('show');
+					setTimeout(() => {
+						window.location.reload();
+					}, "2000");
+				}
+			},
+		});
+	}
+});
 
 
-$(document).on('click','.delete-user', function(){
+
+$(document).on('click','.delete-grievance', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
 	//alert(id);alert(URL);
