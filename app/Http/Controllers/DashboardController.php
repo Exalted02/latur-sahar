@@ -14,4 +14,22 @@ class DashboardController extends Controller
 		
         return view('dashboard', $data);
     }
+    public function submit_grievance()
+    {
+		$data = [];
+		
+        return view('grievance.submit-grievance', $data);
+    }
+    public function grievance()
+    {
+		$data = [];
+		
+        return view('grievance.grievance', $data);
+    }
+    public function view_grievance()
+    {
+		$data = [];
+		
+        return view('grievance.view-grievance', $data);
+    }
 }

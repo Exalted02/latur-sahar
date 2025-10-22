@@ -52,8 +52,10 @@ Route::get('lang/change', [LangController::class, 'change'])->name('changeLang')
 
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-	
-	
+		
+	Route::get('/grievance', [DashboardController::class, 'grievance'])->name('grievance');
+	Route::get('/submit-grievance', [DashboardController::class, 'submit_grievance'])->name('submit-grievance');
+	Route::get('/view-grievance', [DashboardController::class, 'view_grievance'])->name('view-grievance');
 });
 
 

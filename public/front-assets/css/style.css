@@ -692,7 +692,7 @@ ul {
 
 
 .header-top.dark {
-	background: #202020;
+	background: #1C254E;
 }
 
 .header-right {
@@ -1765,7 +1765,7 @@ img.resize {
 }
 
 .ad-info-1 ul li i {
-	color: #a0a0a0;
+	color: #FEB800;
 	font-size: 22px;
 	margin-right: 5px;
 }
@@ -4354,7 +4354,7 @@ label {
 	margin-bottom: 30px;
 }
 .category-grid-box-1 .image{	
-    height: 270px;
+    height: 170px;
 	width: auto;
 	position: relative;
 }
@@ -9974,7 +9974,8 @@ footer.footer-bg {
 
 .singleprice-tag::before {
     border-bottom: 30px solid transparent;
-    border-right: 30px solid #bf1919;
+    /* border-right: 30px solid #bf1919; */
+    border-right: 30px solid #FEB800;
     border-top: 30px solid transparent;
     content: "";
     height: 0;
@@ -9995,7 +9996,8 @@ footer.footer-bg {
     width: 5px;
 }
 .singleprice-tag {
-    background-color: #bf1919;
+    /* background-color: #bf1919; */
+    background-color: #FEB800;
     border-bottom-right-radius: 2px;
     border-top-right-radius: 2px;
     color: #fff;

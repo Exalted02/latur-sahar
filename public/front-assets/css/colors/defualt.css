@@ -22,7 +22,8 @@ blockquote {
 }
  
 .app-download-button.hover, .app-download-button:hover, .app-download-button.focus, .app-download-button:focus, .app-download-button:active, .app-download-button.active, .ms-layer.btn3, .minimal-footer-1 .widget .social-links a:hover, .subscribe button, .social-area-share > a:hover , .search-section .search-options > li .btn.btn-danger:hover , .featured-slider-1 .owl-controls .owl-nav .owl-next, .featured-slider-1 .owl-controls .owl-nav .owl-prev , .featured-slider .owl-controls .owl-nav .owl-next, .featured-slider .owl-controls .owl-nav .owl-prev, .category-grid-box-1 .price-tag .price span , .featured-slider-3 .owl-controls .owl-nav .owl-next, .featured-slider-3 .owl-controls .owl-nav .owl-prev  , .small-breadcrumb .breadcrumb-link ul li a::after , .user-profile .badge , .ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y , .sticky-post-button , .select2-container--default .select2-results__option--highlighted[aria-selected] , ul.filterAdType li.active a, ul.filterAdType li a:hover , .ad-listing .ad-status , .featured-slider-single .owl-controls .owl-nav .owl-next, .featured-slider-single .owl-controls .owl-nav .owl-prev{
-	background-color: #E52D27;
+	/* background-color: #E52D27; */
+	background-color: #1C254E;
 }
 span.app-store-btn:hover, .social-links-two a:hover , .search-section .search-options > li .btn.btn-danger:hover  {
 	border: 1px solid #E52D27;
@@ -71,8 +72,8 @@ span.app-store-btn:hover, .social-links-two a:hover , .search-section .search-op
 }
 .btn-theme { 
   color: #ffffff; 
-  background-color: #da0a17; 
-  border-color: #da0a17; 
+  background-color: #1C254E; 
+  border-color: #1C254E; 
   /* old color below */
   /* background-color: #E52D27; 
   border-color: #E52D27;  */
@@ -84,8 +85,8 @@ span.app-store-btn:hover, .social-links-two a:hover , .search-section .search-op
 .btn-theme.active, 
 .open .dropdown-toggle.btn-theme { 
   color: #ffffff; 
-  background-color: #B31217; 
-  border-color: #B31217; 
+  background-color: #1C254E; 
+  border-color: #1C254E; 
 } 
  
 .btn-theme:active, 

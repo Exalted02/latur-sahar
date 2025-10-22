@@ -30,5 +30,19 @@
 	"otp":"OTP",
 	"verify":"Verify",
 	
+	"//": "Grievance page",
+    "submit_grievance": "Submit grievance",
+    "view_grievance": "View grievance",
+    "manage_grievance": "Manage your Grievance",
+    "ward_prabhag": "Ward/prabhag",
+    "department": "Department",
+    "select_department": "Select Department",
+    "grievance_type": "Grievance type",
+    "select_grievance_type": "Select Grievance type",
+    "address": "address",
+    "pin_code": "Pin code",
+    "issue_description": "Issue Description",
+    "live_photo": "Live Photo…",
+	
 	"example": "Example"
 }

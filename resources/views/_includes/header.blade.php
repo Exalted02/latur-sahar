@@ -78,10 +78,10 @@
 						<a href="{{ route('dashboard') }}"> {{ __('home') }}</a>
 					</li>
 					<li>
-						<a href="#"> {{ __('about_us') }}</a>
+						<a href="{{ route('submit-grievance') }}"> {{ __('submit_grievance') }}</a>
 					</li>
 					<li>
-						<a href="#"> {{ __('contact_us') }}</a>
+						<a href="{{ route('grievance') }}"> {{ __('view_grievance') }}</a>
 					</li>
 				</ul>
 			 </div>
