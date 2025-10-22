@@ -41,11 +41,13 @@ $(document).ready(function() {
 						$('#name').addClass('is-invalid');
 						$('#name').next('.invalid-feedback').text(response.message).show();
 					} else {
+						$('#add_grievance').hide();
 						if(id == '')
 						{
 							$('#success_msg').modal('show');
 						}
 						else{
+							$('#updt_success_msg').modal('show');
 							$('#updt_success_msg').modal('show');
 						}
 						
@@ -62,11 +64,13 @@ $(document).on('click','.add_grievance', function(){
 	$('#name').val('');
 	$('#department').val('');
 	$('#id').val('');
+	$('#add_grievance .modal-title').text('Add grievance');
 });
 
 $(document).on('click','.edit-grievance', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
+	$('#add_grievance .modal-title').text('Edit grievance');
 	//alert(URL);
 	$.ajax({
 		url: URL,

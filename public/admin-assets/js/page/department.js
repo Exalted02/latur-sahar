@@ -62,11 +62,13 @@ $(document).on('click','.add_department', function(){
 	$('#name').val('');
 	$('#address').val('');
 	$('#id').val('');
+	$('#add_department .modal-title').text('Add department');
 });
 
 $(document).on('click','.edit-department-code', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
+	 $('#add_department .modal-title').text('Edit department');
 	//alert(URL);
 	$.ajax({
 		url: URL,
