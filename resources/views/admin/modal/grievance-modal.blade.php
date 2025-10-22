@@ -37,7 +37,7 @@
 											<div class="input-block mb-3">
 												<label class="col-form-label">{{ __('Department') }}<span class="text-danger">*</span></label>
 												<select name="department" class="select form-control" id="department">
-												<option value=""></option>
+												<option value="">Please select</option>
 												@foreach($departments as $department)
 													<option value="{{ $department->id }}">{{ $department->name ?? '' }}</option>
 												@endforeach

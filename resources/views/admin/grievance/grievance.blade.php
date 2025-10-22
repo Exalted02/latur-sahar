@@ -51,8 +51,8 @@
 							{{--<th class="no-sort"></th>--}}
 							
 								{{--<th>{{ __('sl_no') }}</th>--}}
+								<th>{{ __('Department') }}</th>
 								<th>{{ __('Name') }}</th>
-								<th>{{ __('Address') }}</th>
 								<th>{{ __('created_date') }}</th>
 								<th>{{ __('status') }}</th>
 								<th class="text-end">Action</th>
@@ -118,7 +118,7 @@
 @section('scripts')
 @include('_includes.footer')
 <link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
-<script src="{{ url('admin-assets/js/page/grievance.js') }}"></script>
+<script src="{{ url('admin-assets/js/page/grievance_type.js') }}"></script>
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>
 <script src="{{ url('admin-assets/js/select2.min.js') }}"></script>
 <script>

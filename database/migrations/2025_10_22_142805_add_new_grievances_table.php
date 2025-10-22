@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('grievances', function (Blueprint $table) {
-            $table->id();
-			$table->integer('department')->nullable();
-			$table->string('name')->nullable();
-			$table->tinyInteger('status')->default(1)->comment('0=inactive, 1=active, 2=inactive');
-            $table->timestamps();
+        Schema::table('grievances', function (Blueprint $table) {
+            $table->decimal('latitude', 10, 7)->nullable()->after('gps_location');
+			$table->decimal('longitude', 10, 7)->nullable()->after('latitude');
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('grievances');
+        Schema::table('grievances', function (Blueprint $table) {
+            //
+        });
     }
 };

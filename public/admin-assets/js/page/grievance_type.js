@@ -16,7 +16,7 @@ $(document).ready(function() {
 		if (department === '')
 		{
 			$('#department').addClass('is-invalid');
-			$('#department').next('.invalid-feedback').show();
+			$('#department').closest('.input-block').find('.invalid-feedback').show();
 			isValid = false;
 		}
 		
@@ -62,7 +62,7 @@ $(document).ready(function() {
 	
 $(document).on('click','.add_grievance', function(){
 	$('#name').val('');
-	$('#department').val('');
+	$('#department').val('').trigger('change');
 	$('#id').val('');
 	$('#add_grievance .modal-title').text('Add grievance');
 });
