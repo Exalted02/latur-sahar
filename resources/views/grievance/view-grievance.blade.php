@@ -124,6 +124,8 @@
 		</div>
 	</section>
 </div>
+<input type="hidden" id="view_latitude" value="{{ $grievance->latitude ?? '' }}">
+<input type="hidden" id="view_longitude" value="{{ $grievance->longitude ?? '' }} ">
 	<!-- /Page Content -->
 @include('modal.user-modal')
 @include('modal.common')
@@ -140,8 +142,12 @@
 	   });
  
  /* ======= Ad Location ======= */
+    let view_latitude = $('#view_latitude').val();
+    let view_longitude = $('#view_longitude').val();
+	
 	   var  map ="";
-	   var latlng = new google.maps.LatLng(47.550259, -122.264847);
+	   //var latlng = new google.maps.LatLng(47.550259, -122.264847);
+	   var latlng = new google.maps.LatLng(view_latitude, view_longitude);
 	   var myOptions = {
 		   zoom: 13,
 		   center: latlng,
