@@ -99,4 +99,10 @@ class GrievanceController extends Controller
 		Grievance::where('id', $id)->update(['status'=> 4]);
 		return response()->json(['msg'=>'success']);
 	}
+	public function view_frontend_grievance($id='')
+	{
+		$data = [];
+		$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		return view('admin.grievance.frontend-grievance-view', $data);
+	}
 }

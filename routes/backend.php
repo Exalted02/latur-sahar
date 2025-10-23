@@ -55,6 +55,8 @@ Route::middleware(['web'])->group(function () {
 		Route::get('/grievances', [GrievanceController::class, 'grievances'])->name('grievances');
 		Route::post('/frontend-grievance-del', [GrievanceController::class, 'delete_grievances'])->name('frontend-grievance-del');
 		
+		Route::get('/view-frontend-grievance/{id}', [GrievanceController::class, 'view_frontend_grievance'])->name('view-frontend-grievance');
+		
 		//EmailSettings
 		Route::get('/email-settings', [EmailSettingsController::class, 'index'])->name('email-settings');
 		Route::post('/email-settings', [EmailSettingsController::class, 'save_data'])->name('email-settings-save');

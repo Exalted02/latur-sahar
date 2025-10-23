@@ -93,6 +93,8 @@
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 										<div class="dropdown-menu dropdown-menu-right">
 										{{--<a class="dropdown-item edit-grievance" href="javascript:void(0);" data-id="{{ $val->id ??''}}" data-url="{{ route('admin.edit-grievance') }}"><i class="fa-solid fa-pencil m-r-5"></i> {{ __('edit') }}</a>--}}
+										
+										  <a class="dropdown-item edit-grievance" href="{{ route('admin.view-frontend-grievance', ['id'=> $val->id]) }}"><i class="fa-solid fa-eye text-primary m-r-5"></i> {{ __('view') }}</a>
 											<a class="dropdown-item delete-grievance" href="javascript:void(0);" data-id="{{ $val->id ?? '' }}" data-url="{{ route('admin.frontend-grievance-del') }}"><i class="fa-regular fa-trash-can m-r-5"></i> {{ __('delete') }}</a>
 										</div>
 									</div>
