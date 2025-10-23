@@ -39,11 +39,9 @@ class DashboardController extends Controller
 		$lower = empty($request->moreload) ? 0 : $request->moreload;
 		$upper = empty($request->moreload) ? config('custom.LOAD_MORE_LIST_SHOW') : config('custom.LOAD_MORE_INTERVAL');
 		
-		/*$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->offset($lower)->limit($upper)->get();*/
-		//echo $lower.'---'.$upper;die;
-		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->skip($lower)->take($upper)->get();
+		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->skip($lower)->take($upper)->get();
 		//echo "<pre>";print_r($grievances);die;
-		$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->count();
+		$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->count();
 		//echo $grievanceCount; die;
 		
 		$count  = $request->moreload =='' ? config('custom.LOAD_MORE_LIST_SHOW') : $request->moreload + $interval;
@@ -111,23 +109,6 @@ class DashboardController extends Controller
 		$lo_files = $request->file('lo_file');
 
 		if ($lo_files && is_array($lo_files)) {
-			
-			// unlink previous file 
-			/*$correctiveFiles = Task_list_corrective_action_file::where('task_list_corrective_actions_id', $id)->where('status',1)->get();
-			if($correctiveFiles->isNotEmpty()){
-				
-				foreach($correctiveFiles as $filemn)
-				{
-					$f_name = $filemn->file;
-					$filePath = public_path('uploads/greivance_image/' . $f_name);
-					if (file_exists($filePath)) {
-						unlink($filePath);
-					}
-				}
-				
-				Greivance_image::where('task_list_corrective_actions_id', $id)->where('status', 1)->delete();
-			}*/
-			
 			// save new files
 			foreach ($lo_files as $file) {
 				
@@ -200,5 +181,10 @@ class DashboardController extends Controller
 			unlink($filePath);
 			Greivance_image::where('id', $imageId)->where('images', $imagename)->delete();
 		}
+	}
+	public function delete_grievance(Request $request)
+	{
+		Grievance::where('id', $request->id)->update(['status'=>4]);
+		return response()->json(['msg'=>'success']);
 	}
 }

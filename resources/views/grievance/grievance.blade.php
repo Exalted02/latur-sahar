@@ -41,10 +41,57 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 $(document).ready(function() {
 	list_grievance();
+	$(document).on('click', '.delete-grievance', function(){
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!',
+			cancelButtonText: 'Cancel'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				
+				let URL = $(this).data('url');
+				let id = $(this).data('id')
+				$.ajax({
+					url: URL,
+					type: "POST",
+					data: {
+						id : id,
+						_token: "{{ csrf_token() }}"
+					},
+					dataType: 'json',
+					success: function(response) {
+						 Swal.fire({
+							title: 'Deleted!',
+							text: 'Your record has been deleted.',
+							icon: 'success',
+							timer: 1500,
+							showConfirmButton: false
+						});
+						
+						setTimeout(() => {
+							window.location.href = "{{ route('grievance') }}";
+						}, "1000");
+						
+					},
+					error: function(xhr) {
+						console.error(xhr.responseText);
+					}
+				});
+
+			   
+			}
+		});
+		
+	})
 });
 function list_grievance()
 {

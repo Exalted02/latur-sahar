@@ -17,6 +17,7 @@
 		</div>
 		<div class="ad-info-1">
 			<ul class="pull-right">
+				<li> <a href="javascript:void(0)" data-url="{{ url('delete-grievance') }}" data-id="{{ $grievance->id }}" class="delete-grievance"><i class="fa-solid fa-trash text-danger"></i></a> </li>
 				<li> <a href="{{ url('edit-grievance', ['id'=> $grievance->id]) }}"><i class="fa-solid fa-pen"></i></a> </li>
 				<li> <a href="{{ route('view-grievance', ['id'=> $grievance->id]) }}"><i class="fa-solid fa-eye"></i></a></li>
 			</ul>
