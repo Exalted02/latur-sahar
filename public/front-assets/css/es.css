@@ -424,6 +424,21 @@
     font-size: 16px;
     cursor: pointer;
 }
+.remove-existing-image {
+	position: absolute;
+    top: -10px;
+	right: -10px;
+    background: #E7E7E7;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
 .success-msg {
     color: green;
     font-weight: bold;

@@ -22,6 +22,7 @@ class DashboardController extends Controller
     {
 		$data = [];
 		$data['departments'] = Department::where('status', 1)->get();
+		//$data['grievance'] =  array();
         return view('grievance.submit-grievance', $data);
     }
     public function grievance()
@@ -34,20 +35,28 @@ class DashboardController extends Controller
 	public function save_grievance(Request $request)
 	{
 		//echo "<pre>";print_r($request->all()); die;
-		/*$validatedData = $request->validate([
-			'name'   => 'required',
-			'mobile_no' => 'required|digits:10',
-			'ward_prabhag'   => 'required',
-			'department'   => 'required',
-			'grievance_type'   => 'required',
-			'address'   => 'required',
-			'pincode'   => 'required',
-			'issue_description'   => 'required',
-		]);*/
 		
-		if($request->post('id') > 1)
+		if($request->post('id') > 0)
 		{
-			
+			$model = Grievance::find($request->post('id'));
+			$model->name = $request->post('name');
+			$model->mobile_no = $request->post('mobile_no');
+			$model->ward_prabhag = $request->post('ward_prabhag');
+			$model->department = $request->post('department');
+			$model->grievance_type = $request->post('grievance_type');
+			$model->address = $request->post('address');
+			$model->pincode = $request->post('pincode');
+			$model->issue_description = $request->post('issue_description');
+			$model->gps_location = $request->post('gps_location');
+			$model->latitude = $request->post('latitude');
+			$model->longitude = $request->post('longitude');
+			//$model->feedback_rating = $request->post('feedback_rating');
+			$model->feedback_description = $request->post('feedback_description');
+			$model->submitted_date = date('Y-m-d H:i:s');
+			$model->status = 1;
+			$model->created_at = date('Y-m-d h:i:s');
+			$model->save();
+			$id = $request->post('id');
 		}
 		else
 		{
@@ -127,13 +136,42 @@ class DashboardController extends Controller
 	public function get_grievance_type(Request $request)
 	{
 		$department_id = $request->department_id;
+		$edit_id = $request->edit_id !='' ? $request->edit_id : '';
+		
+		$greivance_id = '';
+		if($edit_id)
+		{
+			$greivance_data = Grievance::where('id', $edit_id)->first();
+			$greivance_id = $greivance_data->grievance_type;
+		}
+		
 		$greivances = Grievance_type::where('department', $department_id)->get();
 		$html = '<select class="form-control" name="grievance_type">';
 		foreach($greivances as $greivance)
 		{
-			$html .= '<option value="'. $greivance->id .'">'. $greivance->name .'</option>';
+			$selected = ($greivance_id == $greivance->id) ? 'selected' : '';
+			$html .= '<option value="'. $greivance->id .'" '. $selected .'>'. $greivance->name .'</option>';
 		}
 		$html .= '</select>';
 		return response()->json(['html'=> $html]);
+	}
+	public function edit_grievance($id='')
+	{
+		$data = [];
+		$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		//echo "<pre>";print_r($grievance); die;
+		$data['departments'] = Department::where('status', 1)->get();
+        return view('grievance.submit-grievance', $data);
+	}
+	public function delete_grievance_image(Request $request)
+	{
+		$imageId = $request->imageId;
+		$imagename = $request->imagename;
+		
+		$filePath = public_path('uploads/greivance_image/' . $imagename);
+		if (file_exists($filePath)) {
+			unlink($filePath);
+			Greivance_image::where('id', $imageId)->where('images', $imagename)->delete();
+		}
 	}
 }
