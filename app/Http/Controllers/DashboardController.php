@@ -185,6 +185,8 @@ class DashboardController extends Controller
 	public function delete_grievance(Request $request)
 	{
 		Grievance::where('id', $request->id)->update(['status'=>4]);
-		return response()->json(['msg'=>'success']);
+		//$loadmore =  $request->moreload - config('custom.LOAD_MORE_INTERVAL');
+		$loadmore = '';
+		return response()->json(['msg'=>'success', 'loadmore'=>$loadmore]);
 	}
 }

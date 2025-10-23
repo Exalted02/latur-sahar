@@ -59,16 +59,21 @@ $(document).ready(function() {
 			if (result.isConfirmed) {
 				
 				let URL = $(this).data('url');
-				let id = $(this).data('id')
+				let id = $(this).data('id');
+				let moreload = $('#moreload').val();
 				$.ajax({
 					url: URL,
 					type: "POST",
 					data: {
 						id : id,
+						moreload:moreload,
 						_token: "{{ csrf_token() }}"
 					},
 					dataType: 'json',
 					success: function(response) {
+						//alert(response.loadmore);
+						//$('#moreload').val(response.loadmore)
+						//list_grievance(response.loadmore)
 						 Swal.fire({
 							title: 'Deleted!',
 							text: 'Your record has been deleted.',
@@ -77,9 +82,9 @@ $(document).ready(function() {
 							showConfirmButton: false
 						});
 						
-						setTimeout(() => {
+						//setTimeout(() => {
 							window.location.href = "{{ route('grievance') }}";
-						}, "1000");
+						//}, "100");
 						
 					},
 					error: function(xhr) {
@@ -97,6 +102,7 @@ function list_grievance()
 {
 	//let moreload = '';
 	let moreload = $('#moreload').val();
+	//alert(moreload);
 	$.ajax({
 		url: "{{ route('get-list-grievance') }}",
 		type: "POST",
@@ -106,7 +112,8 @@ function list_grievance()
 		},
 		dataType: 'json',
 		success: function(response) {
-			//alert(response.remain);
+			//alert(response.html);
+			//alert(response.loadmore);
 			if(response.remain>0)
 			{
 				$('#showload').show();
