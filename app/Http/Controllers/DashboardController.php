@@ -30,8 +30,35 @@ class DashboardController extends Controller
 		$data = [];
 		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->get();
 		//echo "<pre>";print_r($grievances); die;
-        return view('grievance.grievance', $data);
+		return view('grievance.grievance', $data);
     }
+	public function get_list_grievance(Request $request)
+	{
+		$data = [];
+		$interval = config('custom.LOAD_MORE_INTERVAL');
+		$lower = empty($request->moreload) ? 0 : $request->moreload;
+		$upper = empty($request->moreload) ? config('custom.LOAD_MORE_LIST_SHOW') : config('custom.LOAD_MORE_INTERVAL');
+		
+		/*$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->offset($lower)->limit($upper)->get();*/
+		//echo $lower.'---'.$upper;die;
+		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->skip($lower)->take($upper)->get();
+		//echo "<pre>";print_r($grievances);die;
+		$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->count();
+		//echo $grievanceCount; die;
+		
+		$count  = $request->moreload =='' ? config('custom.LOAD_MORE_LIST_SHOW') : $request->moreload + $interval;
+		$remain = $grievanceCount - $count;
+		
+		$html = view('grievance.grievance-list-data', $data)->render();
+		return response()->json([
+			'success' => true,
+			'html' => $html,
+			'loadmore'=> $lower+$upper,
+			'lower'=> $lower,
+			'upper'=> $upper,
+			'remain'=> $remain
+		]);
+	}
 	public function save_grievance(Request $request)
 	{
 		//echo "<pre>";print_r($request->all()); die;

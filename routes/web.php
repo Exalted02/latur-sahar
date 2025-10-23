@@ -62,6 +62,8 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	
 	Route::get('/edit-grievance/{id}', [DashboardController::class, 'edit_grievance'])->name('edit-grievance');
 	Route::post('/delete-grievance-image', [DashboardController::class, 'delete_grievance_image'])->name('delete-grievance-image');
+	
+	Route::post('/get-list-grievance', [DashboardController::class, 'get_list_grievance'])->name('get-list-grievance');
 });
 
 
