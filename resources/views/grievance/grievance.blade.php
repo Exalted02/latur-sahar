@@ -71,9 +71,12 @@ $(document).ready(function() {
 					},
 					dataType: 'json',
 					success: function(response) {
-						//alert(response.loadmore);
+						alert(response.html);
 						//$('#moreload').val(response.loadmore)
 						//list_grievance(response.loadmore)
+						$('#moreload').val(response.loadmore);
+						$('#show-list-data').append(response.html);
+						
 						 Swal.fire({
 							title: 'Deleted!',
 							text: 'Your record has been deleted.',
@@ -82,9 +85,9 @@ $(document).ready(function() {
 							showConfirmButton: false
 						});
 						
-						//setTimeout(() => {
+						/*setTimeout(() => {
 							window.location.href = "{{ route('grievance') }}";
-						//}, "100");
+						}, "100");*/
 						
 					},
 					error: function(xhr) {
