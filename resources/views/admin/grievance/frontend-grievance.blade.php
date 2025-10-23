@@ -48,7 +48,7 @@
 								<th>{{ __('Image') }}</th>
 								<th>{{ __('created_date') }}</th>
 								<th>{{ __('status') }}</th>
-								{{--<th class="text-end">Action</th>--}}
+								<th class="text-end">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -88,15 +88,15 @@
 								</td>
 									
 								
-								{{--<td class="text-end">
+								<td class="text-end">
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item edit-grievance" href="javascript:void(0);" data-id="{{ $val->id ??''}}" data-url="{{ route('admin.edit-grievance') }}"><i class="fa-solid fa-pencil m-r-5"></i> {{ __('edit') }}</a>
-											<a class="dropdown-item delete-grievance" href="javascript:void(0);" data-id="{{ $val->id ?? '' }}" data-url="{{ route('admin.getDeleteGrievance') }}"><i class="fa-regular fa-trash-can m-r-5"></i> {{ __('delete') }}</a>
+										{{--<a class="dropdown-item edit-grievance" href="javascript:void(0);" data-id="{{ $val->id ??''}}" data-url="{{ route('admin.edit-grievance') }}"><i class="fa-solid fa-pencil m-r-5"></i> {{ __('edit') }}</a>--}}
+											<a class="dropdown-item delete-grievance" href="javascript:void(0);" data-id="{{ $val->id ?? '' }}" data-url="{{ route('admin.frontend-grievance-del') }}"><i class="fa-regular fa-trash-can m-r-5"></i> {{ __('delete') }}</a>
 										</div>
 									</div>
-								</td>--}}
+								</td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -113,18 +113,65 @@
 @section('scripts')
 @include('_includes.footer')
 <link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
-<script src="{{ url('admin-assets/js/page/grievance_type.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>
 <script src="{{ url('admin-assets/js/select2.min.js') }}"></script>
 <script>
 $(document).ready(function() {
-	
-	$(document).on('click',".reset-button", function(){
-		window.location.href = "/product-code";
+	$(document).on('click', '.delete-grievance', function(){
+		
+		//alert(id);alert(URL);
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!',
+			cancelButtonText: 'Cancel'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				
+				let id = $(this).data('id');
+				let URL = $(this).data('url');
+				
+				$.ajax({
+					url: URL,
+					type: "POST",
+					data: {
+						id : id,
+						_token: "{{ csrf_token() }}"
+					},
+					dataType: 'json',
+					success: function(response) {
+						//alert(response.loadmore);
+						//$('#moreload').val(response.loadmore)
+						//list_grievance(response.loadmore)
+						 Swal.fire({
+							title: 'Deleted!',
+							text: 'Your record has been deleted.',
+							icon: 'success',
+							timer: 1500,
+							showConfirmButton: false
+						});
+						
+						setTimeout(() => {
+							window.location.reload();
+						}, "1000");
+						
+					},
+					error: function(xhr) {
+						console.error(xhr.responseText);
+					}
+				});
+
+			   
+			}
+		});
+		
 	});
-	
-	
-	
+
 	if ($.fn.DataTable.isDataTable('.datatable')) {
 		$('.datatable').DataTable().destroy(); // Destroy existing instance
 	}
@@ -145,6 +192,8 @@ $(document).ready(function() {
 			},
 		}
 	});
+	
+	
 });
 </script>
 @endsection

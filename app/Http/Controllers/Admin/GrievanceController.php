@@ -90,7 +90,13 @@ class GrievanceController extends Controller
 	public function grievances()
 	{
 		$data = [];
-		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->get();
+		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->get();
 		return view('admin.grievance.frontend-grievance', $data);
+	}
+	public function delete_grievances(Request $request)
+	{
+		$id = $request->id;
+		Grievance::where('id', $id)->update(['status'=> 4]);
+		return response()->json(['msg'=>'success']);
 	}
 }

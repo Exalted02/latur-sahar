@@ -53,6 +53,7 @@ Route::middleware(['web'])->group(function () {
 		Route::post('/deleteUserList',[UserController::class,'delete_user_list'])->name('deleteUserList');
 		
 		Route::get('/grievances', [GrievanceController::class, 'grievances'])->name('grievances');
+		Route::post('/frontend-grievance-del', [GrievanceController::class, 'delete_grievances'])->name('frontend-grievance-del');
 		
 		//EmailSettings
 		Route::get('/email-settings', [EmailSettingsController::class, 'index'])->name('email-settings');
