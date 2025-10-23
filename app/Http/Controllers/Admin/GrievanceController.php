@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 //use App\Models\Grievance;
 use App\Models\Grievance_type;
 use App\Models\Department;
+use App\Models\Grievance;
 
 class GrievanceController extends Controller
 {
@@ -85,5 +86,11 @@ class GrievanceController extends Controller
 		
 		$data['result'] = $change_status;
 		echo json_encode($data);
+	}
+	public function grievances()
+	{
+		$data = [];
+		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->get();
+		return view('admin.grievance.frontend-grievance', $data);
 	}
 }

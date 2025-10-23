@@ -52,6 +52,8 @@ Route::middleware(['web'])->group(function () {
 		Route::post('/getDeleteUser',[UserController::class,'delete_user'])->name('getDeleteUser');
 		Route::post('/deleteUserList',[UserController::class,'delete_user_list'])->name('deleteUserList');
 		
+		Route::get('/grievances', [GrievanceController::class, 'grievances'])->name('grievances');
+		
 		//EmailSettings
 		Route::get('/email-settings', [EmailSettingsController::class, 'index'])->name('email-settings');
 		Route::post('/email-settings', [EmailSettingsController::class, 'save_data'])->name('email-settings-save');
