@@ -33,22 +33,27 @@
 				 <div class="singlepage-detail ">
 					<div id="single-slider" class="flexslider">
 					   <ul class="slides" style="display: flex;">
-						  <li><a href="images/single-page/1.jpg" data-fancybox="group"><img alt="" src="images/single-page/1.jpg" /></a></li>
-						  <li><a href="images/single-page/2.jpg" data-fancybox="group"><img alt="" src="images/single-page/2.jpg" /></a></li>
+					    @foreach($grievance->grievance_image as $images)
+						  <li><a href="{{ url('uploads/greivance_image/'. $images->images )}}" data-fancybox="group"><img alt="" src="{{ url('uploads/greivance_image/'. $images->images )}}" /></a></li>
+						@endforeach
+						  
+						  {{--<li><a href="images/single-page/2.jpg" data-fancybox="group"><img alt="" src="images/single-page/2.jpg" /></a></li>
 						  <li><a href="images/single-page/3.jpg" data-fancybox="group"><img alt="" src="images/single-page/3.jpg" /></a></li>
 						  <li><a href="images/single-page/4.jpg" data-fancybox="group"><img alt="" src="images/single-page/4.jpg" /></a></li>
 						  <li><a href="images/single-page/5.jpg" data-fancybox="group"><img alt="" src="images/single-page/5.jpg" /></a></li>
-						  <li><a href="images/single-page/6.jpg" data-fancybox="group"><img alt="" src="images/single-page/6.jpg" /></a></li>
+						  <li><a href="images/single-page/6.jpg" data-fancybox="group"><img alt="" src="images/single-page/6.jpg" /></a></li>--}}
 					   </ul>
 					</div>
 					<div id="carousel" class="flexslider">
 					   <ul class="slides">
-						  <li><img alt="" src="images/single-page/1_thumb.jpg"></li>
-						  <li><img alt="" src="images/single-page/2_thumb.jpg"></li>
+					    @foreach($grievance->grievance_image as $images)
+						  <li><img alt="" src="{{ url('uploads/greivance_image/'. $images->images )}}"></li>
+						@endforeach
+						  {{--<li><img alt="" src="images/single-page/2_thumb.jpg"></li>
 						  <li><img alt="" src="images/single-page/3_thumb.jpg"> </li>
 						  <li><img alt="" src="images/single-page/4_thumb.jpg"></li>
 						  <li><img alt="" src="images/single-page/5_thumb.jpg"></li>
-						  <li><img alt="" src="images/single-page/6_thumb.jpg"></li>
+						  <li><img alt="" src="images/single-page/6_thumb.jpg"></li>--}}
 					   </ul>
 					</div>
 					<div class="content-box-grid">
@@ -60,28 +65,28 @@
 							 </h3>
 						  </div>
 						  <p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+						  {{ $grievance->issue_description ?? '' }}.
 						  </p>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-							 <span><strong>{{ __('name') }}</strong> :</span> Name here
+							 <span><strong>{{ __('name') }}</strong> :</span> {{ $grievance->name ?? '' }}
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-							 <span><strong>{{ __('mobile') }}</strong> :</span> 9565896325
+							 <span><strong>{{ __('mobile') }}</strong> :</span> {{ $grievance->mobile_no ?? '' }}
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-							 <span><strong>{{ __('ward_prabhag') }}</strong> :</span> Test
+							 <span><strong>{{ __('ward_prabhag') }}</strong> :</span> {{ $grievance->ward_prabhag ?? '' }}
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-							 <span><strong>{{ __('department') }}</strong>:</span> Test
+							 <span><strong>{{ __('department') }}</strong>:</span> {{ $grievance->get_department->name ?? '' }}
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-							 <span><strong>{{ __('grievance_type') }}</strong> :</span> Test
+							 <span><strong>{{ __('grievance_type') }}</strong> :</span> {{ $grievance->get_grievance_type->name ?? '' }}
 						  </div>
 						  <div class="col-sm-12 col-md-12 col-xs-12 no-padding">
-							 <span><strong>{{ __('address') }}</strong> :</span> ABC street, Kol-700070
+							 <span><strong>{{ __('address') }}</strong> :</span> {{ $grievance->address ?? '' }}
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-							 <span><strong>{{ __('pin_code') }}</strong> :</span> Test
+							 <span><strong>{{ __('pin_code') }}</strong> :</span> {{ $grievance->pincode ?? '' }}
 						  </div>
 					   </div>
 					   <div class="clearfix"></div>

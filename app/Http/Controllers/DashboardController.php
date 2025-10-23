@@ -27,7 +27,8 @@ class DashboardController extends Controller
     public function grievance()
     {
 		$data = [];
-		
+		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->get();
+		//echo "<pre>";print_r($grievances); die;
         return view('grievance.grievance', $data);
     }
 	public function save_grievance(Request $request)
@@ -115,10 +116,12 @@ class DashboardController extends Controller
 		return response()->json(['msg', 'Record added successfully']);
 		
 	}
-    public function view_grievance()
+    public function view_grievance($id='')
     {
 		$data = [];
 		
+		$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		//echo "<pre>";print_r($grievance); die;
         return view('grievance.view-grievance', $data);
     }
 	public function get_grievance_type(Request $request)

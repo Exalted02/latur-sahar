@@ -56,7 +56,7 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/grievance', [DashboardController::class, 'grievance'])->name('grievance');
 	Route::get('/submit-grievance', [DashboardController::class, 'submit_grievance'])->name('submit-grievance');
 	Route::post('/submit-grievance', [DashboardController::class, 'save_grievance'])->name('submit-grievance');
-	Route::get('/view-grievance', [DashboardController::class, 'view_grievance'])->name('view-grievance');
+	Route::get('/view-grievance/{id}', [DashboardController::class, 'view_grievance'])->name('view-grievance');
 	
 	Route::post('/get-grievance-type', [DashboardController::class, 'get_grievance_type'])->name('get-grievance-type');
 });

@@ -27,4 +27,16 @@ class Grievance extends Model
         'solve_date',
         'status',
     ];
+	public function get_department()
+	{
+		return $this->belongsTo(Department::class, 'department');
+	}
+	public function get_grievance_type()
+	{
+		return $this->belongsTo(Grievance_type::class, 'grievance_type');
+	}
+	public function grievance_image()
+	{
+		return $this->hasMany(Greivance_image::class, 'greivance_id');
+	}
 }
