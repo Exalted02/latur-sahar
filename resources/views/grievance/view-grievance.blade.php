@@ -95,7 +95,7 @@
 				 <!-- Single Ad End --> 
 				 
                      <!-- Price Alert -->
-                     <div class="alert-box-container margin-top-30">
+                     {{--<div class="alert-box-container margin-top-30">
                         <div class="well">
                            <h3>{{ __('resubmit_grievance') }}</h3>
                            <p>{{ __('resubmit_Grievance_higher_authority') }}</p>
@@ -110,15 +110,33 @@
                               </div>
                            </form>
                         </div>
-                     </div>
+                     </div>--}}
                      <!-- Price Alert End --> 
 				 <!-- =-=-=-=-=-=-= Latest Ads End =-=-=-=-=-=-= -->
 				</div>
-				<div class="col-md-4 col-xs-12 col-sm-12">
+				
+				{{--<div class="col-md-4 col-xs-12 col-sm-12">
                      <!-- Sidebar Widgets -->
                      <div class="sidebar">
 						<div id="itemMap"></div>
 					 </div>
+				</div>--}}
+				<div class="col-md-4 col-xs-12 col-sm-12">
+					<div class="blog-sidebar">
+						@if(auth()->user()->user_type == 1)
+						<div class="widget">
+							<div class="widget-heading">
+                              <div class="resubmit-button" id="showload" onclick="list_grievance()">{{ __('resubmit_grievance') }}</div>
+                           </div>
+						</div>
+						@endif
+						<div class="widget">
+							 <!-- Sidebar Widgets -->
+							 <div class="sidebar">
+								<div id="itemMap"></div>
+							 </div>
+						</div>
+					</div>
 				</div>	 
 			</div>
 		</div>
