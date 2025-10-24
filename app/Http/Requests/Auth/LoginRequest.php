@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
         if (! Auth::attempt([
 			'email' => $this->email,
 			'password' => $this->password,
-			'user_type' => 1, // <-- Only allow Users
+			//'user_type' => 1, // <-- Only allow Users
 		], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
