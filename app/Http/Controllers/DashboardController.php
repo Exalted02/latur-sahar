@@ -28,7 +28,7 @@ class DashboardController extends Controller
     public function grievance()
     {
 		$data = [];
-		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->get();
+		//$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->get();
 		//echo "<pre>";print_r($grievances); die;
 		return view('grievance.grievance', $data);
     }

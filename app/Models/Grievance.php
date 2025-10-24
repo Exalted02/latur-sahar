@@ -10,6 +10,7 @@ class Grievance extends Model
     use HasFactory;
 	protected $table = 'grievances';
 	protected $fillable = [
+        'user_id',
         'name',
         'mobile_no',
         'ward_prabhag',
