@@ -126,7 +126,16 @@
 						@if(auth()->user()->user_type == 1)
 						<div class="widget">
 							<div class="widget-heading">
-                              <div class="resubmit-button" id="showload" onclick="list_grievance()">{{ __('resubmit_grievance') }}</div>
+							  @if($grievance->status == 1)
+								<div class="resubmit-button" id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}</div>
+						      @else($grievance->status == 2)
+									<div class="alert alert-info text-center mt-3" role="alert">
+										You have already resubmitted this grievance.
+									</div>
+							  @endif
+								<div class="alert alert-info text-center mt-3 show-resubmit-text" role="alert" style="display:none">
+										You have already resubmitted this grievance.
+								</div>
                            </div>
 						</div>
 						@endif
@@ -149,6 +158,8 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 <!-- For This Page Only -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key="></script>
 <script type="text/javascript">
@@ -179,5 +190,40 @@
 		   position: latlng
 	   });
  })(jQuery);
+</script>
+<script>
+$(document).ready(function(){
+	$(document).on('click','#resubmitBtn', function(){
+		let id = $(this).data('id');
+		$.ajax({
+			url: "{{ route('resubmit-grievance') }}",
+			type: "POST",
+			data: {
+				id: id,
+				_token: "{{ csrf_token() }}"
+			},
+			dataType: 'json',
+			success: function(response) {
+				//alert(response.html);
+				$.toast({
+					heading: 'Success',
+					text: "Resubmit successfully",
+					showHideTransition: 'slide',
+					icon: 'success',
+					position: 'top-right',
+					loaderBg: '#5cb85c',
+					hideAfter: 3000
+				});
+				$('.resubmit-button').hide();
+				$('.show-resubmit-text').show();
+				
+				
+			},
+			error: function(xhr) {
+				console.error(xhr.responseText);
+			}
+		});
+	});
+});
 </script>
 @endsection

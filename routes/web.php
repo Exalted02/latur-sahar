@@ -66,8 +66,9 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	
 	Route::post('/get-list-grievance', [DashboardController::class, 'get_list_grievance'])->name('get-list-grievance');
 	Route::post('/delete-grievance', [DashboardController::class, 'delete_grievance'])->name('delete-grievance');
+	Route::post('/resubmit-grievance', [DashboardController::class, 'resubmit_grievance'])->name('resubmit-grievance');
 	
-	// my account
+	// my account 
 	Route::get('/my-account', [ProfileController::class, 'my_account'])->name('my-account');
 	Route::post('/my-account', [ProfileController::class, 'save_account'])->name('my-account');
 	// change password

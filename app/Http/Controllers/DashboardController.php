@@ -43,8 +43,11 @@ class DashboardController extends Controller
 		{
 			$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('user_id', auth()->user()->id)->where('status', '!=', 4)->skip($lower)->take($upper)->get();
 		}
-		else
+		elseif(auth()->user()->user_type == 2 || auth()->user()->user_type == 3)
 		{
+			$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('department', auth()->user()->department)->where('status', 1)->skip($lower)->take($upper)->get();
+		}
+		else{
 			$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('department', auth()->user()->department)->where('status', '!=', 4)->skip($lower)->take($upper)->get();
 		}
 		
@@ -53,6 +56,9 @@ class DashboardController extends Controller
 		if(auth()->user()->user_type == 1)
 		{
 			$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->where('user_id', auth()->user()->id)->where('status', '!=', 4)->count();
+		}
+		elseif(auth()->user()->user_type == 2 || auth()->user()->user_type == 3){
+			$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->where('department', auth()->user()->department)->where('status', 1)->count();
 		}
 		else{
 			$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->where('department', auth()->user()->department)->where('status', '!=', 4)->count();
@@ -226,5 +232,11 @@ class DashboardController extends Controller
 		
 		
 		//return response()->json(['msg'=>'success', 'loadmore'=>$loadmore]);
+	}
+	public function resubmit_grievance(Request $request)
+	{
+		$id = $request->id;
+		Grievance::where('id', $id)->where('user_id', auth()->user()->id)->update(['status'=>2]);
+		return response()->json(['msg'=>'success']);
 	}
 }

@@ -76,11 +76,12 @@
 				   </li>
 				</ul>
 				<!-- menu links -->
+				@if(Auth::user())
 				<ul class="menu-links">
 					<li>
 						<a href="{{ route('dashboard') }}"> {{ __('home') }}</a>
 					</li>
-					@if(auth()->user()->user_type ==1)
+					@if(auth()->user()->user_type == 1)
 					<li>
 						<a href="{{ route('submit-grievance') }}"> {{ __('submit_grievance') }}</a>
 					</li>
@@ -89,6 +90,7 @@
 						<a href="{{ route('grievance') }}"> {{ __('view_grievance') }}</a>
 					</li>
 				</ul>
+				@endif
 			 </div>
 		  </div>
 	   </div>
