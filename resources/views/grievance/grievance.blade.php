@@ -8,7 +8,7 @@
 	   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		  <div class="small-breadcrumb">
 			 <div class="header-page">
-				<h1>{{ __('view_grievance') }}</h1>
+				<h1>{{ __('list_of_grievance') }}</h1>
 			 </div>
 		  </div>
 	   </div>
