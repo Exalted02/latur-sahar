@@ -9,6 +9,10 @@
     "home": "Home",
     "about_us": "About us",
     "contact_us": "Contact us",
+	"my_account": "My account",
+	"change_password": "Change password",
+	"manage_profile": "Manage your account",
+	"submit_account": "Submit account",
 	
 	"//": "Login, Register ....  page",
 	"login_page_sign_your_account":"Sign In to your account",

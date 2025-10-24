@@ -31,7 +31,7 @@
 					<div class="tab-content">
 							<!-- Additions Tab -->
 							<div class="tab-pane show active" id="tab_resource">
-									<form id="frmprospectstage" action="{{ route('user.save-prospect-stage') }}">
+									<form id="frmprospectstage" action="">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card">
@@ -353,7 +353,7 @@
 
 </div>
 	<!-- /Page Content -->
-@include('modal.resources-modal')
+
 
 @endsection 
 @section('scripts')

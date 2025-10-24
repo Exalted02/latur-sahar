@@ -52,7 +52,8 @@ Route::get('lang/change', [LangController::class, 'change'])->name('changeLang')
 
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-		
+	
+	// grievance
 	Route::get('/grievance', [DashboardController::class, 'grievance'])->name('grievance');
 	Route::get('/submit-grievance', [DashboardController::class, 'submit_grievance'])->name('submit-grievance');
 	Route::post('/submit-grievance', [DashboardController::class, 'save_grievance'])->name('submit-grievance');
@@ -65,6 +66,10 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	
 	Route::post('/get-list-grievance', [DashboardController::class, 'get_list_grievance'])->name('get-list-grievance');
 	Route::post('/delete-grievance', [DashboardController::class, 'delete_grievance'])->name('delete-grievance');
+	
+	// my account
+	Route::get('/my-account', [ProfileController::class, 'my_account'])->name('my-account');
+	Route::post('/my-account', [ProfileController::class, 'save_account'])->name('my-account');
 });
 
 

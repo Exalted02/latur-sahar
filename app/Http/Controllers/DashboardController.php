@@ -184,11 +184,12 @@ class DashboardController extends Controller
 	}
 	public function delete_grievance(Request $request)
 	{
+		$data = [];
 		Grievance::where('id', $request->id)->update(['status'=>4]);
 		$interval = config('custom.LOAD_MORE_INTERVAL');
-		$lower = empty($request->moreload) ? 0 : $request->moreload;
+		$lower = empty($request->moreload) ? 0 : $request->moreload -2;
 		$upper = empty($request->moreload) ? config('custom.LOAD_MORE_LIST_SHOW') : config('custom.LOAD_MORE_INTERVAL');
-		
+		//echo $lower.' '.$upper;
 		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->skip($lower)->take($upper)->get();
 		//echo "<pre>";print_r($grievances);die;
 		$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->count();

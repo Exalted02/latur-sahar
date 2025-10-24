@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
+	
 	public function welcome()
     {
 		if(Auth::user()){
@@ -22,6 +24,33 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+	public function my_account()
+	{
+		$data = [];
+		$data['account'] = User::where('id', auth()->user()->id)->first();
+		//echo "<pre>";print_r($account);die;
+		return view('my-profile.my-profile', $data);
+	}
+	public function save_account(Request $request)
+	{
+		//echo "<pre>";print_r($request->all());die;
+		$data = [];
+		$request->validate([
+			'name' => 'required',
+			'mobile' => 'required|digits:10|numeric',
+		]);
+		
+		$model = User::find($request->id);
+		$model->name = $request->name ?? '';
+		$model->mobile = $request->mobile ?? '';
+		$model->save();
+		
+		$data['account'] = User::where('id', auth()->user()->id)->first();
+		
+		//return view('my-profile.my-profile', $data);
+		 return redirect()->back()->with('success', 'Account updated successfully!');
+	}
+	
     public function edit(Request $request): View
     {
         return view('profile.edit', [
