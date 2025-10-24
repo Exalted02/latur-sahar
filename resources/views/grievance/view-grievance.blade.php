@@ -13,7 +13,13 @@
 		  </div>
 		</div>
 		<div class="col-md-3 col-sm-4 detail_price col-xs-12">
-			<div class="singleprice-tag">{{ __('pending') }}</div>
+			@if($grievance->status == 1)
+				<div class="singleprice-tag">{{ __('pending') }}</div>
+			@elseif($grievance->status == 2)
+			    <div class="singleprice-tag">{{ __('resubmit') }}</div>
+			@elseif($grievance->status == 3)
+				<div class="singleprice-tag">{{ __('solved') }}</div>
+			@endif
 		</div>
 	</div>
  </div>
