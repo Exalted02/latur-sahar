@@ -145,6 +145,14 @@
                            </div>
 						</div>
 						@endif
+						
+						@if(auth()->user()->user_type == 2)
+							<div class="widget">
+								<div class="widget-heading">
+									<div class="resubmit-button" id="downloadBtn" data-id="{{ $grievance->id }}">{{ __('download') }}</div>
+								</div>
+							</div>
+						@endif
 						<div class="widget">
 							 <!-- Sidebar Widgets -->
 							 <div class="sidebar">
@@ -230,6 +238,24 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+	$(document).on('click','#downloadBtn', function(){
+		let id = $(this).data('id');
+		window.location.href = "/download-grievance-files/" + id;
+	});
+	/*$(document).on('click', '#downloadBtn', function() {
+		let id = $(this).data('id');
+		$.get(`/grievance/files/${id}`, function(response) {
+			response.images.forEach(function(file) {
+				let link = document.createElement('a');
+				link.href = '/uploads/greivance_image/' + file;
+				link.download = file;
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+			});
+		});
+	});*/
 });
 </script>
 @endsection

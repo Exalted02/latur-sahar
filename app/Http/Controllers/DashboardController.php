@@ -9,6 +9,11 @@ use App\Models\Grievance;
 use App\Models\Grievance_type;
 use App\Models\Department;
 use App\Models\Greivance_image;
+use ZipArchive;
+
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\File;
+
 
 class DashboardController extends Controller
 {
@@ -238,5 +243,105 @@ class DashboardController extends Controller
 		$id = $request->id;
 		Grievance::where('id', $id)->where('user_id', auth()->user()->id)->update(['status'=>2]);
 		return response()->json(['msg'=>'success']);
+	}
+	public function downloadFiles_one($id)
+	{
+		$images = Greivance_image::where('greivance_id', $id)->get();
+
+		if ($images->isEmpty()) {
+			return back()->with('error', 'No files found for this grievance.');
+		}
+
+		$zip = new ZipArchive();
+		$zipFileName = 'grievance_' . $id . '_images.zip';
+		$zipPath = public_path($zipFileName);
+
+		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+			foreach ($images as $img) {
+				$filePath = public_path('uploads/greivance_image/' . $img->images);
+				if (File::exists($filePath)) {
+					$zip->addFile($filePath, basename($filePath));
+				}
+			}
+			$zip->close();
+		}
+		
+		$headers = [
+			'Content-Type' => 'application/octet-stream',
+		];
+
+		return response()->download($zipPath, $zipFileName, $headers)->deleteFileAfterSend(true);
+	}
+	public function downloadFiles_bck_not($id)
+	{
+		$images = Greivance_image::where('greivance_id', $id)->get();
+
+		if ($images->isEmpty()) {
+			return back()->with('error', 'No files found for this grievance.');
+		}
+
+		$zip = new ZipArchive;
+		$zipFileName = 'grievance_' . $id . '_images.zip';
+		$zipPath = storage_path('app/public/' . $zipFileName);
+
+		// Delete if old zip exists
+		if (File::exists($zipPath)) {
+			File::delete($zipPath);
+		}
+
+		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+			foreach ($images as $img) {
+				$filePath = public_path('uploads/greivance_image/' . $img->images);
+				if (File::exists($filePath)) {
+					$zip->addFile($filePath, basename($filePath));
+				}
+			}
+			$zip->close();
+		} else {
+			return back()->with('error', 'Could not create ZIP file.');
+		}
+
+		// Ensure clean output before sending the file
+		if (ob_get_length()) ob_end_clean();
+
+		return response()->download($zipPath)->deleteFileAfterSend(true);
+	}
+	
+	public function downloadFiles($id)
+	{
+		$images = Greivance_image::where('greivance_id', $id)->get();
+		$public_dir = public_path('uploads/greivance_image/zip');
+		$file_dir = public_path('uploads/greivance_image');
+
+		// Make sure zip directory exists
+		if (!file_exists($public_dir)) {
+			mkdir($public_dir, 0777, true);
+		}
+
+		$zipFileName = 'grievance_images_' . $id . '.zip';
+		$zipPath = $public_dir . DIRECTORY_SEPARATOR . $zipFileName;
+
+		$zip = new ZipArchive();
+		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+
+			foreach ($images as $image) {
+				$fileFullPath = $file_dir . DIRECTORY_SEPARATOR . $image->images;
+
+				if (file_exists($fileFullPath)) {
+					// Add the actual file to the zip with only the filename inside the zip
+					$zip->addFile($fileFullPath, basename($image->images));
+				}
+			}
+
+			$zip->close();
+		}
+
+		if (file_exists($zipPath)) {
+			return response()->download($zipPath, $zipFileName, [
+				'Content-Type' => 'application/octet-stream',
+			])->deleteFileAfterSend(true);
+		} else {
+			return back()->with('error', 'Failed to create ZIP file.');
+		}
 	}
 }
