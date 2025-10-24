@@ -16,6 +16,18 @@ class PhoneVerificationController extends Controller
         if ($user->phone_verified_at) {
             return redirect(RouteServiceProvider::HOME);
         }
+		
+		
+		$otp = rand(100000, 999999);
+		DB::table('user_otps')->updateOrInsert(
+            ['user_id' => $user->id],
+            [
+                'otp' => $otp,
+                'expires_at' => now()->addMinutes(5),
+                'updated_at' => now(),
+                'created_at' => now(),
+            ]
+        );
 
         return view('auth.verify-phone', compact('user'));
     }

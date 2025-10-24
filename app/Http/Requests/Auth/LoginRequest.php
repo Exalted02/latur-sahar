@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
 
 class LoginRequest extends FormRequest
 {
@@ -40,12 +41,20 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-
+		
+		//--- allow these user_type ----
+		$user = User::where('email', $this->email)->first();
+		$allowedTypes = [1, 2, 3, 4, 5, 6];
+		if (! in_array($user->user_type, $allowedTypes)) {
+			throw \Illuminate\Validation\ValidationException::withMessages([
+				'email' => 'You do not have permission to access this account.',
+			]);
+		}
         // if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
         if (! Auth::attempt([
 			'email' => $this->email,
 			'password' => $this->password,
-			//'user_type' => 1, // <-- Only allow Users
+			//'user_type' => 1, // <-- Only allow Users_type !=0
 		], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
