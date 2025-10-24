@@ -53,7 +53,7 @@
 								{{--<th>{{ __('sl_no') }}</th>--}}
 								<th>{{ __('Department') }}</th>
 								<th>{{ __('Name') }}</th>
-								<th>{{ __('created_date') }}</th>
+								<th>{{ __('Created date') }}</th>
 								<th>{{ __('status') }}</th>
 								<th class="text-end">Action</th>
 							</tr>

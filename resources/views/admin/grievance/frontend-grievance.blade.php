@@ -46,7 +46,7 @@
 								<th>{{ __('Grievance type') }}</th>
 								<th>{{ __('Pincode') }}</th>
 								<th>{{ __('Image') }}</th>
-								<th>{{ __('created_date') }}</th>
+								<th>{{ __('Created date') }}</th>
 								<th>{{ __('status') }}</th>
 								<th class="text-end">Action</th>
 							</tr>

@@ -52,6 +52,11 @@
     "pin_code": "Pin code",
     "issue_description": "Issue Description",
     "live_photo": "Live Photo…",
+    "pending": "Pending",
+    "resubmit_grievance": "Resubmit Grievance",
+    "resubmit_Grievance_higher_authority": "Resubmit Grievance to Higher Authority",
+	"upload_image": "Upload image",
+	"load_more": "Load more",
 	
 	"example": "Example"
 }

@@ -13,7 +13,7 @@
 		  </div>
 		</div>
 		<div class="col-md-3 col-sm-4 detail_price col-xs-12">
-			<div class="singleprice-tag">Pending</div>
+			<div class="singleprice-tag">{{ __('pending') }}</div>
 		</div>
 	</div>
  </div>
@@ -97,8 +97,8 @@
                      <!-- Price Alert -->
                      <div class="alert-box-container margin-top-30">
                         <div class="well">
-                           <h3>Resubmit Grievance</h3>
-                           <p>Resubmit Grievance to Higher Authority</p>
+                           <h3>{{ __('resubmit_grievance') }}</h3>
+                           <p>{{ __('resubmit_Grievance_higher_authority') }}</p>
                            <form>
                               <div class="row">
                                  <div class="col-md-9 col-xs-12 col-sm-12">

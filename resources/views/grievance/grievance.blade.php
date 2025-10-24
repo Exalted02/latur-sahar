@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="load-more-grievance" id="showload" onclick="list_grievance()">Load more</div>
+				<div class="load-more-grievance" id="showload" onclick="list_grievance()">{{ __('load_more') }}</div>
 					<input type="hidden"  id="moreload">
 			</div>
 		</div>

@@ -94,7 +94,7 @@
 											<div class="upload-wrapper">
 											  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
 											  <label for="lo_file" class="custom-upload-label">
-												<span class="upload-text">Upload image</span>
+												<span class="upload-text">{{ __('upload_image') }}</span>
 												<i class="fa fa-upload upload-icon"></i>
 											  </label>
 											</div>

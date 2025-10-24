@@ -111,8 +111,8 @@ $(document).ready(function() {
 	
 $(document).on('click','.add_user', function(){
 	$('#name').val('');
-	$('#department').val('');
-	$('#user_type').val('');
+	$('#department').val('').trigger('change');
+	$('#user_type').val('').trigger('change');
 	$('#mobile').val('');
 	$('#email').val('');
 	$('#password').val('');
