@@ -39,9 +39,24 @@ class DashboardController extends Controller
 		$lower = empty($request->moreload) ? 0 : $request->moreload;
 		$upper = empty($request->moreload) ? config('custom.LOAD_MORE_LIST_SHOW') : config('custom.LOAD_MORE_INTERVAL');
 		
-		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->skip($lower)->take($upper)->get();
+		if(auth()->user()->user_type == 1)
+		{
+			$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('user_id', auth()->user()->id)->where('status', '!=', 4)->skip($lower)->take($upper)->get();
+		}
+		else
+		{
+			$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('department', auth()->user()->department)->where('status', '!=', 4)->skip($lower)->take($upper)->get();
+		}
+		
+		
 		//echo "<pre>";print_r($grievances);die;
-		$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->count();
+		if(auth()->user()->user_type == 1)
+		{
+			$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->where('user_id', auth()->user()->id)->where('status', '!=', 4)->count();
+		}
+		else{
+			$grievanceCount = Grievance::with('get_department','get_grievance_type','grievance_image')->where('department', auth()->user()->department)->where('status', '!=', 4)->count();
+		}
 		//echo $grievanceCount; die;
 		
 		$count  = $request->moreload =='' ? config('custom.LOAD_MORE_LIST_SHOW') : $request->moreload + $interval;
@@ -86,6 +101,7 @@ class DashboardController extends Controller
 		else
 		{
 			$model = new Grievance();
+			$model->user_id = auth()->user()->id;
 			$model->name = $request->post('name');
 			$model->mobile_no = $request->post('mobile_no');
 			$model->ward_prabhag = $request->post('ward_prabhag');

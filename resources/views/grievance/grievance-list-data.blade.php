@@ -17,8 +17,10 @@
 		</div>
 		<div class="ad-info-1">
 			<ul class="pull-right">
+			@if(auth()->user()->user_type == 1)
 				<li> <a href="javascript:void(0)" data-url="{{ url('delete-grievance') }}" data-id="{{ $grievance->id }}" class="delete-grievance"><i class="fa-solid fa-trash text-danger"></i></a> </li>
 				<li> <a href="{{ url('edit-grievance', ['id'=> $grievance->id]) }}"><i class="fa-solid fa-pen"></i></a> </li>
+			@endif
 				<li> <a href="{{ route('view-grievance', ['id'=> $grievance->id]) }}"><i class="fa-solid fa-eye"></i></a></li>
 			</ul>
 		</div>
