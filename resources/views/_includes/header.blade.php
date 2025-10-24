@@ -42,7 +42,9 @@
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="myname"> {{ Auth::user()->name }} </span> <span class="caret"></span></a>
 				  <ul class="dropdown-menu">
+					@if(auth()->user()->user_type == 1)
 					 <li><a href="{{ route('my-account')}}">{{ __('my_account') }}</a></li>
+				    @endif
 					 <li><a href="{{ route('change-password')}}">{{ __('change_password') }}</a></li>
 					 <li><a href="{{ route('logout') }}">{{ __('log_out') }}</a></li>
 				  </ul>
@@ -78,9 +80,11 @@
 					<li>
 						<a href="{{ route('dashboard') }}"> {{ __('home') }}</a>
 					</li>
+					@if(auth()->user()->user_type ==1)
 					<li>
 						<a href="{{ route('submit-grievance') }}"> {{ __('submit_grievance') }}</a>
 					</li>
+					@endif
 					<li>
 						<a href="{{ route('grievance') }}"> {{ __('view_grievance') }}</a>
 					</li>
