@@ -456,3 +456,12 @@
 	margin: 20px auto;
 	display:none;
 }
+.change-password-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px); /* adjusts for navbar height if any */
+}
+.submit-section{
+	padding : 6px 0px 0px 0px;
+}

@@ -43,7 +43,7 @@
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="myname"> {{ Auth::user()->name }} </span> <span class="caret"></span></a>
 				  <ul class="dropdown-menu">
 					 <li><a href="{{ route('my-account')}}">{{ __('my_account') }}</a></li>
-					 <li><a href="">{{ __('change_password') }}</a></li>
+					 <li><a href="{{ route('change-password')}}">{{ __('change_password') }}</a></li>
 					 <li><a href="{{ route('logout') }}">{{ __('log_out') }}</a></li>
 				  </ul>
 				</li>

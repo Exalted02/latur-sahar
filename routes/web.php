@@ -70,6 +70,9 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	// my account
 	Route::get('/my-account', [ProfileController::class, 'my_account'])->name('my-account');
 	Route::post('/my-account', [ProfileController::class, 'save_account'])->name('my-account');
+	// change password
+	Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password');
+	Route::post('/change-password', [ChangePasswordController::class, 'save_data'])->name('change-password');
 });
 
 

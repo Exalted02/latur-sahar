@@ -46,9 +46,7 @@ class ProfileController extends Controller
 		$model->save();
 		
 		$data['account'] = User::where('id', auth()->user()->id)->first();
-		
-		//return view('my-profile.my-profile', $data);
-		 return redirect()->back()->with('success', 'Account updated successfully!');
+		return redirect()->back()->with('success', 'Account updated successfully!');
 	}
 	
     public function edit(Request $request): View
