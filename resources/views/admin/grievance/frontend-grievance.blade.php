@@ -125,7 +125,6 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
-@include('_includes.footer')
 <link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
 <link rel="stylesheet" href="http://localhost:8000/admin-assets/css/dataTables.bootstrap4.min.css">
 

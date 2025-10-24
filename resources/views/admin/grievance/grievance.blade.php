@@ -116,7 +116,6 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
-@include('_includes.footer')
 <link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
 <script src="{{ url('admin-assets/js/page/grievance_type.js') }}"></script>
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>

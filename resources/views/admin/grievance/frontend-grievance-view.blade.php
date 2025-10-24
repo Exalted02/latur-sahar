@@ -129,7 +129,6 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
-@include('_includes.footer')
 <link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>
