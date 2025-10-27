@@ -29,7 +29,7 @@ class PhoneVerificationController extends Controller
             ]
         );
 
-        return view('auth.verify-phone', compact('user'));
+        return view('auth.verify-phone', compact('user', 'otp'));
     }
 
     public function verify(Request $request, User $user)

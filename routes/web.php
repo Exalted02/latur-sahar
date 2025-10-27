@@ -49,7 +49,7 @@ Route::get('/', [ProfileController::class, 'welcome']);
 Route::get('lang/home', [LangController::class, 'index']);
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 
-
+Route::get('/home', [DashboardController::class, 'home'])->name('home');
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 	

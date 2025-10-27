@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {
+    public function home()
+    {
+		$data = [];
+		
+        return view('home', $data);
+    }
     public function index()
     {
 		$data = [];

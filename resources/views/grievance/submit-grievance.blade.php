@@ -2,7 +2,12 @@
 @section('content')
 <!-- Page Wrapper -->
 <!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
-<div class="page-header-area-2 gray">
+<div style="background-image: url('{{ asset('front-assets/inner-bg.jpg') }}');
+	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+	;">
+<div class="page-header-area-2 gray1">
  <div class="container">
 	<div class="row">
 	   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -20,7 +25,7 @@
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
 	<!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
-	<section class="section-padding no-top gray">
+	<section class="section-padding no-top gray1">
 		<!-- Main Container -->
 		<div class="container">
 			<div class="row">
@@ -156,6 +161,7 @@
 			</div>
 		</div>
 	</section>
+</div>
 </div>
 
 	<!-- /Page Content -->

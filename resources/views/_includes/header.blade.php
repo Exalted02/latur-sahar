@@ -8,12 +8,15 @@
 	<div class="container">
 	   <div class="row">
 		  <!-- Header Top Left -->
-		  {{--<div class="header-top-left col-md-12">
-			 <ul class="listnone">
-			 </ul>
-		  </div>--}}
+			<div class="header-top-left col-md-6 col-sm-6">
+				<ul class="listnone">
+					<li><a href="#"><i class="fa-solid fa-info"></i> About Us</a></li>
+					<li><a href="#"><i class="fa-solid fa-circle-question"></i> FAQs</a></li>
+					<li><a href="#"><i class="fa-solid fa-phone-volume"></i> Contact Us</a></li>
+				</ul>
+		  </div>
 		  <!-- Header Top Right Social -->
-		  <div class="header-right col-md-12 ">
+		  <div class="header-right col-md-6 col-sm-6">
 			 <div class="pull-right">
 				<ul class="listnone">
 				<li class="dropdown">
@@ -45,6 +48,7 @@
 					@if(auth()->user()->user_type == 1)
 					 <li><a href="{{ route('my-account')}}">{{ __('my_account') }}</a></li>
 				    @endif
+					 <li><a href="{{ route('dashboard')}}">{{ __('dashboard') }}</a></li>
 					 <li><a href="{{ route('change-password')}}">{{ __('change_password') }}</a></li>
 					 <li><a href="{{ route('logout') }}">{{ __('log_out') }}</a></li>
 				  </ul>
@@ -72,14 +76,14 @@
 				<!-- menu logo -->
 				<ul class="menu-logo">
 				   <li>
-					  <a href=""><img src="{{ asset('common-assets/img/-logo1.png') }}" style="height: 55px;" alt="logo"> </a>
+					  <a href="{{ route('home') }}"><img src="{{ asset('common-assets/img/-logo1.png') }}" style="height: 55px;" alt="logo"> </a>
 				   </li>
 				</ul>
 				<!-- menu links -->
 				@if(Auth::user())
 				<ul class="menu-links">
 					<li>
-						<a href="{{ route('dashboard') }}"> {{ __('home') }}</a>
+						<a href="{{ route('home') }}"> {{ __('home') }}</a>
 					</li>
 					@if(auth()->user()->user_type == 1)
 					<li>

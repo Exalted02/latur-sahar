@@ -71,11 +71,15 @@
 		@yield('component-style')
 	</head>
 	<body>
-		@include('_includes/header')
+		@if(!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('password.request') && !request()->routeIs('password.reset') && !request()->routeIs('verification.phone'))
+			@include('_includes/header')
+		@endif
 		
 			@yield('content')
-
-        @include('_includes/footer')
+			
+		@if(!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('password.request') && !request()->routeIs('password.reset') && !request()->routeIs('verification.phone'))
+			@include('_includes/footer')
+		@endif
 		<!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 		<script src="{{ url('front-assets/js/jquery.min.js') }}"></script>
 		<!-- Bootstrap Core Css  -->

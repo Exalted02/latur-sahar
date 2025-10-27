@@ -1,29 +1,16 @@
 @extends('layouts.app')
 @section('content')
-    <!-- Page Wrapper -->
-    <div class="page-wrapper">
-    
-        <!-- Page Content -->
-        <div class="content container-fluid pb-0">
-        
-            <!-- Page Header -->
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3 class="page-title">Welcome to dashboard!</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- /Page Header -->
-        </div>
-        <!-- /Page Content -->
-
+    <div class="main-content-area clearfix">
+		<section class="section-padding no-top gray">
+			<div class="container">
+				<div class="row mt_50">
+					@include('_includes/user-sidebar')
+					<div class="col-md-8 col-md-push-4- col-lg-9 col-sx-12">
+					</div>
+				</div>
+			</div>
+		</section>
     </div>
-    <!-- /Page Wrapper -->
-
 @endsection 
 @section('scripts')
 

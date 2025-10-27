@@ -1,4 +1,37 @@
 /* =================> custom css class start <================= */
+.auth-body-bg {
+	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* min-height: 100vh; */
+	padding: 30px 0;
+}
+.auth-body-bg.main-content-area {
+    min-height: 100%;
+	Display: flex;
+	align-items: center;
+}
+.auth-body-bg.main-content-area .box-bg {
+    /* padding: 30px 0; */
+    padding: 0;
+    border-radius: 15px;
+}
+.auth-body-bg.main-content-area .box-bg .box-header {
+    padding: 15px 30px;
+	border-bottom: 1px solid #ccc
+}
+.auth-body-bg.main-content-area .box-bg .box-header .panel-title {
+    color: #000000;
+	font-weight: 700;
+}
+.auth-body-bg.main-content-area .box-bg .box-content {
+    padding: 15px 30px 30px 30px;
+}
+
+
+.text-white{
+	color: #ffffff;
+}
 .d-flex{
     display: flex !important;
 }
@@ -24,6 +57,9 @@
 .mt_8{
     margin-top: 8px !important;
 }
+.mt_10{
+    margin-top: 10px !important;
+}
 .mt_13{
     margin-top: 13px !important;
 }
@@ -33,6 +69,9 @@
 .mt_20{
     margin-top: 20px !important;
 }
+.mt_30{
+    margin-top: 30px !important;
+}
 .mt_50{
     margin-top: 50px !important;
 }
@@ -41,6 +80,10 @@
 }
 .pt_30{
     padding-top: 30px !important;
+}
+.plr_0{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 .radius_50{
     border-radius: 50% !important;
@@ -58,11 +101,17 @@
 .justify_content_around{
     justify-content: space-around;
 }
+.text-align-right{
+    text-align: right;
+}
+.align-item-center{
+    align-items: center;
+}
 /* =================> custom css class end <=================== */
 .picker_close{
     display: none;
 }
-.btn-theme {
+.btn-theme, .btn-secondary-theme {
     border-radius: 5px !important;
 }
 /* ===========================> cart page style start <===================================== */
@@ -361,6 +410,11 @@
         position: -webkit-sticky !important;
         position: sticky !important;
         top: 10px !important;
+    }
+}
+@media (min-width: 768px) {
+    .d-md-flex {
+        display: flex !important;
     }
 }
 /* ********************** Responsive css end *************************** */
