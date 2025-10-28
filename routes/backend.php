@@ -54,11 +54,11 @@ Route::middleware(['web'])->group(function () {
 		
 		// Users sub citizen 
 		Route::get('/user-citizen', [UserController::class, 'user_citizen'])->name('user-citizen');
-		Route::post('/save-user', [UserController::class, 'save_user'])->name('save-user');
-		Route::post('/user-update-status',[UserController::class,'update_status'])->name('user-update-status');
-		Route::post('/edit-user',[UserController::class,'edit_user'])->name('edit-user');
-		Route::post('/getDeleteUser',[UserController::class,'delete_user'])->name('getDeleteUser');
-		Route::post('/deleteUserList',[UserController::class,'delete_user_list'])->name('deleteUserList');
+		Route::post('/save-user-citizen', [UserController::class, 'save_user_citizen'])->name('save-user-citizen');
+		Route::post('/user-citizen-update-status',[UserController::class,'update_citizen_status'])->name('user-citizen-update-status');
+		Route::post('/edit-user-citizen',[UserController::class,'edit_user_citizen'])->name('edit-user-citizen');
+		Route::post('/getDeleteUserCitizen',[UserController::class,'delete_user_citizen'])->name('getDeleteUserCitizen');
+		Route::post('/deleteUserCitizenList',[UserController::class,'delete_user_citizen_list'])->name('deleteUserCitizenList');
 		
 		
 		Route::get('/grievances', [GrievanceController::class, 'grievances'])->name('grievances');

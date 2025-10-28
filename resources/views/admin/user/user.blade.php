@@ -10,10 +10,10 @@
 		<div class="page-header">
 			<div class="row align-items-center">
 				<div class="col-md-4">
-					<h3 class="page-title">{{ __('user') }}</h3>
+					<h3 class="page-title">{{ __('Sub admin') }}</h3>
 					<ul class="breadcrumb">
 						<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('dashboard') }}</a></li>
-						<li class="breadcrumb-item active">{{ __('user') }}</li>
+						<li class="breadcrumb-item active">{{ __('Sub admin') }}</li>
 					</ul>
 				</div>
 				<div class="col-md-8 float-end ms-auto">
