@@ -83,7 +83,7 @@
 				<!-- menu links -->
 				<ul class="menu-links">
 					<li>
-						<a href="{{ route('home') }}"> {{ __('home') }}</a>
+						<a href="{{ route('home') }}" class="{{ (request()->routeIs('home')) ? 'active' : '' }}"> {{ __('home') }}</a>
 					</li>
 					@auth
 				
@@ -100,11 +100,28 @@
 							<a href="javascript:void(0);"> {{ __('submit_grievance') }}</a>
 						</li>
 						<li>
-							<a href="{{ route('view-status')}}"> {{ __('view_grievance') }}</a>
+							<a href="{{ route('view-status')}}" class="{{ (request()->routeIs('view-status')) ? 'active' : '' }}"> {{ __('view_grievance') }}</a>
 						</li>
 					@endauth
-					<li><a href="{{ route('contact-us')}}"></i> {{ __('contact_us') }}</a></li>
+					<li><a href="{{ route('contact-us')}}" class="{{ (request()->routeIs('contact-us')) ? 'active' : '' }}"></i> {{ __('contact_us') }}</a></li>
 				</ul>
+				
+				<ul class="menu-search-bar active">
+				   <li>
+					  <a>
+						 <div class="contact-in-header clearfix">
+							<i class="flaticon-customer-service"></i>
+							<span>
+							Call Us Now
+							<br>
+							<strong>02382242803</strong>
+							</span>
+						 </div>
+					  </a>
+				   </li>
+				</ul>
+						
+						
 			 </div>
 		  </div>
 	   </div>

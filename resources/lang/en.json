@@ -54,7 +54,7 @@
 	
 	"//": "Grievance page",
     "submit_grievance": "Submit grievance",
-    "view_grievance": "View grievance",
+    "view_grievance": "View grievance status",
     "manage_grievance": "Manage your Grievance",
     "ward_prabhag": "Ward/prabhag",
     "department": "Department",
@@ -87,7 +87,7 @@
     "alert_grievance": "Alert grievance",
 	
 	"//": "View Status",
-	"view_status": "View Status",
+	"view_status": "View Grievance Status",
 	"registration_number": "Registration number",
 	"email_mobile": "Email id or Mobile number",
 	
@@ -125,6 +125,7 @@
 	"contact_us": "Contact Us",
 	"contact_us_title": "Fell Free To Contact Us",
 	"contact_us_subject": "Subject",
+	"contact_us_message": "Message...",
 	
 	"//": "Common",
 	"mandatory_headline": "Fields marked with * are mandatory.",
