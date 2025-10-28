@@ -73,11 +73,7 @@
                            <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="services-grid-3">
                                  <div class="content-area">
-                                    <h1>01.</h1>
-                                    <a href="">
-                                       <h4>Water Supply</h4>
-                                    </a>
-                                    <p>We ensure regular and safe drinking water distribution to all households, businesses, and public areas within Latur city.</p>
+                                    {!! __('our_services_long_content1') !!}
                                     <div class="service-icon">
                                        <i class="fa fa-tint" aria-hidden="true"></i>
                                     </div>
@@ -88,11 +84,7 @@
                            <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="services-grid-3">
                                  <div class="content-area">
-                                    <h1>02.</h1>
-                                    <a href="">
-                                       <h4>Solid Waste Management</h4>
-                                    </a>
-                                    <p>Daily garbage collection, street cleaning, and scientific waste disposal are managed to keep the city clean and healthy.</p>
+									{!! __('our_services_long_content2') !!}
                                     <div class="service-icon">
                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </div>
@@ -103,11 +95,7 @@
                            <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="services-grid-3">
                                  <div class="content-area">
-                                    <h1>03.</h1>
-                                    <a href="">
-                                       <h4>Roads & Infrastructure</h4>
-                                    </a>
-                                    <p>LCMC is responsible for construction, repair, and maintenance of city roads, footpaths, bridges, and drainage systems to improve urban mobility.</p>
+									{!! __('our_services_long_content3') !!}
                                     <div class="service-icon">
                                        <i class="flaticon-vehicle-4"></i>
                                     </div>
@@ -118,11 +106,7 @@
                            <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="services-grid-3">
                                  <div class="content-area">
-                                    <h1>04.</h1>
-                                    <a href="">
-                                       <h4>Education</h4>
-                                    </a>
-                                    <p>The corporation runs and maintains municipal primary schools to provide quality education to every child in the city.</p>
+									{!! __('our_services_long_content4') !!}
                                     <div class="service-icon">
                                        <i class="fa fa-book" aria-hidden="true"></i>
                                     </div>
@@ -148,29 +132,29 @@
                      <div class="row pricing style-3">
                         <div class="col-sm-6 col-lg-4 col-md-4">
 							<div class="block">
-								<h3>Register / Login</h3>
-								<span class="type">Register or log in to access all Latur Sahar Municipality online services and facilities.</span>
+								<h3>{{ __('home_page_box_register_login_title') }}</h3>
+								<span class="type">{{ __('home_page_box_register_login_text') }}</span>
 							</div>
                            <div class="selection">
-                              <a href="#" class="btn btn-block btn-theme">Register / Login <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                              <a href="#" class="btn btn-block btn-theme">{{ __('home_page_box_register_login_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-md-4">
                            <div class="block featured">
-                              <h3>View Status</h3>
-                              <span class="type">View and track the current status of your submitted grievance or service request.</span>
+                              <h3>{{ __('home_page_box_view_status_title') }}</h3>
+                              <span class="type">{{ __('home_page_box_view_status_text') }}</span>
                            </div>
                            <div class="selection">
-                              <a href="#" class="btn btn-block btn-theme">View Status <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                              <a href="#" class="btn btn-block btn-theme">{{ __('home_page_box_view_status_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-md-4">
                            <div class="block">
-                              <h3>Contact Us</h3>
-                              <span class="type">Contact us for assistance, feedback, or information regarding municipal services.</span>
+                              <h3>{{ __('home_page_box_contact_us_title') }}</h3>
+                              <span class="type">{{ __('home_page_box_contact_us_text') }}</span>
                            </div>
                            <div class="selection">
-                              <a href="#" class="btn btn-block btn-theme">Contact Us <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                              <a href="#" class="btn btn-block btn-theme">{{ __('home_page_box_contact_us_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
                         </div>
                      </div>
