@@ -40,6 +40,49 @@ class DashboardController extends Controller
 			{
 				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->get();
 			}
+			
+			if($tab == 2)
+			{
+				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->get();
+			}
+			
+			if($tab == 3)
+			{
+				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->where('status', 3)->get();
+			}
+			
+			if($tab == 4)
+			{
+				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->get();
+			}
+		}
+		
+		if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3 || auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
+		{
+			$tot_grievance = Grievance::where('department', auth()->user()->department)->count();
+			$pending_grievance = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->count();
+			$solved_grievance = Grievance::where('department', auth()->user()->department)->where('status', 3)->count();
+			$alert_grievance = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->count();
+			
+			if($tab == 1)
+			{
+				$data['grievances'] = Grievance::where('department', auth()->user()->department)->get();
+			}
+			
+			if($tab == 2)
+			{
+				$data['grievances'] = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->get();
+			}
+			
+			if($tab == 3)
+			{
+				$data['grievances'] = Grievance::where('department', auth()->user()->department)->where('status', 3)->get();
+			}
+			
+			if($tab == 4)
+			{
+				$data['grievances'] = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->get();
+			}
 		}
 		
 		$data['total_geievance'] = $tot_grievance;

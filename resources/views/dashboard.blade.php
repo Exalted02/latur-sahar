@@ -17,24 +17,30 @@ use Carbon\Carbon;
 								  <small>{{ __('total_grievance') }}</small>
 							   </div>
 							</div></a>
+							
+							<a href="{{ route('dashboard',['tab' => 2]) }}">
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-warning">
 								  <h2>{{ $pending_grievance ?? ''}}</h2>
 								  <small>{{ __('pending_grievance') }}</small>
 							   </div>
-							</div>
+							</div></a>
+							
+							<a href="{{ route('dashboard',['tab' => 3]) }}">
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-success">
 								  <h2>{{ $solved_grievance ?? ''}}</h2>
 								  <small>{{ __('solved_grievance') }}</small>
 							   </div>
-							</div>
+							</div></a>
+							
+							<a href="{{ route('dashboard',['tab' => 4]) }}">
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-danger">
 								  <h2>{{ $alert_grievance ?? ''}}</h2>
 								  <small>{{ __('alert_grievance') }}</small>
 							   </div>
-							</div>
+							</div></a>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
@@ -49,7 +55,6 @@ use Carbon\Carbon;
 															<th>{{ __('received_date') }}</th>
 															<th>{{ __('grievance_description') }}</th>
 															<th>{{ __('status') }}</th>
-															<th>{{ __('action') }}</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -58,8 +63,7 @@ use Carbon\Carbon;
 															<td>{{ $grievance->registration_no ?? '' }}</td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
-															<td>{{ $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? 'Resubmit' : 'Solved') }}</td>
-															<td></td>
+															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{{ $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? 'Resubmit' : 'Solved') }}</td>
 														</tr>
 													@endforeach
 													</tbody>
