@@ -41,7 +41,7 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_short_long_content1') !!}
+                                       {!! __('about_us_long_content1') !!}
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_short_long_content2') !!}
+                                       {!! __('about_us_long_content2') !!}
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_short_long_content3') !!}
+                                       {!! __('about_us_long_content3') !!}
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_short_long_content4') !!}
+                                       {!! __('about_us_long_content4') !!}
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_short_long_content5') !!}
+                                       {!! __('about_us_long_content5') !!}
                                     </div>
                                 </div>
                             </div>
