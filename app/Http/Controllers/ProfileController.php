@@ -15,11 +15,12 @@ class ProfileController extends Controller
 	
 	public function welcome()
     {
-		if(Auth::user()){
-			return view('dashboard');
+		return view('home');
+		/*if(Auth::user()){
+			
 		}else{
 			return view('auth.login');
-		}
+		}*/
     }
     /**
      * Display the user's profile form.
