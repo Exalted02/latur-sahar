@@ -80,11 +80,17 @@
 	"grievance_success_msg2_2": "for future reference and status tracking.",
 	"grievance_success_msg3": "Thank you for reaching out — our team will review and respond as soon as possible.",
 	
+	
 	"//": "Dashboard page",
     "total_grievance": "Total grievance",
     "pending_grievance": "Pending grievance",
     "solved_grievance": "Solved grievance",
     "alert_grievance": "Alert grievance",
+	"registration_no":"Registration number",
+	"received_date":"Received date",
+	"grievance_description":"Grievance description",
+	"status":"Status",
+	"action":"Action",
 	
 	"//": "View Status",
 	"view_status": "View Grievance Status",

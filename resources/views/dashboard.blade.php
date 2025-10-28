@@ -9,25 +9,25 @@
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-info">
-								  <h2>15</h2>
+								  <h2>{{ $total_geievance ?? ''}}</h2>
 								  <small>{{ __('total_grievance') }}</small>
 							   </div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-warning">
-								  <h2>11</h2>
+								  <h2>{{ $pending_grievance ?? ''}}</h2>
 								  <small>{{ __('pending_grievance') }}</small>
 							   </div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-success">
-								  <h2>04</h2>
+								  <h2>{{ $solved_grievance ?? ''}}</h2>
 								  <small>{{ __('solved_grievance') }}</small>
 							   </div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-danger">
-								  <h2>02</h2>
+								  <h2>{{ $alert_grievance ?? ''}}</h2>
 								  <small>{{ __('alert_grievance') }}</small>
 							   </div>
 							</div>
@@ -41,10 +41,11 @@
 												<table class="datatable table table-stripped mb-0">
 													<thead>
 														<tr>
-															<th>Name</th>
-															<th>Position</th>
-															<th>Office</th>
-															<th>Action</th>
+															<th>{{ __('registration_no') }}</th>
+															<th>{{ __('received_date') }}</th>
+															<th>{{ __('grievance_description') }}</th>
+															<th>{{ __('status') }}</th>
+															<th>{{ __('action') }}</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -53,13 +54,9 @@
 															<td>System Architect</td>
 															<td>Edinburgh</td>
 															<td>61</td>
+															<td>61</td>
 														</tr>
-														<tr>
-															<td>Garrett Winters</td>
-															<td>Accountant</td>
-															<td>Tokyo</td>
-															<td>63</td>
-														</tr>
+														
 													</tbody>
 												</table>
 											</div>
