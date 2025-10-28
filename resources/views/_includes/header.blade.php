@@ -10,9 +10,9 @@
 		  <!-- Header Top Left -->
 			<div class="header-top-left col-md-6 col-sm-6">
 				<ul class="listnone">
-					<li><a href="#"><i class="fa-solid fa-info"></i> About Us</a></li>
-					<li><a href="#"><i class="fa-solid fa-circle-question"></i> FAQs</a></li>
-					<li><a href="#"><i class="fa-solid fa-phone-volume"></i> Contact Us</a></li>
+					<li><a href="{{ route('about-us')}}"><i class="fa-solid fa-info"></i> About Us</a></li>
+					<li><a href="{{ route('faq')}}"><i class="fa-solid fa-circle-question"></i> FAQs</a></li>
+					<li><a href="{{ route('services')}}"><i class="fa-solid fa-phone-volume"></i> Our Services</a></li>
 				</ul>
 		  </div>
 		  <!-- Header Top Right Social -->
@@ -102,6 +102,7 @@
 							<a href="{{ route('view-status')}}"> {{ __('view_grievance') }}</a>
 						</li>
 					@endauth
+					<li><a href="{{ route('contact-us')}}"></i> Contact Us</a></li>
 				</ul>
 			 </div>
 		  </div>

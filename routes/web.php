@@ -54,6 +54,10 @@ Route::get('/home', [DashboardController::class, 'home'])->name('home');
 Route::get('/view-status', [StaticController::class, 'view_status'])->name('view-status');
 Route::get('/grievance-confirmation', [StaticController::class, 'grievance_confirmation'])->name('grievance-confirmation');
 Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
+Route::get('/about-us', [StaticController::class, 'about_us'])->name('about-us');
+Route::get('/contact-us', [StaticController::class, 'contact_us'])->name('contact-us');
+Route::get('/faq', [StaticController::class, 'faq'])->name('faq');
+Route::get('/services', [StaticController::class, 'services'])->name('services');
 
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

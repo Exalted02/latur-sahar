@@ -21,4 +21,20 @@ class StaticController extends Controller
 		$data = [];		
         return view('static.grievance-confirmation', $data);
     }
+	public function about_us() {
+		$data = [];		
+        return view('static.about-us', $data);
+    }
+	public function services() {
+		$data = [];		
+        return view('static.services', $data);
+    }
+	public function contact_us() {
+		$data = [];		
+        return view('static.contact-us', $data);
+    }
+	public function faq() {
+		$data = [];		
+        return view('static.faq', $data);
+    }
 }

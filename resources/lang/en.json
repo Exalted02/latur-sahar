@@ -85,6 +85,21 @@
 	"registration_number": "Registration number",
 	"email_mobile": "Email id or Mobile number",
 	
+	"//": "About Us",
+	"about_us": "About Us",
+	"about_us_home_heading": "About Latur Sahar Municipality (Latur City Municipal Corporation)",
+	"about_us_heading": "<h3>About <span class='heading-color'>Latur Sahar </span> Municipality</h3>",
+	"about_us_short_content": "Latur City Municipal Corporation (LCMC) is the civic urban body responsible for the city of Latur in Maharashtra. It manages essential infrastructure like roads, water supply, drainage, sanitation, and street lighting for the residents.",
+	"about_us_short_long_content1": "<h3 class='cui-delta'>1. Background & Jurisdiction</h3><ul class='standard-list'><li>Latur lies on the Balaghat plateau in the Marathwada region of Maharashtra.</li><li>The Latur City Municipal Corporation (LCMC) was established on 25 October 2011, when the former municipal council was upgraded to corporation status.</li><li>Head Office: MG Road / Main Road, Latur, Maharashtra – 413512.</li></ul>",
+	"about_us_short_long_content2": "<h3 class='cui-delta'>2. Functions & Responsibilities</h3><ul class='standard-list'><li class=margin-bottom-20>Provides urban civic amenities such as:<ul class=standard-list><li class='margin-bottom-10 margin-top-10'>Water supply and drainage<li class='margin-bottom-10 margin-top-10'>Roads, footpaths, and street-lighting<li class='margin-bottom-10 margin-top-10'>Garbage collection and public sanitation<li class='margin-bottom-10 margin-top-10'>Health services and primary education</ul><li>Collects taxes and fees including property tax, water charges, and licenses..<li>Plans urban development and coordinates with state-level urban development authorities.</ul>",
+	"about_us_short_long_content3": "<h3 class=cui-delta>3. Challenges & Context</h3><ul class=standard-list><li>Latur faces semi-arid climate issues, droughts, and groundwater scarcity.<li>Civic issues like irregular garbage disposal and poor road maintenance often affect citizens.<li>Public transport, such as the city bus service, has occasionally faced interruptions due to administrative and funding challenges.</ul>",
+	"about_us_short_long_content4": "<h3 class=cui-delta>4. Development & Urban Planning</h3><ul class=standard-list><li>Plans are underway to expand the municipal area by including about 26,541 hectares (≈ 40 villages) to promote urban growth and better infrastructure.<li>Environmental challenges like low forest cover and groundwater stress influence urban planning decisions.</ul>",
+	"about_us_short_long_content5": "<h3 class=cui-delta>5. Impact on Citizens</h3><ul class=standard-list><li>LCMC services directly affect daily life—water, cleanliness, transport, and roads.<li>Initiatives such as free bus travel for women have been appreciated but require consistent funding.<li>As Latur grows, the corporation’s role in balancing modernization and sustainability becomes increasingly important.</ul>",
+	
+	"//": "Our Services",
+	"our_services": "Our Services",
+	"our_services_short_content": "Latur City Municipal Corporation (LCMC) provides essential public services to ensure a clean, safe, and well-planned city. Our main services include water supply, sanitation, road maintenance, solid waste management, public lighting, and health facilities for all citizens.",
+	
 	"//": "Common",
 	"mandatory_headline": "Fields marked with * are mandatory.",
 	"submit": "Submit",

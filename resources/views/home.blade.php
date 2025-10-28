@@ -36,11 +36,11 @@
                <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                      <div class="title">
-                        <h3>About <span class="heading-color">Latur Sahar </span> Municipality</h3>
+                        {!! __('about_us_heading') !!}
                      </div>
                      <div class="content">
-                        <p class="service-summary">About Latur Sahar Municipality (Latur City Municipal Corporation)</p>
-                        <p>Latur City Municipal Corporation (LCMC) is the civic urban body responsible for the city of Latur in Maharashtra. It manages essential infrastructure like roads, water supply, drainage, sanitation, and street lighting for the residents.</p>
+                        <p class="service-summary">{{ __('about_us_home_heading') }}</p>
+                        <p>{{ __('about_us_short_content') }}</p>
                      </div>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -61,8 +61,8 @@
                   <!--Left Column-->
                   <div class="left-column col-lg-4 col-md-4 col-md-12">
                      <div class="inner-box">
-                        <h2>Our Services</h2>
-                        <div class="text">Latur City Municipal Corporation (LCMC) provides essential public services to ensure a clean, safe, and well-planned city. Our main services include water supply, sanitation, road maintenance, solid waste management, public lighting, and health facilities for all citizens.</div>
+                        <h2>{{ __('our_services') }}</h2>
+                        <div class="text">{{ __('our_services_short_content') }}</div>
                      </div>
                   </div>
                   <!--Transparent Column-->
