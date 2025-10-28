@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 	<!-- Page Wrapper -->
 <!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
 <div style="background-image: url('{{ asset('front-assets/inner-bg.jpg') }}');

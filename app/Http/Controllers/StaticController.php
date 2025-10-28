@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Response;
 use App\Models\Grievance;
+use Illuminate\Support\Facades\Auth;
 
 class StaticController extends Controller
 {
@@ -32,8 +33,14 @@ class StaticController extends Controller
     }
 	public function register_confirmation() {
 		$data = [];		
-        return view('static.register-confirmation', $data);
-    }
+		if (session('registrationPage') === 'registration')
+		{
+			Auth::logout();
+			return view('static.register-confirmation', $data);
+		}
+		
+		return view('home', $data);
+	}
 	public function grievance_confirmation($rgt_no = '') {
 		$data = [];		
 		$data['rgt_no'] = $rgt_no;
