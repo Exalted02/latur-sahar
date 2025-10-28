@@ -43,11 +43,18 @@ class StaticController extends Controller
 	{
 		//echo "<pre>";print_r($request->all());die;
 		$validated = $request->validate([
-			'registration_number' => 'required',
+			'registration_no' => 'required',
 			'mobile_no' => 'required',
 		]);
 		
-		$grievance  = Grievance::where('registration_no',$request->registration_no)->where($request->mobile_no)->first();
-		return redirect('view-status');
+		$grievance = Grievance::where('registration_no', $request->registration_no)->where('mobile_no', $request->mobile_no)->first();
+
+		if(!$grievance) {
+			return back()
+				->withErrors(['registration_no' => 'No grievance found with the given details.'])
+				->withInput();
+		}
+		
+		return redirect()->route('view-grievance', ['id' => $grievance->id]);
 	}
 }

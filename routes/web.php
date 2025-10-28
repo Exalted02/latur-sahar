@@ -55,10 +55,8 @@ Route::get('/view-status', [StaticController::class, 'view_status'])->name('view
 Route::post('/view-status', [StaticController::class, 'see_grievance'])->name('view-status');
 
 Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
-Route::get('/about-us', [StaticController::class, 'about_us'])->name('about-us');
-Route::get('/contact-us', [StaticController::class, 'contact_us'])->name('contact-us');
-Route::get('/faq', [StaticController::class, 'faq'])->name('faq');
-Route::get('/services', [StaticController::class, 'services'])->name('services');
+
+//Route::get('/view-grievance/{id}', [DashboardController::class, 'view_grievance'])->name('view-grievance');
 
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -67,7 +65,7 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/grievance', [DashboardController::class, 'grievance'])->name('grievance');
 	Route::get('/submit-grievance', [DashboardController::class, 'submit_grievance'])->name('submit-grievance');
 	Route::post('/submit-grievance', [DashboardController::class, 'save_grievance'])->name('submit-grievance');
-	Route::get('/view-grievance/{id}', [DashboardController::class, 'view_grievance'])->name('view-grievance');
+	//Route::get('/view-grievance/{id}', [DashboardController::class, 'view_grievance'])->name('view-grievance');
 	
 	Route::post('/get-grievance-type', [DashboardController::class, 'get_grievance_type'])->name('get-grievance-type');
 	
