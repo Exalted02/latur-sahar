@@ -51,7 +51,7 @@ class PhoneVerificationController extends Controller
         }
 
         // Mark phone verified
-        $user->update(['phone_verified_at' => now()]);
+        $user->update(['status'=>1,'phone_verified_at' => now()]);
 
         // Delete OTP
         DB::table('user_otps')->where('user_id', $user->id)->delete();

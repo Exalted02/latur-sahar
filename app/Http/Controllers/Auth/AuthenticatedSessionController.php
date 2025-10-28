@@ -34,13 +34,7 @@ class AuthenticatedSessionController extends Controller
 		
 		$user = Auth::user();
 		
-		// check the status is active 
-		if ($user->status == 0) {
-			Auth::logout();
-			throw ValidationException::withMessages([
-				'activestatus' => 'Your account is not activated. Please contact the administrator.',
-			]);
-		}
+		
 
 		// Check if phone is verified
 		if (is_null($user->phone_verified_at)) {
@@ -54,7 +48,13 @@ class AuthenticatedSessionController extends Controller
 							 ->with('warning', 'Please verify your phone number before continuing.');
 		}
 		
-		
+		// check the status is active 
+		if ($user->status == 0) {
+			Auth::logout();
+			throw ValidationException::withMessages([
+				'activestatus' => 'Your account is not activated. Please contact the administrator.',
+			]);
+		}
 		
 		
         return redirect()->intended(RouteServiceProvider::HOME);

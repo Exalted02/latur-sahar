@@ -50,7 +50,6 @@ class LoginRequest extends FormRequest
 			'email' => $this->email,
 			'password' => $this->password,
 			'user_type' => $allowedTypes, // <-- Only allow Users_type !=0
-			//'status'    => 1,
 		], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
