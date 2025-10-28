@@ -17,8 +17,9 @@ class StaticController extends Controller
 		$data = [];		
         return view('static.register-confirmation', $data);
     }
-	public function grievance_confirmation() {
+	public function grievance_confirmation($rgt_no = '') {
 		$data = [];		
+		$data['rgt_no'] = $rgt_no;
         return view('static.grievance-confirmation', $data);
     }
 }

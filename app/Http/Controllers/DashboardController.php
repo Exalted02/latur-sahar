@@ -10,6 +10,7 @@ use App\Models\Grievance_type;
 use App\Models\Department;
 use App\Models\Greivance_image;
 use ZipArchive;
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
@@ -92,7 +93,7 @@ class DashboardController extends Controller
 	public function save_grievance(Request $request)
 	{
 		//echo "<pre>";print_r($request->all()); die;
-		
+		$registration_no = Str::random(7);
 		if($request->post('id') > 0)
 		{
 			$model = Grievance::find($request->post('id'));
@@ -119,6 +120,7 @@ class DashboardController extends Controller
 		{
 			$model = new Grievance();
 			$model->user_id = auth()->user()->id;
+			$model->registration_no = $registration_no ?? null;
 			$model->name = $request->post('name');
 			$model->mobile_no = $request->post('mobile_no');
 			$model->ward_prabhag = $request->post('ward_prabhag');
@@ -163,7 +165,7 @@ class DashboardController extends Controller
 			}
 		}
 		//---------------------------
-		return response()->json(['msg', 'Record added successfully']);
+		return response()->json(['msg'=>'Record added successfully', 'registration_no'=> $registration_no]);
 		
 	}
     public function view_grievance($id='')
