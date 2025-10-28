@@ -54,7 +54,7 @@ Route::get('/home', [DashboardController::class, 'home'])->name('home');
 Route::get('/view-status', [StaticController::class, 'view_status'])->name('view-status');
 Route::post('/view-status', [StaticController::class, 'see_grievance'])->name('view-status');
 
-Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
+//Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
 
 Route::get('/view-grievance/{id}', [DashboardController::class, 'view_grievance'])->name('view-grievance');
 
@@ -65,6 +65,8 @@ Route::get('/services', [StaticController::class, 'services'])->name('services')
 
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+	
+	Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
 	
 	// grievance
 	Route::get('/grievance', [DashboardController::class, 'grievance'])->name('grievance');
