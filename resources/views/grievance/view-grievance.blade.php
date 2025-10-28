@@ -1,5 +1,24 @@
 @extends('layouts.app')
 @section('content')
+@php 
+
+$check_dept = '';
+$check_user = '';
+if($grievance)
+{
+	if($grievance->department == auth()->user()->department)
+	{
+		$check_dept = 1;
+	}
+	
+	if($grievance->user_id == auth()->user()->id)
+	{
+		$check_user = 1;
+	}
+	
+}
+
+@endphp
 <!-- Page Wrapper -->
 <!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
 <div class="page-header-area-2 gray">
@@ -131,23 +150,36 @@
 					<div class="blog-sidebar">
 						@auth
 							@if(auth()->user()->user_type == 1)
-							<div class="widget">
-								<div class="widget-heading">
-								  @if($grievance->status == 1)
-									<div class="resubmit-button" id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}</div>
-								  @else($grievance->status == 2)
-										<div class="alert alert-info text-center mt-3" role="alert">
-											You have already resubmitted this grievance.
+							
+								  @if($grievance->status == 1 && $check_user == 1)
+									<div class="widget">
+										<div class="widget-heading">
+											<div class="resubmit-button" id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}</div>
 										</div>
-								  @endif
-									<div class="alert alert-info text-center mt-3 show-resubmit-text" role="alert" style="display:none">
-											You have already resubmitted this grievance.
 									</div>
-							   </div>
-							</div>
+								  @elseif($grievance->status == 2  && $check_user == 1)
+								   <div class="widget">
+										<div class="widget-heading">
+											<div class="alert alert-info text-center mt-3" role="alert">
+												You have already resubmitted this grievance.
+											</div>
+										</div>
+									</div>
+								  @endif
+								  
+								  @if(!empty($check_user))
+									<div class="widget">
+										<div class="widget-heading">
+											<div class="alert alert-info text-center mt-3 show-resubmit-text" role="alert" style="display:none">
+													You have already resubmitted this grievance.
+											</div>
+										</div>
+									</div>
+								  @endif
+							   
 							@endif
 							
-							@if(auth()->user()->user_type == 2)
+							@if(auth()->user()->user_type == 2 && $check_dept ==1)
 								<div class="widget">
 									<div class="widget-heading">
 										<div class="resubmit-button" id="downloadBtn" data-id="{{ $grievance->id }}">{{ __('download') }}</div>
