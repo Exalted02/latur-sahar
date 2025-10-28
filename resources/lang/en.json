@@ -116,6 +116,12 @@
 	"our_services_long_content7": "<h1>07.</h1><h4>Parks & Gardens</h4><p>We maintain public gardens, playgrounds, and green spaces to enhance the beauty and environment of Latur.</p>",
 	"our_services_long_content8": "<h1>08.</h1><h4>Urban Planning & Development</h4><p>LCMC manages city planning, building permissions, and development projects to ensure sustainable and organized urban growth.</p>",
 	
+	"//": "FAQs",
+	"faqs": "FAQs",
+	
+	"//": "Contact Us",
+	"contact_us": "Contact Us",
+	
 	"//": "Common",
 	"mandatory_headline": "Fields marked with * are mandatory.",
 	"submit": "Submit",
