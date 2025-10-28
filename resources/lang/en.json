@@ -54,7 +54,7 @@
 	
 	"//": "Grievance page",
     "submit_grievance": "Submit grievance",
-    "view_grievance": "View grievance",
+    "view_grievance": "View grievance status",
     "manage_grievance": "Manage your Grievance",
     "ward_prabhag": "Ward/prabhag",
     "department": "Department",
@@ -87,7 +87,7 @@
     "alert_grievance": "Alert grievance",
 	
 	"//": "View Status",
-	"view_status": "View Status",
+	"view_status": "View Grievance Status",
 	"registration_number": "Registration number",
 	"email_mobile": "Email id or Mobile number",
 	
@@ -115,6 +115,18 @@
 	"our_services_long_content6": "<h1>06.</h1><h4>Public Health & Sanitation</h4><p>Our health department conducts cleanliness drives, disease-control programs, and ensures proper sanitation facilities in all areas.</p>",
 	"our_services_long_content7": "<h1>07.</h1><h4>Parks & Gardens</h4><p>We maintain public gardens, playgrounds, and green spaces to enhance the beauty and environment of Latur.</p>",
 	"our_services_long_content8": "<h1>08.</h1><h4>Urban Planning & Development</h4><p>LCMC manages city planning, building permissions, and development projects to ensure sustainable and organized urban growth.</p>",
+	
+	"//": "FAQs",
+	"faqs": "FAQs",
+	"faq_title": "Frequently Asked Questions (FAQ)",
+	"faq_content": "<ul class=accordion><li class=in><h3 class=accordion-title><a href=#>What is Latur Sahar Municipality?</a></h3><div class=accordion-content><p>Latur Sahar Municipality, officially known as Latur City Municipal Corporation (LCMC), is the civic body responsible for managing public services, infrastructure, and urban development in Latur city, Maharashtra.</div><li><h3 class=accordion-title><a href=#>What services does the municipality provide?</a></h3><div class=accordion-content><p>The municipality provides essential services like water supply, sanitation, waste management, street lighting, road maintenance, public health, education, and transport.</div><li><h3 class=accordion-title><a href=#>How can I register on the website?</a></h3><div class=accordion-content><p>You can register by clicking the <strong><a href=':register_page_url'>Register</a></strong> button on the homepage. Fill in your details like name, mobile number, and email to create your account.</div><li><h3 class=accordion-title><a href=#>What can I do after registration?</a></h3><div class=accordion-content><p>Once registered, you can log in to access online services such as grievance submission, status tracking, and information about municipal activities.</div><li><h3 class=accordion-title><a href=#>How do I submit a grievance or complaint?</a></h3><div class=accordion-content><p>After logging in, go to the <strong><a href=':submit_grievance_page_url'>Submit Grievance</a></strong> section, fill in the required details, and submit your issue. You’ll receive a registration number to track your grievance.</div><li><h3 class=accordion-title><a href=#>How can I check my grievance status?</a></h3><div class=accordion-content><p>Click on <strong><a href=':view_grievance_status_page_url'>View Grievance Status</a></strong>, enter your registration number, and you’ll see the latest update or resolution progress.</div><li><h3 class=accordion-title><a href=#>What should I do if I forget my login password?</a></h3><div class=accordion-content><p>Click on the <strong><a href=':forgot_password_page_url'>Forgot Password</a></strong> link on the login page. Enter your registered email or mobile number to reset your password.</div><li><h3 class=accordion-title><a href=#>How can I contact the municipality?</a></h3><div class=accordion-content><p>Visit the <strong><a href=':contact_us_page_url'>Contact Us</a></strong> page to find office addresses, phone numbers, and email IDs. You can also send messages directly through the contact form.</div><li><h3 class=accordion-title><a href=#>What are the office working hours?</a></h3><div class=accordion-content><p>The Latur Sahar Municipality office is usually open Monday to Saturday, from 10:00 AM to 5:30 PM, except on government holidays.</div><li><h3 class=accordion-title><a href=#>How does the municipality ensure cleanliness and sanitation?</a></h3><div class=accordion-content><p>LCMC regularly conducts cleaning drives, door-to-door garbage collection, and public awareness programs under the Swachh Bharat Mission to maintain a clean and healthy city.</div></ul>",
+	
+	"//": "Contact Us",
+	"contact_us": "Contact Us",
+	"contact_us_title": "Fell Free To Contact Us",
+	"contact_us_subject": "Subject",
+	"contact_us_message": "Message...",
+	"contact_us_btn": "Send Message",
 	
 	"//": "Common",
 	"mandatory_headline": "Fields marked with * are mandatory.",
