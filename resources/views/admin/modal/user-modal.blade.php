@@ -10,7 +10,7 @@
 					<p>{{ __('user') }} "<span id="list_code_name"></span>" {{ __('from your account') }}</p>
 					<div class="col-lg-12 text-center form-wizard-button">
 						<a href="#" class="button btn-lights" data-bs-dismiss="modal">{{ __('not now') }}</a>
-						<a href="javascript:void(0);" class="btn btn-primary data-id-pcode-list" data-url="{{ route('admin.deleteUserList') }}">{{ __('okay') }}</a>
+						<a href="javascript:void(0);" class="btn btn-primary data-id-pcode-list" data-url="{{ route('admin.deleteUserAdminList') }}">{{ __('okay') }}</a>
 					</div>
 				</div>
 			</div>
@@ -30,7 +30,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form id="frmuser" action="{{ route('admin.save-user') }}">
+								<form id="frmuser" action="{{ route('admin.save-user-admin') }}">
 								<input type="hidden" id="id" name="id">
 									<div class="row">
 										<div class="col-sm-12">
@@ -220,84 +220,4 @@
 		</div>
 	</div>
 </div>
-<!-- Export -->
-{{--<div class="modal custom-modal fade modal-padding" id="export" role="dialog">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header header-border justify-content-between p-0">
-				<h5 class="modal-title">{{ __('export') }}</h5>
-				<button type="button" class="btn-close position-static" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			<div class="modal-body p-0">
-				<form action="{{ route('export.product-code') }}" method="post" id="exportForm">
-				@csrf
-					<div class="row">
-						<div class="col-md-6">
-							<div class="input-block mb-3">
-								<label class="col-form-label">{{ __('from_date') }} <span class="text-danger">*</span></label>
-								<div class="cal-icon">	<input class="form-control floating datetimepicker" type="text" name="export_from_date" required>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="input-block mb-3">
-								<label class="col-form-label">{{ __('to_date') }} <span class="text-danger">*</span></label>
-								<div class="cal-icon">
-									<input class="form-control floating datetimepicker" type="text" name="export_end_date" required>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-12 text-end form-wizard-button">
-							<button class="button btn-lights reset-btn" type="reset" data-bs-dismiss="modal">{{ __('reset') }}</button>
-							<button class="btn btn-primary" type="submit">{{ __('export') }} {{ __('now') }}</button>
-						</div>
-					</div>
-				</form>
-				
-			</div>
-		</div>
-	</div>
-</div>--}}
-<!-- /Export -->
 
-<!-- Import -->
-{{--<div class="modal custom-modal fade modal-padding" id="import" role="dialog">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header header-border justify-content-between p-0">
-				<h5 class="modal-title">{{ __('import') }}</h5>
-				<button type="button" class="btn-close position-static" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			<div class="modal-body p-0">
-				<form action="{{ route('import.product-code') }}" method="post" enctype="multipart/form-data" id="importForm">
-				@csrf
-					<div class="row">
-						<div class="col-md-12">
-							<div class="input-block mb-3">
-								<label class="col-form-label">{{ __('upload') }} <span class="text-danger">*</span> <span class="text-success">(Upload only xlsx file)</span></label>
-								<div>	<input class="form-control" type="file" name="import_excel" accept=".xlsx, .xls" required>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-12 d-flex justify-content-between align-items-center">
-							<div class="form-check p-0">
-								<a href="{{ route('user.download-demo-product-code')}}"><button type="button" class="btn btn-primary downloaddemo"><i class="fa-solid fa-download me-1"></i> {{ __('download_sample_file') }}</button></a>
-							</div>
-							<div class="form-wizard-button">
-								<button class="button btn-lights reset-btn" type="reset" data-bs-dismiss="modal">{{ __('reset') }}</button>
-								<button class="btn btn-primary" type="submit">{{ __('import') }} {{ __('now') }}</button>
-							</div>
-						</div>
-					</div>
-				</form>
-				
-			</div>
-		</div>
-	</div>
-</div>--}}
-<!-- /Import -->

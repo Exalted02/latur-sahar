@@ -35,9 +35,18 @@
 					<a href="{{ route('admin.grievance') }}"><i class="fa-solid fa-triangle-exclamation"></i> <span>Grievance Type</span></a>
 				</li>
 				
-				<li class="{{ request()->routeIs('admin.user') ? 'active' : '' }}">
+				{{--<li class="{{ request()->routeIs('admin.user') ? 'active' : '' }}">
 					<a href="{{ route('admin.user') }}"><i class="fa-regular fa-user"></i> <span>Users</span></a>
+				</li>--}}
+				<li class="submenu">
+					<a href="{{ request()->routeIs('admin.user-admin') || request()->routeIs('admin.user-citizen') ? 'active' : '' }}"><i class="fa-solid fa-gauge"></i> <span> {{ __('Users') }} </span><span class="menu-arrow"></span></a>
+					<ul style="{{ request()->routeIs('admin.user-admin') || request()->routeIs('admin.user-citizen') ? 'display:block' : '' }}">
+						<li><a href="{{ route('admin.user-admin') }}" class="{{ request()->routeIs('admin.user-admin') ? 'menu-active' : '' }}"><span>{{ __('Sub admin') }}</span></a></li>
+						<li><a href="{{ route('admin.user-citizen') }}" class="{{ request()->routeIs('admin.user-citizen') ? 'menu-active' : '' }}"><span>{{ __('Citizen') }}</span></a></li>
+					</ul>
 				</li>
+				
+				
 				
 				<li class="{{ request()->routeIs('admin.grievances','admin.view-frontend-grievance') ? 'active' : '' }}">
 					<a href="{{ route('admin.grievances') }}"><i class="fa-solid fa-triangle-exclamation"></i> <span>Grievances</span></a>

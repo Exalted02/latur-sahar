@@ -45,16 +45,19 @@ class LoginRequest extends FormRequest
 		//--- allow these user_type ----
 		$user = User::where('email', $this->email)->first();
 		$allowedTypes = [1, 2, 3, 4, 5, 6];
-		if (! in_array($user->user_type, $allowedTypes)) {
+		//echo "<pre>";print_r($user);die;
+		/*echo $this->email; die;
+		$allowedTypes = [1, 2, 3, 4, 5, 6];
+		if(!in_array($user->user_type, $allowedTypes)) {
 			throw \Illuminate\Validation\ValidationException::withMessages([
 				'email' => 'You do not have permission to access this account.',
 			]);
-		}
+		}*/
         // if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
         if (! Auth::attempt([
 			'email' => $this->email,
 			'password' => $this->password,
-			//'user_type' => 1, // <-- Only allow Users_type !=0
+			'user_type' => $allowedTypes, // <-- Only allow Users_type !=0
 		], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 

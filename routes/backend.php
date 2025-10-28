@@ -44,13 +44,22 @@ Route::middleware(['web'])->group(function () {
 		Route::post('/getDeleteGrievance',[GrievanceController::class,'delete_grievance'])->name('getDeleteGrievance');
 		Route::post('/deleteGrievanceList',[GrievanceController::class,'delete_grievance_list'])->name('deleteGrievanceList');
 		
-		// Users
-		Route::get('/user', [UserController::class, 'index'])->name('user');
+		// Users sub admin 
+		Route::get('/user-admin', [UserController::class, 'user_admin'])->name('user-admin');
+		Route::post('/save-user-admin', [UserController::class, 'save_user_admin'])->name('save-user-admin');
+		Route::post('/user-admin-update-status',[UserController::class,'update_status'])->name('user-admin-update-status');
+		Route::post('/edit-user-admin',[UserController::class,'edit_user_admin'])->name('edit-user-admin');
+		Route::post('/getDeleteUserAdmin',[UserController::class,'delete_user_admin'])->name('getDeleteUserAdmin');
+		Route::post('/deleteUserAdminList',[UserController::class,'delete_user_admin_list'])->name('deleteUserAdminList');
+		
+		// Users sub citizen 
+		Route::get('/user-citizen', [UserController::class, 'user_citizen'])->name('user-citizen');
 		Route::post('/save-user', [UserController::class, 'save_user'])->name('save-user');
 		Route::post('/user-update-status',[UserController::class,'update_status'])->name('user-update-status');
 		Route::post('/edit-user',[UserController::class,'edit_user'])->name('edit-user');
 		Route::post('/getDeleteUser',[UserController::class,'delete_user'])->name('getDeleteUser');
 		Route::post('/deleteUserList',[UserController::class,'delete_user_list'])->name('deleteUserList');
+		
 		
 		Route::get('/grievances', [GrievanceController::class, 'grievances'])->name('grievances');
 		Route::post('/frontend-grievance-del', [GrievanceController::class, 'delete_grievances'])->name('frontend-grievance-del');
