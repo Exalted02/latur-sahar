@@ -3,13 +3,13 @@
 
 	<!-- Logo -->
 	<div class="header-left">
-		<a href="{{ route('dashboard')}}" class="logo">
+		<a href="{{ route('admin.dashboard')}}" class="logo">
 			<img src="{{ asset('common-assets/img/-logo1-bw.png') }}" alt="{{ __('project_title') }}" style="max-height: 50px;">
 		</a>
-		<a href="{{ route('dashboard')}}" class="logo collapse-logo">
+		<a href="{{ route('admin.dashboard')}}" class="logo collapse-logo">
 			<img src="{{ asset('common-assets/img/-logo1-bw.png') }}" alt="{{ __('project_title') }}">
 		</a>
-		<a href="{{ route('dashboard')}}" class="logo2">
+		<a href="{{ route('admin.dashboard')}}" class="logo2">
 			<img src="{{ asset('common-assets/img/-logo1-bw.png') }}"  alt="{{ __('project_title') }}">
 		</a>
 	</div>

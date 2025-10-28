@@ -42,6 +42,7 @@ use Carbon\Carbon;
 							   </div>
 							</div></a>
 						</div>
+						
 						<div class="row">
 							<div class="col-md-12">
 								<div class="post-ad-form postdetails mt_15">
