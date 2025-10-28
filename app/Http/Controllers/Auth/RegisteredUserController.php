@@ -44,6 +44,7 @@ class RegisteredUserController extends Controller
 			'mobile' => $request->mobile,
             'password' => Hash::make($request->password),
 			'phone_verified_at' => null,
+			'status' => 0,
         ]);
 		
 		// Generate OTP

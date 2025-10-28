@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\User;
+use Illuminate\Validation\ValidationException;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -32,6 +33,14 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 		
 		$user = Auth::user();
+		
+		// check the status is active 
+		if ($user->status == 0) {
+			Auth::logout();
+			throw ValidationException::withMessages([
+				'activestatus' => 'Your account is not activated. Please contact the administrator.',
+			]);
+		}
 
 		// Check if phone is verified
 		if (is_null($user->phone_verified_at)) {
@@ -44,6 +53,10 @@ class AuthenticatedSessionController extends Controller
 			return redirect()->route('verification.phone', ['user' => $user->id])
 							 ->with('warning', 'Please verify your phone number before continuing.');
 		}
+		
+		
+		
+		
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

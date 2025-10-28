@@ -43,21 +43,14 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
 		
 		//--- allow these user_type ----
-		$user = User::where('email', $this->email)->first();
 		$allowedTypes = [1, 2, 3, 4, 5, 6];
-		//echo "<pre>";print_r($user);die;
-		/*echo $this->email; die;
-		$allowedTypes = [1, 2, 3, 4, 5, 6];
-		if(!in_array($user->user_type, $allowedTypes)) {
-			throw \Illuminate\Validation\ValidationException::withMessages([
-				'email' => 'You do not have permission to access this account.',
-			]);
-		}*/
+		
         // if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
         if (! Auth::attempt([
 			'email' => $this->email,
 			'password' => $this->password,
 			'user_type' => $allowedTypes, // <-- Only allow Users_type !=0
+			//'status'    => 1,
 		], $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
