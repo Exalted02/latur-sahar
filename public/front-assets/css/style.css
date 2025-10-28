@@ -435,12 +435,12 @@ p {
 	background-color: #fff;
 	background-image: none;
 	border: 1px solid #ccc;
-	border-radius: 1px;
+	border-radius: 5px;
 	box-shadow: none;
 	color: #555;
 	font-size: 14px;
 	height: auto;
-	padding: 15px 12px;
+	padding: 5px 12px;
 	transition: all 0.2s cubic-bezier(0, 0, 0.58, 1) 0s;
 }
 #example_wrapper .form-control {

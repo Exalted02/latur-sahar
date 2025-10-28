@@ -55,6 +55,10 @@
 		
 		
 		<link rel="stylesheet" href="https://unpkg.com/simplebar/dist/simplebar.min.css">
+		
+		<!-- =-=-=-=-=-=-= Datatables =-=-=-=-=-=-= -->
+		<link href="{{ url('front-assets/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+		
 		<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap.css" rel="stylesheet">--> 
 		
@@ -114,6 +118,10 @@
 		<script src="{{ url('front-assets/js/wow.js') }}"></script>
 		<!-- Template Core JS -->
 		<script src="{{ url('front-assets/js/custom.js') }}"></script>
+		
+		<!-- Datatables JS -->
+		<script src="{{ url('front-assets/js/jquery.dataTables.min.js') }}"></script>
+		<script src="{{ url('front-assets/js/dataTables.bootstrap4.min.js') }}"></script>
 		
 		<script src="https://unpkg.com/simplebar/dist/simplebar.min.js"></script>
 		

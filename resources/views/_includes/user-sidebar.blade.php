@@ -10,7 +10,8 @@
 			</div>
 			<div class="astrodivider"><div class="astrodividermask"></div></div>--}}
 			<ul class="profile_user_li">
-				<li><a href="" class="active"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a></li>
+				<li><a href="" class="active"><i class="fa fa-user" aria-hidden="true"></i> Dashboard</a></li>
+				<li><a href="" class=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a></li>
 				{{--<li><a href="{{route('active-ad')}}" class="{{ (request()->routeIs('active-ad', 'post-ad-details-edit', 'post-edit-gallery', 'post-ad-vehicle-details-edit')) ? 'active' : '' }} "><i class="fa fa-bullhorn" aria-hidden="true"></i> {{ __('left_sidebar_my_ads') }}</a></li>
 				<li><a href="{{route('new-post-ad')}}" class="{{ (request()->routeIs('post-ad-category', 'post-ad-vehicle-details', 'post-ad-details', 'post-ad-user-details')) ? 'active' : '' }} "><i class="fa fa-upload" aria-hidden="true"></i> {{ __('left_sidebar_post_your_ads') }}</a></li>
 				<li><a href="{{route('plans')}}" class="{{ (request()->routeIs('plans','plans.show')) ? 'active' : '' }}"><i class="fa fa-tag" aria-hidden="true"></i> {{ __('left_sidebar_subscriptions') }}</a></li>
