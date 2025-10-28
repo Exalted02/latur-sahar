@@ -56,7 +56,7 @@ Route::post('/view-status', [StaticController::class, 'see_grievance'])->name('v
 
 Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
 
-//Route::get('/view-grievance/{id}', [DashboardController::class, 'view_grievance'])->name('view-grievance');
+Route::get('/view-grievance/{id}', [DashboardController::class, 'view_grievance'])->name('view-grievance');
 
 Route::get('/about-us', [StaticController::class, 'about_us'])->name('about-us');
 Route::get('/contact-us', [StaticController::class, 'contact_us'])->name('contact-us');

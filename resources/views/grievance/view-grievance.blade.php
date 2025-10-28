@@ -129,30 +129,32 @@
 				</div>--}}
 				<div class="col-md-4 col-xs-12 col-sm-12">
 					<div class="blog-sidebar">
-						@if(auth()->user()->user_type == 1)
-						<div class="widget">
-							<div class="widget-heading">
-							  @if($grievance->status == 1)
-								<div class="resubmit-button" id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}</div>
-						      @else($grievance->status == 2)
-									<div class="alert alert-info text-center mt-3" role="alert">
-										You have already resubmitted this grievance.
-									</div>
-							  @endif
-								<div class="alert alert-info text-center mt-3 show-resubmit-text" role="alert" style="display:none">
-										You have already resubmitted this grievance.
-								</div>
-                           </div>
-						</div>
-						@endif
-						
-						@if(auth()->user()->user_type == 2)
+						@auth
+							@if(auth()->user()->user_type == 1)
 							<div class="widget">
 								<div class="widget-heading">
-									<div class="resubmit-button" id="downloadBtn" data-id="{{ $grievance->id }}">{{ __('download') }}</div>
-								</div>
+								  @if($grievance->status == 1)
+									<div class="resubmit-button" id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}</div>
+								  @else($grievance->status == 2)
+										<div class="alert alert-info text-center mt-3" role="alert">
+											You have already resubmitted this grievance.
+										</div>
+								  @endif
+									<div class="alert alert-info text-center mt-3 show-resubmit-text" role="alert" style="display:none">
+											You have already resubmitted this grievance.
+									</div>
+							   </div>
 							</div>
-						@endif
+							@endif
+							
+							@if(auth()->user()->user_type == 2)
+								<div class="widget">
+									<div class="widget-heading">
+										<div class="resubmit-button" id="downloadBtn" data-id="{{ $grievance->id }}">{{ __('download') }}</div>
+									</div>
+								</div>
+							@endif
+						@endauth
 						<div class="widget">
 							 <!-- Sidebar Widgets -->
 							 <div class="sidebar">
