@@ -67,7 +67,11 @@
 	"solved": "Solved",
 	"download": "Download",
 	
-	"example": "Example",
+	"//": "Dashboard page",
+    "total_grievance": "Total grievance",
+    "pending_grievance": "Pending grievance",
+    "solved_grievance": "Solved grievance",
+    "alert_grievance": "Alert grievance",
 	
 	"//": "View Status",
 	"view_status": "View Status",
@@ -76,5 +80,7 @@
 	
 	"//": "Common",
 	"mandatory_headline": "Fields marked with * are mandatory.",
-	"submit": "Submit"
+	"submit": "Submit",
+	
+	"example": "Example"
 }

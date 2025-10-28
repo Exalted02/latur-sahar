@@ -10,25 +10,25 @@
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-info">
 								  <h2>15</h2>
-								  <small>Total grievance</small>
+								  <small>{{ __('total_grievance') }}</small>
 							   </div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-warning">
 								  <h2>11</h2>
-								  <small>Pending grievance</small>
+								  <small>{{ __('pending_grievance') }}</small>
 							   </div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-success">
 								  <h2>04</h2>
-								  <small>Solved grievance</small>
+								  <small>{{ __('solved_grievance') }}</small>
 							   </div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-danger">
 								  <h2>02</h2>
-								  <small>Alert grievance</small>
+								  <small>{{ __('alert_grievance') }}</small>
 							   </div>
 							</div>
 						</div>
