@@ -52,6 +52,7 @@ Route::get('lang/change', [LangController::class, 'change'])->name('changeLang')
 
 Route::get('/home', [DashboardController::class, 'home'])->name('home');
 Route::get('/view-status', [StaticController::class, 'view_status'])->name('view-status');
+Route::post('/view-status', [StaticController::class, 'see_grievance'])->name('view-status');
 
 Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
 

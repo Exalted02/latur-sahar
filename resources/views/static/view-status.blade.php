@@ -37,26 +37,30 @@
 							<p class="text-danger">{{ __('mandatory_headline') }}</p>
 							<div class="clearfix"></div>
 							<span id="msg" class="success-msg"></span>
-							<form name="frmStatus" action="" method="post">
+							<form name="frmStatus" action="{{ route('view-status') }}" method="post">
 							@csrf
 								<div class="row">
 								   <div class="col-md-6 col-sm-6 col-xs-12">
 									  <label>{{ __('registration_number') }} <span class="text-danger">*</span></label>
-									  <input type="text" name="registration_number" id="registration_number" value="" class="form-control margin-bottom-20">
-									  <span id="error_registration_number" class="text-danger"></span>
-									  
+									  <input type="text" name="registration_no" id="registration_no" value="{{ old('registration_no') }}" class="form-control margin-bottom-20">
+									  @error('registration_no')
+										<div class="text-danger">{{ $message }}</div>
+									  @enderror
 								   </div>
 								   <div class="col-md-6 col-sm-6 col-xs-12">
 									  <label>{{ __('email_mobile') }} <span class="text-danger">*</span></label>
-									  <input type="text" name="email_mobile" value="" class="form-control margin-bottom-20" id="email_mobile"id="email_mobile">
-									  <span id="error_email_mobile" class="text-danger"></span>
+									  <input type="text" name="mobile_no" value="{{ old('mobile_no') }}" class="form-control margin-bottom-20" id="mobile_no" >
+									  @error('mobile_no')
+										<div class="text-danger">{{ $message }}</div>
+									  @enderror
+									  {{--<span id="error_email_mobile" class="text-danger"></span>--}}
 								   </div>
 								   
 								</div>
 								<div class="clearfix"></div>
 								<div class="row">
 								   <div class="col-md-12 col-sm-12 col-xs-12 text-right">
-									  <button type="button" class="btn btn-theme btn-sm submit">{{ __('submit') }}</button>
+									  <button type="submit" class="btn btn-theme btn-sm submit">{{ __('submit') }}</button>
 								   </div>
 								</div>
 							</form>

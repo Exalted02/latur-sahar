@@ -12,7 +12,7 @@
 		   </div>
 		</div>
 		<div class="short-description-1 clearfix">
-			<h3 class="list-title"><a title="" href="single-page-listing.html">{{ $grievance->get_department->name ?? '' }} , {{ $grievance->get_grievance_type->name ?? '' }}</a></h3>
+			<h3 class="list-title"><a title="" href="single-page-listing.html">{{ $grievance->get_department->name ?? '' }}, {{ $grievance->get_grievance_type->name ?? '' }}</a></h3>
 			<P class="list-desc">{{ $grievance->issue_description ?? '' }}.</P>
 		</div>
 		<div class="ad-info-1">
