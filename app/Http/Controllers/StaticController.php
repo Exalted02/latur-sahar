@@ -47,7 +47,7 @@ class StaticController extends Controller
 			'mobile_no' => 'required',
 		]);
 		
-		$grievance  = Grievance::where('registration_no',$request->registration_no)->wheremobile_no $request->mobile_no)->first();
+		$grievance  = Grievance::where('registration_no',$request->registration_no)->where($request->mobile_no)->first();
 		return redirect('view-status');
 	}
 }
