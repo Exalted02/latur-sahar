@@ -11,6 +11,7 @@ class Grievance extends Model
 	protected $table = 'grievances';
 	protected $fillable = [
         'user_id',
+        'registration_no',
         'name',
         'mobile_no',
         'ward_prabhag',
