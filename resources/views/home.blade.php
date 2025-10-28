@@ -44,7 +44,7 @@
                      </div>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                     <img  class="wow slideInRight center-block img-responsive" data-wow-delay="0ms" data-wow-duration="3000ms" alt="" src="{{ url('front-assets/images/gtr.png') }}" >
+                     <img  class="wow slideInRight center-block img-responsive" data-wow-delay="0ms" data-wow-duration="3000ms" alt="" src="{{ url('front-assets/images/about.jpg') }}" >
                   </div>
                </div>
             </div>
@@ -55,7 +55,7 @@
             <div class="background-1"></div>
             <!--Image Two-->
             <div class="background-2"></div>
-            <img class="img-responsive wow slideInRight custom-img" data-wow-delay="0ms" data-wow-duration="2000ms" src="{{ url('front-assets/images/sell-1.png') }}" alt="">
+            
             <div class="container">
                <div class="row clearfix">
                   <!--Left Column-->
@@ -79,7 +79,7 @@
                                     </a>
                                     <p>We ensure regular and safe drinking water distribution to all households, businesses, and public areas within Latur city.</p>
                                     <div class="service-icon">
-                                       <i class="flaticon-car-wash-1"></i>
+                                       <i class="fa fa-tint" aria-hidden="true"></i>
                                     </div>
                                  </div>
                               </div>
@@ -94,7 +94,7 @@
                                     </a>
                                     <p>Daily garbage collection, street cleaning, and scientific waste disposal are managed to keep the city clean and healthy.</p>
                                     <div class="service-icon">
-                                       <i class="flaticon-car-wash-1"></i>
+                                       <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </div>
                                  </div>
                               </div>
@@ -109,7 +109,7 @@
                                     </a>
                                     <p>LCMC is responsible for construction, repair, and maintenance of city roads, footpaths, bridges, and drainage systems to improve urban mobility.</p>
                                     <div class="service-icon">
-                                       <i class="flaticon-car-wash-1"></i>
+                                       <i class="flaticon-vehicle-4"></i>
                                     </div>
                                  </div>
                               </div>
@@ -124,7 +124,7 @@
                                     </a>
                                     <p>The corporation runs and maintains municipal primary schools to provide quality education to every child in the city.</p>
                                     <div class="service-icon">
-                                       <i class="flaticon-car-wash-1"></i>
+                                       <i class="fa fa-book" aria-hidden="true"></i>
                                     </div>
                                  </div>
                               </div>
@@ -137,99 +137,51 @@
             </div>
          </section>
 	  </div>
-	  
-	  
-	  <section class="custom-padding">
-
-						<!-- =-=-=-=-=-=-= App Download Section =-=-=-=-=-=-= -->   
-         <div class="app-download-section  style-2">
-            <!-- app-download-section-wrapper -->
-            <div class="app-download-section-wrapper">
-               <!-- app-download-section-container -->
-               <div class="app-download-section-container">
-                  <!-- container -->
-                  <div class="container">
-                     <!-- row -->
-                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                           <div class="mobile-image-content"> <img src="images/hand.png" alt=""> </div>
+	  <!-- =-=-=-=-=-=-= Pricing =-=-=-=-=-=-= -->
+         <section class="custom-padding gray">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Middle Content Box -->
+                  <div class="col-md-12 col-xs-12 col-sm-12">
+                     <div class="row pricing style-3">
+                        <div class="col-sm-6 col-lg-4 col-md-4">
+							<div class="block">
+								<h3>Register / Login</h3>
+								<span class="type">Register or log in to access all Latur Sahar Municipality online services and facilities.</span>
+							</div>
+                           <div class="selection">
+                              <a href="#" class="btn btn-block btn-theme">Register / Login <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                           </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
-                           <div class="app-text-section">
-                              <h5>Download our app</h5>
-                              <h3>Get Our App For Your Mobile</h3>
-                              <ul>
-                                 <li>Find nearby cars in your network with Scholar</li>
-                                 <li>Browse real hirers reviews to know why choose Scholar</li>
-                                 <li>Rent a car so easy with a tap !</li>
-                                 <li>Rent a car so easy with a tap !</li>
-                              </ul>
-                              <div class="app-download-btn">
-                                 <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                       <!-- Windows Store -->
-                                       <a href="#" title="Windows Store" class="btn app-download-button">
-                                       <span class="app-store-btn">
-                                       <i class="fa fa-windows"></i>
-                                       <span>
-                                       <span>Download From</span>
-                                       <span>Windows Store </span>
-                                       </span>
-                                       </span>
-                                       </a>
-                                       <!-- /Windows Store -->
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                       <!-- Windows Store -->
-                                       <a href="#" title="Windows Store" class="btn app-download-button"> <span class="app-store-btn">
-                                       <i class="fa fa-apple"></i>
-                                       <span>
-                                       <span>Download From</span> <span>Apple Store </span> </span>
-                                       </span>
-                                       </a>
-                                       <!-- /Windows Store -->
-                                    </div>
-                                    <!-- Windows Store -->
-                                 </div>
-                              </div>
+                        <div class="col-sm-6 col-lg-4 col-md-4">
+                           <div class="block featured">
+                              <h3>View Status</h3>
+                              <span class="type">View and track the current status of your submitted grievance or service request.</span>
+                           </div>
+                           <div class="selection">
+                              <a href="#" class="btn btn-block btn-theme">View Status <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 col-md-4">
+                           <div class="block">
+                              <h3>Contact Us</h3>
+                              <span class="type">Contact us for assistance, feedback, or information regarding municipal services.</span>
+                           </div>
+                           <div class="selection">
+                              <a href="#" class="btn btn-block btn-theme">Contact Us <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
                         </div>
                      </div>
-                     <!-- /row -->
                   </div>
-                  <!-- /container -->
                </div>
-               <!-- /app-download-section-container -->
+               <!-- Row End -->
             </div>
-            <!-- /download-section-wrapper -->
-         </div>
-         <!-- =-=-=-=-=-=-= App Download Section End =-=-=-=-=-=-= -->
-					
-			
-	  </section>
-    <!-- Page Wrapper -->
-    <div class="page-wrapper">
-    
-        <!-- Page Content -->
-        <div class="content container-fluid pb-0">
-        
-            <!-- Page Header -->
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3 class="page-title">Welcome to home!</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item active">Home</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- /Page Header -->
-        </div>
-        <!-- /Page Content -->
-
-    </div>
-    <!-- /Page Wrapper -->
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Pricing End =-=-=-=-=-=-= -->
+	  
 
 @endsection 
 @section('scripts')

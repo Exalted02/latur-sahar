@@ -9519,9 +9519,9 @@ body .over-hidden {
 footer.footer-bg {
 	/* padding-bottom: 30px; */
 	position: relative;
-	/*padding-bottom: 110px;
+	padding-bottom: 50px;
 	border-top: 1px dashed #ddd;
-	    background: rgba(0, 0, 0, 0) url("../images/footer-banner.png") repeat-x scroll center bottom;*/
+	    background: rgba(0, 0, 0, 0) url("../images/footer-banner.png") repeat-x scroll center bottom;
 
 }
 
