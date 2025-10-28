@@ -46,7 +46,7 @@
 						<h4 class="panel-title">{{ __('log_in') }}</h4>
 						<a href="{{ route('register') }}">{{ __('click_here_to_sign_up') }}</a>
 					</div>
-					<x-input-error :messages="$errors->get('activestatus')" class="mt-2 text-danger" />
+					<x-input-error :messages="$errors->get('activestatus')" class="mt-2 text-danger box-content pb_0" />
 					<form method="POST" action="{{ route('login') }}" id="loginForm" class="box-content">
 					@csrf
 					{{--<a class="btn btn-lg btn-block btn-social btn-facebook">
