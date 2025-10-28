@@ -92,7 +92,7 @@
 						</li>
 						@endif
 						<li>
-							<a href="{{ route('grievance') }}" class="{{ (request()->routeIs('grievance')) ? 'active' : '' }}"> {{ __('view_grievance') }}</a>
+							<a href="{{ route('view-status') }}" class="{{ (request()->routeIs('view-status')) ? 'active' : '' }}"> {{ __('view_grievance') }}</a>
 						</li>
 					@else
 						<li>
