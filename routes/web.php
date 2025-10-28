@@ -58,6 +58,11 @@ Route::get('/register-confirmation', [StaticController::class, 'register_confirm
 
 //Route::get('/view-grievance/{id}', [DashboardController::class, 'view_grievance'])->name('view-grievance');
 
+Route::get('/about-us', [StaticController::class, 'about_us'])->name('about-us');
+Route::get('/contact-us', [StaticController::class, 'contact_us'])->name('contact-us');
+Route::get('/faq', [StaticController::class, 'faq'])->name('faq');
+Route::get('/services', [StaticController::class, 'services'])->name('services');
+
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 	
