@@ -29,7 +29,7 @@ class UserController extends Controller
         ->first();*/
 		$edit_id = $request->post('id'); // edit id
 		
-		$existingEmail = User::where('email', $request->post('email'))->where('status', '!=', 2)->exists();
+		$existingEmail = User::where('id', '!=', $request->post('id'))->where('email', $request->post('email'))->where('status', '!=', 2)->exists();
 		
 		if($existingEmail)
 		{
