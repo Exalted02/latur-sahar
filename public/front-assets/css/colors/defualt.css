@@ -16,6 +16,9 @@ blockquote {
 .mega-menu .drop-down-multilevel , .mega-menu .drop-down.grid-col-12, .mega-menu .drop-down-tab-bar.grid-col-12 , .header-top ul.dropdown-menu , .pricing .block , .primary-header-1 .mega-menu{
     border-top: 2px solid #ECA118;
 }
+.colored-header .mega-menu ul.menu-links li a.active{
+    color: #ECA118;
+}
 
 .blog-sidebar .widget .widget-heading h4::before , .badge-tech , .ms-layer.btn3{
 	background-color:#E52D27;	
