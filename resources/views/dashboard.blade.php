@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@php 
+use Carbon\Carbon;
+@endphp
     <div class="main-content-area clearfix">
 		<section class="section-padding no-top gray">
 			<div class="container">
@@ -49,14 +52,15 @@
 														</tr>
 													</thead>
 													<tbody>
+													@foreach($grievances as  $grievance)
 														<tr>
-															<td>Tiger Nixon</td>
-															<td>System Architect</td>
-															<td>Edinburgh</td>
-															<td>61</td>
-															<td>61</td>
+															<td>{{ $grievance->registration_no ?? '' }}</td>
+															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
+															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
+															<td>{{ $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? 'Resubmit' : 'Solved') }}</td>
+															<td></td>
 														</tr>
-														
+													@endforeach
 													</tbody>
 												</table>
 											</div>

@@ -29,18 +29,22 @@ class DashboardController extends Controller
     {
 		$data = [];
 		$today = Carbon::today()->format('Y-m-d');
-		
-		$tot_grievance = Grievance::where('user_id', auth()->user()->id)->count();
-		$pending_grievance = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->count();
-		$solved_grievance = Grievance::where('user_id', auth()->user()->id)->where('status', 3)->count();
-		
-		
-		$alert_grievance = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->count();
+		if(auth()->user()->user_type == 1)
+		{
+			$tot_grievance = Grievance::where('user_id', auth()->user()->id)->count();
+			$pending_grievance = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->count();
+			$solved_grievance = Grievance::where('user_id', auth()->user()->id)->where('status', 3)->count();
+			$alert_grievance = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->count();
+			
+			$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->get();
+		}
 		
 		$data['total_geievance'] = $tot_grievance;
 		$data['pending_grievance'] = $pending_grievance;
 		$data['solved_grievance'] = $solved_grievance;
 		$data['alert_grievance'] = $alert_grievance;
+		
+		
         return view('dashboard', $data);
     }
     public function submit_grievance()
