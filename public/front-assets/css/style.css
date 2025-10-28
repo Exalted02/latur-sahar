@@ -3608,7 +3608,8 @@ div.boxicon:last-child {
 }
 .blog-sidebar .widget ul li a.active{
 	font-weight: bold;
-    background: #dbd5d5;
+    /* background: #dbd5d5; */
+    background: #f6f6f6;
 }
 .blog-sidebar .widget ul li a.sub-active{
 	font-weight: bold;

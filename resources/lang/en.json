@@ -67,5 +67,14 @@
 	"solved": "Solved",
 	"download": "Download",
 	
-	"example": "Example"
+	"example": "Example",
+	
+	"//": "View Status",
+	"view_status": "View Status",
+	"registration_number": "Registration number",
+	"email_mobile": "Email id or Mobile number",
+	
+	"//": "Common",
+	"mandatory_headline": "Fields marked with * are mandatory.",
+	"submit": "Submit"
 }

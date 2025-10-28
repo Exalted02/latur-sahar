@@ -11,6 +11,7 @@ use App\Http\Controllers\EmailManagementController;
 use App\Http\Controllers\EmailSettingsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\StaticController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,9 @@ Route::get('lang/home', [LangController::class, 'index']);
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 
 Route::get('/home', [DashboardController::class, 'home'])->name('home');
+
+	Route::get('/view-status', [StaticController::class, 'view_status'])->name('view-status');
+
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 	

@@ -87,11 +87,11 @@
 					</li>
 					@if(auth()->user()->user_type == 1)
 					<li>
-						<a href="{{ route('submit-grievance') }}"> {{ __('submit_grievance') }}</a>
+						<a href="{{ route('submit-grievance') }}" class="{{ (request()->routeIs('submit-grievance')) ? 'active' : '' }}"> {{ __('submit_grievance') }}</a>
 					</li>
 					@endif
 					<li>
-						<a href="{{ route('grievance') }}"> {{ __('view_grievance') }}</a>
+						<a href="{{ route('grievance') }}" class="{{ (request()->routeIs('grievance')) ? 'active' : '' }}"> {{ __('view_grievance') }}</a>
 					</li>
 				</ul>
 				@endif
