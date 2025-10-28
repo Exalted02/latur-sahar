@@ -33,7 +33,7 @@ class StaticController extends Controller
     }
 	public function register_confirmation() {
 		$data = [];		
-		if (session('page') === 'registration')
+		if (session('registrationPage') === 'registration')
 		{
 			Auth::logout();
 			return view('static.register-confirmation', $data);

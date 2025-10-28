@@ -64,7 +64,7 @@ class PhoneVerificationController extends Controller
 		$request->session()->regenerate();
 
         //return redirect(RouteServiceProvider::HOME)->with('success', 'Phone verified successfully!');
-		return redirect(RouteServiceProvider::REGISTRATION)->with('page', 'registration');
+		return redirect(RouteServiceProvider::REGISTRATION)->with('registrationPage', 'registration');
     }
 
     public function resend(User $user)
