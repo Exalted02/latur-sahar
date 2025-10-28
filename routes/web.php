@@ -51,8 +51,9 @@ Route::get('lang/home', [LangController::class, 'index']);
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 
 Route::get('/home', [DashboardController::class, 'home'])->name('home');
-
-	Route::get('/view-status', [StaticController::class, 'view_status'])->name('view-status');
+Route::get('/view-status', [StaticController::class, 'view_status'])->name('view-status');
+Route::get('/grievance-confirmation', [StaticController::class, 'grievance_confirmation'])->name('grievance-confirmation');
+Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
 
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

@@ -43,6 +43,8 @@
 	"enter_below":"Enter it below",
 	"otp":"OTP",
 	"verify":"Verify",
+	"registration_completed_successfully":"Registration Completed Successfully!",
+	"registration_completed_successfully_msg":"Welcome to Latur Sahar Municipality Portal. Please log in to explore our online services.",
 	
 	"//": "Grievance page",
     "submit_grievance": "Submit grievance",
@@ -66,6 +68,11 @@
 	"resubmit": "Resubmit",
 	"solved": "Solved",
 	"download": "Download",
+	"grievance_submitted_successfully": "Grievance Submitted Successfully",
+	"grievance_success_msg1": "Your grievance has been successfully submitted to Latur Sahar Municipality.",
+	"grievance_success_msg2_1": "Please note your Registration Number:",
+	"grievance_success_msg2_2": "for future reference and status tracking.",
+	"grievance_success_msg3": "Thank you for reaching out — our team will review and respond as soon as possible.",
 	
 	"//": "Dashboard page",
     "total_grievance": "Total grievance",
@@ -81,6 +88,7 @@
 	"//": "Common",
 	"mandatory_headline": "Fields marked with * are mandatory.",
 	"submit": "Submit",
+	"confirmation": "Confirmation",
 	
 	"example": "Example"
 }
