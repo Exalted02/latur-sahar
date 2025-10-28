@@ -52,7 +52,8 @@ Route::get('lang/change', [LangController::class, 'change'])->name('changeLang')
 
 Route::get('/home', [DashboardController::class, 'home'])->name('home');
 Route::get('/view-status', [StaticController::class, 'view_status'])->name('view-status');
-Route::get('/grievance-confirmation', [StaticController::class, 'grievance_confirmation'])->name('grievance-confirmation');
+Route::post('/view-status', [StaticController::class, 'see_grievance'])->name('view-status');
+
 Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
 Route::get('/about-us', [StaticController::class, 'about_us'])->name('about-us');
 Route::get('/contact-us', [StaticController::class, 'contact_us'])->name('contact-us');
@@ -77,6 +78,8 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::post('/delete-grievance', [DashboardController::class, 'delete_grievance'])->name('delete-grievance');
 	Route::post('/resubmit-grievance', [DashboardController::class, 'resubmit_grievance'])->name('resubmit-grievance');
 	Route::get('/download-grievance-files/{id}', [DashboardController::class, 'downloadFiles'])->name('grievance.download');
+	
+	Route::get('/grievance-confirmation/{rgt_no}', [StaticController::class, 'grievance_confirmation'])->name('grievance-confirmation');
 	
 	// my account 
 	Route::get('/my-account', [ProfileController::class, 'my_account'])->name('my-account');

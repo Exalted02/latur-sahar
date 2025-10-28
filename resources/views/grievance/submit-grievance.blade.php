@@ -348,10 +348,16 @@ $(document).ready(function() {
 					processData: false, 
 					success: function(response) {
 						//alert(id);
+						let redirect = '';
 						let textmsg = '';
 						if(id == '')
 						{
-							textmsg = 'Record added successfully!';
+							let registration_no = response.registration_no;
+							
+							redirect = "{{ route('grievance-confirmation', ':rgt_no') }}";
+							window.location.href = redirect.replace(':rgt_no', registration_no);
+							
+							textmsg = 'Record inserted successfully!';
 						}
 						else
 						{
