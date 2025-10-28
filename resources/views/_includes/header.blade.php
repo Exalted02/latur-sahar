@@ -80,21 +80,29 @@
 				   </li>
 				</ul>
 				<!-- menu links -->
-				@if(Auth::user())
 				<ul class="menu-links">
 					<li>
 						<a href="{{ route('home') }}"> {{ __('home') }}</a>
 					</li>
-					@if(auth()->user()->user_type == 1)
-					<li>
-						<a href="{{ route('submit-grievance') }}" class="{{ (request()->routeIs('submit-grievance')) ? 'active' : '' }}"> {{ __('submit_grievance') }}</a>
-					</li>
-					@endif
-					<li>
-						<a href="{{ route('grievance') }}" class="{{ (request()->routeIs('grievance')) ? 'active' : '' }}"> {{ __('view_grievance') }}</a>
-					</li>
+					@auth
+				
+						@if(auth()->user()->user_type == 1)
+						<li>
+							<a href="{{ route('submit-grievance') }}" class="{{ (request()->routeIs('submit-grievance')) ? 'active' : '' }}"> {{ __('submit_grievance') }}</a>
+						</li>
+						@endif
+						<li>
+							<a href="{{ route('grievance') }}" class="{{ (request()->routeIs('grievance')) ? 'active' : '' }}"> {{ __('view_grievance') }}</a>
+						</li>
+					@else
+						<li>
+							<a href="javascript:void(0);"> {{ __('submit_grievance') }}</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);"> {{ __('view_grievance') }}</a>
+						</li>
+					@endauth
 				</ul>
-				@endif
 			 </div>
 		  </div>
 	   </div>
