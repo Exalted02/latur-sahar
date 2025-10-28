@@ -88,8 +88,18 @@ $(document).ready(function() {
 				//dataType: 'json',
 				success: function(response) {
 					if (!response.success) {
-						$('#name').addClass('is-invalid');
-						$('#name').next('.invalid-feedback').text(response.message).show();
+						if(response.field == 'name')
+						{
+							$('#name').addClass('is-invalid');
+							$('#name').next('.invalid-feedback').text(response.message).show();
+						}
+						
+						if(response.field == 'email')
+						{
+							$('#email').addClass('is-invalid');
+							$('#email').next('.invalid-feedback').text(response.message).show();
+						}
+						
 					} else {
 						$('#add_user').hide();
 						if(id == '')

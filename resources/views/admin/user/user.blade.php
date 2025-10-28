@@ -81,8 +81,8 @@
 											<i class="fa-regular fa-circle-dot text-success"></i> {{ __('active') }}
 										</a>
 										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.user-update-status') }}"><i class="fa-regular fa-circle-dot text-success"></i> {{ __('active') }}</a>
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.user-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('inactive') }}</a>
+											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.user-admin-update-status') }}"><i class="fa-regular fa-circle-dot text-success"></i> {{ __('active') }}</a>
+											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.user-admin-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('inactive') }}</a>
 										</div>
 									</div>
 								 @else
@@ -91,8 +91,8 @@
 											<i class="fa-regular fa-circle-dot text-danger"></i> {{ __('inactive') }}
 										</a>
 										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.user-update-status') }}"><i class="fa-regular fa-circle-dot text-success"></i> {{ __('active') }}</a>
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.user-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('inactive') }}</a>
+											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.user-admin-update-status') }}"><i class="fa-regular fa-circle-dot text-success"></i> {{ __('active') }}</a>
+											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.user-admin-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('inactive') }}</a>
 										</div>
 									</div> 
 								 
@@ -104,8 +104,8 @@
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item edit-user" href="javascript:void(0);" data-id="{{ $val->id ??''}}" data-url="{{ route('admin.edit-user') }}"><i class="fa-solid fa-pencil m-r-5"></i> {{ __('edit') }}</a>
-											<a class="dropdown-item delete-user" href="javascript:void(0);" data-id="{{ $val->id ?? '' }}" data-url="{{ route('admin.getDeleteUser') }}"><i class="fa-regular fa-trash-can m-r-5"></i> {{ __('delete') }}</a>
+											<a class="dropdown-item edit-user" href="javascript:void(0);" data-id="{{ $val->id ??''}}" data-url="{{ route('admin.edit-user-admin') }}"><i class="fa-solid fa-pencil m-r-5"></i> {{ __('edit') }}</a>
+											<a class="dropdown-item delete-user" href="javascript:void(0);" data-id="{{ $val->id ?? '' }}" data-url="{{ route('admin.getDeleteUserAdmin') }}"><i class="fa-regular fa-trash-can m-r-5"></i> {{ __('delete') }}</a>
 										</div>
 									</div>
 								</td>

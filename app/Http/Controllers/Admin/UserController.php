@@ -11,29 +11,45 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function user_admin()
     {
       $data[] = '';
-      $data['users'] = User::where('status','!=', 2)->get();
+      $data['users'] = User::where('user_type', '!=', 1)->where('status','!=', 2)->get();
 	  $data['departments'] = Department::where('status','!=', 2)->get();
       return view('admin.user.user', $data);
     }
-    public function save_user(Request $request)
+    public function save_user_admin(Request $request)
     {
 		//echo $request->post('id'); die;
 		// dd($request->all());
-      $existingStage = User::where('name', $request->post('name'))->where('status', '!=', 2)
+      /*$existingStage = User::where('name', $request->post('name'))->where('status', '!=', 2)
         ->when($request->post('id'), function ($query) use ($request) {
             $query->where('id', '!=', $request->post('id'));
         })
-        ->first();
+        ->first();*/
+		$edit_id = $request->post('id'); // edit id
 		
-		if ($existingStage) {
+		$existingEmail = User::where('email', $request->post('email'))->where('status', '!=', 2)->exists();
+		
+		if($existingEmail)
+		{
 			return response()->json([
 				'success' => false,
-				'message' => 'user already exists.'
+				'field' => 'email',
+				'message' => 'email already exists.'
 			]);
 		}
+		
+		/*if ($existingStage) {
+			return response()->json([
+				'success' => false,
+				'field' => 'name',
+				'message' => 'user already exists.'
+			]);
+		}*/
+		
+		
+		
 		
 		if($request->post('id')>0)
 		{
@@ -75,7 +91,7 @@ class UserController extends Controller
 			'message' => 'user saved successfully.'
 		]);
     }
-	public function edit_user(Request $request)
+	public function edit_user_admin(Request $request)
 	{
 		$user = User::where('id', $request->id)->first();
 		$data = array();
@@ -90,12 +106,12 @@ class UserController extends Controller
 		$data['post']  = $user->post;
 		return $data;
 	}
-	public function delete_user(Request $request)
+	public function delete_user_admin(Request $request)
 	{
 		$name = User::where('id', $request->id)->first()->name;
 		echo json_encode($name);
 	}
-    public function delete_user_list(Request $request)
+    public function delete_user_admin_list(Request $request)
 	{
 		//$check = check_record_use($request->id, 'product_code');
 		$del = User::where('id', $request->id)->update(['status'=>2]);
