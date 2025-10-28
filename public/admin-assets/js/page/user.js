@@ -181,6 +181,27 @@ $(document).on('click','.delete-user', function(){
 	});
 	
 });
+
+$(document).on('click','.delete-citizen', function(){
+	var id = $(this).data('id');
+	var URL = $(this).data('url');
+	//alert(id);alert(URL);
+	$.ajax({
+		url: URL,
+		type: "POST",
+		data: {id:id, _token: csrfToken},
+		dataType: 'json',
+		success: function(response) {
+			//alert(response);
+			//var url = "{{ route('deleteContactList') }}";
+			$('.data-id-pcode-list').attr('data-id', id);
+			$('#list_code_name').html(response);
+			$('#delete_product_code').modal('show');
+		},
+	});
+	
+});
+
 $(document).on('click','.data-id-pcode-list', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
@@ -260,6 +281,23 @@ $(document).on('click','.p_code_add', function(){
 	$('#frmproductcode')[0].reset();
 	$('.invalid-feedback').hide();
 	$('.form-control').removeClass('is-invalid');
+});
+
+$(document).on('click','.update-citizen-status', function(){
+	var id= $(this).data('id');
+	var URL = $(this).data('url');
+	$.ajax({
+		url: URL,
+		type: "POST",
+		data: {id:id, _token: csrfToken},
+		dataType: 'json',
+		success: function(response) {
+			//alert(response);
+			setTimeout(() => {
+				window.location.reload();
+			}, "1000");
+		},
+	});
 });
 
 });
