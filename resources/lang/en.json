@@ -126,6 +126,7 @@
 	"contact_us_title": "Fell Free To Contact Us",
 	"contact_us_subject": "Subject",
 	"contact_us_message": "Message...",
+	"contact_us_btn": "Send Message",
 	
 	"//": "Common",
 	"mandatory_headline": "Fields marked with * are mandatory.",

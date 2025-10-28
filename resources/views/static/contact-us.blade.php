@@ -66,7 +66,7 @@
 											  @enderror
 										   </div>
 										   <div class="col-md-12 col-sm-12 col-xs-12 text-left">
-											  <button type="submit" class="btn btn-theme btn-lg submit">{{ __('submit') }}</button>
+											  <button type="submit" class="btn btn-theme btn-lg submit">{{ __('contact_us_btn') }}</button>
 										   </div>
 										</div>
 									</div>
