@@ -10,7 +10,7 @@
 			</div>
 			<div class="astrodivider"><div class="astrodividermask"></div></div>--}}
 			<ul class="profile_user_li">
-				<li><a href="{{route('dashboard')}}" class="{{ (request()->routeIs('dashboard')) ? 'active' : '' }}"><i class="fa fa-user" aria-hidden="true"></i> Dashboard</a></li>
+				<li><a href="{{route('dashboard', ['tab' => 1])}}" class="{{ (request()->routeIs('dashboard')) ? 'active' : '' }}"><i class="fa fa-user" aria-hidden="true"></i> Dashboard</a></li>
 				
 				<li><a href="{{route('grievance')}}" class="{{ (request()->routeIs('grievance')) ? 'active' : '' }}"><i class="fa fa-triangle-exclamation" aria-hidden="true"></i> {{ __('List grievance') }}</a></li>
 								

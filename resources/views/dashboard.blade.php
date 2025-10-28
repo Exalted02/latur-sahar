@@ -10,12 +10,13 @@ use Carbon\Carbon;
 					@include('_includes/user-sidebar')
 					<div class="col-md-8 col-md-push-4- col-lg-9 col-sx-12">
 						<div class="row">
+							<a href="{{ route('dashboard',['tab' => 1]) }}">
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-info">
 								  <h2>{{ $total_geievance ?? ''}}</h2>
 								  <small>{{ __('total_grievance') }}</small>
 							   </div>
-							</div>
+							</div></a>
 							<div class="col-md-3 col-sm-3 col-xs-12">
 							   <div class="dashboard-card background-warning">
 								  <h2>{{ $pending_grievance ?? ''}}</h2>

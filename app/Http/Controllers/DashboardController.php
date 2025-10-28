@@ -25,7 +25,7 @@ class DashboardController extends Controller
 		
         return view('home', $data);
     }
-    public function index()
+    public function index($tab = '')
     {
 		$data = [];
 		$today = Carbon::today()->format('Y-m-d');
@@ -36,7 +36,10 @@ class DashboardController extends Controller
 			$solved_grievance = Grievance::where('user_id', auth()->user()->id)->where('status', 3)->count();
 			$alert_grievance = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->count();
 			
-			$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->get();
+			if($tab == 1)
+			{
+				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->get();
+			}
 		}
 		
 		$data['total_geievance'] = $tot_grievance;

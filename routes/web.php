@@ -64,7 +64,7 @@ Route::get('/faq', [StaticController::class, 'faq'])->name('faq');
 Route::get('/services', [StaticController::class, 'services'])->name('services');
 
 Route::middleware(['auth', 'phone.verified'])->group(function () {
-	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+	Route::get('/dashboard/{tab}', [DashboardController::class, 'index'])->name('dashboard');
 	
 	Route::get('/register-confirmation', [StaticController::class, 'register_confirmation'])->name('register-confirmation');
 	
