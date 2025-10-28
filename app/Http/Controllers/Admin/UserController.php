@@ -133,7 +133,7 @@ class UserController extends Controller
       $data[] = '';
       $data['users'] = User::where('user_type', 1)->where('status','!=', 2)->get();
 	  $data['departments'] = Department::where('status','!=', 2)->get();
-      return view('admin.user.user', $data);
+      return view('admin.user.citizen', $data);
     }
     public function save_user_citizen(Request $request)
     {
