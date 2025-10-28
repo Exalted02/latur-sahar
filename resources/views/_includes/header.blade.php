@@ -99,7 +99,7 @@
 							<a href="javascript:void(0);"> {{ __('submit_grievance') }}</a>
 						</li>
 						<li>
-							<a href="javascript:void(0);"> {{ __('view_grievance') }}</a>
+							<a href="{{ route('view-status')}}"> {{ __('view_grievance') }}</a>
 						</li>
 					@endauth
 				</ul>
