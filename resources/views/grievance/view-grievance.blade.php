@@ -142,7 +142,7 @@ if($grievance)
 					</div>
 				</div>--}}
 				
-				@if(auth()->user()->user_type == 1 && $grievance->status  == 3)
+				@if($grievance->user_id == auth()->user()->id && auth()->user()->user_type == 1 && $grievance->status  == 3)
 				<div class="alert-box-container margin-top-30">
 					<div class="well">
 					   <h3>{{ __('rating') }}</h3>
@@ -278,11 +278,12 @@ if($grievance)
 										<input class="btn btn-theme btn-block update-grievance-status" value="Submit" type="button"> 
 									 </div>
 								 </div>
-							  
-						   </form>
+							</form>
 						</div>
 					</div>
 				@endif
+				
+				
 				 <!-- Price Alert -->
 				 {{--<div class="alert-box-container margin-top-30">
 					<div class="well">
