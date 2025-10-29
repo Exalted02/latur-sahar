@@ -458,9 +458,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 11px 20px;
   border: 1px solid #ccc;
-  border-radius: 50px;
+  /*border-radius: 50px;*/
   background-color: #f0f0f0;
   cursor: pointer;
   font-size: 14px;
@@ -477,8 +477,8 @@
 #preview-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 29px;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .preview-image-wrapper {
@@ -564,4 +564,8 @@
 	font-size: 14px;
 	width: fit-content;
 	margin: 20px auto;
+}
+
+.position-absolute {
+	position: absolute;
 }

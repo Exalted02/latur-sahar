@@ -43,17 +43,18 @@
 							<input type="hidden" name="id" id="id" value="{{ isset($grievance) ? $grievance->id : '' }}">
 							<input type="hidden" name="get_department_id" id="get_department_id" value="{{ isset($grievance) ?  $grievance->get_department->id : ''}}">
 								<div class="row">
-								   <div class="col-md-6 col-sm-6 col-xs-12">
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
 									  <label>{{ __('name') }} <span class="text-danger">*</span></label>
-									  <input type="text" name="name" id="name" value="{{ isset($grievance) ? $grievance->name : old('name')}}" class="form-control margin-bottom-20">
-									  <span id="error_name" class="text-danger"></span>
-									  
+									  <input type="text" name="name" id="name" value="{{ isset($grievance) ? $grievance->name : old('name')}}" class="form-control">
+										<span id="error_name" class="text-danger position-absolute"></span>
 								   </div>
-								   <div class="col-md-6 col-sm-6 col-xs-12">
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
 									  <label>{{ __('mobile') }} <span class="text-danger">*</span></label>
-									  <input type="text" name="mobile_no" value="{{ isset($grievance) ? $grievance->mobile_no : old('mobile_no')}}" class="form-control margin-bottom-20" id="mobile_no"id="mobile_no">
-									  <span id="error_mobile_no" class="text-danger"></span>
+									  <input type="text" name="mobile_no" value="{{ isset($grievance) ? $grievance->mobile_no : old('mobile_no')}}" class="form-control" id="mobile_no"id="mobile_no">
+									  <span id="error_mobile_no" class="text-danger position-absolute"></span>
 								   </div>
+								</div>
+								<div class="row">
 								   <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
 									  <label>{{ __('department') }} <span class="text-danger">*</span></label>
 									  <select class="form-control" name="department" id="department">
@@ -62,50 +63,58 @@
 											<option value="{{ $department->id ?? '' }}">{{ $department->name ?? '' }}</option>
 										 @endforeach
 									  </select>
-									  <span id="error_department" class="text-danger"></span>
+									  <div class="clearfix"></div>
+									  <span id="error_department" class="text-danger position-absolute"></span>
 								   </div>
 								   <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
 									  <label>{{ __('grievance_type') }} <span class="text-danger">*</span></label>
 									  <select class="form-control" name="grievance_type" id="grievance_type">
 										 <option value=""> {{ __('select_grievance_type') }}</option>
 									  </select>
-									  <span id="error_grievance_type" class="text-danger"></span>
-								   </div>
-								   <div class="col-md-12 col-sm-12 col-xs-12">
-									  <label>{{ __('address') }} <span class="text-danger">*</span></label>
-									  <textarea class = "form-control margin-bottom-20" rows = "3" name="address" id="address">{{ isset($grievance) ? $grievance->address : old('address' )}}</textarea>
-									  <span id="error_address" class="text-danger"></span>
-								   </div>
-								   <div class="col-md-6 col-sm-6 col-xs-12">  
-									  <label>{{ __('ward_prabhag') }} <span class="color-red">*</span></label>
-									  <input type="text" name="ward_prabhag" value="{{ isset($grievance) ? $grievance->ward_prabhag : old('ward_prabhag')}}" class="form-control margin-bottom-20" id="ward_prabhag">
-									  <span id="error_ward_prabhag" class="text-danger"></span>
-								   </div>
-								   <div class="col-md-6 col-sm-6 col-xs-12">  
-									  <label>{{ __('pin_code') }} <span class="text-danger">*</span></label>
-									  <input type="text" name="pincode" value="{{ isset($grievance) ? $grievance->pincode : old('pincode')}}" class="form-control margin-bottom-20" id="pincode">
-									  <span id="error_pincode" class="text-danger"></span>
-								   </div>
-								   <div class="col-md-12 col-sm-12 col-xs-12">
-									  <label>{{ __('issue_description') }} <span class="text-danger">*</span></label>
-									  <textarea name="issue_description" id="issue_description" class= "form-control margin-bottom-20" rows = "3">{{ isset($grievance) ? $grievance->issue_description : old ('issue_description') }}</textarea>
-									  <span id="error_issue_description" class="text-danger"></span>
+									  <span id="error_grievance_type" class="text-danger position-absolute"></span>
 								   </div>
 								</div>
-								<div class="row margin-bottom-20">
-									<div class="form-group">
-										<div class="col-md-9">
+								<div class="row">
+								   <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-20">
+									  <label>{{ __('address') }} <span class="text-danger">*</span></label>
+									  <textarea class = "form-control" rows = "3" name="address" id="address">{{ isset($grievance) ? $grievance->address : old('address' )}}</textarea>
+									  <span id="error_address" class="text-danger position-absolute"></span>
+								   </div>
+								</div>
+								<div class="row">
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">  
+									  <label>{{ __('ward_prabhag') }} <span class="color-red">*</span></label>
+									  <input type="text" name="ward_prabhag" value="{{ isset($grievance) ? $grievance->ward_prabhag : old('ward_prabhag')}}" class="form-control" id="ward_prabhag">
+									  <span id="error_ward_prabhag" class="text-danger position-absolute"></span>
+								   </div>
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">  
+									  <label>{{ __('pin_code') }} <span class="text-danger">*</span></label>
+									  <input type="text" name="pincode" value="{{ isset($grievance) ? $grievance->pincode : old('pincode')}}" class="form-control" id="pincode">
+									  <span id="error_pincode" class="text-danger position-absolute"></span>
+								   </div>
+								</div>
+								<div class="row">
+								   <div class="col-md-12 col-sm-12 col-xs-12">
+									  <label>{{ __('issue_description') }} <span class="text-danger">*</span></label>
+									  <textarea name="issue_description" id="issue_description" class= "form-control" rows = "3">{{ isset($grievance) ? $grievance->issue_description : old ('issue_description') }}</textarea>
+									  <span id="error_issue_description" class="text-danger position-absolute"></span>
+								   </div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
 										<label for="lo_file"></label>
-											<div class="upload-wrapper">
-											  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
-											  <label for="lo_file" class="custom-upload-label">
-												<span class="upload-text">{{ __('upload_image') }}</span>
-												<i class="fa fa-upload upload-icon"></i>
-											  </label>
-											</div>
+										<div class="upload-wrapper">
+										  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
+										  <label for="lo_file" class="custom-upload-label">
+											<span class="upload-text">{{ __('upload_image') }}</span>
+											<i class="fa fa-upload upload-icon"></i>
+										  </label>
 										</div>
-										
-										<div class="col-md-8 d-flex flex-wrap gap-2" id="preview-container">
+										<span id="error_images" class="text-danger position-absolute"></span>
+									</div>
+								</div>
+								<div class="row margin-bottom-10">		
+									<div class="col-md-12 d-flex flex-wrap gap-2" id="preview-container">
 									@if(!empty($grievance->grievance_image))
 										@foreach($grievance->grievance_image as $image)
 										@php 
@@ -126,10 +135,8 @@
 										</div>
 										@endforeach
 									@endif
-									<span id="error_images" class="text-danger"></span>
+									
 										</div>
-										
-									</div>
 								</div>
 								{{--<div class="row margin-bottom-20">
 								   <div class="form-group">

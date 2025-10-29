@@ -429,7 +429,7 @@
     margin-bottom: 20px;
 }
 .select2-container--default .select2-selection--single {
-    margin-bottom: 20px !important;
+   /* margin-bottom: 20px !important;*/
 }
     .ad-archive-img img {
         height: auto;
@@ -967,7 +967,7 @@ margin-bottom: 30px;
     }
     .select2-container--default .select2-selection--single
    {
-        margin-bottom: 20px !important;
+        /*margin-bottom: 20px !important;*/
     }
    
     .parallex-text h4 {
