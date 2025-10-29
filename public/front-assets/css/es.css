@@ -599,3 +599,23 @@
 .blog-sidebar .widget ul li a.logout {
 	color: #a94442
 }
+.custom-small-box {
+	list-style: none;
+	padding: 0;
+	display: inline-block;
+}	
+.custom-small-box li {
+	box-shadow: none;
+	display: inline-block;
+	margin-right: 5px;
+}
+.custom-small-box li a {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	padding: 6px 8px;
+	border-radius: 50%;
+}
+.custom-small-box li > a:hover {
+	background: transparent;
+	border: 1px solid #0E5185;
+}
