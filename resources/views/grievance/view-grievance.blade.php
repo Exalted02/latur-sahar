@@ -116,38 +116,75 @@ if($grievance)
 					   </div>
 					   <div class="clearfix"></div>
 					</div>	
-                    <div class="content-box-grid">
-						<div class="short-features">						
-							<div class="heading-panel">
-							 <h3 class="main-title text-left">
-								{{ __('rating') }} 
-							 </h3>
-							</div>
-							<div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-								<div class="rating rating-score"></div>
-							</div>
-						</div>
-					</div>
 				</div>
 				 <!-- Single Ad End --> 
-				 
-                     <!-- Price Alert -->
-                     {{--<div class="alert-box-container margin-top-30">
-                        <div class="well">
-                           <h3>{{ __('resubmit_grievance') }}</h3>
-                           <p>{{ __('resubmit_Grievance_higher_authority') }}</p>
-                           <form>
-                              <div class="row">
-                                 <div class="col-md-9 col-xs-12 col-sm-12">
-                                    <input placeholder="Enter Your Email " type="text" class="form-control"> 
-                                 </div>
-                                 <div class="col-md-3 col-xs-12 col-sm-12">
-                                    <input class="btn btn-theme btn-block" value="Submit" type="submit"> 
-                                 </div>
-                              </div>
-                           </form>
-                        </div>
-                     </div>--}}
+				{{--<div class="alert-box-container margin-top-30">
+					<div class="well">
+					   <h3>{{ __('rating') }}</h3>
+					   <form>
+						  <form id="rating-form" action="" method="POST">
+							@csrf
+							<div class="row align-items-center">
+								<div class="col-md-9 col-xs-12 col-sm-12 text-center text-md-start">
+									<div class="rating-stars">
+										<input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars">&#9733;</label>
+										<input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars">&#9733;</label>
+										<input type="radio" name="rating" id="star3" value="3"><label for="star3" title="3 stars">&#9733;</label>
+										<input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars">&#9733;</label>
+										<input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star">&#9733;</label>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12 col-sm-12">
+									<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+								</div>
+							</div>
+						</form>
+					   </form>
+					</div>
+				</div>--}}
+				
+				<div class="alert-box-container margin-top-30">
+					<div class="well">
+					   <h3>{{ __('rating') }}</h3>
+					   <p>{{ __('resubmit_Grievance_higher_authority') }}</p>
+					   <form id="rating-form" action="{{ route('save-citizen-rating') }}" method="POST">
+						  <div class="row">
+							 <div class="col-md-9 col-xs-12 col-sm-12">
+								<div class="rating-stars">
+									<input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars">&#9733;</label>
+									<input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars">&#9733;</label>
+									<input type="radio" name="rating" id="star3" value="3"><label for="star3" title="3 stars">&#9733;</label>
+									<input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars">&#9733;</label>
+									<input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star">&#9733;</label>
+								</div>
+							 </div>
+							 <div class="col-md-9 col-xs-12 col-sm-12 mt-2">
+								<input placeholder="Enter Your Feedback" type="text" class="form-control"> 
+							 </div>
+							 <div class="col-md-3 col-xs-12 col-sm-12">
+								<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+							 </div>
+						  </div>
+					   </form>
+					</div>
+				 </div>
+				 <!-- Price Alert -->
+				 {{--<div class="alert-box-container margin-top-30">
+					<div class="well">
+					   <h3>{{ __('resubmit_grievance') }}</h3>
+					   <p>{{ __('resubmit_Grievance_higher_authority') }}</p>
+					   <form>
+						  <div class="row">
+							 <div class="col-md-9 col-xs-12 col-sm-12">
+								<input placeholder="Enter Your Email " type="text" class="form-control"> 
+							 </div>
+							 <div class="col-md-3 col-xs-12 col-sm-12">
+								<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+							 </div>
+						  </div>
+					   </form>
+					</div>
+				 </div>--}}
                      <!-- Price Alert End --> 
 				 <!-- =-=-=-=-=-=-= Latest Ads End =-=-=-=-=-=-= -->
 				</div>
@@ -302,6 +339,11 @@ $(document).ready(function(){
 			});
 		});
 	});*/
+	
+	$(document).on('change', 'input[name="rating"]', function() {
+		const rating = $(this).val();
+		console.log("Selected rating:", rating);
+	});
 });
 </script>
 @endsection
