@@ -38,7 +38,7 @@
 							<h4 class="text-success">
 								{{ __('grievance_success_msg1') }} <br/>
 								{{ __('grievance_success_msg2_1') }} <span  style="font-size: 24px; color: #0E5185;">
-									{{ $rgt_no ?? '' }}</span> {{ __('grievance_success_msg2_2') }} <br/>
+									#{{ $rgt_no ?? '' }}</span> {{ __('grievance_success_msg2_2') }} <br/>
 								{{ __('grievance_success_msg3') }}
 							</h4>
 							<div class="text-center mt_15">

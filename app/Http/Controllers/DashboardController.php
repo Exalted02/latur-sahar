@@ -429,6 +429,5 @@ class DashboardController extends Controller
 		$model->feedback_description = $request->feedback_description;
 		$model->save();
 		return back()->with(['success' => 'Inserted']);
-		//return back()->withErrors(['success' => 'Inserted'])->withInput();
 	}
 }
