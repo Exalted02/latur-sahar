@@ -253,6 +253,7 @@ class DashboardController extends Controller
 		
 		$greivances = Grievance_type::where('department', $department_id)->get();
 		$html = '<select class="form-control" name="grievance_type">';
+		$html .= '<option value="">Please select</option>';
 		foreach($greivances as $greivance)
 		{
 			$selected = ($greivance_id == $greivance->id) ? 'selected' : '';

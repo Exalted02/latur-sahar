@@ -55,7 +55,7 @@ if($grievance)
 				<!-- Middle Content Area -->
 				<div class="col-md-8 col-xs-12 col-sm-12">
 				 <!-- Single Ad -->
-				 <div class="singlepage-detail ">
+				<div class="singlepage-detail ">
 					<div id="single-slider" class="flexslider">
 					   <ul class="slides" style="display: flex;">
 					    @foreach($grievance->grievance_image as $images)
@@ -115,8 +115,20 @@ if($grievance)
 						  </div>
 					   </div>
 					   <div class="clearfix"></div>
-					</div>					
-				 </div>
+					</div>	
+                    <div class="content-box-grid">
+						<div class="short-features">						
+							<div class="heading-panel">
+							 <h3 class="main-title text-left">
+								{{ __('rating') }} 
+							 </h3>
+							</div>
+							<div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+								<div class="rating rating-score"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 				 <!-- Single Ad End --> 
 				 
                      <!-- Price Alert -->
