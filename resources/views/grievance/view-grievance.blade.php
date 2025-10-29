@@ -143,7 +143,7 @@ if($grievance)
 					</div>
 				</div>--}}
 				
-				@if($grievance->status  == 3)
+				@if(auth()->user()->user_type == 1 && $grievance->status  == 3)
 				<div class="alert-box-container margin-top-30">
 					<div class="well">
 					   <h3>{{ __('rating') }}</h3>
@@ -178,6 +178,48 @@ if($grievance)
 					</div>
 				 </div>
 				 @endif
+				 
+				@if((auth()->user()->user_type == 2 || auth()->user()->user_type == 3) && $grievance->status != 3)
+					<div class="alert-box-container margin-top-30">
+					<div class="well">
+					   <h3>{{ __('solved_grievance') }}</h3>
+					   <p>{{ __('solved_grievance') }}</p>
+					   <form name="frmStatus" action="{{ route('grievance-update-status') }}">
+					   @csrf
+							<div class="row">
+							   <div class="col-md-9 col-xs-12 col-sm-12">
+								  <label>{{ __('status') }} <span class="text-danger">*</span></label>
+								  <select class="form-control" name="select_status" id="select_status">
+									 <option value="">{{ __('select_status') }}</option>
+									 <option value="3">{{ __('solved') }}</option>
+									 <option value=""></option>
+									
+								  </select>
+								  <div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="row">
+							 <div class="col-md-9 col-xs-12 col-sm-12">
+								<label for="lo_file"></label>
+								<div class="upload-wrapper">
+								  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
+								  <label for="lo_file" class="custom-upload-label">
+									<span class="upload-text">{{ __('upload_image') }}</span>
+									<i class="fa fa-upload upload-icon"></i>
+								  </label>
+								</div>
+							 </div>
+							</div>
+							 <div class="row">
+								 <div class="col-md-3 col-xs-12 col-sm-12">
+									<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+								 </div>
+							 </div>
+						  
+					   </form>
+					</div>
+				 </div>
+				@endif
 				 <!-- Price Alert -->
 				 {{--<div class="alert-box-container margin-top-30">
 					<div class="well">
