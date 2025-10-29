@@ -341,11 +341,33 @@ $(document).ready(function() {
 		
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
-				//document.getElementById('latitude').value = position.coords.latitude;
-				//document.getElementById('longitude').value = position.coords.longitude;
 				
 				var latitude = position.coords.latitude;
 				var longitude = position.coords.longitude;
+				$('#latitude').val(latitude);
+				$('#longitude').val(longitude);
+			})
+		}
+		
+		var latitude = $('#latitude').val();
+		var longitude = $('#longitude').val();
+		if (latitude == '') {
+			$('#error_latitude').text('Please enter latitude').fadeIn().delay(2000).fadeOut();
+			return false;
+		}
+		
+		if (longitude == '') {
+			$('#error_longitude').text('Please enter longitude').fadeIn().delay(2000).fadeOut();
+			return false;
+		}
+		
+		//if (navigator.geolocation) {
+			//navigator.geolocation.getCurrentPosition(function(position) {
+				//document.getElementById('latitude').value = position.coords.latitude;
+				//document.getElementById('longitude').value = position.coords.longitude;
+				
+				//var latitude = position.coords.latitude;
+				//var longitude = position.coords.longitude;
 			
 		
 				let formData = new FormData();
@@ -410,8 +432,8 @@ $(document).ready(function() {
 						console.error(xhr.responseText);
 					}
 				});
-			});
-		}
+			//});
+		//}
 	})
 	
 	// Remove existing file from preview & array
