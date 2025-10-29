@@ -143,11 +143,14 @@ if($grievance)
 					</div>
 				</div>--}}
 				
+				@if($grievance->status  == 3)
 				<div class="alert-box-container margin-top-30">
 					<div class="well">
 					   <h3>{{ __('rating') }}</h3>
 					   <p>{{ __('resubmit_Grievance_higher_authority') }}</p>
 					   <form id="rating-form" action="{{ route('save-citizen-rating') }}" method="POST">
+					   @csrf
+					   <input type="hidden" value="{{ $grievance->id ?? '' }}" name="grievance_id">
 						  <div class="row">
 							 <div class="col-md-9 col-xs-12 col-sm-12">
 								<div class="rating-stars">
@@ -157,9 +160,15 @@ if($grievance)
 									<input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars">&#9733;</label>
 									<input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star">&#9733;</label>
 								</div>
+								@error('rating')
+									<div class="text-danger">{{ $message }}</div>
+								@enderror
 							 </div>
 							 <div class="col-md-9 col-xs-12 col-sm-12 mt-2">
-								<input placeholder="Enter Your Feedback" type="text" class="form-control"> 
+								<input placeholder="Enter Your Feedback" type="text" name="feedback_description" class="form-control" value="{{ $grievance->feedback_description ?? '' }}">
+								@error('feedback_description')
+									<div class="text-danger">{{ $message }}</div>
+								@enderror
 							 </div>
 							 <div class="col-md-3 col-xs-12 col-sm-12">
 								<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
@@ -168,6 +177,7 @@ if($grievance)
 					   </form>
 					</div>
 				 </div>
+				 @endif
 				 <!-- Price Alert -->
 				 {{--<div class="alert-box-container margin-top-30">
 					<div class="well">
@@ -250,6 +260,7 @@ if($grievance)
 </div>
 <input type="hidden" id="view_latitude" value="{{ $grievance->latitude ?? '' }}">
 <input type="hidden" id="view_longitude" value="{{ $grievance->longitude ?? '' }} ">
+<input type="hidden" id="get-rating" value="{{ $grievance->feedback_rating ?? '' }}">
 	<!-- /Page Content -->
 @include('modal.user-modal')
 @include('modal.common')
@@ -344,6 +355,12 @@ $(document).ready(function(){
 		const rating = $(this).val();
 		console.log("Selected rating:", rating);
 	});
+	
+	var get_rating = $('#get-rating').val();
+	if(get_rating != '')
+	{
+		$('#star' + get_rating).click();
+	}
 });
 </script>
 @endsection

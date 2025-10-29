@@ -416,4 +416,18 @@ class DashboardController extends Controller
 			return back()->with('error', 'Failed to create ZIP file.');
 		}
 	}
+	public function save_citizen_rating(Request $request)
+	{
+		//echo "<pre>";print_r($request->all());die;
+		$validated = $request->validate([
+			'rating' => 'required',
+			'feedback_description' => 'required',
+		]);
+		
+		$model = Grievance::find($request->grievance_id);
+		$model->feedback_rating = $request->rating;
+		$model->feedback_description = $request->feedback_description;
+		$model->save();
+		return back();
+	}
 }
