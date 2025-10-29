@@ -619,3 +619,9 @@
 	background: transparent;
 	border: 1px solid #0E5185;
 }
+.review-excerpt th {
+	width: 180px;
+}
+.rating-stars label {
+	margin-bottom: 0;
+}

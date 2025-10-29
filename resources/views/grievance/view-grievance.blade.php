@@ -80,18 +80,48 @@ if($grievance)
 						  <li><img alt="" src="images/single-page/6_thumb.jpg"></li>--}}
 					   </ul>
 					</div>
-					<div class="content-box-grid">
-					   <!-- Heading Area -->
-					   <div class="short-features">						
-						  <div class="heading-panel">
-							 <h3 class="main-title text-left">
+					
+				</div>
+				 <!-- Single Ad End --> 
+				<div class="alert-box-container margin-top-10">
+						<div class="well mtb_0 review-excerpt">
+							 <h3 class="main-title text-left mt_20">
 								{{ __('issue_description') }} 
 							 </h3>
-						  </div>
-						  <p>
-						  {{ $grievance->issue_description ?? '' }}.
-						  </p>
-						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+							<p>{{ $grievance->issue_description ?? '' }}.</p>
+						  <table class="table">
+							 <tbody>
+								<tr>
+								   <th>{{ __('name') }}:</th>
+								   <td>{{ $grievance->name ?? '' }}</td>
+								</tr>
+								<tr>
+								   <th>{{ __('mobile') }}:</th>
+								   <td>{{ $grievance->mobile_no ?? '' }}</td>
+								</tr>
+								<tr>
+								   <th>{{ __('ward_prabhag') }}:</th>
+								   <td>{{ $grievance->ward_prabhag ?? '' }}</td>
+								</tr>
+								<tr>
+								   <th>{{ __('department') }}:</th>
+								   <td>{{ $grievance->get_department->name ?? '' }}</td>
+								</tr>
+								<tr>
+								   <th>{{ __('grievance_type') }}:</th>
+								   <td>{{ $grievance->get_grievance_type->name ?? '' }}</td>
+								</tr>
+								<tr>
+								   <th>{{ __('address') }}:</th>
+								   <td>{{ $grievance->address ?? '' }}</td>
+								</tr>
+								<tr>
+								   <th>{{ __('pin_code') }}:</th>
+								   <td>{{ $grievance->pincode ?? '' }}</td>
+								</tr>
+							 </tbody>
+						  </table>
+						  {{--<div class="col-sm-4 col-md-4 col-xs-12 no-padding">
 							 <span><strong>{{ __('name') }}</strong> :</span> {{ $grievance->name ?? '' }}
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
@@ -111,47 +141,20 @@ if($grievance)
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
 							 <span><strong>{{ __('pin_code') }}</strong> :</span> {{ $grievance->pincode ?? '' }}
-						  </div>
+						  </div>--}}
 					   </div>
 					   <div class="clearfix"></div>
 					</div>	
-				</div>
-				 <!-- Single Ad End --> 
-				{{--<div class="alert-box-container margin-top-30">
-					<div class="well">
-					   <h3>{{ __('rating') }}</h3>
-					   <form>
-						  <form id="rating-form" action="" method="POST">
-							@csrf
-							<div class="row align-items-center">
-								<div class="col-md-9 col-xs-12 col-sm-12 text-center text-md-start">
-									<div class="rating-stars">
-										<input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars">&#9733;</label>
-										<input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars">&#9733;</label>
-										<input type="radio" name="rating" id="star3" value="3"><label for="star3" title="3 stars">&#9733;</label>
-										<input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars">&#9733;</label>
-										<input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star">&#9733;</label>
-									</div>
-								</div>
-								<div class="col-md-3 col-xs-12 col-sm-12">
-									<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
-								</div>
-							</div>
-						</form>
-					   </form>
-					</div>
-				</div>--}}
-				
 				@if($grievance->user_id == auth()->user()->id && auth()->user()->user_type == 1 && $grievance->status  == 3)
-				<div class="alert-box-container margin-top-30">
-					<div class="well">
+				<div class="alert-box-container margin-top-10">
+					<div class="well mtb_0">
 					   <h3>{{ __('rating') }}</h3>
-					   <p>{{ __('resubmit_Grievance_higher_authority') }}</p>
+					   <p>You rating is important for us.</p>
 					   <form id="rating-form" action="{{ route('save-citizen-rating') }}" method="POST">
 					   @csrf
 					   <input type="hidden" value="{{ $grievance->id ?? '' }}" name="grievance_id">
 						  <div class="row">
-							 <div class="col-md-9 col-xs-12 col-sm-12">
+							 <div class="col-md-9 col-xs-12 col-sm-12 margin-bottom-20">
 								<div class="rating-stars">
 									<input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars">&#9733;</label>
 									<input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars">&#9733;</label>
@@ -160,16 +163,16 @@ if($grievance)
 									<input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star">&#9733;</label>
 								</div>
 								@error('rating')
-									<div class="text-danger">{{ $message }}</div>
+									<div class="text-danger position-absolute">{{ $message }}</div>
 								@enderror
 							 </div>
-							 <div class="col-md-9 col-xs-12 col-sm-12 mt-2">
-								<input placeholder="Enter Your Feedback" type="text" name="feedback_description" class="form-control" value="{{ $grievance->feedback_description ?? '' }}">
+							 <div class="col-md-9 col-xs-12 col-sm-12 mt-2 margin-bottom-20 margin-top-10">
+								<input placeholder="Enter Your Feedback" type="text" name="feedback_description" class="form-control mtb_0" value="{{ $grievance->feedback_description ?? '' }}">
 								@error('feedback_description')
-									<div class="text-danger">{{ $message }}</div>
+									<div class="text-danger position-absolute">{{ $message }}</div>
 								@enderror
 							 </div>
-							 <div class="col-md-3 col-xs-12 col-sm-12">
+							 <div class="col-md-3 col-xs-12 col-sm-12 margin-top-10">
 								<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
 							 </div>
 						  </div>
@@ -180,8 +183,8 @@ if($grievance)
 				 
 				@if(auth()->user()->user_type == 1 && auth()->user()->id == $grievance->user_id)
 					@if(!empty($solved_image))
-						<div class="alert-box-container margin-top-30">
-						<div class="well">
+						<div class="alert-box-container margin-top-10">
+						<div class="well mtb_0">
 						   <h3>{{ __('solved_grievance') }}</h3>
 						   <p>{{ __('solved_grievance') }}</p>
 							<div class="row margin-bottom-10">		
@@ -215,7 +218,7 @@ if($grievance)
 				@endif
 				 
 				@if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3)
-					<div class="alert-box-container margin-top-30">
+					<div class="alert-box-container margin-top-10">
 						<div class="well">
 						   <h3>{{ __('solved_grievance') }}</h3>
 						   <p>{{ __('solved_grievance') }}</p>
@@ -320,7 +323,7 @@ if($grievance)
 									<div class="category-list-icon resubmit-section">
 									  <i class="green fa fa-repeat" aria-hidden="true"></i>
 									  <div class="category-list-title" style="cursor:pointer">
-										 <h3 id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}?<br/><p class="text-info">Click here to resubmit</p></h5>
+										 <h3 id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}?<br/><p class="text-info mtb_0">Click here to resubmit</p></h3>
 									  </div>
 									</div>
 									{{--<div class="widget">
@@ -329,33 +332,52 @@ if($grievance)
 										</div>
 									</div>--}}
 								  @elseif($grievance->status == 2  && $check_user == 1)
-								   <div class="widget">
+									<div class="category-list-icon">
+									  <i class="green fa fa-repeat" aria-hidden="true"></i>
+									  <div class="category-list-title">
+										 <h3>Already resubmitted</h3>
+									  </div>
+									</div>
+								   {{--<div class="widget">
 										<div class="widget-heading">
 											<div class="alert alert-info text-center mt-3" role="alert">
 												You have already resubmitted this grievance.
 											</div>
 										</div>
-									</div>
+									</div>--}}
 								  @endif
 								  
 								  @if(!empty($check_user))
-									<div class="widget">
+									<div class="category-list-icon show-resubmit-text" style="display:none">
+									  <i class="green fa fa-repeat" aria-hidden="true"></i>
+									  <div class="category-list-title">
+										 <p class="text-info">You have successfully resubmitted this grievance.</p>
+									  </div>
+									</div>
+									
+									{{--<div class="widget">
 										<div class="widget-heading">
 											<div class="alert alert-info text-center mt-3 show-resubmit-text" role="alert" style="display:none">
 													You have already resubmitted this grievance.
 											</div>
 										</div>
-									</div>
+									</div>--}}
 								  @endif
 							   
 							@endif
 							
 							@if(auth()->user()->user_type == 2 && $check_dept ==1)
-								<div class="widget">
+								<div class="category-list-icon">
+								  <i class="orange fa fa-download" aria-hidden="true"></i>
+								  <div class="category-list-title" style="cursor:pointer">
+									 <h3 id="downloadBtn" data-id="{{ $grievance->id }}">{{ __('download') }}?<br/><p class="text-info mtb_0">Click here to download images.</p></h3>
+								  </div>
+								</div>
+								{{--<div class="widget">
 									<div class="widget-heading">
 										<div class="resubmit-button" id="downloadBtn" data-id="{{ $grievance->id }}">{{ __('download') }}</div>
 									</div>
-								</div>
+								</div>--}}
 							@endif
 						@endauth
 						<div class="widget">

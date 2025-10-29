@@ -38,7 +38,7 @@
 							<!-- Middle Content Area -->
                   <div class="col-md-12 col-xs-12 col-sm-12">
 					@php
-						$registerOrDashboardUrl = Auth::check() ? route('dashboard') : route('register');
+						$registerOrDashboardUrl = route('register');
 						$submitGrievanceOrLoginUrl = Auth::check() ? route('submit-grievance') : route('login');
 						$viewGrievanceStatusUrl = route('view-status');
 						$forgotPasswordUrl = route('password.request');
