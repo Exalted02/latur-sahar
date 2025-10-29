@@ -13,7 +13,7 @@
 	   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		  <div class="small-breadcrumb">
 			 <div class="header-page">
-				<h1>{{ __('about_us') }}</h1>
+				<h1>{{ __('terms_conditions_heading') }}</h1>
 			 </div>
 		  </div>
 	   </div>
@@ -34,14 +34,14 @@
 					<div class="profile-section margin-bottom-20">
 						<div class="profile-edit">
 							<div class="clearfix"></div>
-							<div class="margin-bottom-20">{!! __('about_us_heading') !!}</div>
-							<p>{{ __('about_us_short_content') }}</p>	
+							<div class="margin-bottom-20">{!! __('terms_conditions_introduction') !!}</div>
+							<p>{!! __('terms_conditions_short_content') !!}</p>	
 							
 							<div class="review-excerpt">
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_long_content1') !!}
+                                       {!! __('terms_conditions_long_content1') !!}
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_long_content2') !!}
+                                       {!! __('terms_conditions_long_content2') !!}
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_long_content3') !!}
+                                       {!! __('terms_conditions_long_content3') !!}
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_long_content4') !!}
+                                       {!! __('terms_conditions_long_content4') !!}
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,31 @@
 								<div class="pro-cons">
 									<div class="pro-section">
                                        <img src="{{ asset('front-assets/images/like.png') }}" alt="">
-                                       {!! __('about_us_long_content5') !!}
+                                       {!! __('terms_conditions_long_content5') !!}
+                                    </div>
+                                </div>
+                            </div>
+							<div class="review-excerpt">
+								<div class="pro-cons">
+									<div class="pro-section">
+                                       <img src="{{ asset('front-assets/images/like.png') }}" alt="">
+                                       {!! __('terms_conditions_long_content6') !!}
+                                    </div>
+                                </div>
+                            </div>
+							<div class="review-excerpt">
+								<div class="pro-cons">
+									<div class="pro-section">
+                                       <img src="{{ asset('front-assets/images/like.png') }}" alt="">
+                                       {!! __('terms_conditions_long_content7') !!}
+                                    </div>
+                                </div>
+                            </div>
+							<div class="review-excerpt">
+								<div class="pro-cons">
+									<div class="pro-section">
+                                       <img src="{{ asset('front-assets/images/like.png') }}" alt="">
+                                       {!! __('terms_conditions_long_content8') !!}
                                     </div>
                                 </div>
                             </div>
