@@ -61,6 +61,8 @@
     "select_department": "Select Department",
     "grievance_type": "Grievance type",
     "select_grievance_type": "Select Grievance type",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
     "address": "address",
     "pin_code": "Pin code",
     "issue_description": "Issue Description",
