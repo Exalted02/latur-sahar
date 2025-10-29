@@ -17,7 +17,6 @@ if($grievance)
 	}
 	
 }
-
 @endphp
 <!-- Page Wrapper -->
 <!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
@@ -179,39 +178,12 @@ if($grievance)
 				 </div>
 				 @endif
 				 
-				@if((auth()->user()->user_type == 2 || auth()->user()->user_type == 3) && $grievance->status != 3)
-					<div class="alert-box-container margin-top-30">
-					<div class="well">
-					   <h3>{{ __('solved_grievance') }}</h3>
-					   <p>{{ __('solved_grievance') }}</p>
-					   <form>
-					   @csrf
-					    <input type="hidden" value="{{ $grievance->id ?? '' }}" name="grievance_id" id="grievance_id">
-							<div class="row">
-							   <div class="col-md-9 col-xs-12 col-sm-12">
-								  <label>{{ __('status') }} <span class="text-danger">*</span></label>
-								  <select class="form-control" name="select_status" id="select_status">
-									 <option value="">{{ __('select_status') }}</option>
-									 <option value="3">{{ __('solved') }}</option>
-									 <option value=""></option>
-									</select>
-								  <div class="clearfix"></div>
-								  <span id="error_select_status" class="text-danger position-absolute"></span>
-								</div>
-							</div>
-							<div class="row">
-							 <div class="col-md-9 col-xs-12 col-sm-12">
-								<label for="lo_file"></label>
-								<div class="upload-wrapper">
-								  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
-								  <label for="lo_file" class="custom-upload-label">
-									<span class="upload-text">{{ __('upload_image') }}</span>
-									<i class="fa fa-upload upload-icon"></i>
-								  </label>
-								</div>
-								<span id="error_images" class="text-danger position-absolute"></span>
-							 </div>
-							</div>
+				@if(auth()->user()->user_type == 1 && auth()->user()->id == $grievance->user_id)
+					@if(!empty($solved_image))
+						<div class="alert-box-container margin-top-30">
+						<div class="well">
+						   <h3>{{ __('solved_grievance') }}</h3>
+						   <p>{{ __('solved_grievance') }}</p>
 							<div class="row margin-bottom-10">		
 								<div class="col-md-12 d-flex flex-wrap gap-2" id="preview-container">
 								@if(!empty($solved_image))
@@ -225,27 +197,91 @@ if($grievance)
 								
 									<div class="preview-image-wrapper existing-image" data-id="{{ $image->id }}">
 										@if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp']))
+										<a href="{{ url('uploads/greivance_image/'.$image->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
 										<img src="{{ asset('uploads/greivance_image/'.$image->images) }}" class="preview-image" />
-										<button type="button" class="remove-existing-image" data-id="{{ $image->id }}" data-image="{{ $image->images }}">&times;</button>
+										</a>
 										@elseif(in_array($extension, ['mp4', 'webm', 'ogg']))
 										<video controls src="{{ asset('uploads/greivance_image/'.$image->images) }}" class="preview-image" /></video>
-										<button type="button" class="remove-existing-image" data-id="{{ $image->id }}" data-image="{{ $image->images }}">&times;</button>
+											{{--<button type="button" class="remove-existing-image" data-id="{{ $image->id }}" data-image="{{ $image->images }}">&times;</button>--}}
 										@endif
 									</div>
 									@endforeach
 								@endif
-								
 								</div>
 							</div>
-							 <div class="row">
-								 <div class="col-md-3 col-xs-12 col-sm-12">
-									<input class="btn btn-theme btn-block update-grievance-status" value="Submit" type="button"> 
-								 </div>
-							 </div>
-						  
-					   </form>
+						</div>
 					</div>
-				 </div>
+					@endif
+				@endif
+				 
+				@if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3)
+					<div class="alert-box-container margin-top-30">
+						<div class="well">
+						   <h3>{{ __('solved_grievance') }}</h3>
+						   <p>{{ __('solved_grievance') }}</p>
+						   <form>
+						   @csrf
+							<input type="hidden" value="{{ $grievance->id ?? '' }}" name="grievance_id" id="grievance_id">
+								<div class="row">
+								   <div class="col-md-9 col-xs-12 col-sm-12">
+									  <label>{{ __('status') }} <span class="text-danger">*</span></label>
+									  <select class="form-control" name="select_status" id="select_status">
+										 <option value="">{{ __('select_status') }}</option>
+										 <option value="3" {{ $grievance->status == 3 ? 'selected' : ''}}>{{ __('solved') }}</option>
+										 <option value=""></option>
+										</select>
+									  <div class="clearfix"></div>
+									  <span id="error_select_status" class="text-danger position-absolute"></span>
+									</div>
+								</div>
+								<div class="row">
+								 <div class="col-md-9 col-xs-12 col-sm-12">
+									<label for="lo_file"></label>
+									<div class="upload-wrapper">
+									  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
+									  <label for="lo_file" class="custom-upload-label">
+										<span class="upload-text">{{ __('upload_image') }}</span>
+										<i class="fa fa-upload upload-icon"></i>
+									  </label>
+									</div>
+									<span id="error_images" class="text-danger position-absolute"></span>
+								 </div>
+								</div>
+								<div class="row margin-bottom-10">		
+									<div class="col-md-12 d-flex flex-wrap gap-2" id="preview-container">
+									@if(!empty($solved_image))
+										@foreach($solved_image as $image)
+										@php 
+										$urlsExp = explode(".", $image->images);
+										$extension = $urlsExp[1];
+										$extension = strtolower($extension);
+										//echo $extension;
+										@endphp
+									
+										<div class="preview-image-wrapper existing-image" data-id="{{ $image->id }}">
+											@if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp']))
+											<a href="{{ url('uploads/greivance_image/'.$image->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
+											<img src="{{ asset('uploads/greivance_image/'.$image->images) }}" class="preview-image" /></a>
+											<button type="button" class="remove-existing-image" data-id="{{ $image->id }}" data-image="{{ $image->images }}">&times;</button>
+											@elseif(in_array($extension, ['mp4', 'webm', 'ogg']))
+											<video controls src="{{ asset('uploads/greivance_image/'.$image->images) }}" class="preview-image" /></video>
+											<button type="button" class="remove-existing-image" data-id="{{ $image->id }}" data-image="{{ $image->images }}">&times;</button>
+											@endif
+										</div>
+										@endforeach
+									@endif
+									
+									</div>
+								</div>
+								 <div class="row">
+									 <div class="col-md-3 col-xs-12 col-sm-12">
+										<input class="btn btn-theme btn-block update-grievance-status" value="Submit" type="button"> 
+									 </div>
+								 </div>
+							  
+						   </form>
+						</div>
+					</div>
 				@endif
 				 <!-- Price Alert -->
 				 {{--<div class="alert-box-container margin-top-30">
@@ -342,9 +378,17 @@ if($grievance)
 @endsection 
 @section('scripts')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
+
+<!-- Lightbox CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 <!-- For This Page Only -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key="></script>
+
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
 <script type="text/javascript">
  (function($) {
 	"use strict";
@@ -543,6 +587,44 @@ $(document).ready(function(){
 		});
 		
 	});
+	
+	// Remove existing file from preview & array
+	previewContainer.on('click', '.remove-existing-image', function () {
+		let imageId = $(this).data('id');
+		let imagename = $(this).data('image');
+		//alert(imagename);
+		$(this).parent().remove(); // Remove visually
+
+		// Optionally: keep track of deleted image IDs to delete later in backend
+		let deleted = $('#deleted_images').val() ? $('#deleted_images').val().split(',') : [];
+		deleted.push(imageId);
+		$('#deleted_images').val(deleted.join(','));
+		
+		
+		
+		$.ajax({
+			url: "{{ route('delete-grievance-image') }}",
+			type: "POST",
+			data: {imageId:imageId, imagename:imagename, _token : "{{ csrf_token() }}"},
+			//dataType: 'json',
+			//contentType: false,
+			//processData: false, 
+			success: function(response) {
+				
+			},
+			error: function(xhr) {
+				console.error(xhr.responseText);
+			}
+		});
+	});
 });
+</script>
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'fadeDuration': 300,
+        'imageFadeDuration': 300
+    })
 </script>
 @endsection
