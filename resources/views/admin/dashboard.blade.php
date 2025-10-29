@@ -14,46 +14,50 @@
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 				<div class="card dash-widget background-info">
+					<a href="{{ route('admin.grievances',['tab'=>1]) }}">
 					<div class="card-body">
 						<span class="dash-widget-icon"><i class="fa-solid  fa-file-lines"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $tot_grievance ?? ''}}</h3>
 							<span>Total grievance</span>
 						</div>
-					</div>
+					</div></a>
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 				<div class="card dash-widget background-warning">
+					<a href="{{ route('admin.grievances',['tab'=>2]) }}">
 					<div class="card-body">
 						<span class="dash-widget-icon"><i class="fa-solid  fa-clipboard-list"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $pending_grievance ?? ''}}</h3>
 							<span>Pending grievance</span>
 						</div>
-					</div>
+					</div></a>
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 				<div class="card dash-widget background-success">
+					<a href="{{ route('admin.grievances',['tab'=>3]) }}">
 					<div class="card-body">
 						<span class="dash-widget-icon"><i class="fa-solid  fa-comments"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $solved_grievance ?? ''}}</h3>
 							<span>Solved grievance</span>
 						</div>
-					</div>
+					</div></a>
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 				<div class="card dash-widget background-danger">
+					<a href="{{ route('admin.grievances',['tab'=>4]) }}">
 					<div class="card-body">
 						<span class="dash-widget-icon"><i class="fa-solid fa-circle-exclamation"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $alert_grievance ?? '' }}</h3>
 							<span>Alert grievance</span>
 						</div>
-					</div>
+					</div></a>
 				</div>
 			</div>
 		</div>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Grievance_type;
 use App\Models\Department;
 use App\Models\Grievance;
+use Carbon\Carbon;
 
 class GrievanceController extends Controller
 {
@@ -87,10 +88,30 @@ class GrievanceController extends Controller
 		$data['result'] = $change_status;
 		echo json_encode($data);
 	}
-	public function grievances()
+	public function grievances($tab='')
 	{
+		
 		$data = [];
-		$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->get();
+		if($tab == 1)
+		{
+			$data['grievances'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('status', '!=', 4)->get();
+		}
+		
+		if($tab == 2)
+		{
+			$data['grievances'] = Grievance::whereIn('status', [1,2])->get();
+		}
+		
+		if($tab == 3)
+		{
+			$data['grievances'] = Grievance::where('status', 3)->get();
+		}
+		
+		if($tab == 4)
+		{
+			$data['grievances'] = Grievance::whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->get();
+		}
+		
 		return view('admin.grievance.frontend-grievance', $data);
 	}
 	public function delete_grievances(Request $request)

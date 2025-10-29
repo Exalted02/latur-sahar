@@ -61,7 +61,7 @@ Route::middleware(['web'])->group(function () {
 		Route::post('/deleteUserCitizenList',[UserController::class,'delete_user_citizen_list'])->name('deleteUserCitizenList');
 		
 		
-		Route::get('/grievances', [GrievanceController::class, 'grievances'])->name('grievances');
+		Route::get('/grievances/{tab}', [GrievanceController::class, 'grievances'])->name('grievances');
 		Route::post('/frontend-grievance-del', [GrievanceController::class, 'delete_grievances'])->name('frontend-grievance-del');
 		
 		Route::get('/view-frontend-grievance/{id}', [GrievanceController::class, 'view_frontend_grievance'])->name('view-frontend-grievance');
