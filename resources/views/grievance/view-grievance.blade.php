@@ -33,11 +33,11 @@ if($grievance)
 		</div>
 		<div class="col-md-3 col-sm-4 detail_price col-xs-12">
 			@if($grievance->status == 1)
-				<div class="singleprice-tag">{{ __('pending') }}</div>
+				<div class="btn btn-warning singleprice-tag" style="--tag-color: #FEB800;">{{ __('pending') }}</div>
 			@elseif($grievance->status == 2)
-			    <div class="singleprice-tag">{{ __('resubmit') }}</div>
+			    <div class="btn btn-info singleprice-tag" style="--tag-color: #17A2B8;">{{ __('resubmit') }}</div>
 			@elseif($grievance->status == 3)
-				<div class="singleprice-tag">{{ __('solved') }}</div>
+				<div class="btn btn-success singleprice-tag" style="--tag-color: #28A745;">{{ __('solved') }}</div>
 			@endif
 		</div>
 	</div>
