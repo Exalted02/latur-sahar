@@ -361,6 +361,20 @@ $(document).ready(function(){
 	{
 		$('#star' + get_rating).click();
 	}
+	
+	@if(session('success') == 'Inserted')
+	{
+		$.toast({
+			heading: 'Success',
+			text: "Feedback send successfully",
+			showHideTransition: 'slide',
+			icon: 'success',
+			position: 'top-right',
+			loaderBg: '#5cb85c',
+			hideAfter: 3000
+		});
+	}
+	@endif
 });
 </script>
 @endsection

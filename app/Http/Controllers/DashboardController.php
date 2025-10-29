@@ -428,6 +428,7 @@ class DashboardController extends Controller
 		$model->feedback_rating = $request->rating;
 		$model->feedback_description = $request->feedback_description;
 		$model->save();
-		return back();
+		return back()->with(['success' => 'Inserted']);
+		//return back()->withErrors(['success' => 'Inserted'])->withInput();
 	}
 }
