@@ -50,7 +50,7 @@
 								   </div>
 								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
 									  <label>{{ __('mobile') }} <span class="text-danger">*</span></label>
-									  <input type="text" name="mobile_no" value="{{ isset($grievance) ? $grievance->mobile_no : old('mobile_no')}}" class="form-control" id="mobile_no"id="mobile_no">
+									  <input type="text" name="mobile_no" value="{{ isset($grievance) ? $grievance->mobile_no : old('mobile_no')}}" class="form-control" id="mobile_no">
 									  <span id="error_mobile_no" class="text-danger position-absolute"></span>
 								   </div>
 								</div>
@@ -72,6 +72,18 @@
 										 <option value=""> {{ __('select_grievance_type') }}</option>
 									  </select>
 									  <span id="error_grievance_type" class="text-danger position-absolute"></span>
+								   </div>
+								</div>
+								<div class="row">
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
+									  <label>{{ __('latitude') }} <span class="text-danger">*</span></label>
+									  <input type="text" name="latitude" id="latitude" value="{{ isset($grievance) ? $grievance->latitude : old('latitude')}}" class="form-control">
+										<span id="error_latitude" class="text-danger position-absolute"></span>
+								   </div>
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
+									  <label>{{ __('longitude') }} <span class="text-danger">*</span></label>
+									  <input type="text" name="longitude" value="{{ isset($grievance) ? $grievance->longitude : old('longitude')}}" class="form-control" id="longitude">
+									  <span id="error_longitude" class="text-danger position-absolute"></span>
 								   </div>
 								</div>
 								<div class="row">
