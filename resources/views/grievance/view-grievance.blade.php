@@ -280,11 +280,18 @@ if($grievance)
 							@if(auth()->user()->user_type == 1)
 							
 								  @if($grievance->status == 1 && $check_user == 1)
-									<div class="widget">
+									<div class="category-list-icon">
+									  <i class="green fa fa-repeat" aria-hidden="true"></i>
+
+									  <div class="category-list-title" style="cursor:pointer">
+										 <h3 id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}?<br/><p class="text-info">Click here to resubmit</p></h5>
+									  </div>
+								   </div>
+									{{--<div class="widget">
 										<div class="widget-heading">
 											<div class="resubmit-button" id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}</div>
 										</div>
-									</div>
+									</div>--}}
 								  @elseif($grievance->status == 2  && $check_user == 1)
 								   <div class="widget">
 										<div class="widget-heading">
