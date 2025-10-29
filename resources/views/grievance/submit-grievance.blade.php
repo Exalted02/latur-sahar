@@ -263,6 +263,8 @@ $(document).ready(function() {
 		var pincode = $('#pincode').val();
 		var issue_description = $('#issue_description').val();
 		
+		var intRegex = /[0-9 -()+]+$/;
+		
 		if (name == '') {
 			$('#error_name').text('Please enter name').fadeIn().delay(2000).fadeOut();
 			return false;
@@ -273,11 +275,11 @@ $(document).ready(function() {
 			return false;
 		}
 		
-		if (ward_prabhag == '') {
-			$('#error_ward_prabhag').text('Please enter ward prabhag').fadeIn().delay(2000).fadeOut();
+		if((mobile_no.length < 10) || (!intRegex.test(mobile_no)))
+		{
+			$('#error_mobile_no').text('Please enter a valid mobile number.').fadeIn().delay(2000).fadeOut();
 			return false;
 		}
-		
 		
 		if (department == '') {
 			$('#error_department').text('Please select department').fadeIn().delay(2000).fadeOut();
@@ -291,6 +293,11 @@ $(document).ready(function() {
 		
 		if (address == '') {
 			$('#error_address').text('Please enter address').fadeIn().delay(2000).fadeOut();
+			return false;
+		}
+		
+		if (ward_prabhag == '') {
+			$('#error_ward_prabhag').text('Please enter ward prabhag').fadeIn().delay(2000).fadeOut();
 			return false;
 		}
 		
