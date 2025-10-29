@@ -15,7 +15,7 @@
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 				<div class="card dash-widget">
 					<div class="card-body">
-						<span class="dash-widget-icon"><i class="fa-solid fa-cubes"></i></span>
+						<span class="dash-widget-icon"><i class="fa-solid  fa-file-lines"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $tot_grievance ?? ''}}</h3>
 							<span>Total grievance</span>
@@ -26,7 +26,7 @@
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 				<div class="card dash-widget">
 					<div class="card-body">
-						<span class="dash-widget-icon"><i class="fa-solid fa-dollar-sign"></i></span>
+						<span class="dash-widget-icon"><i class="fa-solid  fa-clipboard-list"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $pending_grievance ?? ''}}</h3>
 							<span>Pending grievance</span>
@@ -37,7 +37,7 @@
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 				<div class="card dash-widget">
 					<div class="card-body">
-						<span class="dash-widget-icon"><i class="fa-regular fa-gem"></i></span>
+						<span class="dash-widget-icon"><i class="fa-solid  fa-comments"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $solved_grievance ?? ''}}</h3>
 							<span>Solved grievance</span>
@@ -48,7 +48,7 @@
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
 				<div class="card dash-widget">
 					<div class="card-body">
-						<span class="dash-widget-icon"><i class="fa-solid fa-user"></i></span>
+						<span class="dash-widget-icon"><i class="fa-solid fa-circle-exclamation"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $alert_grievance ?? '' }}</h3>
 							<span>Alert grievance</span>
