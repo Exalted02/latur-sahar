@@ -8,10 +8,10 @@ use Carbon\Carbon;
 			<div class="container">
 				<div class="row mt_50">
 					@include('_includes/user-sidebar')
-					<div class="col-md-8 col-md-push-4- col-lg-9 col-sx-12">
+					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
 						<div class="row">
 							<a href="{{ route('dashboard',['tab' => 1]) }}">
-							<div class="col-md-3 col-sm-3 col-xs-12">
+							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
 							   <div class="dashboard-card background-info">
 								  <h2>{{ $total_geievance ?? ''}}</h2>
 								  <small>{{ __('total_grievance') }}</small>
@@ -19,7 +19,7 @@ use Carbon\Carbon;
 							</div></a>
 							
 							<a href="{{ route('dashboard',['tab' => 2]) }}">
-							<div class="col-md-3 col-sm-3 col-xs-12">
+							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
 							   <div class="dashboard-card background-warning">
 								  <h2>{{ $pending_grievance ?? ''}}</h2>
 								  <small>{{ __('pending_grievance') }}</small>
@@ -27,7 +27,7 @@ use Carbon\Carbon;
 							</div></a>
 							
 							<a href="{{ route('dashboard',['tab' => 3]) }}">
-							<div class="col-md-3 col-sm-3 col-xs-12">
+							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
 							   <div class="dashboard-card background-success">
 								  <h2>{{ $solved_grievance ?? ''}}</h2>
 								  <small>{{ __('solved_grievance') }}</small>
@@ -35,7 +35,7 @@ use Carbon\Carbon;
 							</div></a>
 							
 							<a href="{{ route('dashboard',['tab' => 4]) }}">
-							<div class="col-md-3 col-sm-3 col-xs-12">
+							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
 							   <div class="dashboard-card background-danger">
 								  <h2>{{ $alert_grievance ?? ''}}</h2>
 								  <small>{{ __('alert_grievance') }}</small>
@@ -61,7 +61,7 @@ use Carbon\Carbon;
 													<tbody>
 													@foreach($grievances as  $grievance)
 														<tr class="viewgrievance" data-href="{{ route('view-grievance', ['id' => $grievance->id]) }}" style="cursor:pointer">
-															<td>{{ $grievance->registration_no ?? '' }}</td>
+															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">#{{ $grievance->registration_no ?? '' }}</a></td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
 															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{{ $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? 'Resubmit' : 'Solved') }}</td>

@@ -596,3 +596,6 @@
 .rating-stars input:checked ~ label {
     color: #f7d106;
 }
+.blog-sidebar .widget ul li a.logout {
+	color: #a94442
+}
