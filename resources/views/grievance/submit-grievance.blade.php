@@ -76,12 +76,12 @@
 									  <textarea class = "form-control margin-bottom-20" rows = "3" name="address" id="address">{{ isset($grievance) ? $grievance->address : old('address' )}}</textarea>
 									  <span id="error_address" class="text-danger"></span>
 								   </div>
-								   <div class="col-md-6 col-sm-6 col-xs-6">  
+								   <div class="col-md-6 col-sm-6 col-xs-12">  
 									  <label>{{ __('ward_prabhag') }} <span class="color-red">*</span></label>
 									  <input type="text" name="ward_prabhag" value="{{ isset($grievance) ? $grievance->ward_prabhag : old('ward_prabhag')}}" class="form-control margin-bottom-20" id="ward_prabhag">
 									  <span id="error_ward_prabhag" class="text-danger"></span>
 								   </div>
-								   <div class="col-md-6 col-sm-6 col-xs-6">  
+								   <div class="col-md-6 col-sm-6 col-xs-12">  
 									  <label>{{ __('pin_code') }} <span class="text-danger">*</span></label>
 									  <input type="text" name="pincode" value="{{ isset($grievance) ? $grievance->pincode : old('pincode')}}" class="form-control margin-bottom-20" id="pincode">
 									  <span id="error_pincode" class="text-danger"></span>
