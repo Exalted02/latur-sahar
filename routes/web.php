@@ -86,6 +86,8 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	
 	Route::get('/grievance-confirmation/{rgt_no}', [StaticController::class, 'grievance_confirmation'])->name('grievance-confirmation');
 	
+	Route::post('/save-citizen-rating', [DashboardController::class, 'save_citizen_rating'])->name('save-citizen-rating');
+	
 	// my account 
 	Route::get('/my-account', [ProfileController::class, 'my_account'])->name('my-account');
 	Route::post('/my-account', [ProfileController::class, 'save_account'])->name('my-account');

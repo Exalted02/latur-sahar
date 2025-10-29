@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@php
+$grievance_data = App\Models\Grievance::where('registration_no', $rgt_no)->first();
+@endphp
 	<!-- Page Wrapper -->
 <!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
 <div style="background-image: url('{{ asset('front-assets/inner-bg.jpg') }}');
@@ -37,8 +40,8 @@
 							<h2 class="heading-md margin-bottom-20">{{ __('grievance_submitted_successfully') }}</h2>
 							<h4 class="text-success">
 								{{ __('grievance_success_msg1') }} <br/>
-								{{ __('grievance_success_msg2_1') }} <span  style="font-size: 24px; color: #0E5185;">
-									{{ $rgt_no ?? '' }}</span> {{ __('grievance_success_msg2_2') }} <br/>
+								{{ __('grievance_success_msg2_1') }} <a href="{{ route('view-grievance', ['id'=> $grievance_data->id])}}"><span  style="font-size: 24px; color: #0E5185;">
+									#{{ $rgt_no ?? '' }}</span></a> {{ __('grievance_success_msg2_2') }} <br/>
 								{{ __('grievance_success_msg3') }}
 							</h4>
 							<div class="text-center mt_15">
