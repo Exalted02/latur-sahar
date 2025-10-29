@@ -35,7 +35,7 @@
 					<div class="profile-section margin-bottom-20">
 						<div class="profile-edit">
 							<h2 class="heading-md">{{ __('manage_grievance') }}</h2>
-							<p>{{ __('manage_grievance') }}</p>
+							<p class="text-danger">{{ __('mandatory_headline') }}</p>
 							<div class="clearfix"></div>
 							<span id="msg" class="success-msg"></span>
 							<form name="frmgrievanve" action="{{ route('submit-grievance') }}" method="post">
@@ -44,23 +44,18 @@
 							<input type="hidden" name="get_department_id" id="get_department_id" value="{{ isset($grievance) ?  $grievance->get_department->id : ''}}">
 								<div class="row">
 								   <div class="col-md-6 col-sm-6 col-xs-12">
-									  <label>{{ __('name') }} </label>
+									  <label>{{ __('name') }} <span class="text-danger">*</span></label>
 									  <input type="text" name="name" id="name" value="{{ isset($grievance) ? $grievance->name : old('name')}}" class="form-control margin-bottom-20">
 									  <span id="error_name" class="text-danger"></span>
 									  
 								   </div>
 								   <div class="col-md-6 col-sm-6 col-xs-12">
-									  <label>{{ __('mobile') }} </label>
+									  <label>{{ __('mobile') }} <span class="text-danger">*</span></label>
 									  <input type="text" name="mobile_no" value="{{ isset($grievance) ? $grievance->mobile_no : old('mobile_no')}}" class="form-control margin-bottom-20" id="mobile_no"id="mobile_no">
 									  <span id="error_mobile_no" class="text-danger"></span>
 								   </div>
-								   <div class="col-md-12 col-sm-12 col-xs-6">  
-									  <label>{{ __('ward_prabhag') }} <span class="color-red">*</span></label>
-									  <input type="text" name="ward_prabhag" value="{{ isset($grievance) ? $grievance->ward_prabhag : old('ward_prabhag')}}" class="form-control margin-bottom-20" id="ward_prabhag">
-									  <span id="error_ward_prabhag" class="text-danger"></span>
-								   </div>
 								   <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-									  <label>{{ __('department') }} <span class="color-red">*</span></label>
+									  <label>{{ __('department') }} <span class="text-danger">*</span></label>
 									  <select class="form-control" name="department" id="department">
 										 <option value=""> {{ __('select_department') }}</option>
 										 @foreach($departments as $department)
@@ -70,24 +65,29 @@
 									  <span id="error_department" class="text-danger"></span>
 								   </div>
 								   <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-									  <label>{{ __('grievance_type') }} <span class="color-red">*</span></label>
+									  <label>{{ __('grievance_type') }} <span class="text-danger">*</span></label>
 									  <select class="form-control" name="grievance_type" id="grievance_type">
 										 <option value=""> {{ __('select_grievance_type') }}</option>
 									  </select>
 									  <span id="error_grievance_type" class="text-danger"></span>
 								   </div>
 								   <div class="col-md-12 col-sm-12 col-xs-12">
-									  <label>{{ __('address') }} <span class="color-red">*</span></label>
+									  <label>{{ __('address') }} <span class="text-danger">*</span></label>
 									  <textarea class = "form-control margin-bottom-20" rows = "3" name="address" id="address">{{ isset($grievance) ? $grievance->address : old('address' )}}</textarea>
 									  <span id="error_address" class="text-danger"></span>
 								   </div>
-								   <div class="col-md-12 col-sm-12 col-xs-6">  
-									  <label>{{ __('pin_code') }} <span class="color-red">*</span></label>
+								   <div class="col-md-6 col-sm-6 col-xs-6">  
+									  <label>{{ __('ward_prabhag') }} <span class="color-red">*</span></label>
+									  <input type="text" name="ward_prabhag" value="{{ isset($grievance) ? $grievance->ward_prabhag : old('ward_prabhag')}}" class="form-control margin-bottom-20" id="ward_prabhag">
+									  <span id="error_ward_prabhag" class="text-danger"></span>
+								   </div>
+								   <div class="col-md-6 col-sm-6 col-xs-6">  
+									  <label>{{ __('pin_code') }} <span class="text-danger">*</span></label>
 									  <input type="text" name="pincode" value="{{ isset($grievance) ? $grievance->pincode : old('pincode')}}" class="form-control margin-bottom-20" id="pincode">
 									  <span id="error_pincode" class="text-danger"></span>
 								   </div>
 								   <div class="col-md-12 col-sm-12 col-xs-12">
-									  <label>{{ __('issue_description') }} <span class="color-red">*</span></label>
+									  <label>{{ __('issue_description') }} <span class="text-danger">*</span></label>
 									  <textarea name="issue_description" id="issue_description" class= "form-control margin-bottom-20" rows = "3">{{ isset($grievance) ? $grievance->issue_description : old ('issue_description') }}</textarea>
 									  <span id="error_issue_description" class="text-danger"></span>
 								   </div>
@@ -150,8 +150,8 @@
 								</div>--}}
 								<div class="clearfix"></div>
 								<div class="row">
-								   <div class="col-md-12 col-sm-12 col-xs-12 text-right">
-									  <button type="button" class="btn btn-theme btn-sm submit-greivance">{{ __('submit_grievance') }}</button>
+								   <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+									  <button type="button" class="btn btn-theme btn-lg submit-greivance">{{ __('submit_grievance') }}</button>
 								   </div>
 								</div>
 							</form>
