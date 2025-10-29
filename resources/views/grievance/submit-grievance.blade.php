@@ -71,6 +71,7 @@
 									  <select class="form-control" name="grievance_type" id="grievance_type">
 										 <option value=""> {{ __('select_grievance_type') }}</option>
 									  </select>
+									  <div class="clearfix"></div>
 									  <span id="error_grievance_type" class="text-danger position-absolute"></span>
 								   </div>
 								</div>
