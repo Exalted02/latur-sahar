@@ -65,7 +65,7 @@
 								<td>
 								@if($val->status ==1)
 									<div class="d-flex gap-2">
-										<div class="btn btn-warning  flex-fill text-center">Pending</div>
+										<div class="btn btn-warning  btn-sm flex-fill text-center">Pending</div>
 									</div>
 								{{--<div class="dropdown action-label">
 										<a class="btn btn-white btn-sm badge-outline-success dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -79,7 +79,7 @@
 									</div>--}}
 								 @elseif($val->status ==2)
 								 <div class="d-flex gap-2">
-									<div class="btn btn-info  flex-fill text-center">Resubmit</div>
+									<div class="btn btn-info btn-sm flex-fill text-center">Resubmit</div>
 								 </div>
 								 {{--<div class="dropdown action-label">
 										<a class="btn btn-white btn-sm badge-outline-danger dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -93,7 +93,7 @@
 								 </div>--}}
 								  @else
 									<div class="d-flex gap-2">
-										<div class="btn btn-success  flex-fill text-center">Resubmit</div>
+										<div class="btn btn-success btn-sm   flex-fill text-center">Solved</div>
 									</div>
 								  {{--<div class="dropdown action-label">
 										<a class="btn btn-white btn-sm badge-outline-danger dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
