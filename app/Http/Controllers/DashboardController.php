@@ -245,7 +245,8 @@ class DashboardController extends Controller
 			}
 		])->where('id', $id)->first();
 		
-		$data['solved_image'] = [];
+		//$data['solved_image'] = ;
+		$data['solved_image'] = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();
 		//echo "<pre>";print_r($grievance); die;
         return view('grievance.view-grievance', $data);
     }
