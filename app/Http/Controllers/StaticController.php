@@ -27,6 +27,10 @@ class StaticController extends Controller
 		$data = [];		
         return view('static.faq', $data);
     }
+	public function terms_conditions() {
+		$data = [];		
+        return view('static.terms-conditions', $data);
+    }
     public function view_status() {
 		$data = [];		
         return view('static.view-status', $data);
