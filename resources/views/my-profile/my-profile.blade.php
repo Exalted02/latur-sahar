@@ -1,20 +1,15 @@
 @extends('layouts.app')
 @section('content')
 <!-- Page Wrapper -->
-<!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
-<div style="background-image: url('{{ asset('front-assets/inner-bg.jpg') }}');
-	background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-	;">
-<!-- =-=-=-=-=-=-= Breadcrumb End =-=-=-=-=-=-= -->
+
 
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
-<div class="page-wrapper">
-    <!-- Page Content -->
-    <div class="content container-fluid">
-        <div class="change-password-wrapper">
-            <div class="col-md-4">
+<div class="main-content-area clearfix">
+		<section class="section-padding no-top gray">
+			<div class="container">
+				<div class="row mt_50">
+					@include('_includes/user-sidebar')
+					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
 			
 			
 			<div class="row">
@@ -64,8 +59,9 @@
 		</div>
 		</div>
 </div>
+</section>
 </div>
-</div>
+
 	<!-- /Page Content -->
 @include('modal.user-modal')
 @include('modal.common')

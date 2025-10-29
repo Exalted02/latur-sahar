@@ -136,7 +136,7 @@
 								<span class="type">{{ __('home_page_box_register_login_text') }}</span>
 							</div>
                            <div class="selection">
-                              <a href="#" class="btn btn-block btn-theme">{{ __('home_page_box_register_login_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                              <a href="{{ route('register') }}" class="btn btn-block btn-theme">{{ __('home_page_box_register_login_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-md-4">
@@ -145,7 +145,7 @@
                               <span class="type">{{ __('home_page_box_view_status_text') }}</span>
                            </div>
                            <div class="selection">
-                              <a href="#" class="btn btn-block btn-theme">{{ __('home_page_box_view_status_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                              <a href="{{ route('view-status')}}" class="btn btn-block btn-theme">{{ __('home_page_box_view_status_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-md-4">
@@ -154,7 +154,7 @@
                               <span class="type">{{ __('home_page_box_contact_us_text') }}</span>
                            </div>
                            <div class="selection">
-                              <a href="#" class="btn btn-block btn-theme">{{ __('home_page_box_contact_us_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                              <a href="{{ route('contact-us')}}" class="btn btn-block btn-theme">{{ __('home_page_box_contact_us_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
                         </div>
                      </div>

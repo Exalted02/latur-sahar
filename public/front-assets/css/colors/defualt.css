@@ -35,8 +35,8 @@ span.app-store-btn:hover, .social-links-two a:hover , .search-section .search-op
 	border-color: #E52D27;
 }
 .pagination > .active > a:hover, .pagination li:hover > a, .pagination > .active > a , .category-grid a:hover , .pricing .featured a.btn-theme:hover , .btn-orange {
-	background-color: #E52D27;
-	border-color: #B31217;
+	background-color: #0E5185;
+	border-color: #0E5185;
 	color: #fff !important;
 }
 .small-breadcrumb .breadcrumb-link ul li a.active {
@@ -62,7 +62,7 @@ span.app-store-btn:hover, .social-links-two a:hover , .search-section .search-op
 
 }
 .cd-top {
-	background: #E52D27 url(../../images/cd-top-arrow.svg) no-repeat center 50%;
+	background: #0E5185 url(../../images/cd-top-arrow.svg) no-repeat center 50%;
 }
 .heading-panel h3.main-title {
     border-bottom: 2px solid #E52D27;

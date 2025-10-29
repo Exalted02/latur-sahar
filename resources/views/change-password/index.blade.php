@@ -1,15 +1,16 @@
 @extends('layouts.app')
 @section('content')
-<div style="background-image: url('{{ asset('front-assets/inner-bg.jpg') }}');
-	background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-	;">
-<div class="page-wrapper">
-    <!-- Page Content -->
-    <div class="content container-fluid">
-        <div class="change-password-wrapper">
-            <div class="col-md-4">
+<div class="main-content-area clearfix">
+		<section class="section-padding no-top gray">
+			<div class="container">
+				<div class="row mt_50">
+					@include('_includes/user-sidebar')
+					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
+			<div class="row">
+				<!-- Middle Content Area -->
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<!-- Row -->
+			
 				<form name="frmChangePassword" action="{{ route('change-password') }}" method="post">
 				@csrf
 					<h2 class="heading-md">{{ __('change_password') }}</h2>
@@ -59,6 +60,8 @@
 		</div>
 	</div>
 </div>
+</div>
+<section>
 </div>
 <!-- update Success message -->
 <div class="modal custom-modal fade" id="updt_success_msg" role="dialog">
