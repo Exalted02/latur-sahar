@@ -16371,7 +16371,7 @@ textarea.form-control {
   margin-bottom: 8px;
 }
 .dash-widget .card-body .dash-widget-info span {
-  font-size: 16px;
+  font-size: 14px;
   display: inline-block;
   white-space: nowrap;
 }
@@ -21847,3 +21847,15 @@ textarea.form-control {
 }
 
 /*# sourceMappingURL=style.css.map */
+.background-info{
+	background-color: #9ccdee;
+}
+.background-warning{
+	background-color: #F5D394;
+}
+.background-success{
+	background-color: #a5ecde;
+}
+.background-danger{
+	background-color: #F0B2B0;
+}

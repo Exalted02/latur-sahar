@@ -64,7 +64,10 @@
 								<td>{{ date('d-m-Y', strtotime($val->created_at)) ?? ''}}</td>
 								<td>
 								@if($val->status ==1)
-									<div class="dropdown action-label">
+									<div class="d-flex gap-2">
+										<div class="btn btn-warning  flex-fill text-center">Pending</div>
+									</div>
+								{{--<div class="dropdown action-label">
 										<a class="btn btn-white btn-sm badge-outline-success dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
 											<i class="fa-regular fa-circle-dot text-success"></i> {{ __('Pending') }}
 										</a>
@@ -73,9 +76,12 @@
 											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Resubmit') }}</a>
 											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Solved') }}</a>
 										</div>
-									</div>
+									</div>--}}
 								 @elseif($val->status ==2)
-									<div class="dropdown action-label">
+								 <div class="d-flex gap-2">
+									<div class="btn btn-info  flex-fill text-center">Resubmit</div>
+								 </div>
+								 {{--<div class="dropdown action-label">
 										<a class="btn btn-white btn-sm badge-outline-danger dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
 											<i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Resubmit') }}
 										</a>
@@ -84,9 +90,12 @@
 											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Resubmit') }}</a>
 											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Solved') }}</a>
 										</div>
-									</div>
+								 </div>--}}
 								  @else
-									<div class="dropdown action-label">
+									<div class="d-flex gap-2">
+										<div class="btn btn-success  flex-fill text-center">Resubmit</div>
+									</div>
+								  {{--<div class="dropdown action-label">
 										<a class="btn btn-white btn-sm badge-outline-danger dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
 											<i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Solved') }}
 										</a>
@@ -95,7 +104,7 @@
 											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Resubmit') }}</a>
 											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Solved') }}</a>
 										</div>
-									</div>
+								  </div>--}}
 								 @endif
 								</td>
 									
@@ -107,7 +116,7 @@
 										{{--<a class="dropdown-item edit-grievance" href="javascript:void(0);" data-id="{{ $val->id ??''}}" data-url="{{ route('admin.edit-grievance') }}"><i class="fa-solid fa-pencil m-r-5"></i> {{ __('edit') }}</a>--}}
 										
 										  <a class="dropdown-item edit-grievance" href="{{ route('admin.view-frontend-grievance', ['id'=> $val->id]) }}"><i class="fa-solid fa-eye text-primary m-r-5"></i> {{ __('view') }}</a>
-											<a class="dropdown-item delete-grievance" href="javascript:void(0);" data-id="{{ $val->id ?? '' }}" data-url="{{ route('admin.frontend-grievance-del') }}"><i class="fa-regular fa-trash-can m-r-5"></i> {{ __('delete') }}</a>
+											  {{--<a class="dropdown-item delete-grievance" href="javascript:void(0);" data-id="{{ $val->id ?? '' }}" data-url="{{ route('admin.frontend-grievance-del') }}"><i class="fa-regular fa-trash-can m-r-5"></i> {{ __('delete') }}</a>--}}
 										</div>
 									</div>
 								</td>

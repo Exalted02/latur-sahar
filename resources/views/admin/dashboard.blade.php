@@ -13,7 +13,7 @@
 				
 		<div class="row">
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-				<div class="card dash-widget">
+				<div class="card dash-widget background-info">
 					<div class="card-body">
 						<span class="dash-widget-icon"><i class="fa-solid  fa-file-lines"></i></span>
 						<div class="dash-widget-info">
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-				<div class="card dash-widget">
+				<div class="card dash-widget background-warning">
 					<div class="card-body">
 						<span class="dash-widget-icon"><i class="fa-solid  fa-clipboard-list"></i></span>
 						<div class="dash-widget-info">
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-				<div class="card dash-widget">
+				<div class="card dash-widget background-success">
 					<div class="card-body">
 						<span class="dash-widget-icon"><i class="fa-solid  fa-comments"></i></span>
 						<div class="dash-widget-info">
@@ -46,7 +46,7 @@
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-				<div class="card dash-widget">
+				<div class="card dash-widget background-danger">
 					<div class="card-body">
 						<span class="dash-widget-icon"><i class="fa-solid fa-circle-exclamation"></i></span>
 						<div class="dash-widget-info">
