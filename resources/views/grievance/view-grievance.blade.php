@@ -143,7 +143,7 @@ if($grievance)
 					</div>
 				</div>--}}
 				
-				@if($grievance->status  == 3)
+				@if(auth()->user()->user_type == 1 && $grievance->status  == 3)
 				<div class="alert-box-container margin-top-30">
 					<div class="well">
 					   <h3>{{ __('rating') }}</h3>
@@ -178,6 +178,25 @@ if($grievance)
 					</div>
 				 </div>
 				 @endif
+				 
+				@if((auth()->user()->user_type == 2 || auth()->user()->user_type == 3) && $grievance->status == 3)
+					<div class="alert-box-container margin-top-30">
+					<div class="well">
+					   <h3>{{ __('resubmit_grievance') }}</h3>
+					   <p>{{ __('resubmit_Grievance_higher_authority') }}</p>
+					   <form>
+						  <div class="row">
+							 <div class="col-md-9 col-xs-12 col-sm-12">
+								<input placeholder="Enter Your Email " type="text" class="form-control"> 
+							 </div>
+							 <div class="col-md-3 col-xs-12 col-sm-12">
+								<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+							 </div>
+						  </div>
+					   </form>
+					</div>
+				 </div>
+				@endif
 				 <!-- Price Alert -->
 				 {{--<div class="alert-box-container margin-top-30">
 					<div class="well">

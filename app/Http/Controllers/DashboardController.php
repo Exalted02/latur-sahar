@@ -235,7 +235,16 @@ class DashboardController extends Controller
     {
 		$data = [];
 		
-		$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		//$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		
+		$data['grievance'] = Grievance::with([
+			'get_department',
+			'get_grievance_type',
+			'grievance_image' => function ($query) {
+				$query->where('image_type', 1);
+			}
+		])->where('id', $id)->first();
+		
 		//echo "<pre>";print_r($grievance); die;
         return view('grievance.view-grievance', $data);
     }
@@ -265,7 +274,15 @@ class DashboardController extends Controller
 	public function edit_grievance($id='')
 	{
 		$data = [];
-		$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		/*$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();*/
+		
+		$data['grievance'] = Grievance::with([
+			'get_department',
+			'get_grievance_type',
+			'grievance_image' => function ($query) {
+				$query->where('image_type', 1);
+			}
+		])->where('id', $id)->first();
 		//echo "<pre>";print_r($grievance); die;
 		$data['departments'] = Department::where('status', 1)->get();
         return view('grievance.submit-grievance', $data);
