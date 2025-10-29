@@ -245,7 +245,7 @@ class DashboardController extends Controller
 			}
 		])->where('id', $id)->first();
 		
-		$data['solved_image'] = [];
+		//$data['solved_image'] = ;
 		//echo "<pre>";print_r($grievance); die;
         return view('grievance.view-grievance', $data);
     }
