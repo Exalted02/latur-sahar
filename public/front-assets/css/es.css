@@ -569,3 +569,30 @@
 .position-absolute {
 	position: absolute;
 }
+
+.rating-stars {
+    direction: rtl; /* Makes highest star appear on the left */
+    display: inline-flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.rating-stars input {
+    display: none;
+}
+
+.rating-stars label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: #f7d106;
+}
+
+.rating-stars input:checked ~ label {
+    color: #f7d106;
+}
