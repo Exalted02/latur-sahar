@@ -16372,6 +16372,8 @@ textarea.form-control {
 }
 .dash-widget .card-body .dash-widget-info span {
   font-size: 16px;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .dash-statistics .stats-list {
