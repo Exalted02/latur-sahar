@@ -280,13 +280,12 @@ if($grievance)
 							@if(auth()->user()->user_type == 1)
 							
 								  @if($grievance->status == 1 && $check_user == 1)
-									<div class="category-list-icon">
+									<div class="category-list-icon resubmit-section">
 									  <i class="green fa fa-repeat" aria-hidden="true"></i>
-
 									  <div class="category-list-title" style="cursor:pointer">
 										 <h3 id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}?<br/><p class="text-info">Click here to resubmit</p></h5>
 									  </div>
-								   </div>
+									</div>
 									{{--<div class="widget">
 										<div class="widget-heading">
 											<div class="resubmit-button" id="resubmitBtn" data-id="{{ $grievance->id }}">{{ __('resubmit_grievance') }}</div>
@@ -398,7 +397,7 @@ $(document).ready(function(){
 					loaderBg: '#5cb85c',
 					hideAfter: 3000
 				});
-				$('.resubmit-button').hide();
+				$('.resubmit-section').hide();
 				$('.show-resubmit-text').show();
 				
 				
