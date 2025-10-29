@@ -184,8 +184,9 @@ if($grievance)
 					<div class="well">
 					   <h3>{{ __('solved_grievance') }}</h3>
 					   <p>{{ __('solved_grievance') }}</p>
-					   <form name="frmStatus" action="{{ route('grievance-update-status') }}">
+					   <form>
 					   @csrf
+					    <input type="hidden" value="{{ $grievance->id ?? '' }}" name="grievance_id" id="grievance_id">
 							<div class="row">
 							   <div class="col-md-9 col-xs-12 col-sm-12">
 								  <label>{{ __('status') }} <span class="text-danger">*</span></label>
@@ -193,9 +194,9 @@ if($grievance)
 									 <option value="">{{ __('select_status') }}</option>
 									 <option value="3">{{ __('solved') }}</option>
 									 <option value=""></option>
-									
-								  </select>
+									</select>
 								  <div class="clearfix"></div>
+								  <span id="error_select_status" class="text-danger position-absolute"></span>
 								</div>
 							</div>
 							<div class="row">
@@ -208,11 +209,37 @@ if($grievance)
 									<i class="fa fa-upload upload-icon"></i>
 								  </label>
 								</div>
+								<span id="error_images" class="text-danger position-absolute"></span>
 							 </div>
+							</div>
+							<div class="row margin-bottom-10">		
+								<div class="col-md-12 d-flex flex-wrap gap-2" id="preview-container">
+								@if(!empty($solved_image))
+									@foreach($solved_image as $image)
+									@php 
+									$urlsExp = explode(".", $image->images);
+									$extension = $urlsExp[1];
+									$extension = strtolower($extension);
+									//echo $extension;
+									@endphp
+								
+									<div class="preview-image-wrapper existing-image" data-id="{{ $image->id }}">
+										@if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp']))
+										<img src="{{ asset('uploads/greivance_image/'.$image->images) }}" class="preview-image" />
+										<button type="button" class="remove-existing-image" data-id="{{ $image->id }}" data-image="{{ $image->images }}">&times;</button>
+										@elseif(in_array($extension, ['mp4', 'webm', 'ogg']))
+										<video controls src="{{ asset('uploads/greivance_image/'.$image->images) }}" class="preview-image" /></video>
+										<button type="button" class="remove-existing-image" data-id="{{ $image->id }}" data-image="{{ $image->images }}">&times;</button>
+										@endif
+									</div>
+									@endforeach
+								@endif
+								
+								</div>
 							</div>
 							 <div class="row">
 								 <div class="col-md-3 col-xs-12 col-sm-12">
-									<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+									<input class="btn btn-theme btn-block update-grievance-status" value="Submit" type="button"> 
 								 </div>
 							 </div>
 						  
@@ -417,6 +444,99 @@ $(document).ready(function(){
 		});
 	}
 	@endif
+	
+	let previewContainer = $('#preview-container');
+    let selectedFiles = [];
+	
+	$('#lo_file').on('change', function (e) {
+		let files = Array.from(e.target.files);
+
+		selectedFiles = [...selectedFiles, ...files];
+
+		files.forEach((file, index) => {
+			let reader = new FileReader();
+			reader.onload = function (e) {
+				let previewHtml = '';
+
+				if (file.type.startsWith('image/')) {
+					previewHtml = '<div class="preview-image-wrapper" data-index="' 
+						+ (selectedFiles.length - files.length + index) 
+						+ '"><img src="' + e.target.result 
+						+ '" class="preview-image" /><button type="button" class="remove-image" data-index="' 
+						+ (selectedFiles.length - files.length + index) 
+						+ '">&times;</button></div>';
+				} else if (file.type.startsWith('video/')) {
+					previewHtml = '<div class="preview-image-wrapper" data-index="' 
+						+ (selectedFiles.length - files.length + index) 
+						+ '"><video src="' + e.target.result 
+						+ '" class="preview-image" controls style="max-width: 120px; max-height: 120px;"></video><button type="button" class="remove-image" data-index="' 
+						+ (selectedFiles.length - files.length + index) 
+						+ '">&times;</button></div>';
+				}
+				previewContainer.append(previewHtml);
+			};
+			reader.readAsDataURL(file);
+		});
+
+		$(this).val('');
+	});
+	
+	// Remove file from preview & array
+	previewContainer.on('click', '.remove-image', function () {
+		const indexToRemove = $(this).data('index');
+		$(this).parent().remove();
+		selectedFiles[indexToRemove] = null;
+		selectedFiles = selectedFiles.filter(file => file !== null);
+	});
+	
+	$(document).on('click', '.update-grievance-status' ,function(){
+		let select_status = $('#select_status').val();
+		let grievance_id = $('#grievance_id').val();
+		if (select_status == '') {
+			$('#error_select_status').text('Please enter pincode').fadeIn().delay(2000).fadeOut();
+			return false;
+		}
+		
+		if (selectedFiles.length === 0) {
+			$('#error_images').text('Please select image').fadeIn().delay(2000).fadeOut();
+			return false;
+		}
+		
+		let formData = new FormData();
+		selectedFiles.forEach(file => {
+			formData.append('lo_file[]', file);
+		});
+		
+		formData.append('grievance_id', grievance_id);
+		formData.append('select_status', select_status);
+		formData.append('_token',"{{ csrf_token() }}");
+		
+		$.ajax({
+			url: "{{ route('grievance-update-status') }}",
+			type: "POST",
+			data: formData,
+			dataType: 'json',
+			contentType: false,
+			processData: false, 
+			success: function(response) {
+				
+				let textmsg = 'Status updated successfully!';
+				$.toast({
+					heading: 'Success',
+					text: textmsg,
+					showHideTransition: 'slide',
+					icon: 'success',
+					position: 'top-right',
+					loaderBg: '#5cb85c',
+					hideAfter: 2000 
+				});
+			},
+			error: function(xhr) {
+				console.error(xhr.responseText);
+			}
+		});
+		
+	});
 });
 </script>
 @endsection

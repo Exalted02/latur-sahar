@@ -245,6 +245,7 @@ class DashboardController extends Controller
 			}
 		])->where('id', $id)->first();
 		
+		$data['solved_image'] = [];
 		//echo "<pre>";print_r($grievance); die;
         return view('grievance.view-grievance', $data);
     }
@@ -446,5 +447,43 @@ class DashboardController extends Controller
 		$model->feedback_description = $request->feedback_description;
 		$model->save();
 		return back()->with(['success' => 'Inserted']);
+	}
+	public function grievance_update_status(Request $request)
+	{
+		//echo "<pre>"; print_r($request->all());die;
+		$grievance_id = $request->grievance_id;
+		$select_status = $request->select_status;
+		
+		$model = Grievance::find($grievance_id);
+		$model->status = $select_status ?? '';
+		$model->save();
+		
+		$id = $grievance_id;
+		
+		$lo_files = $request->file('lo_file');
+
+		if ($lo_files && is_array($lo_files)) {
+			// save new files
+			foreach ($lo_files as $file) {
+				
+				$destinationPath = public_path('uploads/greivance_image');
+				if (!file_exists($destinationPath)) {
+					mkdir($destinationPath, 0777, true);
+				}
+				
+				$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+				$file->move($destinationPath, $filename);
+
+				$fileModel = new Greivance_image();
+				$fileModel->greivance_id = $id;
+				$fileModel->user_id = auth()->user()->id;
+				$fileModel->image_type = 2;
+				$fileModel->images = $filename;
+				//$fileModel->status = 1;
+				$fileModel->save();
+			}
+		}
+		
+		return response()->json(['msg'=>'Record added successfully']);
 	}
 }
