@@ -60,7 +60,7 @@ use Carbon\Carbon;
 													</thead>
 													<tbody>
 													@foreach($grievances as  $grievance)
-														<tr>
+														<tr class="viewgrievance" data-href="{{ route('view-grievance', ['id' => $grievance->id]) }}" style="cursor:pointer">
 															<td>{{ $grievance->registration_no ?? '' }}</td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
@@ -96,6 +96,13 @@ use Carbon\Carbon;
 		});
 		
 	}
+</script>
+<script>
+$(document).ready(function() {
+	$(document).on('click', '.viewgrievance', function(){
+		window.location.href = $(this).data('href');
+	});
+});
 </script>
 @endsection
 
