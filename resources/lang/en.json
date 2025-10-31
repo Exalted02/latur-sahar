@@ -61,6 +61,8 @@
     "select_department": "Select Department",
     "grievance_type": "Grievance type",
     "select_grievance_type": "Select Grievance type",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
     "address": "address",
     "pin_code": "Pin code",
     "issue_description": "Issue Description",
@@ -127,6 +129,19 @@
 	"faq_title": "Frequently Asked Questions (FAQ)",
 	"faq_content": "<ul class=accordion><li class=in><h3 class=accordion-title><a href=#>What is Latur Sahar Municipality?</a></h3><div class=accordion-content><p>Latur Sahar Municipality, officially known as Latur City Municipal Corporation (LCMC), is the civic body responsible for managing public services, infrastructure, and urban development in Latur city, Maharashtra.</div><li><h3 class=accordion-title><a href=#>What services does the municipality provide?</a></h3><div class=accordion-content><p>The municipality provides essential services like water supply, sanitation, waste management, street lighting, road maintenance, public health, education, and transport.</div><li><h3 class=accordion-title><a href=#>How can I register on the website?</a></h3><div class=accordion-content><p>You can register by clicking the <strong><a href=':register_page_url'>Register</a></strong> button on the homepage. Fill in your details like name, mobile number, and email to create your account.</div><li><h3 class=accordion-title><a href=#>What can I do after registration?</a></h3><div class=accordion-content><p>Once registered, you can log in to access online services such as grievance submission, status tracking, and information about municipal activities.</div><li><h3 class=accordion-title><a href=#>How do I submit a grievance or complaint?</a></h3><div class=accordion-content><p>After logging in, go to the <strong><a href=':submit_grievance_page_url'>Submit Grievance</a></strong> section, fill in the required details, and submit your issue. You’ll receive a registration number to track your grievance.</div><li><h3 class=accordion-title><a href=#>How can I check my grievance status?</a></h3><div class=accordion-content><p>Click on <strong><a href=':view_grievance_status_page_url'>View Grievance Status</a></strong>, enter your registration number, and you’ll see the latest update or resolution progress.</div><li><h3 class=accordion-title><a href=#>What should I do if I forget my login password?</a></h3><div class=accordion-content><p>Click on the <strong><a href=':forgot_password_page_url'>Forgot Password</a></strong> link on the login page. Enter your registered email or mobile number to reset your password.</div><li><h3 class=accordion-title><a href=#>How can I contact the municipality?</a></h3><div class=accordion-content><p>Visit the <strong><a href=':contact_us_page_url'>Contact Us</a></strong> page to find office addresses, phone numbers, and email IDs. You can also send messages directly through the contact form.</div><li><h3 class=accordion-title><a href=#>What are the office working hours?</a></h3><div class=accordion-content><p>The Latur Sahar Municipality office is usually open Monday to Saturday, from 10:00 AM to 5:30 PM, except on government holidays.</div><li><h3 class=accordion-title><a href=#>How does the municipality ensure cleanliness and sanitation?</a></h3><div class=accordion-content><p>LCMC regularly conducts cleaning drives, door-to-door garbage collection, and public awareness programs under the Swachh Bharat Mission to maintain a clean and healthy city.</div></ul>",
 	
+	"//": "Terms and Conditions",
+	"terms_conditions_heading": "Terms and Conditions",
+	"terms_conditions_introduction": "<h3>Terms and Conditions: <span class='heading-color'>Introduction</span></h3>",
+	"terms_conditions_short_content": "Welcome to the official website of <strong>Latur Sahar Municipality (Latur City Municipal Corporation).</strong> By accessing or using this website, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before using this site.",
+	"terms_conditions_long_content1": "<h3 class='cui-delta'>1. Acceptance of Terms</h3><p>Your use of this website signifies that you have read, understood, and agreed to these Terms. If you do not agree with any part of these Terms, please do not use the website.</p>",
+	"terms_conditions_long_content2": "<h3 class='cui-delta'>2. Website Purpose</h3><p>This website is designed to provide information, online services, and grievance facilities related to <strong>Latur Sahar Municipality</strong>. While we make every effort to keep the information accurate and up to date, the Municipality is not responsible for any errors or omissions.</p>",
+	"terms_conditions_long_content3": "<h3 class='cui-delta'>3. User Responsibilities</h3><ul class=standard-list><li>Users must provide correct and valid information when registering or submitting grievances.<li>Users should not upload or share false, offensive, or unlawful content.<li>Any misuse of the website or its services may lead to suspension or termination of access.</ul>",
+	"terms_conditions_long_content4": "<h3 class='cui-delta'>4. Use of Information</h3><p>All content, including text, images, graphics, and data, is owned by or licensed to <strong>Latur Sahar Municipality</strong>. Unauthorized reproduction or use of this material is prohibited.</p>",
+	"terms_conditions_long_content5": "<h3 class='cui-delta'>5. Privacy Policy</h3><p>Your personal details submitted on this website are protected under our <strong>Privacy Policy</strong>. The Municipality ensures reasonable safeguards against unauthorized access or disclosure of user information.</p>",
+	"terms_conditions_long_content6": "<h3 class='cui-delta'>6. External Links</h3><p>This website may contain links to external websites. <strong>Latur Sahar Municipality</strong> is not responsible for the content, reliability, or privacy practices of such external sites.</p>",
+	"terms_conditions_long_content7": "<h3 class='cui-delta'>7. Limitation of Liability</h3><p>The Municipality shall not be liable for any loss, damage, or inconvenience arising from the use or inability to use this website, including delays, errors, or interruptions in service.</p>",
+	"terms_conditions_long_content8": "<h3 class='cui-delta'>8. Changes to Terms</h3><p><strong>Latur Sahar Municipality</strong> reserves the right to modify, update, or change these Terms and Conditions at any time without prior notice. Users are encouraged to review this page periodically.</p>",
+	
 	"//": "Contact Us",
 	"contact_us": "Contact Us",
 	"contact_us_title": "Fell Free To Contact Us",
@@ -139,5 +154,6 @@
 	"submit": "Submit",
 	"confirmation": "Confirmation",
 	
+	"select_status": "Select status",
 	"example": "Example"
 }

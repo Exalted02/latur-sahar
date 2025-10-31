@@ -49,7 +49,7 @@
 				
 				
 				<li class="{{ request()->routeIs('admin.grievances','admin.view-frontend-grievance') ? 'active' : '' }}">
-					<a href="{{ route('admin.grievances') }}"><i class="fa-solid fa-triangle-exclamation"></i> <span>Grievances</span></a>
+					<a href="{{ route('admin.grievances',['tab'=>1]) }}"><i class="fa-solid fa-triangle-exclamation"></i> <span>Grievances</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.email-management','admin.email-management-edit') ? 'active' : '' }}">

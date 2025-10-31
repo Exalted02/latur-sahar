@@ -88,7 +88,7 @@
 								   <ul class="list">
 									  <li>
 										 <input  type="checkbox" id="terms" name="terms">
-										 <label for="terms">{{ __('i_accept') }} <a href="">{{ __('terms_and_condition') }}</a></label>
+										 <label for="terms">{{ __('i_accept') }} <a href="{{ route('terms-conditions') }}" target="_blank">{{ __('terms_and_condition') }}</a></label>
 									  </li>
 								   </ul>
 								</div>

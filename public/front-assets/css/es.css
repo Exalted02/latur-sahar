@@ -458,9 +458,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  padding: 11px 20px;
   border: 1px solid #ccc;
-  border-radius: 50px;
+  /*border-radius: 50px;*/
   background-color: #f0f0f0;
   cursor: pointer;
   font-size: 14px;
@@ -477,8 +477,8 @@
 #preview-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 29px;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .preview-image-wrapper {
@@ -564,4 +564,64 @@
 	font-size: 14px;
 	width: fit-content;
 	margin: 20px auto;
+}
+
+.position-absolute {
+	position: absolute;
+}
+
+.rating-stars {
+    direction: rtl; /* Makes highest star appear on the left */
+    display: inline-flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.rating-stars input {
+    display: none;
+}
+
+.rating-stars label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.rating-stars label:hover,
+.rating-stars label:hover ~ label {
+    color: #f7d106;
+}
+
+.rating-stars input:checked ~ label {
+    color: #f7d106;
+}
+.blog-sidebar .widget ul li a.logout {
+	color: #a94442
+}
+.custom-small-box {
+	list-style: none;
+	padding: 0;
+	display: inline-block;
+}	
+.custom-small-box li {
+	box-shadow: none;
+	display: inline-block;
+	margin-right: 5px;
+}
+.custom-small-box li a {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	padding: 6px 8px;
+	border-radius: 50%;
+}
+.custom-small-box li > a:hover {
+	background: transparent;
+	border: 1px solid #0E5185;
+}
+.review-excerpt th {
+	width: 180px;
+}
+.rating-stars label {
+	margin-bottom: 0;
 }

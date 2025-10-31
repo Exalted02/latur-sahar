@@ -1,36 +1,24 @@
 @extends('layouts.app')
 @section('content')
 <!-- Page Wrapper -->
-<!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
-<div class="page-header-area-2 gray">
- <div class="container">
-	<div class="row">
-	   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		  <div class="small-breadcrumb">
-			 <div class="header-page">
-				<h1>{{ __('my_account') }}</h1>
-			 </div>
-		  </div>
-	   </div>
-	</div>
- </div>
-</div>
-<!-- =-=-=-=-=-=-= Breadcrumb End =-=-=-=-=-=-= -->
+
 
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
-	<!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
-	<section class="section-padding no-top gray">
-		<!-- Main Container -->
-		<div class="container">
+		<section class="section-padding no-top gray">
+			<div class="container">
+				<div class="row mt_50">
+					@include('_includes/user-sidebar')
+					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
+			
+			
 			<div class="row">
 				<!-- Middle Content Area -->
 				<div class="col-md-12 col-xs-12 col-sm-12">
 					<!-- Row -->
-					<div class="profile-section margin-bottom-20">
-						<div class="profile-edit">
-							<h2 class="heading-md">{{ __('manage_profile') }}</h2>
 
+							<h2 class="heading-md">{{ __('my_account') }}</h2>
+							<p class="text-danger">{{ __('mandatory_headline') }}</p>
 							<div class="clearfix"></div>
 							<span id="msg" class="success-msg"></span>
 							<form name="frmgrievanve" action="{{ route('my-account') }}" method="post">
@@ -38,34 +26,40 @@
 							<input type="hidden" name="id" id="id" value="{{ isset($account) ? $account->id : '' }}">
 							
 								<div class="row">
-								   <div class="col-md-6 col-sm-6 col-xs-12">
-									  <label>{{ __('name') }} </label>
-									  <input type="text" name="name" id="name" value="{{ isset($account) ? $account->name : old('name')}}" class="form-control margin-bottom-20">
+								   <div class="col-md-12 margin-bottom-20">
+									  <label>{{ __('name') }} <span class="text-danger">*</span> </label>
+									  <input type="text" name="name" id="name" value="{{ isset($account) ? $account->name : old('name')}}" class="form-control">
 									   @error('name')
-										<div class="text-danger">{{ $message }}</div>
+										<div class="text-danger position-absolute">{{ $message }}</div>
 									   @enderror
 									</div>
-								   <div class="col-md-6 col-sm-6 col-xs-12">
-									  <label>{{ __('mobile') }} </label>
-									  <input type="text" name="mobile" value="{{ isset($account) ? $account->mobile : old('mobile')}}" class="form-control margin-bottom-20" id="mobile">
+								   <div class="col-md-12 margin-bottom-20">
+									  <label>{{ __('mobile') }} <span class="text-danger">*</span> </label>
+									  <input type="text" name="mobile" value="{{ isset($account) ? $account->mobile : old('mobile')}}" class="form-control" id="mobile">
 									  @error('mobile')
-										<div class="text-danger">{{ $message }}</div>
+										<div class="text-danger position-absolute">{{ $message }}</div>
 									   @enderror
 									</div>
 								</div>
 								<div class="clearfix"></div>
-								<div class="row">
-								   <div class="col-md-12 col-sm-12 col-xs-12 text-right">
-									  <button type="submit" class="btn btn-theme btn-sm">{{ __('submit_account') }}</button>
+								<div class="row margin-top-10">
+								   <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+									  <button type="submit" class="btn btn-theme btn-lg">{{ __('submit_account') }}</button>
 								   </div>
 								</div>
 							</form>
-						</div>
-					</div>
 				</div>
 			</div>
+			
+			
+			
+			
+			
+			
 		</div>
-	</section>
+		</div>
+</div>
+</section>
 </div>
 
 	<!-- /Page Content -->

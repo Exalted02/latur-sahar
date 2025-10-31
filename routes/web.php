@@ -62,6 +62,7 @@ Route::get('/about-us', [StaticController::class, 'about_us'])->name('about-us')
 Route::get('/contact-us', [StaticController::class, 'contact_us'])->name('contact-us');
 Route::get('/faq', [StaticController::class, 'faq'])->name('faq');
 Route::get('/services', [StaticController::class, 'services'])->name('services');
+Route::get('/terms-conditions', [StaticController::class, 'terms_conditions'])->name('terms-conditions');
 
 Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/dashboard/{tab}', [DashboardController::class, 'index'])->name('dashboard');
@@ -85,6 +86,9 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::get('/download-grievance-files/{id}', [DashboardController::class, 'downloadFiles'])->name('grievance.download');
 	
 	Route::get('/grievance-confirmation/{rgt_no}', [StaticController::class, 'grievance_confirmation'])->name('grievance-confirmation');
+	
+	Route::post('/save-citizen-rating', [DashboardController::class, 'save_citizen_rating'])->name('save-citizen-rating');
+	Route::post('/grievance-update-status', [DashboardController::class, 'grievance_update_status'])->name('grievance-update-status');
 	
 	// my account 
 	Route::get('/my-account', [ProfileController::class, 'my_account'])->name('my-account');

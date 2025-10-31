@@ -235,7 +235,18 @@ class DashboardController extends Controller
     {
 		$data = [];
 		
-		$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		//$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		
+		$data['grievance'] = Grievance::with([
+			'get_department',
+			'get_grievance_type',
+			'grievance_image' => function ($query) {
+				$query->where('image_type', 1);
+			}
+		])->where('id', $id)->first();
+		
+		//$data['solved_image'] = ;
+		$data['solved_image'] = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();
 		//echo "<pre>";print_r($grievance); die;
         return view('grievance.view-grievance', $data);
     }
@@ -253,6 +264,7 @@ class DashboardController extends Controller
 		
 		$greivances = Grievance_type::where('department', $department_id)->get();
 		$html = '<select class="form-control" name="grievance_type">';
+		$html .= '<option value="">Please select</option>';
 		foreach($greivances as $greivance)
 		{
 			$selected = ($greivance_id == $greivance->id) ? 'selected' : '';
@@ -264,7 +276,15 @@ class DashboardController extends Controller
 	public function edit_grievance($id='')
 	{
 		$data = [];
-		$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		/*$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();*/
+		
+		$data['grievance'] = Grievance::with([
+			'get_department',
+			'get_grievance_type',
+			'grievance_image' => function ($query) {
+				$query->where('image_type', 1);
+			}
+		])->where('id', $id)->first();
 		//echo "<pre>";print_r($grievance); die;
 		$data['departments'] = Department::where('status', 1)->get();
         return view('grievance.submit-grievance', $data);
@@ -414,5 +434,57 @@ class DashboardController extends Controller
 		} else {
 			return back()->with('error', 'Failed to create ZIP file.');
 		}
+	}
+	public function save_citizen_rating(Request $request)
+	{
+		//echo "<pre>";print_r($request->all());die;
+		$validated = $request->validate([
+			'rating' => 'required',
+			'feedback_description' => 'required',
+		]);
+		
+		$model = Grievance::find($request->grievance_id);
+		$model->feedback_rating = $request->rating;
+		$model->feedback_description = $request->feedback_description;
+		$model->save();
+		return back()->with(['success' => 'Inserted']);
+	}
+	public function grievance_update_status(Request $request)
+	{
+		//echo "<pre>"; print_r($request->all());die;
+		$grievance_id = $request->grievance_id;
+		$select_status = $request->select_status;
+		
+		$model = Grievance::find($grievance_id);
+		$model->status = $select_status ?? '';
+		$model->save();
+		
+		$id = $grievance_id;
+		
+		$lo_files = $request->file('lo_file');
+
+		if ($lo_files && is_array($lo_files)) {
+			// save new files
+			foreach ($lo_files as $file) {
+				
+				$destinationPath = public_path('uploads/greivance_image');
+				if (!file_exists($destinationPath)) {
+					mkdir($destinationPath, 0777, true);
+				}
+				
+				$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+				$file->move($destinationPath, $filename);
+
+				$fileModel = new Greivance_image();
+				$fileModel->greivance_id = $id;
+				$fileModel->user_id = auth()->user()->id;
+				$fileModel->image_type = 2;
+				$fileModel->images = $filename;
+				//$fileModel->status = 1;
+				$fileModel->save();
+			}
+		}
+		
+		return response()->json(['msg'=>'Record added successfully']);
 	}
 }

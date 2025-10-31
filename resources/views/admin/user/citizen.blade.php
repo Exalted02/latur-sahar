@@ -12,7 +12,7 @@
 				<div class="col-md-4">
 					<h3 class="page-title">{{ __('Citizen') }}</h3>
 					<ul class="breadcrumb">
-						<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('dashboard') }}</a></li>
+						<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('dashboard') }}</a></li>
 						<li class="breadcrumb-item active">{{ __('Citizen') }}</li>
 					</ul>
 				</div>

@@ -1,38 +1,45 @@
 @extends('layouts.app')
 @section('content')
-<div class="page-wrapper">
-    <!-- Page Content -->
-    <div class="content container-fluid">
-        <div class="change-password-wrapper">
-            <div class="col-md-6">
+<div class="main-content-area clearfix">
+		<section class="section-padding no-top gray">
+			<div class="container">
+				<div class="row mt_50">
+					@include('_includes/user-sidebar')
+					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
+			<div class="row">
+				<!-- Middle Content Area -->
+				<div class="col-md-12 col-xs-12 col-sm-12">
+					<!-- Row -->
+			
 				<form name="frmChangePassword" action="{{ route('change-password') }}" method="post">
 				@csrf
-					<h4 class="page-title">{{ __('change_password') }}</h4>
+					<h2 class="heading-md">{{ __('change_password') }}</h2>
+							<p class="text-danger">{{ __('mandatory_headline') }}</p>
 					<div class="row">
                         <div class="col-md-12">
-                            <div class="input-block mb-3">
-                                <label class="col-form-label">{{ __('old_password') }}<span class="color-red">*</span></label>
+                            <div class="input-block margin-bottom-20">
+                                <label class="col-form-label">{{ __('old_password') }} <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control" id="old_password" name="old_password">
 								@error('old_password')
-									<div class="text-danger">{{ $message }}</div>
+									<div class="text-danger position-absolute">{{ $message }}</div>
 							    @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="input-block mb-3">
-                                <label class="col-form-label">{{ __('new_password') }}<span class="color-red">*</span></label>
+                            <div class="input-block margin-bottom-20">
+                                <label class="col-form-label">{{ __('new_password') }} <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control" id="new_password" name="new_password">
 								@error('new_password')
-									<div class="text-danger">{{ $message }}</div>
+									<div class="text-danger position-absolute">{{ $message }}</div>
 							    @enderror
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="input-block mb-3">
-                                <label class="col-form-label">{{ __('confirm_new_password') }}<span class="color-red">*</span></label>
+                            <div class="input-block margin-bottom-20">
+                                <label class="col-form-label">{{ __('confirm_new_password') }} <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation">
 								@error('new_password_confirmation')
-									<div class="text-danger">{{ $message }}</div>
+									<div class="text-danger position-absolute">{{ $message }}</div>
 							    @enderror
                             </div>
                         </div>
@@ -41,9 +48,9 @@
 					
 					<div class="row">
 						<div class="submit-section">
-							<div class="col-md-12">
-								<div class="input-block mb-3">
-								<button class="btn btn-primary" type="submit" >{{ __('update_password') }}</button>
+							<div class="col-md-12 text-center">
+								<div class="input-block">
+								<button class="btn btn-theme btn-lg" type="submit" >{{ __('update_password') }}</button>
 								</div>
 							</div>
 						</div>
@@ -52,6 +59,9 @@
 			</div>
 		</div>
 	</div>
+</div>
+</div>
+<section>
 </div>
 <!-- update Success message -->
 <div class="modal custom-modal fade" id="updt_success_msg" role="dialog">

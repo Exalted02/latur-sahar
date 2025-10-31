@@ -35,7 +35,7 @@
 					<div class="profile-section margin-bottom-20">
 						<div class="profile-edit">
 							<h2 class="heading-md">{{ __('manage_grievance') }}</h2>
-							<p>{{ __('manage_grievance') }}</p>
+							<p class="text-danger">{{ __('mandatory_headline') }}</p>
 							<div class="clearfix"></div>
 							<span id="msg" class="success-msg"></span>
 							<form name="frmgrievanve" action="{{ route('submit-grievance') }}" method="post">
@@ -43,69 +43,91 @@
 							<input type="hidden" name="id" id="id" value="{{ isset($grievance) ? $grievance->id : '' }}">
 							<input type="hidden" name="get_department_id" id="get_department_id" value="{{ isset($grievance) ?  $grievance->get_department->id : ''}}">
 								<div class="row">
-								   <div class="col-md-6 col-sm-6 col-xs-12">
-									  <label>{{ __('name') }} </label>
-									  <input type="text" name="name" id="name" value="{{ isset($grievance) ? $grievance->name : old('name')}}" class="form-control margin-bottom-20">
-									  <span id="error_name" class="text-danger"></span>
-									  
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
+									  <label>{{ __('name') }} <span class="text-danger">*</span></label>
+									  <input type="text" name="name" id="name" value="{{ isset($grievance) ? $grievance->name : old('name')}}" class="form-control">
+										<span id="error_name" class="text-danger position-absolute"></span>
 								   </div>
-								   <div class="col-md-6 col-sm-6 col-xs-12">
-									  <label>{{ __('mobile') }} </label>
-									  <input type="text" name="mobile_no" value="{{ isset($grievance) ? $grievance->mobile_no : old('mobile_no')}}" class="form-control margin-bottom-20" id="mobile_no"id="mobile_no">
-									  <span id="error_mobile_no" class="text-danger"></span>
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
+									  <label>{{ __('mobile') }} <span class="text-danger">*</span></label>
+									  <input type="text" name="mobile_no" value="{{ isset($grievance) ? $grievance->mobile_no : old('mobile_no')}}" class="form-control" id="mobile_no">
+									  <span id="error_mobile_no" class="text-danger position-absolute"></span>
 								   </div>
-								   <div class="col-md-12 col-sm-12 col-xs-6">  
-									  <label>{{ __('ward_prabhag') }} <span class="color-red">*</span></label>
-									  <input type="text" name="ward_prabhag" value="{{ isset($grievance) ? $grievance->ward_prabhag : old('ward_prabhag')}}" class="form-control margin-bottom-20" id="ward_prabhag">
-									  <span id="error_ward_prabhag" class="text-danger"></span>
-								   </div>
+								</div>
+								<div class="row">
 								   <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-									  <label>{{ __('department') }} <span class="color-red">*</span></label>
+									  <label>{{ __('department') }} <span class="text-danger">*</span></label>
 									  <select class="form-control" name="department" id="department">
 										 <option value=""> {{ __('select_department') }}</option>
 										 @foreach($departments as $department)
 											<option value="{{ $department->id ?? '' }}">{{ $department->name ?? '' }}</option>
 										 @endforeach
 									  </select>
-									  <span id="error_department" class="text-danger"></span>
+									  <div class="clearfix"></div>
+									  <span id="error_department" class="text-danger position-absolute"></span>
 								   </div>
 								   <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-									  <label>{{ __('grievance_type') }} <span class="color-red">*</span></label>
+									  <label>{{ __('grievance_type') }} <span class="text-danger">*</span></label>
 									  <select class="form-control" name="grievance_type" id="grievance_type">
 										 <option value=""> {{ __('select_grievance_type') }}</option>
 									  </select>
-									  <span id="error_grievance_type" class="text-danger"></span>
-								   </div>
-								   <div class="col-md-12 col-sm-12 col-xs-12">
-									  <label>{{ __('address') }} <span class="color-red">*</span></label>
-									  <textarea class = "form-control margin-bottom-20" rows = "3" name="address" id="address">{{ isset($grievance) ? $grievance->address : old('address' )}}</textarea>
-									  <span id="error_address" class="text-danger"></span>
-								   </div>
-								   <div class="col-md-12 col-sm-12 col-xs-6">  
-									  <label>{{ __('pin_code') }} <span class="color-red">*</span></label>
-									  <input type="text" name="pincode" value="{{ isset($grievance) ? $grievance->pincode : old('pincode')}}" class="form-control margin-bottom-20" id="pincode">
-									  <span id="error_pincode" class="text-danger"></span>
-								   </div>
-								   <div class="col-md-12 col-sm-12 col-xs-12">
-									  <label>{{ __('issue_description') }} <span class="color-red">*</span></label>
-									  <textarea name="issue_description" id="issue_description" class= "form-control margin-bottom-20" rows = "3">{{ isset($grievance) ? $grievance->issue_description : old ('issue_description') }}</textarea>
-									  <span id="error_issue_description" class="text-danger"></span>
+									  <div class="clearfix"></div>
+									  <span id="error_grievance_type" class="text-danger position-absolute"></span>
 								   </div>
 								</div>
-								<div class="row margin-bottom-20">
-									<div class="form-group">
-										<div class="col-md-9">
+								<div class="row">
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
+									  <label>{{ __('latitude') }} <span class="text-danger">*</span></label>
+									  <input type="text" name="latitude" id="latitude" value="{{ isset($grievance) ? $grievance->latitude : old('latitude')}}" class="form-control">
+										<span id="error_latitude" class="text-danger position-absolute"></span>
+								   </div>
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
+									  <label>{{ __('longitude') }} <span class="text-danger">*</span></label>
+									  <input type="text" name="longitude" value="{{ isset($grievance) ? $grievance->longitude : old('longitude')}}" class="form-control" id="longitude">
+									  <span id="error_longitude" class="text-danger position-absolute"></span>
+								   </div>
+								</div>
+								<div class="row">
+								   <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-20">
+									  <label>{{ __('address') }} <span class="text-danger">*</span></label>
+									  <textarea class = "form-control" rows = "3" name="address" id="address">{{ isset($grievance) ? $grievance->address : old('address' )}}</textarea>
+									  <span id="error_address" class="text-danger position-absolute"></span>
+								   </div>
+								</div>
+								<div class="row">
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">  
+									  <label>{{ __('ward_prabhag') }} <span class="color-red">*</span></label>
+									  <input type="text" name="ward_prabhag" value="{{ isset($grievance) ? $grievance->ward_prabhag : old('ward_prabhag')}}" class="form-control" id="ward_prabhag">
+									  <span id="error_ward_prabhag" class="text-danger position-absolute"></span>
+								   </div>
+								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">  
+									  <label>{{ __('pin_code') }} <span class="text-danger">*</span></label>
+									  <input type="text" name="pincode" value="{{ isset($grievance) ? $grievance->pincode : old('pincode')}}" class="form-control" id="pincode">
+									  <span id="error_pincode" class="text-danger position-absolute"></span>
+								   </div>
+								</div>
+								<div class="row">
+								   <div class="col-md-12 col-sm-12 col-xs-12">
+									  <label>{{ __('issue_description') }} <span class="text-danger">*</span></label>
+									  <textarea name="issue_description" id="issue_description" class= "form-control" rows = "3">{{ isset($grievance) ? $grievance->issue_description : old ('issue_description') }}</textarea>
+									  <span id="error_issue_description" class="text-danger position-absolute"></span>
+								   </div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
 										<label for="lo_file"></label>
-											<div class="upload-wrapper">
-											  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
-											  <label for="lo_file" class="custom-upload-label">
-												<span class="upload-text">{{ __('upload_image') }}</span>
-												<i class="fa fa-upload upload-icon"></i>
-											  </label>
-											</div>
+										<div class="upload-wrapper">
+										  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
+										  <label for="lo_file" class="custom-upload-label">
+											<span class="upload-text">{{ __('upload_image') }}</span>
+											<i class="fa fa-upload upload-icon"></i>
+										  </label>
 										</div>
-										
-										<div class="col-md-8 d-flex flex-wrap gap-2" id="preview-container">
+										<span id="error_images" class="text-danger position-absolute"></span>
+									</div>
+								</div>
+								<div class="row margin-bottom-10">		
+									<div class="col-md-12 d-flex flex-wrap gap-2" id="preview-container">
 									@if(!empty($grievance->grievance_image))
 										@foreach($grievance->grievance_image as $image)
 										@php 
@@ -126,9 +148,7 @@
 										</div>
 										@endforeach
 									@endif
-									<span id="error_images" class="text-danger"></span>
-										</div>
-										
+									
 									</div>
 								</div>
 								{{--<div class="row margin-bottom-20">
@@ -150,8 +170,8 @@
 								</div>--}}
 								<div class="clearfix"></div>
 								<div class="row">
-								   <div class="col-md-12 col-sm-12 col-xs-12 text-right">
-									  <button type="button" class="btn btn-theme btn-sm submit-greivance">{{ __('submit_grievance') }}</button>
+								   <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+									  <button type="button" class="btn btn-theme btn-lg submit-greivance">{{ __('submit_grievance') }}</button>
 								   </div>
 								</div>
 							</form>
@@ -263,6 +283,8 @@ $(document).ready(function() {
 		var pincode = $('#pincode').val();
 		var issue_description = $('#issue_description').val();
 		
+		var intRegex = /[0-9 -()+]+$/;
+		
 		if (name == '') {
 			$('#error_name').text('Please enter name').fadeIn().delay(2000).fadeOut();
 			return false;
@@ -273,11 +295,11 @@ $(document).ready(function() {
 			return false;
 		}
 		
-		if (ward_prabhag == '') {
-			$('#error_ward_prabhag').text('Please enter ward prabhag').fadeIn().delay(2000).fadeOut();
+		if((mobile_no.length < 10) || (!intRegex.test(mobile_no)))
+		{
+			$('#error_mobile_no').text('Please enter a valid mobile number.').fadeIn().delay(2000).fadeOut();
 			return false;
 		}
-		
 		
 		if (department == '') {
 			$('#error_department').text('Please select department').fadeIn().delay(2000).fadeOut();
@@ -291,6 +313,11 @@ $(document).ready(function() {
 		
 		if (address == '') {
 			$('#error_address').text('Please enter address').fadeIn().delay(2000).fadeOut();
+			return false;
+		}
+		
+		if (ward_prabhag == '') {
+			$('#error_ward_prabhag').text('Please enter ward prabhag').fadeIn().delay(2000).fadeOut();
 			return false;
 		}
 		
@@ -314,11 +341,33 @@ $(document).ready(function() {
 		
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
-				//document.getElementById('latitude').value = position.coords.latitude;
-				//document.getElementById('longitude').value = position.coords.longitude;
 				
 				var latitude = position.coords.latitude;
 				var longitude = position.coords.longitude;
+				$('#latitude').val(latitude);
+				$('#longitude').val(longitude);
+			})
+		}
+		
+		var latitude = $('#latitude').val();
+		var longitude = $('#longitude').val();
+		if (latitude == '') {
+			$('#error_latitude').text('Please enter latitude').fadeIn().delay(2000).fadeOut();
+			return false;
+		}
+		
+		if (longitude == '') {
+			$('#error_longitude').text('Please enter longitude').fadeIn().delay(2000).fadeOut();
+			return false;
+		}
+		
+		//if (navigator.geolocation) {
+			//navigator.geolocation.getCurrentPosition(function(position) {
+				//document.getElementById('latitude').value = position.coords.latitude;
+				//document.getElementById('longitude').value = position.coords.longitude;
+				
+				//var latitude = position.coords.latitude;
+				//var longitude = position.coords.longitude;
 			
 		
 				let formData = new FormData();
@@ -383,8 +432,8 @@ $(document).ready(function() {
 						console.error(xhr.responseText);
 					}
 				});
-			});
-		}
+			//});
+		//}
 	})
 	
 	// Remove existing file from preview & array

@@ -14,7 +14,7 @@
 				<div class="col-md-4">
 					<h3 class="page-title">{{ __('Grievance view') }}</h3>
 					<ul class="breadcrumb">
-						<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('dashboard') }}</a></li>
+						<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('dashboard') }}</a></li>
 						<li class="breadcrumb-item active">{{ __('Grievance view') }}</li>
 					</ul>
 				</div>
@@ -105,7 +105,9 @@
 															
 															@foreach($grievance->grievance_image as $images)
                                                             <div class="col-md-2 col-lg-2 col-sm-12 mt-2">
-															<div class="mt-1"><img src="{{ url('uploads/greivance_image/'.$images->images )}}" height="150" width="150"></div>
+															<div class="mt-1">
+															<a href="{{ url('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
+															<img src="{{ url('uploads/greivance_image/'.$images->images )}}" height="150" width="150"></a></div>
                                                             </div>
 															@endforeach
 															
@@ -130,9 +132,23 @@
 @endsection 
 @section('scripts')
 <link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
+<!-- Lightbox CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+<!--/-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>
 <script src="{{ url('admin-assets/js/select2.min.js') }}"></script>
+
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script>
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'fadeDuration': 300,
+        'imageFadeDuration': 300
+    })
+</script>
 <script>
 $(document).ready(function() {
 	$(document).on('click', '.delete-grievance', function(){

@@ -9981,7 +9981,8 @@ footer.footer-bg {
 .singleprice-tag::before {
     border-bottom: 30px solid transparent;
     /* border-right: 30px solid #bf1919; */
-    border-right: 30px solid #FEB800;
+    /*border-right: 30px solid #FEB800;*/ /* 28-10-2025*/
+	border-right: 30px solid var(--tag-color, #FEB800); /* 29-10-2025*/
     border-top: 30px solid transparent;
     content: "";
     height: 0;
@@ -10003,7 +10004,7 @@ footer.footer-bg {
 }
 .singleprice-tag {
     /* background-color: #bf1919; */
-    background-color: #FEB800;
+    /*background-color: #FEB800;*/  /* comment 29-10-2025*/
     border-bottom-right-radius: 2px;
     border-top-right-radius: 2px;
     color: #fff;
