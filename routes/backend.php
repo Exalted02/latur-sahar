@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\EmailSettingsController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\GrievanceController;
 use App\Http\Controllers\Admin\UserController;
-// use App\Http\Controllers\Admin\ChangePasswordController;
+use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
@@ -24,9 +24,6 @@ Route::middleware(['web'])->group(function () {
 	Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
 		Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 		
-		//ChangePassword
-		// Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password');
-		// Route::post('/change-password', [ChangePasswordController::class, 'save_data'])->name('change-password-save');
 		
 		// Department
 		Route::get('/department', [DepartmentController::class, 'index'])->name('department');
@@ -74,6 +71,7 @@ Route::middleware(['web'])->group(function () {
 		Route::get('email-management', [EmailManagementController::class,'index'])->name('email-management');
 		Route::get('/email-management-edit/{id}', [EmailManagementController::class, 'email_management_edit'])->name('email-management-edit');
 		Route::post('/email-management-edit-save',[EmailManagementController::class,'manage_email_management_process'])->name('email-management-edit-save');
+		
 	});
 
 	Route::prefix('admin')->name('admin.')->group(function () {
@@ -125,6 +123,10 @@ Route::middleware(['web'])->group(function () {
 			Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 						->name('logout');
 			Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+			
+			//ChangePassword
+			Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password');
+			Route::post('/change-password', [ChangePasswordController::class, 'save_data'])->name('change-password-save');
 		});
 	});
 });

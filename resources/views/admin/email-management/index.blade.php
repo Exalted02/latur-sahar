@@ -15,7 +15,7 @@
 				<div class="col-md-4">
 					<h3 class="page-title">Email management</h3>
 					<ul class="breadcrumb">
-						<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+						<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
 						<li class="breadcrumb-item active">Email management</li>
 					</ul>
 				</div>
