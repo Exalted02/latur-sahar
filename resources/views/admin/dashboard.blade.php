@@ -16,7 +16,7 @@
 				<div class="card dash-widget background-info">
 					<a href="{{ route('admin.grievances',['tab'=>1]) }}">
 					<div class="card-body">
-						<span class="dash-widget-icon"><i class="fa-solid  fa-file-lines"></i></span>
+						<span class="dash-widget-icon"><i class="fa-solid fa-file-lines"></i></span>
 						<div class="dash-widget-info">
 							<h3>{{ $tot_grievance ?? ''}}</h3>
 							<span>Total grievance</span>

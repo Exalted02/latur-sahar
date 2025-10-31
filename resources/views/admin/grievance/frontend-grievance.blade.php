@@ -41,14 +41,14 @@
 						<thead>
 							<tr>
 								<th>{{ __('Name') }}</th>
-								<th>{{ __('Mobile') }}</th>
+								<th class="text-center">{{ __('Mobile') }}</th>
 								<th>{{ __('Department') }}</th>
 								<th>{{ __('Grievance type') }}</th>
-								<th>{{ __('Pincode') }}</th>
-								<th>{{ __('Image') }}</th>
-								<th>{{ __('Created date') }}</th>
-								<th>{{ __('status') }}</th>
-								<th class="text-end">Action</th>
+								<th class="text-center">{{ __('Pincode') }}</th>
+								<th class="text-center">{{ __('Image') }}</th>
+								<th class="text-center">{{ __('Created date') }}</th>
+								<th class="text-center">{{ __('status') }}</th>
+								<th class="text-center">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -56,60 +56,24 @@
 						
 							<tr>
 								<td>{{ $val->name ?? ''}}</td>
-								<td>{{ $val->mobile_no ?? ''}}</td>
+								<td class="text-center">{{ $val->mobile_no ?? ''}}</td>
 								<td>{{ $val->get_department->name ?? ''}}</td>
 								<td>{{ $val->get_grievance_type->name ?? ''}}</td>
-								<td>{{ $val->pincode ?? ''}}</td>
-								<td><img src="{{ url('uploads/greivance_image/'. $val->grievance_image[0]->images ) }}" height="70" width="70"></td>
-								<td>{{ date('d-m-Y', strtotime($val->created_at)) ?? ''}}</td>
-								<td>
+								<td class="text-center">{{ $val->pincode ?? ''}}</td>
+								<td class="text-center"><img src="{{ url('uploads/greivance_image/'. $val->grievance_image[0]->images ) }}" height="70" width="70"></td>
+								<td class="text-center">{{ date('d-m-Y', strtotime($val->created_at)) ?? ''}}</td>
+								<td class="text-center">
 								@if($val->status ==1)
-									<div class="d-flex gap-2">
-										<div class="btn btn-warning  btn-sm flex-fill text-center">Pending</div>
-									</div>
-								{{--<div class="dropdown action-label">
-										<a class="btn btn-white btn-sm badge-outline-success dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-											<i class="fa-regular fa-circle-dot text-success"></i> {{ __('Pending') }}
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-success"></i> {{ __('Pending') }}</a>
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Resubmit') }}</a>
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Solved') }}</a>
-										</div>
-									</div>--}}
+									<span class="badge badge-soft-danger">Pending</span>
 								 @elseif($val->status ==2)
-								 <div class="d-flex gap-2">
-									<div class="btn btn-info btn-sm flex-fill text-center">Resubmit</div>
-								 </div>
-								 {{--<div class="dropdown action-label">
-										<a class="btn btn-white btn-sm badge-outline-danger dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-											<i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Resubmit') }}
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-success"></i> {{ __('Pending') }}</a>
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Resubmit') }}</a>
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Solved') }}</a>
-										</div>
-								 </div>--}}
+								 <span class="badge badge-soft-warning">Resubmit</span>
 								  @else
-									<div class="d-flex gap-2">
-										<div class="btn btn-success btn-sm   flex-fill text-center">Solved</div>
-									</div>
-								  {{--<div class="dropdown action-label">
-										<a class="btn btn-white btn-sm badge-outline-danger dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-											<i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Solved') }}
-										</a>
-										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-success"></i> {{ __('Pending') }}</a>
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Resubmit') }}</a>
-											<a class="dropdown-item update-status" href="javascript:void(0);" data-id="{{ $val->id }}" data-url="{{ route('admin.grievance-update-status') }}"><i class="fa-regular fa-circle-dot text-danger"></i> {{ __('Solved') }}</a>
-										</div>
-								  </div>--}}
+								  <span class="badge badge-soft-success">Solved</span>
 								 @endif
 								</td>
 									
 								
-								<td class="text-end">
+								<td class="text-center">
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 										<div class="dropdown-menu dropdown-menu-right">

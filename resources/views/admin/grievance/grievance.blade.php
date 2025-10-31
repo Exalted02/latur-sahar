@@ -54,8 +54,8 @@
 								<th>{{ __('Department') }}</th>
 								<th>{{ __('Name') }}</th>
 								<th>{{ __('Created date') }}</th>
-								<th>{{ __('status') }}</th>
-								<th class="text-end">Action</th>
+								<th class="text-center">{{ __('status') }}</th>
+								<th class="text-center">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -67,7 +67,7 @@
 								<td class="contact-details">{{ $department_name ?? ''}}</td>
 								<td class="contact-details">{{ $val->name ?? ''}}</td>
 								<td>{{ date('d-m-Y', strtotime($val->created_at)) ?? ''}}</td>
-								<td>
+								<td class="text-center">
 								@if($val->status ==1)
 									<div class="dropdown action-label">
 										<a class="btn btn-white btn-sm badge-outline-success dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -93,7 +93,7 @@
 								</td>
 									
 								
-								<td class="text-end">
+								<td class="text-center">
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 										<div class="dropdown-menu dropdown-menu-right">

@@ -4,13 +4,13 @@
 	<!-- Logo -->
 	<div class="header-left">
 		<a href="{{ route('admin.dashboard')}}" class="logo">
-			<img src="{{ asset('common-assets/img/-logo1-bw.png') }}" alt="{{ __('project_title') }}" style="max-height: 50px;">
+			<img src="{{ asset('common-assets/img/admin-inner-logo.png') }}" alt="{{ __('project_title') }}" style="max-height: 50px;">
 		</a>
 		<a href="{{ route('admin.dashboard')}}" class="logo collapse-logo">
-			<img src="{{ asset('common-assets/img/-logo1-bw.png') }}" alt="{{ __('project_title') }}">
+			<img src="{{ asset('common-assets/img/admin-inner-logo.png') }}" alt="{{ __('project_title') }}">
 		</a>
 		<a href="{{ route('admin.dashboard')}}" class="logo2">
-			<img src="{{ asset('common-assets/img/-logo1-bw.png') }}"  alt="{{ __('project_title') }}">
+			<img src="{{ asset('common-assets/img/admin-inner-logo.png') }}"  alt="{{ __('project_title') }}">
 		</a>
 	</div>
 	<!-- /Logo -->
