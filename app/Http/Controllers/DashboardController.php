@@ -239,7 +239,7 @@ class DashboardController extends Controller
 		$grievance_exists = Grievance::where('id', $id)->where('status', '!=', 4)->exists();
 		if(!$grievance_exists)
 		{
-			return redirect('view-status');
+			return view('errors.404');
 		}
 		
 		//$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
