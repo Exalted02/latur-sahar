@@ -53,7 +53,15 @@
     overflow: hidden;       
     text-overflow: ellipsis;
 }
-.sidebar .sidebar-menu ul li a:hover {
+.sidebar .sidebar-menu ul li a:hover, 
+.sidebar .sidebar-menu ul li a span:hover {
+    color: #667eea !important;
+}
+.sidebar .sidebar-menu ul li.active {
+	background-color: #667eea;
+}
+.sidebar .sidebar-menu ul li.active a,
+.sidebar .sidebar-menu ul li.active a span {
     color: #ffffff !important;
 }
 .action-btn {
@@ -62,9 +70,9 @@
 	height: 38px;
 	color: #fff;
 }
-.sidebar .sidebar-menu ul ul li a.menu-active::before { color: #ffffff }
+.sidebar .sidebar-menu ul ul li a.menu-active::before { color: #667eea }
 
-.sidebar .sidebar-menu ul ul a.menu-active, .two-col-bar .sidebar-menu ul ul a.menu-active  { color: #ffffff }
+.sidebar .sidebar-menu ul ul a.menu-active, .two-col-bar .sidebar-menu ul ul a.menu-active  { color: #667eea }
 
 .custom-modal-footer {
 	margin-left: -30px;
@@ -146,8 +154,10 @@
 }*/
 
 /* Hide the sorting arrows for the first column */
-.dataTables_wrapper .dataTable thead th:first-child:before,
-.dataTables_wrapper .dataTable thead th:first-child:after {
+.dataTables_wrapper .dataTable thead th:last-child:before,
+.dataTables_wrapper .dataTable thead th:last-child:after,
+.dataTables_wrapper .dataTable thead th:nth-last-child(2):before,
+.dataTables_wrapper .dataTable thead th:nth-last-child(2):after {
     display: none !important;
 }
 
@@ -311,7 +321,9 @@
 	
 }
 
-
+.dash-widget .card-body .dash-widget-info span {
+	font-size: 15px;
+}	
 
 
 

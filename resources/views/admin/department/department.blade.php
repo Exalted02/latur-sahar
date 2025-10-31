@@ -118,22 +118,22 @@
 						<thead>
 							<tr>
 							{{--<th class="no-sort"></th>--}}
-							
 								{{--<th>{{ __('sl_no') }}</th>--}}
 								<th>{{ __('Name') }}</th>
 								<th>{{ __('Address') }}</th>
 								<th>{{ __('Created date') }}</th>
-								<th>{{ __('status') }}</th>
-								<th class="text-end">Action</th>
+								<th class="text-center">{{ __('status') }}</th>
+								<th class="text-center">Action</th>
 							</tr>
 						</thead>
 						<tbody>
 						@foreach($departments as $val)
 							<tr>
+								
 								<td class="contact-details">{{ $val->name ?? ''}}</td>
 								<td class="contact-details">{{ $val->address ?? ''}}</td>
 								<td>{{ date('d-m-Y', strtotime($val->created_at)) ?? ''}}</td>
-								<td>
+								<td class="text-center"
 								@if($val->status ==1)
 									<div class="dropdown action-label">
 										<a class="btn btn-white btn-sm badge-outline-success dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -157,9 +157,7 @@
 								 
 								 @endif
 								</td>
-									
-								
-								<td class="text-end">
+								<td class="text-center">
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 										<div class="dropdown-menu dropdown-menu-right">
@@ -167,7 +165,9 @@
 											<a class="dropdown-item delete-department-code" href="javascript:void(0);" data-id="{{ $val->id ?? '' }}" data-url="{{ route('admin.getDeleteDepartment') }}"><i class="fa-regular fa-trash-can m-r-5"></i> {{ __('delete') }}</a>
 										</div>
 									</div>
-								</td>
+								</td>	
+								
+								
 							</tr>
 							@endforeach
 						</tbody>
@@ -193,7 +193,7 @@ $(document).ready(function() {
 	
 	
 	
-	if ($.fn.DataTable.isDataTable('.datatable')) {
+	/*if ($.fn.DataTable.isDataTable('.datatable')) {
 		$('.datatable').DataTable().destroy(); // Destroy existing instance
 	}
 	$('.datatable').DataTable({
@@ -212,7 +212,7 @@ $(document).ready(function() {
 				"previous": "{{ __('Previous') }}"
 			},
 		}
-	});
+	});*/
 });
 </script>
 @endsection

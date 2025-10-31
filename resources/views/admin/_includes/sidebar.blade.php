@@ -24,43 +24,46 @@
 					<span>Management</span>
 				</li>
 				<li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-					<a href="{{ route('admin.dashboard')}}"><i class="fa-solid fa-gauge"></i> <span>Dashboard</span></a>
+					<a href="{{ route('admin.dashboard')}}"><i class="la la-dashboard"></i> <span>Dashboard</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.department') ? 'active' : '' }}">
-					<a href="{{ route('admin.department') }}"><i class="fa-regular fa-building"></i> <span>Department</span></a>
+					<a href="{{ route('admin.department') }}"><i class="la la-briefcase"></i> <span>Department</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.grievance') ? 'active' : '' }}">
-					<a href="{{ route('admin.grievance') }}"><i class="fa-solid fa-triangle-exclamation"></i> <span>Grievance Type</span></a>
+					<a href="{{ route('admin.grievance') }}"><i class="la la-file-text"></i> <span>Grievance Type</span></a>
 				</li>
 				
-				{{--<li class="{{ request()->routeIs('admin.user') ? 'active' : '' }}">
-					<a href="{{ route('admin.user') }}"><i class="fa-regular fa-user"></i> <span>Users</span></a>
-				</li>--}}
-				<li class="submenu">
+				<li class="{{ request()->routeIs('admin.user-admin') ? 'active' : '' }}">
+					<a href="{{ route('admin.user-admin') }}"><i class="la la-user-plus"></i> <span>{{ __('Users') }}</span></a>
+				</li>
+				<li class="{{ request()->routeIs('admin.user-citizen') ? 'active' : '' }}">
+					<a href="{{ route('admin.user-citizen') }}"><i class="la la-users"></i> <span>{{ __('Citizen') }}</span></a>
+				</li>
+				{{--<li class="submenu">
 					<a href="{{ request()->routeIs('admin.user-admin') || request()->routeIs('admin.user-citizen') ? 'active' : '' }}"><i class="fa-solid fa-gauge"></i> <span> {{ __('Users') }} </span><span class="menu-arrow"></span></a>
 					<ul style="{{ request()->routeIs('admin.user-admin') || request()->routeIs('admin.user-citizen') ? 'display:block' : '' }}">
 						<li><a href="{{ route('admin.user-admin') }}" class="{{ request()->routeIs('admin.user-admin') ? 'menu-active' : '' }}"><span>{{ __('Sub admin') }}</span></a></li>
 						<li><a href="{{ route('admin.user-citizen') }}" class="{{ request()->routeIs('admin.user-citizen') ? 'menu-active' : '' }}"><span>{{ __('Citizen') }}</span></a></li>
 					</ul>
-				</li>
+				</li>--}}
 				
 				
 				
 				<li class="{{ request()->routeIs('admin.grievances','admin.view-frontend-grievance') ? 'active' : '' }}">
-					<a href="{{ route('admin.grievances',['tab'=>1]) }}"><i class="fa-solid fa-triangle-exclamation"></i> <span>Grievances</span></a>
+					<a href="{{ route('admin.grievances',['tab'=>1]) }}"><i class="la la-edit"></i> <span>Grievances</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.email-management','admin.email-management-edit') ? 'active' : '' }}">
-					<a href="{{ route('admin.email-management') }}"><i class="fa-regular fa-envelope"></i> <span>Email Management</span></a>
+					<a href="{{ route('admin.email-management') }}"><i class="las la-envelope-open"></i> <span>Email Management</span></a>
 				</li>
 				<li class="{{ request()->routeIs('admin.email-settings') ? 'active' : '' }}">
-					<a href="{{ route('admin.email-settings') }}"><i class="fa-regular fa-envelope"></i> <span>Email Settings</span></a>
+					<a href="{{ route('admin.email-settings') }}"><i class="las la-envelope-open-text"></i> <span>Email Settings</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.logout') ? 'active' : '' }}">
-					<a href="{{ route('admin.logout') }}"><i class="fa-solid fa-shop-lock"></i> <span> {{ __('logout') }} </span></a>
+					<a href="{{ route('admin.logout') }}"><i class="las la-sign-out-alt"></i> <span> {{ __('logout') }} </span></a>
 				</li>
 			</ul>
 			

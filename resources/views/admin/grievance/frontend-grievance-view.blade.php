@@ -32,70 +32,119 @@
                     <div class="col-md-12">
                         
                         <!-- Content Starts -->
+						<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="profile-view">
+										<div class="profile-basic">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="profile-info-left">
+														<ul class="personal-info">
+														<li>
+															<span class="title">{{ __('Name') }}:</span>
+															<span class="text">{{ $grievance->name ?? ''}}</span>
+														</li>
+														<li>
+															<span class="title">{{ __('Mobile ') }}:</span>
+															<span class="text">{{ $grievance->mobile_no ?? ''}}</span>
+														</li>
+														<li>
+															<span class="title">{{ __('Address') }}:</span>
+															<span class="text">{{ $grievance->address ?? ''}}</span>
+														</li>
+														<li>
+															<span class="title">{{ __('Pincode') }}:</span>
+															<span class="text">{{ $grievance->pincode ?? ''}}</span>
+														</li>
+													</ul>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<ul class="personal-info">
+														<li>
+															<span class="title">{{ __('department') }}:</span>
+															<span class="text">{{ $grievance->get_department->name ?? ''}}</span>
+														</li>
+														<li>
+															<span class="title">{{ __('Ward prabhag') }}:</span>
+															<span class="text">{{ $grievance->ward_prabhag ?? ''}}</span>
+														</li>
+														<li>
+															<span class="title">{{ __('Grievance type') }}:</span>
+															<span class="text">{{ $grievance->get_grievance_type->name ?? ''}}</span>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						
+					</div>
+					<div class="card mb-0">
+						<div class="card-body">
+									<div class="mailview-content m-b-30">
+										<div class="mailview-header">
+											<div class="row">
+												<div class="col-sm-9">
+													<div class="text-ellipsis">
+														<span class="mail-view-title">{{ __('issue_description') }}</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="mailview-inner">
+											<p class="text-muted">{{ $grievance->issue_description ?? ''}}</p>
+										</div>
+									</div>
+									<div class="mail-attachments">
+										<div class="mailview-header">
+											<div class="row">
+												<div class="col-sm-9">
+													<div class="text-ellipsis">
+														<span class="mail-view-title">{{ __('Grievance images') }}</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<ul class="attachments clearfix">
+											@foreach($grievance->grievance_image as $images)
+											<li>
+												<div class="attach-file"><a href="{{ url('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image"><img src="{{ url('uploads/greivance_image/'.$images->images )}}"  style="height:132px"></a></div>
+												<div class="attach-info"> <a href="#" class="attach-filename">{{$images->images}}</a> <div class="attach-fileize"> 
+												@php
+													$size = filesize(public_path('uploads/greivance_image/'.$images->images));
+													$sizeKB = round($size / 1024, 2);
+													if($sizeKB >= 1024) {
+														$sizeMeasure = round($size / 1024 / 1024, 2) .' MB';
+													} else {
+														$sizeMeasure = round($size / 1024, 2) .' KB';
+													}
+												@endphp
+												{{ $sizeMeasure }}</div></div>
+											</li>
+											@endforeach
+										</ul>
+									</div>
+									
+								</div>
+					</div>
+					
 
-					<div class="tab-content">
+					{{--<div class="tab-content">
 
 							<!-- Additions Tab -->
 							<div class="tab-pane show active" id="view_tab_customer">
-							{{--<form id="frmprospectstage" action="{{ route('user.save-prospect-stage') }}">--}}
+							
                                         
 											<div class="contact-tab-wrap customer-view">
 												
                                                         <div class="multiadd d-flex1 flex-wrap1">
-														<div class="row">
 														
-                                                            <div class="col-md-3 col-lg-3 col-sm-12 mt-2">
-                                                            <strong>{{ __('Name') }}</strong>
-                                                                <div class="mt-1">{{ $grievance->name ?? ''}}</div>
-                                                            </div>
-														
-														
-															
-															
-                                                            <div class="col-md-3 col-lg-3 col-sm-12 mt-2">
-                                                                <strong>{{ __('Mobile ') }}</strong>
-                                                                    <div class="mt-1">{{ $grievance->mobile_no ?? ''}}</div>
-                                                            </div>
-															
-															
-															
-                                                            <div class="col-md-3 col-lg-3 col-sm-12 mt-2">
-                                                                <strong>{{ __('Ward prabhag') }}</strong>
-                                                                    <div class="mt-1">{{ $grievance->ward_prabhag ?? ''}}</div>
-                                                            </div>
-															
-															
-															
-                                                            <div class="col-md-3 col-lg-3 col-sm-12 mt-2">
-                                                                <strong>{{ __('department') }}</strong>
-                                                                    <div class="mt-1">{{ $grievance->get_department->name ?? ''}}</div>
-                                                            </div>
-															
-															
-															
-                                                            <div class="col-md-3 col-lg-3 col-sm-12 mt-2">
-                                                                <strong>{{ __('Grievance type') }}</strong>
-                                                                    <div class="mt-1">{{ $grievance->get_grievance_type->name ?? ''}}</div>
-                                                            </div>
-															<div class="col-md-3 col-lg-3 col-sm-12 mt-2">
-                                                                <strong>{{ __('Address') }}</strong>
-                                                                    <div class="mt-1">{{ $grievance->address ?? ''}}</div>
-                                                            </div>
-															<div class="col-md-3 col-lg-3 col-sm-12 mt-2">
-                                                                <strong>{{ __('Pincode') }}</strong>
-                                                                    <div class="mt-1">{{ $grievance->pincode ?? ''}}</div>
-                                                            </div>
-															
-														</div>
-														<div class="rowline"></div>
-														<div class="row col-md-12"><h4><strong>{{ __('issue_description') }}</strong></h4></div>
-														<div class="row">
-														 <div class="col-md-12 col-lg-12 col-sm-12 mt-2">
-                                                                <strong>{{ __('Issue description') }}</strong>
-																	<div class="mt-1">{{ $grievance->issue_description ?? ''}}</div>
-                                                            </div>
-														</div>
 														
 														
 														<div class="rowline"></div>
@@ -114,11 +163,8 @@
 															</div>
 															
                                                         </div>
-														{{--</div>
-													</div>--}}
-												</div>
-                                            	
-									{{--</form>--}}
+														
+												</div>--}}
 								<!-- /Payroll Additions Table -->
 							</div>
 						</div>
