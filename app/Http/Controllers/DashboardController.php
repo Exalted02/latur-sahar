@@ -31,14 +31,14 @@ class DashboardController extends Controller
 		$today = Carbon::today()->format('Y-m-d');
 		if(auth()->user()->user_type == 1)
 		{
-			$tot_grievance = Grievance::where('user_id', auth()->user()->id)->count();
+			$tot_grievance = Grievance::where('user_id', auth()->user()->id)->where('status', '!=', 4)->count();
 			$pending_grievance = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->count();
 			$solved_grievance = Grievance::where('user_id', auth()->user()->id)->where('status', 3)->count();
 			$alert_grievance = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->count();
 			
 			if($tab == 1)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->get();
+				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->where('status', '!=', 4)->get();
 			}
 			
 			if($tab == 2)
@@ -59,14 +59,14 @@ class DashboardController extends Controller
 		
 		if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3 || auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
 		{
-			$tot_grievance = Grievance::where('department', auth()->user()->department)->count();
+			$tot_grievance = Grievance::where('department', auth()->user()->department)->where('status', '!=', 4)->count();
 			$pending_grievance = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->count();
 			$solved_grievance = Grievance::where('department', auth()->user()->department)->where('status', 3)->count();
 			$alert_grievance = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->count();
 			
 			if($tab == 1)
 			{
-				$data['grievances'] = Grievance::where('department', auth()->user()->department)->get();
+				$data['grievances'] = Grievance::where('department', auth()->user()->department)->where('status', '!=', 4)->get();
 			}
 			
 			if($tab == 2)
@@ -303,8 +303,9 @@ class DashboardController extends Controller
 	public function delete_grievance(Request $request)
 	{
 		$data = [];
+		//echo "<pre>";print_r($request->id);die;
 		Grievance::where('id', $request->id)->update(['status'=>4]);
-		$interval = config('custom.LOAD_MORE_INTERVAL');
+		/*$interval = config('custom.LOAD_MORE_INTERVAL');
 		$lower = empty($request->moreload) ? 0 : $request->moreload -2;
 		$upper = empty($request->moreload) ? config('custom.LOAD_MORE_LIST_SHOW') : config('custom.LOAD_MORE_INTERVAL');
 		//echo $lower.' '.$upper;
@@ -316,14 +317,9 @@ class DashboardController extends Controller
 		$count  = $request->moreload =='' ? config('custom.LOAD_MORE_LIST_SHOW') : $request->moreload + $interval;
 		$remain = $grievanceCount - $count;
 		
-		$html = view('grievance.grievance-list-data', $data)->render();
+		$html = view('grievance.grievance-list-data', $data)->render();*/
 		return response()->json([
-			'success' => true,
-			'html' => $html,
-			'loadmore'=> $lower+$upper,
-			'lower'=> $lower,
-			'upper'=> $upper,
-			'remain'=> $remain
+			'success' => true
 		]);
 		
 		
