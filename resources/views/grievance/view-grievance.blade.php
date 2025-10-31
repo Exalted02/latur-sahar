@@ -1,17 +1,22 @@
 @extends('layouts.app')
 @section('content')
+
 @php 
 
 $check_dept = '';
 $check_user = '';
+$auth_department = auth()->user()->department ?? '';
+$auth_user_id = auth()->user()->id ?? '';
+$auth_user_type = auth()->user()->user_type ?? '';
+//echo "<pre>";print_r($grievance);die;
 if($grievance)
 {
-	if($grievance->department == auth()->user()->department)
+	if(isset($grievance->department) && $grievance->department == $auth_department)
 	{
 		$check_dept = 1;
 	}
 	
-	if($grievance->user_id == auth()->user()->id)
+	if($grievance->user_id == $auth_user_id)
 	{
 		$check_user = 1;
 	}
@@ -145,7 +150,7 @@ if($grievance)
 					   </div>
 					   <div class="clearfix"></div>
 					</div>	
-				@if($grievance->user_id == auth()->user()->id && auth()->user()->user_type == 1 && $grievance->status  == 3)
+				@if($grievance->user_id == $auth_user_id && $auth_user_type == 1 && $grievance->status  == 3)
 				<div class="alert-box-container margin-top-10">
 					<div class="well mtb_0">
 					   <h3>{{ __('rating') }}</h3>
@@ -181,7 +186,7 @@ if($grievance)
 				 </div>
 				 @endif
 				 
-				@if(auth()->user()->user_type == 1 && auth()->user()->id == $grievance->user_id)
+				@if($auth_user_type == 1 && $auth_user_id == $grievance->user_id)
 					@if(!empty($solved_image))
 						<div class="alert-box-container margin-top-10">
 						<div class="well mtb_0">
@@ -217,7 +222,7 @@ if($grievance)
 					@endif
 				@endif
 				 
-				@if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3)
+				@if($auth_user_type == 2 || $auth_user_type == 3)
 					<div class="alert-box-container margin-top-10">
 						<div class="well">
 						   <h3>{{ __('solved_grievance') }}</h3>
