@@ -110,9 +110,9 @@ use Carbon\Carbon;
 		
 	}
 	$(document).ready(function() {
-		$(document).on('click', '.viewgrievance', function(){
+		/*$(document).on('click', '.viewgrievance', function(){
 			window.location.href = $(this).data('href');
-		});
+		});*/
 		$(document).on('click', '.delete-grievance', function(){
 			Swal.fire({
 				title: 'Are you sure?',
@@ -127,6 +127,7 @@ use Carbon\Carbon;
 				if (result.isConfirmed) {
 					let URL = $(this).data('url');
 					let id = $(this).data('id');
+					//alert(URL);alert(id);
 					//let moreload = $('#moreload').val();
 					$.ajax({
 						url: URL,
@@ -149,6 +150,11 @@ use Carbon\Carbon;
 								timer: 1500,
 								showConfirmButton: false
 							});
+							
+							redirect = "{{ route('dashboard', ':tab') }}";
+							setTimeout(() => {
+								window.location.href = redirect.replace(':tab', 1);
+							}, "100");
 						},
 						error: function(xhr) {
 							console.error(xhr.responseText);

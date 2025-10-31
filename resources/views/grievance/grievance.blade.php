@@ -71,7 +71,7 @@ $(document).ready(function() {
 					},
 					dataType: 'json',
 					success: function(response) {
-						alert(response.html);
+						//alert(response.html);
 						//$('#moreload').val(response.loadmore)
 						//list_grievance(response.loadmore)
 						$('#moreload').val(response.loadmore);
