@@ -283,6 +283,9 @@ $(document).ready(function() {
 		var pincode = $('#pincode').val();
 		var issue_description = $('#issue_description').val();
 		
+		var latitude = $('#latitude').val();
+		var longitude = $('#longitude').val();
+		
 		var intRegex = /[0-9 -()+]+$/;
 		
 		if (name == '') {

@@ -156,7 +156,8 @@ class DashboardController extends Controller
 	public function save_grievance(Request $request)
 	{
 		//echo "<pre>";print_r($request->all()); die;
-		$registration_no = Str::random(7);
+		//$registration_no = Str::random(7);
+		$registration_no = time();
 		if($request->post('id') > 0)
 		{
 			$model = Grievance::find($request->post('id'));

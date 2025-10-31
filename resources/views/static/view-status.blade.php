@@ -47,13 +47,13 @@
 										<div class="text-danger position-absolute">{{ $message }}</div>
 									  @enderror
 								   </div>
-								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
+								   {{--<div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
 									  <label>{{ __('email_mobile') }} <span class="text-danger">*</span></label>
 									  <input type="text" name="mobile_no" value="{{ old('mobile_no') }}" class="form-control" id="mobile_no" >
 									  @error('mobile_no')
 										<div class="text-danger position-absolute">{{ $message }}</div>
 									  @enderror
-								   </div>
+								   </div>--}}
 								   
 								</div>
 								<div class="clearfix"></div>
