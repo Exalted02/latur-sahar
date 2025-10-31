@@ -486,7 +486,11 @@ $(document).ready(function(){
 	
 	$(document).on('click','#downloadBtn', function(){
 		let id = $(this).data('id');
-		window.location.href = "/download-grievance-files/" + id;
+		
+		redirect = "{{ route('download-grievance-files', ':id') }}";
+		window.location.href = redirect.replace(':id', id);
+		
+		//window.location.href = "/download-grievance-files/" + id;
 	});
 	/*$(document).on('click', '#downloadBtn', function() {
 		let id = $(this).data('id');

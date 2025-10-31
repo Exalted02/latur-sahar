@@ -404,6 +404,7 @@ class DashboardController extends Controller
 	
 	public function downloadFiles($id)
 	{
+		echo $id;
 		$images = Greivance_image::where('greivance_id', $id)->get();
 		$public_dir = public_path('uploads/greivance_image/zip');
 		$file_dir = public_path('uploads/greivance_image');
