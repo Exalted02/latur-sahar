@@ -442,7 +442,7 @@ $(document).ready(function() {
 						showHideTransition: 'slide',
 						icon: 'error',
 						position: 'top-right',
-						loaderBg: '#5cb85c',
+						loaderBg: '#f2a654',
 						hideAfter: 2000 
 					});
                 } else {
