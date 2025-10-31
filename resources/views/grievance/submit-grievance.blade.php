@@ -360,7 +360,6 @@ $(document).ready(function() {
 			$('#error_longitude').text('Please enter longitude').fadeIn().delay(2000).fadeOut();
 			return false;
 		}*/
-		
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				
@@ -435,7 +434,6 @@ $(document).ready(function() {
 			},
             function(error) {
                 if (error.code === error.PERMISSION_DENIED) {
-                    //alert("Location access is blocked. Please allow location access from your browser settings and try again.");
 					$.toast({
 						heading: 'Error',
 						text: 'Location access is blocked. Please allow location access from your browser settings and try again.',
@@ -443,9 +441,9 @@ $(document).ready(function() {
 						icon: 'error',
 						position: 'top-right',
 						loaderBg: '#f2a654',
-						hideAfter: 2000 
+						hideAfter: 10000 
 					});
-                } else {
+				} else {
                     alert("Unable to get your location. Error: " + error.message);
                 }
             }

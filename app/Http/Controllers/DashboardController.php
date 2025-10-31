@@ -216,7 +216,8 @@ class DashboardController extends Controller
 					mkdir($destinationPath, 0777, true);
 				}
 				
-				$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+				//$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+				$filename = uniqid() . $file->getClientOriginalExtension();
 				$file->move($destinationPath, $filename);
 
 				$fileModel = new Greivance_image();
@@ -403,6 +404,7 @@ class DashboardController extends Controller
 	
 	public function downloadFiles($id)
 	{
+		echo $id;
 		$images = Greivance_image::where('greivance_id', $id)->get();
 		$public_dir = public_path('uploads/greivance_image/zip');
 		$file_dir = public_path('uploads/greivance_image');
