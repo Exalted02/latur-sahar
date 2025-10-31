@@ -10,7 +10,7 @@
 <div class="page-header-area-2 gray1">
  <div class="container">
 	<div class="row">
-	   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	   <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 		  <div class="small-breadcrumb">
 			 <div class="header-page">
 				<h1>{{ __('view_status') }}</h1>
@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- Middle Content Area -->
-				<div class="col-md-12 col-xs-12 col-sm-12">
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<!-- Row -->
 					<div class="profile-section margin-bottom-20">
 						<div class="profile-edit">
@@ -40,7 +40,7 @@
 							<form name="frmStatus" action="{{ route('view-status') }}" method="post">
 							@csrf
 								<div class="row">
-								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
+								   <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-20">
 									  <label>{{ __('registration_number') }} <span class="text-danger">*</span></label>
 									  <input type="text" name="registration_no" id="registration_no" value="{{ old('registration_no') }}" class="form-control">
 									  @error('registration_no')
