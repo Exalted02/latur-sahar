@@ -104,6 +104,20 @@
 					@endauth
 					<li><a href="{{ route('contact-us')}}"></i> Contact Us</a></li>
 				</ul>
+				<ul class="menu-search-bar active">
+				   <li>
+					  <a>
+						 <div class="contact-in-header clearfix">
+							<i class="flaticon-customer-service"></i>
+							<span>
+							Call Us Now
+							<br>
+							<strong>02382242803</strong>
+							</span>
+						 </div>
+					  </a>
+				   </li>
+				</ul>
 			 </div>
 		  </div>
 	   </div>
