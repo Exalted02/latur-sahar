@@ -75,7 +75,7 @@
 									  <span id="error_grievance_type" class="text-danger position-absolute"></span>
 								   </div>
 								</div>
-								<div class="row">
+								{{--<div class="row">
 								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">
 									  <label>{{ __('latitude') }} <span class="text-danger">*</span></label>
 									  <input type="text" name="latitude" id="latitude" value="{{ isset($grievance) ? $grievance->latitude : old('latitude')}}" class="form-control">
@@ -86,7 +86,7 @@
 									  <input type="text" name="longitude" value="{{ isset($grievance) ? $grievance->longitude : old('longitude')}}" class="form-control" id="longitude">
 									  <span id="error_longitude" class="text-danger position-absolute"></span>
 								   </div>
-								</div>
+								</div>--}}
 								<div class="row">
 								   <div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-20">
 									  <label>{{ __('address') }} <span class="text-danger">*</span></label>
@@ -272,7 +272,7 @@ $(document).ready(function() {
 	});
 	
 	$(document).on('click', '.submit-greivance' , function() {
-		
+		//e.preventDefault();
 		var id = $('#id').val();
 		var name = $('#name').val();
 		var mobile_no = $('#mobile_no').val();
@@ -282,9 +282,6 @@ $(document).ready(function() {
 		var address = $('#address').val();
 		var pincode = $('#pincode').val();
 		var issue_description = $('#issue_description').val();
-		
-		var latitude = $('#latitude').val();
-		var longitude = $('#longitude').val();
 		
 		var intRegex = /[0-9 -()+]+$/;
 		
@@ -342,7 +339,7 @@ $(document).ready(function() {
 			}
 		}
 		
-		if (navigator.geolocation) {
+		/*if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				
 				var latitude = position.coords.latitude;
@@ -362,16 +359,16 @@ $(document).ready(function() {
 		if (longitude == '') {
 			$('#error_longitude').text('Please enter longitude').fadeIn().delay(2000).fadeOut();
 			return false;
-		}
+		}*/
 		
-		//if (navigator.geolocation) {
-			//navigator.geolocation.getCurrentPosition(function(position) {
-				//document.getElementById('latitude').value = position.coords.latitude;
-				//document.getElementById('longitude').value = position.coords.longitude;
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
 				
-				//var latitude = position.coords.latitude;
-				//var longitude = position.coords.longitude;
-			
+				var latitude = position.coords.latitude;
+				var longitude = position.coords.longitude;
+				
+				$('#latitude').val(latitude);
+				$('#longitude').val(longitude);
 		
 				let formData = new FormData();
 				selectedFiles.forEach(file => {
@@ -435,8 +432,26 @@ $(document).ready(function() {
 						console.error(xhr.responseText);
 					}
 				});
-			//});
-		//}
+			},
+            function(error) {
+                if (error.code === error.PERMISSION_DENIED) {
+                    //alert("Location access is blocked. Please allow location access from your browser settings and try again.");
+					$.toast({
+						heading: 'Error',
+						text: 'Location access is blocked. Please allow location access from your browser settings and try again.',
+						showHideTransition: 'slide',
+						icon: 'error',
+						position: 'top-right',
+						loaderBg: '#5cb85c',
+						hideAfter: 2000 
+					});
+                } else {
+                    alert("Unable to get your location. Error: " + error.message);
+                }
+            }
+		  );
+		}
+		
 	})
 	
 	// Remove existing file from preview & array
