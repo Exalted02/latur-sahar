@@ -216,7 +216,8 @@ class DashboardController extends Controller
 					mkdir($destinationPath, 0777, true);
 				}
 				
-				$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+				//$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+				$filename = uniqid() . $file->getClientOriginalExtension();
 				$file->move($destinationPath, $filename);
 
 				$fileModel = new Greivance_image();
