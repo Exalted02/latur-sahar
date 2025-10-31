@@ -156,7 +156,8 @@ class DashboardController extends Controller
 	public function save_grievance(Request $request)
 	{
 		//echo "<pre>";print_r($request->all()); die;
-		$registration_no = Str::random(7);
+		//$registration_no = Str::random(7);
+		$registration_no = time();
 		if($request->post('id') > 0)
 		{
 			$model = Grievance::find($request->post('id'));
@@ -238,7 +239,7 @@ class DashboardController extends Controller
 		$grievance_exists = Grievance::where('id', $id)->where('status', '!=', 4)->exists();
 		if(!$grievance_exists)
 		{
-			return redirect('view-status');
+			return view('errors.404');
 		}
 		
 		//$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();

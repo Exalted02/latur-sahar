@@ -55,10 +55,10 @@ class StaticController extends Controller
 		//echo "<pre>";print_r($request->all());die;
 		$validated = $request->validate([
 			'registration_no' => 'required',
-			'mobile_no' => 'required',
+			//'mobile_no' => 'required',
 		]);
 		
-		$grievance = Grievance::where('registration_no', $request->registration_no)->where('mobile_no', $request->mobile_no)->first();
+		$grievance = Grievance::where('registration_no', $request->registration_no)->first();
 
 		if(!$grievance) {
 			return back()

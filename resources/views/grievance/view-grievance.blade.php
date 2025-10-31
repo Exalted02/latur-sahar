@@ -8,7 +8,7 @@ $check_user = '';
 $auth_department = auth()->user()->department ?? '';
 $auth_user_id = auth()->user()->id ?? '';
 $auth_user_type = auth()->user()->user_type ?? '';
-//echo "<pre>";print_r($grievance);die;
+//echo "<pre>";print_r($solved_image);die;
 if($grievance)
 {
 	if(isset($grievance->department) && $grievance->department == $auth_department)
@@ -187,14 +187,16 @@ if($grievance)
 				 @endif
 				 
 				@if($auth_user_type == 1 && $auth_user_id == $grievance->user_id)
-					@if(!empty($solved_image))
+					@if($solved_image->count() > 0)
 						<div class="alert-box-container margin-top-10">
 						<div class="well mtb_0">
+						   
 						   <h3>{{ __('solved_grievance') }}</h3>
 						   <p>{{ __('solved_grievance') }}</p>
+						  
 							<div class="row margin-bottom-10">		
 								<div class="col-md-12 d-flex flex-wrap gap-2" id="preview-container">
-								@if(!empty($solved_image))
+								@if($solved_image->count() > 0)
 									@foreach($solved_image as $image)
 									@php 
 									$urlsExp = explode(".", $image->images);
@@ -225,8 +227,10 @@ if($grievance)
 				@if($auth_user_type == 2 || $auth_user_type == 3)
 					<div class="alert-box-container margin-top-10">
 						<div class="well">
+							
 						   <h3>{{ __('solved_grievance') }}</h3>
 						   <p>{{ __('solved_grievance') }}</p>
+						   
 						   <form>
 						   @csrf
 							<input type="hidden" value="{{ $grievance->id ?? '' }}" name="grievance_id" id="grievance_id">
