@@ -282,8 +282,6 @@
 				</span>
 			</a>
 			<div class="dropdown-menu">
-				
-				
 				<a class="dropdown-item" href="{{url('admin/change-password')}}">{{ __('change_password') }}</a>
 				<a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
 			</div>
