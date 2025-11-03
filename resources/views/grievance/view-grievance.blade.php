@@ -106,7 +106,7 @@ if($grievance)
 								</tr>
 								<tr>
 								   <th>{{ __('ward_prabhag') }}:</th>
-								   <td>{{ $grievance->ward_prabhag ?? '' }}</td>
+								   <td>{{ $grievance->get_ward_prabhag->name ?? '' }}</td>
 								</tr>
 								<tr>
 								   <th>{{ __('department') }}:</th>
@@ -133,7 +133,7 @@ if($grievance)
 							 <span><strong>{{ __('mobile') }}</strong> :</span> {{ $grievance->mobile_no ?? '' }}
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-							 <span><strong>{{ __('ward_prabhag') }}</strong> :</span> {{ $grievance->ward_prabhag ?? '' }}
+							 <span><strong>{{ __('ward_prabhag') }}</strong> :</span> {{ $grievance->get_ward_prabhag->name ?? '' }}
 						  </div>
 						  <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
 							 <span><strong>{{ __('department') }}</strong>:</span> {{ $grievance->get_department->name ?? '' }}

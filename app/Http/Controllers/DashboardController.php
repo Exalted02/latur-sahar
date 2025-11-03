@@ -9,6 +9,7 @@ use App\Models\Grievance;
 use App\Models\Grievance_type;
 use App\Models\Department;
 use App\Models\Greivance_image;
+use App\Models\Wardprabhag;
 use ZipArchive;
 use Illuminate\Support\Str;
 
@@ -97,6 +98,7 @@ class DashboardController extends Controller
     {
 		$data = [];
 		$data['departments'] = Department::where('status', 1)->get();
+		$data['wardprabhags'] = Wardprabhag::where('status', 1)->get();
 		//$data['grievance'] =  array();
         return view('grievance.submit-grievance', $data);
     }
@@ -236,7 +238,6 @@ class DashboardController extends Controller
     public function view_grievance($id='')
     {
 		$data = [];
-		
 		$grievance_exists = Grievance::where('id', $id)->where('status', '!=', 4)->exists();
 		if(!$grievance_exists)
 		{
@@ -248,10 +249,13 @@ class DashboardController extends Controller
 		$data['grievance'] = Grievance::with([
 			'get_department',
 			'get_grievance_type',
+			'get_ward_prabhag',
 			'grievance_image' => function ($query) {
 				$query->where('image_type', 1);
 			}
 		])->where('id', $id)->first();
+		
+		//echo "<pre>";print_r($grievance);die;
 		
 		//$data['solved_image'] = ;
 		$data['solved_image'] = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();

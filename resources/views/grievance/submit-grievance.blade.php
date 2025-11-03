@@ -97,7 +97,13 @@
 								<div class="row">
 								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">  
 									  <label>{{ __('ward_prabhag') }} <span class="color-red">*</span></label>
-									  <input type="text" name="ward_prabhag" value="{{ isset($grievance) ? $grievance->ward_prabhag : old('ward_prabhag')}}" class="form-control" id="ward_prabhag">
+									  <select class="form-control" name="ward_prabhag" id="ward_prabhag">
+										 <option value=""> {{ __('select_ward_prabhag') }}</option>
+										 @foreach($wardprabhags as $wardprabhag)
+											<option value="{{ $wardprabhag->id ?? '' }}">{{ $wardprabhag->name ?? '' }}</option>
+										 @endforeach
+									  </select>
+									  <div class="clearfix"></div>
 									  <span id="error_ward_prabhag" class="text-danger position-absolute"></span>
 								   </div>
 								   <div class="col-md-6 col-sm-6 col-xs-12 margin-bottom-20">  

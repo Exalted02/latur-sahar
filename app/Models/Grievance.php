@@ -41,4 +41,8 @@ class Grievance extends Model
 	{
 		return $this->hasMany(Greivance_image::class, 'greivance_id');
 	}
+	public function get_ward_prabhag()
+	{
+		return $this->belongsTo(Wardprabhag::class, 'ward_prabhag');
+	}
 }
