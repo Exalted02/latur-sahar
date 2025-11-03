@@ -592,7 +592,8 @@ class DashboardController extends Controller
 		{
 			$grievances = Grievance::where('status', '!=', 4)->get();
 		}
-
+		
+		//return view('grievance_report', compact('grievances'));
         $pdf = Pdf::loadView('grievance_report', compact('grievances'))
                   ->setPaper('a4', 'portrait');
 
