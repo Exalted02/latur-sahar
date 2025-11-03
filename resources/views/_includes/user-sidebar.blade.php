@@ -11,6 +11,9 @@
 			<div class="astrodivider"><div class="astrodividermask"></div></div>--}}
 			<ul class="profile_user_li">
 				<li><a href="{{route('dashboard', ['tab' => 1])}}" class="{{ (request()->routeIs('dashboard')) ? 'active' : '' }}"><i class="fa fa-tachometer" aria-hidden="true"></i> {{ __('dashboard') }}</a></li>
+				@if(auth()->user()->user_type != 1)
+				<li><a href="{{route('list-resubmit-status')}}" class="{{ (request()->routeIs('list-resubmit-status')) ? 'active' : '' }}"><i class="fa fa-user" aria-hidden="true"></i> {{ __('resubmit') }}</a></li>
+				@endif
 				<li><a href="{{route('my-account')}}" class="{{ (request()->routeIs('my-account')) ? 'active' : '' }}"><i class="fa fa-user" aria-hidden="true"></i> {{ __('my_account') }}</a></li>
 				<li><a href="{{route('change-password')}}" class="{{ (request()->routeIs('change-password')) ? 'active' : '' }}"><i class="fa fa-key" aria-hidden="true"></i> {{ __('change_password') }}</a></li>
 				@if(auth()->user()->user_type == 1)

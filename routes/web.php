@@ -105,6 +105,7 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::post('/download-report', [DashboardController::class, 'download_report'])->name('download-report');
 	
 	Route::post('/save-forwarded-to', [DashboardController::class, 'save_forwarded_to'])->name('save-forwarded-to');
+	Route::get('/list-resubmit-status', [DashboardController::class, 'list_resubmit_status'])->name('list-resubmit-status');
 });
 
 

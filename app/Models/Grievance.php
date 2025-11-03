@@ -45,4 +45,8 @@ class Grievance extends Model
 	{
 		return $this->belongsTo(Wardprabhag::class, 'ward_prabhag');
 	}
+	public function get_forwarded_grievance()
+	{
+		return $this->belongsTo(Forward_grievance::class, 'id','greivance_id');
+	}
 }

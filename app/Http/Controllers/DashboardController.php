@@ -616,4 +616,11 @@ class DashboardController extends Controller
 		$model->save();
 		return back()->with('forwarded', 'Forwarded');
 	}
+	public function list_resubmit_status()
+	{
+		$data = [];
+		
+		$data['resubmit_list'] = Grievance::with('get_forwarded_grievance')->where('department', auth()->user()->department)->where('status', 2)->get();
+		return view('resubmit-list', $data);
+	}
 }

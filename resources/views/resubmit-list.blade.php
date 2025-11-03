@@ -10,40 +10,6 @@ use Carbon\Carbon;
 					@include('_includes/user-sidebar')
 					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
 						<div class="row">
-							<a href="{{ route('dashboard',['tab' => 1]) }}">
-							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							   <div class="dashboard-card background-info">
-								  <h2>{{ $total_geievance ?? ''}}</h2>
-								  <small>{{ __('total_grievance') }}</small>
-							   </div>
-							</div></a>
-							
-							<a href="{{ route('dashboard',['tab' => 2]) }}">
-							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							   <div class="dashboard-card background-warning">
-								  <h2>{{ $pending_grievance ?? ''}}</h2>
-								  <small>{{ __('pending_grievance') }}</small>
-							   </div>
-							</div></a>
-							
-							<a href="{{ route('dashboard',['tab' => 3]) }}">
-							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							   <div class="dashboard-card background-success">
-								  <h2>{{ $solved_grievance ?? ''}}</h2>
-								  <small>{{ __('solved_grievance') }}</small>
-							   </div>
-							</div></a>
-							
-							<a href="{{ route('dashboard',['tab' => 4]) }}">
-							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							   <div class="dashboard-card background-danger">
-								  <h2>{{ $alert_grievance ?? ''}}</h2>
-								  <small>{{ __('alert_grievance') }}</small>
-							   </div>
-							</div></a>
-						</div>
-						
-						<div class="row">
 							<div class="col-md-12">
 								<div class="post-ad-form postdetails mt_15">
 									<div class="row">
@@ -60,12 +26,12 @@ use Carbon\Carbon;
 														</tr>
 													</thead>
 													<tbody>
-													@foreach($grievances as  $grievance)
+													@foreach($resubmit_list as  $grievance)
 														<tr class="viewgrievance" data-href="{{ route('view-grievance', ['id' => $grievance->id]) }}" style="cursor:pointer">
 															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">#{{ $grievance->registration_no ?? '' }}</a></td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
-															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{!! $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? '<div class="bullet"></div> Resubmit' : 'Solved') !!}</td>
+															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{!! $grievance->status==1 ? 'Pending' : ($grievance->get_forwarded_grievance->greivance_id == $grievance->id ? '<div class="bullet"></div>' : 'Solved') !!}</td>
 															<td class="text-center">
 																@if(auth()->user()->user_type == 1)
 																<ul class="custom-small-box">
