@@ -498,6 +498,8 @@ class DashboardController extends Controller
 	}
 	public function report()
 	{
-		 echo 'report'; die;
+		$data = [];
+		$data['grievances'] = Grievance::where('status', '!=', 4)->get();
+		return view('report', $data);
 	}
 }

@@ -18,7 +18,9 @@
 				
 				{{--<li><a href="{{route('grievance')}}" class="{{ (request()->routeIs('grievance')) ? 'active' : '' }}"><i class="fa fa-triangle-exclamation" aria-hidden="true"></i> {{ __('List grievance') }}</a></li>--}}
 				
+				@if(auth()->user()->user_type != 1)
 				<li><a href="{{route('report')}}" class="{{ (request()->routeIs('report')) ? 'active' : '' }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> {{ __('report') }}</a></li>
+				@endif
 								
 				<li><a href="{{ route('logout') }}" class="text-danger logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 			</ul>

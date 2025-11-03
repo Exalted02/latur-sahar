@@ -59,6 +59,9 @@
 		<!-- =-=-=-=-=-=-= Datatables =-=-=-=-=-=-= -->
 		<link href="{{ url('front-assets/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 		
+		<!-- Daterangepikcer CSS -->
+		<link rel="stylesheet" href="{{ url('front-assets/plugins/daterangepicker/daterangepicker.css') }}">
+		
 		<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap.css" rel="stylesheet">--> 
 		
@@ -124,6 +127,14 @@
 		<script src="{{ url('front-assets/js/dataTables.bootstrap4.min.js') }}"></script>
 		
 		<script src="https://unpkg.com/simplebar/dist/simplebar.min.js"></script>
+		
+		<!-- Datetimepicker JS -->
+		<script src="{{ url('front-assets/js/moment.min.js') }}"></script>
+		
+		<script src="{{ url('front-assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+		
+		<!-- Daterangepikcer JS -->
+		<script src="{{ url('front-assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
 		
 		<link rel="stylesheet" href="{{ url('common-assets/css/toastr.min.css') }}"/>
 		<script src="{{ url('common-assets/js/toastr.min.js') }}"></script>
