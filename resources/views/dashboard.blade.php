@@ -65,8 +65,8 @@ use Carbon\Carbon;
 															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">#{{ $grievance->registration_no ?? '' }}</a></td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
-															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{{ $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? 'Resubmit' : 'Solved') }}</td>
-															<td>
+															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{{ $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? '<div class="bullet"></div> Resubmit' : 'Solved') }}</td>
+															<td class="text-center">
 																@if(auth()->user()->user_type == 1)
 																<ul class="custom-small-box">
 																	<li><a href="javascript:void(0)" data-url="{{ url('delete-grievance') }}" data-id="{{ $grievance->id }}" class="delete-grievance"><i class="fa-solid fa-trash text-danger"></i></a></li>

@@ -626,4 +626,12 @@
 	margin-bottom: 0;
 }
 
+.bullet {
+	display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #e00303;
+  border-radius: 50%;
+  margin-left: 5px;
 
+}
