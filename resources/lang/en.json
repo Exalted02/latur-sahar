@@ -160,5 +160,6 @@
 	"select_ward_prabhag": "Select ward prabhag",
 	"report": "Report",
 	"all": "All",
-	"search": "Search"
+	"search": "Search",
+	"forwarded_to": "Forwarded to"
 }

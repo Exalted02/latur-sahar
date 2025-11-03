@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Forward_grievance;
 
 class DashboardController extends Controller
 {
@@ -259,6 +260,7 @@ class DashboardController extends Controller
 		
 		//$data['solved_image'] = ;
 		$data['solved_image'] = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();
+		$data['forward_exists'] = Forward_grievance::where('greivance_id', $id)->first();
 		//echo "<pre>";print_r($grievance); die;
         return view('grievance.view-grievance', $data);
     }
@@ -598,5 +600,20 @@ class DashboardController extends Controller
                   ->setPaper('a4', 'portrait');
 
         return $pdf->download('grievance_report.pdf');
+	}
+	public function save_forwarded_to(Request $request)
+	{
+		$validated = $request->validate([
+			'forward_text' => 'required',
+		]);
+		
+		$forwarded_to = auth()->user()->user_type == 3 ? 2 : 3;
+		$model = new Forward_grievance();
+		$model->greivance_id = $request->grievance_id ?? null;
+		$model->forwarded_by = auth()->user()->id ?? null;
+		$model->forwarded_to = $forwarded_to ?? null;
+		$model->forward_text = $request->forward_text ?? null;
+		$model->save();
+		return back()->with('forwarded', 'Forwarded');
 	}
 }

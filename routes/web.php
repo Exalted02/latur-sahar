@@ -103,6 +103,8 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	Route::post('/report', [DashboardController::class, 'src_report'])->name('report');
 	
 	Route::post('/download-report', [DashboardController::class, 'download_report'])->name('download-report');
+	
+	Route::post('/save-forwarded-to', [DashboardController::class, 'save_forwarded_to'])->name('save-forwarded-to');
 });
 
 

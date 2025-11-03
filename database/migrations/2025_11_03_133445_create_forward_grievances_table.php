@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wardprabhags', function (Blueprint $table) {
+        Schema::create('forward_grievances', function (Blueprint $table) {
             $table->id();
-			$table->string('name')->nullable();
-			$table->tinyInteger('status')->default(1)->comment('0=inactive, 1=active, 2=inactive');
+			$table->integer('greivance_id')->nullable();
+			$table->integer('forwarded_by')->nullable();
+			$table->integer('forwarded_to')->nullable();
+			$table->text('forward_text')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wardprabhags');
+        Schema::dropIfExists('forward_grievances');
     }
 };

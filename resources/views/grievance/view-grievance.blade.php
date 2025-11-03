@@ -186,6 +186,34 @@ if($grievance)
 				 </div>
 				 @endif
 				 
+				 @if(($auth_user_type == 3 || $auth_user_type == 4 || $auth_user_type == 5 || $auth_user_type == 6) && $grievance->status  == 2 && $forward_exists->count()== 0)
+				<div class="alert-box-container margin-top-10">
+					<div class="well mtb_0">
+					   <h3>{{ __('forwarded_to') }}</h3>
+						<p>You {{ __('forwarded_to') }}.</p>
+					   <form action="{{ route('save-forwarded-to') }}" method="POST">
+					   @csrf
+					   <input type="hidden" value="{{ $grievance->id ?? '' }}" name="grievance_id">
+						 <div class="row">
+							 <div class="col-md-9 col-xs-12 col-sm-12 margin-bottom-20">
+								<div class="">
+									<textarea name="forward_text" class="form-control"></textarea>
+								</div>
+								@error('forward_text')
+									<div class="text-danger position-absolute">{{ $message }}</div>
+								@enderror
+							 </div>
+						</div>
+						<div class="row">
+							 <div class="col-md-3 col-xs-12 col-sm-12 margin-top-10">
+								<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+							 </div>
+						  </div>
+					   </form>
+					</div>
+				 </div>
+				 @endif
+				 
 				@if($auth_user_type == 1 && $auth_user_id == $grievance->user_id)
 					@if($solved_image->count() > 0)
 						<div class="alert-box-container margin-top-10">
@@ -522,6 +550,20 @@ $(document).ready(function(){
 		$.toast({
 			heading: 'Success',
 			text: "Feedback send successfully",
+			showHideTransition: 'slide',
+			icon: 'success',
+			position: 'top-right',
+			loaderBg: '#5cb85c',
+			hideAfter: 3000
+		});
+	}
+	@endif
+	
+	@if(session('forwarded') == 'Forwarded')
+	{
+		$.toast({
+			heading: 'Success',
+			text: "Forwarded successfully",
 			showHideTransition: 'slide',
 			icon: 'success',
 			position: 'top-right',
