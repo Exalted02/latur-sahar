@@ -25,7 +25,7 @@ use Carbon\Carbon;
 							   </select>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							  <input type="text" class="form-control date-range" name="date_range_phone" id="src_product_code_date_range_phone" placeholder="{{ __('from_to_date')}}" value="{{ old('date_range_phone', request('date_range_phone')) }}">
+							  <input type="text" class="form-control date-range" name="date_range_phone" id="src_ward_prabhag_date_range" placeholder="{{ __('from_to_date')}}" value="{{ old('date_range_phone', request('date_range_phone')) }}">
 							</div>
 							</form>
 						</div>

@@ -314,13 +314,13 @@ $(document).ready(function() {
 		}
 	}
 	
-	if ($('#src_product_code_date_range_phone').length > 0) {
+	if ($('#src_ward_prabhag_date_range').length > 0) {
 		function booking_range(start, end) {
 			// Update the input field with the selected date range in MM/DD/YYYY format
-			$('#src_product_code_date_range_phone').val(start.format('MM/DD/YYYY') + ' - ' + end.format('MM/DD/YYYY'));
+			$('#src_ward_prabhag_date_range').val(start.format('MM/DD/YYYY') + ' - ' + end.format('MM/DD/YYYY'));
 		}
 
-		$('#src_product_code_date_range_phone').daterangepicker({
+		$('#src_ward_prabhag_date_range').daterangepicker({
 			autoUpdateInput: false,  // Prevents the input from being auto-filled on initialization
 			ranges: {
 				'Today': [moment(), moment()],
@@ -335,20 +335,20 @@ $(document).ready(function() {
 		}, booking_range);
 
 		// Event when a date range is selected
-		$('#src_product_code_date_range_phone').on('apply.daterangepicker', function(ev, picker) {
+		$('#src_ward_prabhag_date_range').on('apply.daterangepicker', function(ev, picker) {
 			$(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
 		});
 
 		// Event when the date range picker is canceled
-		$('#src_product_code_date_range_phone').on('cancel.daterangepicker', function(ev, picker) {
+		$('#src_ward_prabhag_date_range').on('cancel.daterangepicker', function(ev, picker) {
 			$(this).val('');
 		});
 
 		// Clear the input initially to keep it blank
-		if($('#src_product_code_date_range_phone').val() != ''){
+		if($('#src_ward_prabhag_date_range').val() != ''){
 			// $('#src_resource_date_range_anny').val('MM/DD/YYYY - MM/DD/YYYY');
 		}else{
-			$('#src_product_code_date_range_phone').val('MM/DD/YYYY - MM/DD/YYYY');
+			$('#src_ward_prabhag_date_range').val('MM/DD/YYYY - MM/DD/YYYY');
 		}
 	}
 	
