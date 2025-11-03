@@ -10,23 +10,37 @@ use Carbon\Carbon;
 					@include('_includes/user-sidebar')
 					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
 						<div class="row">
-							<form name="" action="">
+							<form name="frm" action="{{ route('report') }}" method="post">
+							@csrf
 							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
 							   <select name="src_ward_prabhag" class="select">
 									<option value="">{{ __('select_ward_prabhag') }}</option>
-									<option value="">s</option>
+									@foreach($wardprabhag as $prabhag)
+									<option value="{{ $prabhag->id ?? ''}}"  {{ old('src_ward_prabhag') == $prabhag->id ? 'selected' : '' }}>{{ $prabhag->name ?? ''}}</option>
+									@endforeach
 							   </select>
+							   @error('src_ward_prabhag')
+									<div class="text-danger">{{ $message}}</div>
+							   @enderror
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							   <select name="src_ward_prabhag" class="select">
+							   <select name="src_status" class="select">
 									<option value="">{{ __('select_status') }}</option>
-									<option value="1">{{ __('pending') }}</option>
-									<option value="2">{{ __('solved') }}</option>
+									<option value="1" {{ old('src_ward_prabhag') == 1? 'selected' : '' }}>{{ __('pending') }}</option>
+									<option value="3" {{ old('src_ward_prabhag') == 3 ? 'selected' : '' }}>{{ __('solved') }}</option>
+									<option value="all" {{ old('src_ward_prabhag') == 'all' ? 'selected' : '' }}>{{ __('all') }}</option>
 							   </select>
+							   @error('src_status')
+									<div class="text-danger">{{ $message}}</div>
+							   @enderror
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							  <input type="text" class="form-control date-range" name="date_range_phone" id="src_ward_prabhag_date_range" placeholder="{{ __('from_to_date')}}" value="{{ old('date_range_phone', request('date_range_phone')) }}">
+							  <input type="text" class="form-control date-range" name="date_range_src_ward_prabhag" id="src_ward_prabhag_date_range" placeholder="{{ __('from_to_date')}}" value="{{ old('date_range_phone', request('date_range_phone')) }}">
+							  @error('date_range_src_ward_prabhag')
+									<div class="text-danger">{{ $message}}</div>
+							   @enderror
 							</div>
+							<button type="submit" class="btn btn-theme btn-lg submit">Submit</button>
 							</form>
 						</div>
 						
@@ -40,30 +54,22 @@ use Carbon\Carbon;
 													<thead>
 														<tr>
 															<th>{{ __('registration_no') }}</th>
+															<th>{{ __('department') }}</th>
 															<th>{{ __('received_date') }}</th>
 															<th>{{ __('grievance_description') }}</th>
 															<th>{{ __('status') }}</th>
-															<th class="text-center" style="width:112px">{{ __('action') }}</th>
+															
 														</tr>
 													</thead>
 													<tbody>
 													@foreach($grievances as  $grievance)
 														<tr class="viewgrievance" data-href="{{ route('view-grievance', ['id' => $grievance->id]) }}" style="cursor:pointer">
 															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">#{{ $grievance->registration_no ?? '' }}</a></td>
+															<td>{{ $grievance->get_department->name ?? '' }}</td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
 															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{{ $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? 'Resubmit' : 'Solved') }}</td>
-															<td>
-																@if(auth()->user()->user_type == 1)
-																<ul class="custom-small-box">
-																	<li><a href="javascript:void(0)" data-url="{{ url('delete-grievance') }}" data-id="{{ $grievance->id }}" class="delete-grievance"><i class="fa-solid fa-trash text-danger"></i></a></li>
-																	<li><a href="{{ url('edit-grievance', ['id'=> $grievance->id]) }}"><i class="fa-solid fa-pen text-success"></i></a></li>
-																</ul>
-															@endif
-																<ul class="custom-small-box">
-																	<li><a href="{{ route('view-grievance', ['id'=> $grievance->id]) }}"><i class="fa-solid fa-eye text-warning"></i></a></li>
-																</ul>
-															</td>
+															
 														</tr>
 													@endforeach
 													</tbody>

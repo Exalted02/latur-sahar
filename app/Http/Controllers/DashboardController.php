@@ -408,7 +408,6 @@ class DashboardController extends Controller
 	
 	public function downloadFiles($id)
 	{
-		echo $id;
 		$images = Greivance_image::where('greivance_id', $id)->get();
 		$public_dir = public_path('uploads/greivance_image/zip');
 		$file_dir = public_path('uploads/greivance_image');
@@ -500,6 +499,50 @@ class DashboardController extends Controller
 	{
 		$data = [];
 		$data['grievances'] = Grievance::where('status', '!=', 4)->get();
+		$data['wardprabhag'] = Wardprabhag::where('status', '!=', 2)->get();
+		return view('report', $data);
+	}
+	public function src_report(Request $request)
+	{
+	   //echo "<pre>";print_r($request->all()); die;
+	   $validated = $request->validate([
+			'src_ward_prabhag' => 'required',
+			'src_status' => 'required',
+			'date_range_src_ward_prabhag' => 'required',
+		], [
+			'src_ward_prabhag.required' => 'Please select a Ward.',
+			'src_status.required' => 'Please choose a status.',
+			'date_range_src_ward_prabhag.required' => 'Please select a date range.',
+		]);
+		
+		
+		$dataArr = Grievance::query();
+		
+		if($request->src_ward_prabhag)
+		{
+			$dataArr->where('ward_prabhag', 'like', '%' . $request->src_ward_prabhag . '%');
+		}
+		
+		if($request->src_status)
+		{
+			$dataArr->where('status', 'like', '%' . $request->src_status . '%');
+		}
+		
+		if($request->date_range_src_ward_prabhag && $request->date_range_src_ward_prabhag != 'MM/DD/YYYY - MM/DD/YYYY') {
+		// Explode the date range into start and end dates
+		$dates = explode(' - ', $request->date_range_src_ward_prabhag);
+
+		// Convert the start date and end date to Y-m-d format
+		$start_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay()->format('Y-m-d');
+		$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
+		//$contactArr->whereBetween('address_since', [$start_date, $end_date]);
+		$dataArr->whereDate('submitted_date', '>=', $start_date)
+		->whereDate('submitted_date', '<=', $end_date);
+		}
+		
+		$data['grievances'] = $dataArr->with('get_department')->get();
+		
+		$data['wardprabhag'] = Wardprabhag::where('status', '!=', 2)->get();
 		return view('report', $data);
 	}
 }
