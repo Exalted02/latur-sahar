@@ -186,7 +186,7 @@ if($grievance)
 				 </div>
 				 @endif
 				 
-				 @if(($auth_user_type == 3 || $auth_user_type == 4 || $auth_user_type == 5 || $auth_user_type == 6) && $grievance->status  == 2 && $forward_exists->count()== 0)
+				 @if(($auth_user_type == 3 || $auth_user_type == 4 || $auth_user_type == 5 || $auth_user_type == 6) && $grievance->status  == 2 && (isset($forward_exists) && $forward_exists->count()== 0))
 				<div class="alert-box-container margin-top-10">
 					<div class="well mtb_0">
 					   <h3>{{ __('forwarded_to') }}</h3>
