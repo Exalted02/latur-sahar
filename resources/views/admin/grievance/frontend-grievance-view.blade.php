@@ -131,6 +131,36 @@
 										</ul>
 									</div>
 									
+									<div class="mail-attachments">
+										<div class="mailview-header">
+											<div class="row">
+												<div class="col-sm-9">
+													<div class="text-ellipsis">
+														<span class="mail-view-title">{{ __('Grievance solved images') }}</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<ul class="attachments clearfix">
+											@foreach($solved_image as $images)
+											<li>
+												<div class="attach-file"><a href="{{ url('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image"><img src="{{ url('uploads/greivance_image/'.$images->images )}}"  style="height:132px"></a></div>
+												<div class="attach-info"> <a href="#" class="attach-filename">{{$images->images}}</a> <div class="attach-fileize"> 
+												@php
+													$size = filesize(public_path('uploads/greivance_image/'.$images->images));
+													$sizeKB = round($size / 1024, 2);
+													if($sizeKB >= 1024) {
+														$sizeMeasure = round($size / 1024 / 1024, 2) .' MB';
+													} else {
+														$sizeMeasure = round($size / 1024, 2) .' KB';
+													}
+												@endphp
+												{{ $sizeMeasure }}</div></div>
+											</li>
+											@endforeach
+										</ul>
+									</div>
+									
 								</div>
 					</div>
 					

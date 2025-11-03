@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Grievance_type;
 use App\Models\Department;
 use App\Models\Grievance;
+use App\Models\Greivance_image;
 use Carbon\Carbon;
 
 class GrievanceController extends Controller
@@ -123,7 +124,19 @@ class GrievanceController extends Controller
 	public function view_frontend_grievance($id='')
 	{
 		$data = [];
-		$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		/*$data['grievance'] = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();*/
+		
+		$data['grievance'] = Grievance::with([
+			'get_department',
+			'get_grievance_type',
+			'get_ward_prabhag',
+			'grievance_image' => function ($query) {
+				$query->where('image_type', 1);
+			}
+		])->where('id', $id)->first();
+		
+		$data['solved_image'] = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();
+		
 		return view('admin.grievance.frontend-grievance-view', $data);
 	}
 }
