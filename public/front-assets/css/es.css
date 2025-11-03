@@ -636,7 +636,10 @@
 	font-size: 14px;
 	width: fit-content;
 	margin: 0px auto;
-	/*margin-right: 10px;*/ /* space between buttons */
+	/*margin-right: 6px;*/ /* space between buttons */
     /*display: inline-block;*/ /* <-- keep buttons on the same line */
     /*vertical-align: middle;*/ /* align nicely */
+}
+.search-button i {
+    margin-right: 6px;
 }

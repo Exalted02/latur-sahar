@@ -52,15 +52,13 @@ use Carbon\Carbon;
 									</div>
 								</div>
 								
-								<div class="col-xl-2 col-md-2 p-r-0 mt-2">
-									<div class="input-block">								
-												
-									<button type="submit" class="search-button">{{ __('search') }}</button>
+								<div class="col-xl-2 col-md-2 p-r-0">
+									<div class="input-block"><button type="submit" class="search-button"><i class="fa fa-search"></i>{{ __('search') }}</button>
 									</div>
 								</div>
-								<div class="col-xl-2 col-md-2 p-r-0">
+								<div class="col-xl-3 col-md-3 p-r-0">
 									<div class="input-block">
-										<button type="button" class="search-button download-report">{{ __('download') }}</button>
+										<button type="button" class="search-button download-report"><i class="fa fa-download"></i> {{ __('download') }}</button>
 									</div>
 								</div>
 							
