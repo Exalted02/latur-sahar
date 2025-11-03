@@ -157,5 +157,6 @@
 	"select_status": "Select status",
 	"example": "Example",
 	"please_enter": "Please enter",
-	"select_ward_prabhag": "Select ward prabhag"
+	"select_ward_prabhag": "Select ward prabhag",
+	"report": "Report"
 }

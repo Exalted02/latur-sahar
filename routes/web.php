@@ -97,6 +97,9 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	// change password
 	Route::get('/change-password', [ChangePasswordController::class, 'index'])->name('change-password');
 	Route::post('/change-password', [ChangePasswordController::class, 'save_data'])->name('change-password');
+	
+	// Report
+	Route::get('/report', [DashboardController::class, 'report'])->name('report');
 });
 
 

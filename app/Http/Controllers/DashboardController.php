@@ -496,4 +496,8 @@ class DashboardController extends Controller
 		
 		return response()->json(['msg'=>'Record added successfully']);
 	}
+	public function report()
+	{
+		 echo 'report'; die;
+	}
 }
