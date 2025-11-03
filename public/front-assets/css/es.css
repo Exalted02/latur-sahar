@@ -626,20 +626,4 @@
 	margin-bottom: 0;
 }
 
-.search-button {
-	cursor:pointer;
-	padding: 10px 24px;
-	border-radius: 8px;
-	border: none;
-	background: #0b2b57;
-	color: white;
-	font-size: 14px;
-	width: fit-content;
-	margin: 0px auto;
-	/*margin-right: 6px;*/ /* space between buttons */
-    /*display: inline-block;*/ /* <-- keep buttons on the same line */
-    /*vertical-align: middle;*/ /* align nicely */
-}
-.search-button i {
-    margin-right: 6px;
-}
+

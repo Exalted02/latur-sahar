@@ -52,7 +52,19 @@ use Carbon\Carbon;
 									</div>
 								</div>
 								
-								<div class="col-xl-2 col-md-2 p-r-0">
+								<div class="col-xl-5 col-md-5 p-r-0">
+									<div class="d-flex flex-wrap gap-2 align-items-center">
+										<button type="submit" class="search-button">
+											<i class="fa fa-search me-2"></i>{{ __('search') }}
+										</button>
+										<button type="button" class="search-button download-report">
+											<i class="fa fa-download me-2"></i>{{ __('download') }}
+										</button>
+									</div>
+								</div>
+
+								
+								{{--<div class="col-xl-2 col-md-2 p-r-0">
 									<div class="input-block"><button type="submit" class="search-button"><i class="fa fa-search"></i>{{ __('search') }}</button>
 									</div>
 								</div>
@@ -60,7 +72,7 @@ use Carbon\Carbon;
 									<div class="input-block">
 										<button type="button" class="search-button download-report"><i class="fa fa-download"></i> {{ __('download') }}</button>
 									</div>
-								</div>
+								</div>--}}
 							
 							</div>
 							</form>
