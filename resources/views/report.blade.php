@@ -40,7 +40,7 @@ use Carbon\Carbon;
 									<div class="text-danger">{{ $message}}</div>
 							   @enderror
 							</div>
-							<button type="submit" class="btn btn-theme btn-lg submit">Submit</button>
+							<button type="submit" class="btn btn-theme btn-lg submit">Search</button>
 							</form>
 						</div>
 						
