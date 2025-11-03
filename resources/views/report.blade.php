@@ -25,7 +25,7 @@ use Carbon\Carbon;
 							<form name="frm" action="{{ route('report') }}" method="post">
 							@csrf
 							<div class="row filter-row">
-								<div class="col-lg-4 col-md-4 p-r-0">
+								<div class="col-lg-4 col-md-4 p-r-0 margin-bottom-10">
 									<div class="input-block">
 										<select name="src_ward_prabhag"  id="src_ward_prabhag" class="select">
 											<option value="">{{ __('select_ward_prabhag') }}</option>
@@ -35,7 +35,7 @@ use Carbon\Carbon;
 									   </select>
 									</div>
 								</div>
-								<div class="col-lg-4 col-md-4 p-r-0">
+								<div class="col-lg-4 col-md-4 p-r-0 margin-bottom-10">
 									<div class="input-block">
 										<select name="src_status" class="select" id="src_status">
 											<option value="">{{ __('select_status') }}</option>
@@ -46,33 +46,20 @@ use Carbon\Carbon;
 									</div>
 								</div>
 								
-								<div class="col-xl-4  col-md-4  p-r-0">  
+								<div class="col-xl-4  col-md-4 p-r-0 margin-bottom-10">  
 									<div class="input-block">
 									<input type="text" class="form-control date-range date_range_src" name="date_range_src_ward_prabhag" id="src_ward_prabhag_date_range" placeholder="{{ __('from_to_date')}}" value="{{ isset($date_range_src_ward_prabhag) ? $date_range_src_ward_prabhag : '' }}">
 									</div>
 								</div>
 								
-								<div class="col-xl-5 col-md-5 p-r-0">
-									<div class="d-flex flex-wrap gap-2 align-items-center">
-										<button type="submit" class="search-button">
-											<i class="fa fa-search me-2"></i>{{ __('search') }}
-										</button>
-										<button type="button" class="search-button download-report">
-											<i class="fa fa-download me-2"></i>{{ __('download') }}
-										</button>
-									</div>
+								<div class="col-xl-12 col-md-12 p-r-0">
+									<button type="submit" class="btn btn-theme btn-lg submit">
+										<i class="fa fa-search me-2"></i> {{ __('search') }}
+									</button>
+									<button type="button" class="btn btn-lg btn-secondary-theme download-report">
+										<i class="fa fa-download me-2"></i> {{ __('download') }}
+									</button>
 								</div>
-
-								
-								{{--<div class="col-xl-2 col-md-2 p-r-0">
-									<div class="input-block"><button type="submit" class="search-button"><i class="fa fa-search"></i>{{ __('search') }}</button>
-									</div>
-								</div>
-								<div class="col-xl-3 col-md-3 p-r-0">
-									<div class="input-block">
-										<button type="button" class="search-button download-report"><i class="fa fa-download"></i> {{ __('download') }}</button>
-									</div>
-								</div>--}}
 							
 							</div>
 							</form>

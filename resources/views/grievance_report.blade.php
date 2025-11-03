@@ -14,7 +14,7 @@
             margin-top: 20px;
         }
         table, th, td {
-            border: 1px solid #ADD8E6;
+            border: 1px solid #eeeeee;
         }
         th, td {
             padding: 8px;
