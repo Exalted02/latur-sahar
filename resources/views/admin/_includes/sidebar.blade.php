@@ -31,7 +31,7 @@
 					<a href="{{ route('admin.department') }}"><i class="la la-briefcase"></i> <span>Department</span></a>
 				</li>
 				<li class="{{ request()->routeIs('admin.ward-prabhag') ? 'active' : '' }}">
-					<a href="{{ route('admin.ward-prabhag') }}"><i class="la la-briefcase"></i> <span>Ward prabhag</span></a>
+					<a href="{{ route('admin.ward-prabhag') }}"><i class="la la-map"></i> <span>Ward prabhag</span></a>
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.grievance') ? 'active' : '' }}">
