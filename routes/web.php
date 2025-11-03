@@ -101,6 +101,8 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	// Report
 	Route::get('/report', [DashboardController::class, 'report'])->name('report');
 	Route::post('/report', [DashboardController::class, 'src_report'])->name('report');
+	
+	Route::post('/download-report', [DashboardController::class, 'download_report'])->name('download-report');
 });
 
 

@@ -337,6 +337,7 @@ $(document).ready(function() {
 		// Event when a date range is selected
 		$('#src_ward_prabhag_date_range').on('apply.daterangepicker', function(ev, picker) {
 			$(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+			$('#download_date_range_src').val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
 		});
 
 		// Event when the date range picker is canceled
@@ -346,7 +347,7 @@ $(document).ready(function() {
 
 		// Clear the input initially to keep it blank
 		if($('#src_ward_prabhag_date_range').val() != ''){
-			// $('#src_resource_date_range_anny').val('MM/DD/YYYY - MM/DD/YYYY');
+			 //$('#download_date_range_src').val('MM/DD/YYYY - MM/DD/YYYY');
 		}else{
 			$('#src_ward_prabhag_date_range').val('MM/DD/YYYY - MM/DD/YYYY');
 		}

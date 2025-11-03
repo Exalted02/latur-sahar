@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DashboardController extends Controller
 {
@@ -505,30 +505,34 @@ class DashboardController extends Controller
 	public function src_report(Request $request)
 	{
 	   //echo "<pre>";print_r($request->all()); die;
-	   $validated = $request->validate([
-			'src_ward_prabhag' => 'required',
-			'src_status' => 'required',
-			'date_range_src_ward_prabhag' => 'required',
-		], [
-			'src_ward_prabhag.required' => 'Please select a Ward.',
-			'src_status.required' => 'Please choose a status.',
-			'date_range_src_ward_prabhag.required' => 'Please select a date range.',
-		]);
+	    $src_date = $request->date_range_src_ward_prabhag == 'MM/DD/YYYY - MM/DD/YYYY' ? '' : $request->date_range_src_ward_prabhag;
 		
-		
+		if (
+			empty($request->src_ward_prabhag) &&
+			empty($request->src_status) &&
+			empty($src_date)
+		) {
+			return back()->withErrors(['Please fill at least one filter field.'])->withInput();
+		}
+
+		$data = [];
 		$dataArr = Grievance::query();
 		
 		if($request->src_ward_prabhag)
 		{
 			$dataArr->where('ward_prabhag', 'like', '%' . $request->src_ward_prabhag . '%');
+			
+			$data['src_ward_prabhag'] = $request->src_ward_prabhag;
 		}
 		
 		if($request->src_status)
 		{
 			$dataArr->where('status', 'like', '%' . $request->src_status . '%');
+			$data['src_status'] = $request->src_status;
 		}
 		
-		if($request->date_range_src_ward_prabhag && $request->date_range_src_ward_prabhag != 'MM/DD/YYYY - MM/DD/YYYY') {
+		if($request->date_range_src_ward_prabhag && $request->date_range_src_ward_prabhag != 'MM/DD/YYYY - MM/DD/YYYY') 
+		{
 		// Explode the date range into start and end dates
 		$dates = explode(' - ', $request->date_range_src_ward_prabhag);
 
@@ -536,13 +540,62 @@ class DashboardController extends Controller
 		$start_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay()->format('Y-m-d');
 		$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
 		//$contactArr->whereBetween('address_since', [$start_date, $end_date]);
+		
 		$dataArr->whereDate('submitted_date', '>=', $start_date)
 		->whereDate('submitted_date', '<=', $end_date);
+		
+		$data['date_range_src_ward_prabhag'] = $request->date_range_src_ward_prabhag;
 		}
 		
 		$data['grievances'] = $dataArr->with('get_department')->get();
 		
 		$data['wardprabhag'] = Wardprabhag::where('status', '!=', 2)->get();
 		return view('report', $data);
+	}
+	public function download_report(Request $request)
+	{
+		$src_date = $request->download_date_range_src == 'MM/DD/YYYY - MM/DD/YYYY' ? '' : $request->download_date_range_src;
+		
+		if (
+			empty($request->download_ward_prabhag) &&
+			empty($request->download_status) && 
+			empty($src_date)
+		) {
+			return back()->withErrors(['Please fill at least one filter field.'])->withInput();
+		}
+		
+		if($request->download_ward_prabhag)
+		{
+			$grievances = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->where('status', '!=', 4)->get();
+		}
+		
+		if($request->download_status)
+		{
+			$grievances = Grievance::where('status', $request->download_status)->get();
+		}
+		
+		if($request->download_date_range_src)
+		{
+			// Explode the date range into start and end dates
+			$dates = explode(' - ', $request->download_date_range_src);
+
+			// Convert the start date and end date to Y-m-d format
+			$start_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay()->format('Y-m-d');
+			$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
+			
+			
+			$grievances = Grievance::whereBetween('submitted_date', [$start_date, $end_date])->get();
+			
+		}
+		
+		if(empty($request->download_ward_prabhag) && empty($request->download_status) && empty($request->download_date_range_src))
+		{
+			$grievances = Grievance::where('status', '!=', 4)->get();
+		}
+
+        $pdf = Pdf::loadView('grievance_report', compact('grievances'))
+                  ->setPaper('a4', 'portrait');
+
+        return $pdf->download('grievance_report.pdf');
 	}
 }

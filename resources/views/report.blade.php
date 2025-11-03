@@ -10,40 +10,63 @@ use Carbon\Carbon;
 					@include('_includes/user-sidebar')
 					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
 						<div class="row">
+							
+							@if($errors->any())
+								<div class="col-md-8 col-sm-3 col-xs-12 margin-bottom-10">
+								<div class="text-danger">
+									@foreach($errors->all() as $error)
+										<div>{{ $error }}</div>
+									@endforeach
+								</div>
+								</div>
+							@endif
+						</div>
+						<div class="filter-filelds" id="filter_inputs">
 							<form name="frm" action="{{ route('report') }}" method="post">
 							@csrf
-							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							   <select name="src_ward_prabhag" class="select">
-									<option value="">{{ __('select_ward_prabhag') }}</option>
-									@foreach($wardprabhag as $prabhag)
-									<option value="{{ $prabhag->id ?? ''}}"  {{ old('src_ward_prabhag') == $prabhag->id ? 'selected' : '' }}>{{ $prabhag->name ?? ''}}</option>
-									@endforeach
-							   </select>
-							   @error('src_ward_prabhag')
-									<div class="text-danger">{{ $message}}</div>
-							   @enderror
+							<div class="row filter-row">
+								<div class="col-lg-4 col-md-4 p-r-0">
+									<div class="input-block">
+										<select name="src_ward_prabhag"  id="src_ward_prabhag" class="select">
+											<option value="">{{ __('select_ward_prabhag') }}</option>
+											@foreach($wardprabhag as $prabhag)
+											<option value="{{ $prabhag->id ?? ''}}"  {{ isset($src_ward_prabhag) && $src_ward_prabhag == $prabhag->id ? 'selected' : '' }}>{{ $prabhag->name ?? ''}}</option>
+											@endforeach
+									   </select>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 p-r-0">
+									<div class="input-block">
+										<select name="src_status" class="select" id="src_status">
+											<option value="">{{ __('select_status') }}</option>
+											<option value="1" {{ isset($src_status) && $src_status == 1 ? 'selected' : '' }}>{{ __('pending') }}</option>
+											<option value="3" {{ isset($src_status) && $src_status == 3 ? 'selected' : '' }}>{{ __('solved') }}</option>
+											<option value="all"  {{ isset($src_status) && $src_status == 'all' ? 'selected' : '' }}>{{ __('all') }}</option>
+									   </select>
+									</div>
+								</div>
+								
+								<div class="col-xl-4  col-md-4  p-r-0">  
+									<div class="input-block">
+									<input type="text" class="form-control date-range date_range_src" name="date_range_src_ward_prabhag" id="src_ward_prabhag_date_range" placeholder="{{ __('from_to_date')}}" value="{{ isset($date_range_src_ward_prabhag) ? $date_range_src_ward_prabhag : '' }}">
+									</div>
+								</div>
+								
+								<div class="col-xl-2 col-md-2 p-r-0 mt-2">
+									<div class="input-block">								
+												
+									<button type="submit" class="search-button">{{ __('search') }}</button>
+									</div>
+								</div>
+								<div class="col-xl-2 col-md-2 p-r-0">
+									<div class="input-block">
+										<button type="button" class="search-button download-report">{{ __('download') }}</button>
+									</div>
+								</div>
+							
 							</div>
-							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							   <select name="src_status" class="select">
-									<option value="">{{ __('select_status') }}</option>
-									<option value="1" {{ old('src_ward_prabhag') == 1? 'selected' : '' }}>{{ __('pending') }}</option>
-									<option value="3" {{ old('src_ward_prabhag') == 3 ? 'selected' : '' }}>{{ __('solved') }}</option>
-									<option value="all" {{ old('src_ward_prabhag') == 'all' ? 'selected' : '' }}>{{ __('all') }}</option>
-							   </select>
-							   @error('src_status')
-									<div class="text-danger">{{ $message}}</div>
-							   @enderror
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
-							  <input type="text" class="form-control date-range" name="date_range_src_ward_prabhag" id="src_ward_prabhag_date_range" placeholder="{{ __('from_to_date')}}" value="{{ old('date_range_phone', request('date_range_phone')) }}">
-							  @error('date_range_src_ward_prabhag')
-									<div class="text-danger">{{ $message}}</div>
-							   @enderror
-							</div>
-							<button type="submit" class="btn btn-theme btn-lg submit">Search</button>
 							</form>
 						</div>
-						
 						<div class="row">
 							<div class="col-md-12">
 								<div class="post-ad-form postdetails mt_15">
@@ -85,6 +108,12 @@ use Carbon\Carbon;
 			</div>
 		</section>
     </div>
+	<form id="frm-download-report" action="{{ route('download-report')}}" method="post">
+		@csrf
+		<input type="hidden" id="download_ward_prabhag" name="download_ward_prabhag" value="{{ isset($src_ward_prabhag) ? $src_ward_prabhag : ''}}">
+		<input type="hidden" id="download_status" name="download_status" value="{{ isset($src_status) ? $src_status : ''}}">
+		<input type="hidden" id="download_date_range_src" name="download_date_range_src" value="{{ isset($date_range_src_ward_prabhag) ? $date_range_src_ward_prabhag : '' }}">
+	</form>
 @endsection 
 @section('scripts')
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>
@@ -157,6 +186,26 @@ use Carbon\Carbon;
 				}
 			});
 		});
+		
+		$(document).on('change','#src_ward_prabhag', function(){
+			let id = $(this).val();
+			$('#download_ward_prabhag').val(id)
+		});
+		
+		$(document).on('change','#src_status', function(){
+			let id = $(this).val();
+			$('#download_status').val(id)
+		});
+		
+		$(document).on('click', '.download-report', function(){
+			
+			$('#frm-download-report').submit();
+			//redirect = "{{ route('download-report') }}";
+			//window.location.href = redirect;
+		});
+		
+		
+		
 	});
 </script>
 @endsection
