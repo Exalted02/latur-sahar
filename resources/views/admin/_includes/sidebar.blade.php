@@ -30,6 +30,9 @@
 				<li class="{{ request()->routeIs('admin.department') ? 'active' : '' }}">
 					<a href="{{ route('admin.department') }}"><i class="la la-briefcase"></i> <span>Department</span></a>
 				</li>
+				<li class="{{ request()->routeIs('admin.ward-prabhag') ? 'active' : '' }}">
+					<a href="{{ route('admin.ward-prabhag') }}"><i class="la la-briefcase"></i> <span>Ward prabhag</span></a>
+				</li>
 				
 				<li class="{{ request()->routeIs('admin.grievance') ? 'active' : '' }}">
 					<a href="{{ route('admin.grievance') }}"><i class="la la-file-text"></i> <span>Grievance Type</span></a>

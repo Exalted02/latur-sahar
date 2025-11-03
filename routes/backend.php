@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\EmailManagementController;
 use App\Http\Controllers\Admin\EmailSettingsController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\WardprabhagController;
 use App\Http\Controllers\Admin\GrievanceController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ChangePasswordController;
@@ -32,6 +33,14 @@ Route::middleware(['web'])->group(function () {
 		Route::post('/edit-department-code',[DepartmentController::class,'edit_department_code'])->name('edit-department-code');
 		Route::post('/getDeleteDepartment',[DepartmentController::class,'delete_department_code'])->name('getDeleteDepartment');
 		Route::post('/deleteDepartmentList',[DepartmentController::class,'delete_department_list'])->name('deleteDepartmentList');
+		
+		// Ward prabhag
+		Route::get('/ward-prabhag', [WardprabhagController::class, 'index'])->name('ward-prabhag');
+		Route::post('/save-ward-prabhag', [WardprabhagController::class, 'save_ward_prabhag'])->name('save-ward-prabhag');
+		Route::post('/ward-prabhag-update-status',[WardprabhagController::class,'update_status'])->name('ward-prabhag-update-status');
+		Route::post('/edit-ward-prabhag',[WardprabhagController::class,'edit_ward_prabhag'])->name('edit-ward-prabhag');
+		Route::post('/getDeleteWardprabhag',[WardprabhagController::class,'delete_ward_prabhag'])->name('getDeleteWardprabhag');
+		Route::post('/deleteWardprabhagList',[WardprabhagController::class,'delete_wardprabhag_list'])->name('deleteWardprabhagList');
 		
 		// Grievance Type
 		Route::get('/grievance', [GrievanceController::class, 'index'])->name('grievance');

@@ -6,7 +6,7 @@ Version      : 4.0
 
 $(document).ready(function() {
 	
-	$(document).on('click','.save-department-code', function(){
+	$(document).on('click','.save-ward-prabhag', function(){
 		let codeName = $('#name').val().trim();
 		let address = $('#address').val().trim();
 		let id = $('#id').val().trim();
@@ -20,16 +20,10 @@ $(document).ready(function() {
 			isValid = false;
 		}
 		
-		if (address === '')
-		{
-			$('#address').addClass('is-invalid');
-			$('#address').next('.invalid-feedback').show();
-			isValid = false;
-		}
 		
 		if (isValid) {
-			var form = $("#frmdepartnment");
-			var URL = $('#frmdepartnment').attr('action');
+			var form = $("#frmwardprabhag");
+			var URL = $('#frmwardprabhag').attr('action');
 			//alert(URL);
 			$.ajax({
 				url: URL,
@@ -58,17 +52,16 @@ $(document).ready(function() {
 		}
 	});
 	
-$(document).on('click','.add_department', function(){
+$(document).on('click','.add_ward_prabhag', function(){
 	$('#name').val('');
-	$('#address').val('');
 	$('#id').val('');
-	$('#add_department .modal-title').text('Add department');
+	$('#add_ward_prabhag .modal-title').text('Add ward prabhag');
 });
 
-$(document).on('click','.edit-department-code', function(){
+$(document).on('click','.edit-ward-prabhag', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
-	 $('#add_department .modal-title').text('Edit department');
+	 $('#add_department .modal-title').text('Edit ward prabhag');
 	//alert(URL);
 	$.ajax({
 		url: URL,
@@ -79,8 +72,7 @@ $(document).on('click','.edit-department-code', function(){
 			//alert(response.address);
 			$('#id').val(response.id);
 			$('#name').val(response.name);
-			$('#address').val(response.address);
-			$('#add_department').modal('show');
+			$('#add_ward_prabhag').modal('show');
 			//alert(JSON.stringify(response));
 			
 		},
@@ -126,7 +118,7 @@ $(document).on('click','.update-product-code-form', function(){
 
 
 
-$(document).on('click','.delete-department-code', function(){
+$(document).on('click','.delete-ward-prabhag', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
 	//alert(id);alert(URL);
@@ -140,7 +132,7 @@ $(document).on('click','.delete-department-code', function(){
 			//var url = "{{ route('deleteContactList') }}";
 			$('.data-id-pcode-list').attr('data-id', id);
 			$('#list_code_name').html(response);
-			$('#delete_product_code').modal('show');
+			$('#delete_ward_prabhag').modal('show');
 		},
 	});
 	
