@@ -370,5 +370,36 @@ class GrievanceController extends Controller
 			
 		return $response;
 	}
+	public function ward_prabhag_lists()
+	{
+		$wardprabhags = Wardprabhag::where('status', '!=', 2)->get();
+		//echo "<pre>";print_r($departments);die;
+		$data = [];
+		if($wardprabhags->count() > 0)
+		{
+			foreach($wardprabhags as $wardprabhag)
+			{
+				
+				$data[] = [
+					'id'  => $wardprabhag->id,
+					'name'  => $wardprabhag->name,
+				];
+			}
+			
+			$response = [
+					'data'  => $data,
+					'status' => 200,
+				];
+		}
+		else
+		{
+			$response = [
+				'status' => 400,
+				'message' => __('no_record_found'),
+			];
+		}
+			
+		return $response;
+	}
 	
 }

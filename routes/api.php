@@ -42,6 +42,5 @@ Route::post('/grievance-view',[GrievanceController::class, 'grievance_view']);
 Route::post('/resubmit-status',[GrievanceController::class, 'resubmit_status']);
 Route::post('/submit-rating',[GrievanceController::class, 'submit_rating']);
 
-Route::get('/department-lists',[GrievanceController::class, 'department_lists']);
-
 Route::post('/submit-grievance',[GrievanceController::class, 'submit_grievance']);
+Route::get('/department-lists',[GrievanceController::class, 'department_lists']);
