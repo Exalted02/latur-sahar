@@ -406,4 +406,40 @@ class GrievanceController extends Controller
 		return $response;
 	}
 	
+	public function grievance_type(Request $request)
+	{
+		$department_id = $request->department_id ?? '';
+		$grievance_types = Grievance_type::where('department', $department_id)->where('status', '!=', 2)->get();
+		
+		$data = [];
+		
+		if($grievance_types->count() > 0)
+		{
+			foreach($grievance_types as $type)
+			{
+				$data[] = [
+					'id'  => $type->id,
+					'department'  => $type->department,
+					'name'  => $type->name,
+				];
+				
+			}
+			
+			$response = [
+				'data'  => $data,
+				'status' => 200,
+			];
+			
+		}
+		else
+		{
+			$response = [
+				'status' => 400,
+				'message' => __('no_record_found'),
+			];
+		}
+			
+		return $response;
+	}
+	
 }
