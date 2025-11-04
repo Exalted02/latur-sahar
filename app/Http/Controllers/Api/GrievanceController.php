@@ -47,7 +47,7 @@ class GrievanceController extends Controller
 	{
 		$data = [];
 		$tab = $request->tab;
-		$lang = $request->lang;
+		$lang = $request->lang ?? 'en';
 		$APP_URL = env('APP_URL');
 		
 		if(Auth::guard('sanctum')->check()) 
@@ -154,7 +154,7 @@ class GrievanceController extends Controller
 	public function grievance_view(Request $request)
 	{
 		$id = $request->id; // grievance id
-		$lang = $request->lang;
+		$lang = $request->lang ?? 'en';
 		$APP_URL = env('APP_URL');
 		$data = [];
 		
@@ -179,41 +179,24 @@ class GrievanceController extends Controller
 		
 		$authority_images = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();
 		
-		if($lang == 'mr')
+		
+		if($grievance->status==1)
 		{
-			if($grievance->status==1)
-			{
-				$status = __('pending');
-			}
-			
-			if($grievance->status==2)
-			{
-				$status = __('resubmit');
-			}
-			
-			if($grievance->status==3)
-			{
-				$status = __('solved');
-			}
+			$status = __('pending');
 		}
 		
-		if($lang == 'en')
+		if($grievance->status==2)
 		{
-			if($grievance->status==1)
-			{
-				$status = __('pending');
-			}
-			
-			if($grievance->status==2)
-			{
-				$status = __('resubmit');
-			}
-			
-			if($grievance->status==3)
-			{
-				$status = __('solved');
-			}
+			$status = __('resubmit');
 		}
+		
+		if($grievance->status==3)
+		{
+			$status = __('solved');
+		}
+		
+		
+		
 		
 		$data['grievance_id'] 	= $grievance->id ?? null;
 		$data['grievance_user_id'] 	= $grievance->user_id ?? null;
@@ -263,7 +246,7 @@ class GrievanceController extends Controller
 	public function resubmit_status(Request $request)
 	{
 		$id = $request->id ; // grievance id
-		$lang = $request->lang;
+		$lang = $request->lang ?? 'en';
 		$APP_URL = env('APP_URL');
 		$data = [];
 		
@@ -305,7 +288,7 @@ class GrievanceController extends Controller
 		
 		$APP_URL = env('APP_URL');
 		$id = $request->id;
-		$lang = $request->lang;
+		$lang = $request->lang ?? 'en';
 		$feedback_rating = $request->feedback_rating;
 		$feedback_description = $request->feedback_description;
 		
@@ -325,7 +308,7 @@ class GrievanceController extends Controller
 			$grievance = Grievance::where('id', $id)->first();
 			
 			$response = [
-				'grievance_status' => $id ?? null,
+				'grievance_id' => $id ?? null,
 				'feedback_rating' => $feedback_rating,
 				'feedback_description' => $feedback_description,
 				'grievance_status' => $grievance->status,
@@ -342,6 +325,10 @@ class GrievanceController extends Controller
 		}
 		
 		return $response;
+	}
+	public function submit_grievance(Request $request)
+	{
+		
 	}
 	
 }
