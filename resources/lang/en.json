@@ -163,5 +163,7 @@
 	"search": "Search",
 	"forwarded_to": "Forwarded to",
 	"resubmit_successfully": "Resubmit successfully",
-	"error": "error"
+	"error": "error",
+	"feedback_send_successfully": "Feedback send successfully",
+	"forwarded_successfully": "Forwarded successfully"
 }

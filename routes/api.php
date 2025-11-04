@@ -40,3 +40,4 @@ Route::post('/grievance-tab-list',[GrievanceController::class, 'grievance_tab_li
 
 Route::post('/grievance-view',[GrievanceController::class, 'grievance_view']);
 Route::post('/resubmit-status',[GrievanceController::class, 'resubmit_status']);
+Route::post('/submit-rating',[GrievanceController::class, 'submit_rating']);

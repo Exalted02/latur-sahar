@@ -300,5 +300,9 @@ class GrievanceController extends Controller
 		
 		return $response;
 	}
+	/*public function submit_rating(Request $request)
+	{
+		
+	}*/
 	
 }

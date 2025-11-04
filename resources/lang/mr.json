@@ -150,5 +150,7 @@
 	"search": "शोधा",
 	"forwarded_to": "कडे अग्रेषित केले",
 	"resubmit_successfully": "यशस्वीरित्या पुन्हा सबमिट करा",
-	"error": "त्रुटी"
+	"error": "त्रुटी",
+	"feedback_send_successfully": "अभिप्राय यशस्वीरित्या पाठवा",
+	"forwarded_successfully": "यशस्वीरित्या फॉरवर्ड केले"
 }

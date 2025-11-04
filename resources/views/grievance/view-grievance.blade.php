@@ -549,7 +549,7 @@ $(document).ready(function(){
 	{
 		$.toast({
 			heading: 'Success',
-			text: "Feedback send successfully",
+			text: "{{ __('feedback_send_successfully') }} ",
 			showHideTransition: 'slide',
 			icon: 'success',
 			position: 'top-right',
@@ -563,7 +563,7 @@ $(document).ready(function(){
 	{
 		$.toast({
 			heading: 'Success',
-			text: "Forwarded successfully",
+			text: "{{ __('forwarded_successfully') }}",
 			showHideTransition: 'slide',
 			icon: 'success',
 			position: 'top-right',
