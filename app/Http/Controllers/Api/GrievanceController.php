@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Models\Grievance;
+use App\Models\Greivance_image;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\App;
@@ -167,8 +168,20 @@ class GrievanceController extends Controller
 		
 		
 		
-		$grievance = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		//$grievance = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
+		
+		$grievance = Grievance::with([
+			'get_department',
+			'get_grievance_type',
+			'get_ward_prabhag',
+			'grievance_image' => function ($query) {
+				$query->where('image_type', 1);
+			}
+		])->where('id', $id)->first();
 		//echo "<pre>";print_r($grievance);die;
+		
+		$authority_images = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();
+		//echo "<pre>";print_r($authority_images);die;
 		
 		if($lang == 'mr')
 		{
@@ -206,17 +219,39 @@ class GrievanceController extends Controller
 			}
 		}
 		
-		$data['registration_no'] 	= $grievance->registration_no ?? null;
+		$data['grievance_id'] 	= $grievance->id ?? null;
+		$data['grievance_user_id'] 	= $grievance->user_id ?? null;
+		$data['registration_no'] = $grievance->registration_no ?? null;
 		$data['submitted_date'] 	= Carbon::parse($grievance->submitted_date)->format('d/m/Y') ??  null;
 		$data['department'] 		= $grievance->get_department->name ?? null;
+		$data['grievance_type'] 		= $grievance->get_grievance_type->name ?? null;
+		$data['ward_prabhag'] 		= $grievance->get_ward_prabhag->name ?? null;
 		$data['issue_description'] 	= $grievance->issue_description ?? null;
+		$data['latitude'] 	= $grievance->latitude ?? null;
+		$data['longitude'] 	= $grievance->longitude ?? null;
+		$data['feedback_rating'] 	= $grievance->feedback_rating ?? null;
+		$data['feedback_description'] 	= $grievance->feedback_description ?? null;
 		$data['status'] 	= $status ?? null;
+		
+		$data['authority_images'] = [];
 		if(!empty($grievance->grievance_image[0]->images))
 		{
 			foreach($grievance->grievance_image as $images)
 			{
-				$data['images'][] = [
-					'image' => $APP_URL.'/uploads/greivance_image/' .$images->images
+				$data['citizen_images'][] = [
+					'image' => $APP_URL.'/uploads/greivance_image/' .$images->images,
+					'uploaded_by_user_id' => $images->user_id,
+				];
+			}
+		}
+		
+		if(!empty($authority_images))
+		{
+			foreach($authority_images as $images)
+			{
+				$data['authority_images'][] = [
+					'image' => $APP_URL.'/uploads/greivance_image/' .$images->images,
+					'uploaded_by_user_id' => $images->user_id,
 				];
 			}
 		}
