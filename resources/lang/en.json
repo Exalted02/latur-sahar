@@ -167,5 +167,6 @@
 	"feedback_send_successfully": "Feedback send successfully",
 	"forwarded_successfully": "Forwarded successfully",
 	"status_updated_successfully!": "Status updated successfully!",
-	"success": "Success"
+	"success": "Success",
+	"no_record_found": "No record found"
 }
