@@ -335,18 +335,68 @@ class GrievanceController extends Controller
 	}
 	public function submit_grievance(Request $request)
 	{
-		$name = $request->name ?? null;
-		$mobile_no = $request->mobile_no ?? null;
-		$name = $request->name ?? null;
-		$name = $request->name ?? null;
-		$name = $request->name ?? null;
-		$name = $request->name ?? null;
-		$name = $request->name ?? null;
+		//echo "<pre>";print_r($request->all()); die;
+		
+		$registration_no = time();
+		$model = new Grievance();
+		$model->user_id = Auth::guard('sanctum')->user()->id;
+		$model->registration_no = $registration_no ?? null;
+		$model->name = $request->post('name');
+		$model->mobile_no = $request->post('mobile_no');
+		$model->ward_prabhag = $request->post('ward_prabhag');
+		$model->department = $request->post('department');
+		$model->grievance_type = $request->post('grievance_type');
+		$model->address = $request->post('address');
+		$model->pincode = $request->post('pincode');
+		$model->issue_description = $request->post('issue_description');
+		$model->latitude = $request->post('latitude');
+		$model->longitude = $request->post('longitude');
+		$model->submitted_date = date('Y-m-d H:i:s');
+		$model->status = 1;
+		$model->created_at = date('Y-m-d h:i:s');
+		$model->save();
+		$id = $model->id;
+		
+		$lo_files = $request->file('lo_files');
+		//echo "<pre>";print_r($lo_files); die;
+		if ($lo_files && is_array($lo_files)) {
+			// save new files
+			foreach ($lo_files as $file) {
+				
+				$destinationPath = public_path('uploads/greivance_image');
+				if (!file_exists($destinationPath)) {
+					mkdir($destinationPath, 0777, true);
+				}
+				
+				//$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+				$filename = uniqid() . $file->getClientOriginalExtension();
+				$file->move($destinationPath, $filename);
+
+				$fileModel = new Greivance_image();
+				$fileModel->greivance_id = $id;
+				$fileModel->user_id = Auth::guard('sanctum')->user()->id;
+				$fileModel->image_type = 1;
+				$fileModel->images = $filename;
+				//$fileModel->status = 1;
+				$fileModel->save();
+			}
+		}
+		
+		$confirmation_message =  __('grievance_success_msg1').''. __('grievance_success_msg2_1').' #'.$registration_no.' '. __('grievance_success_msg2_2').''. __('grievance_success_msg3');
+		
+		$response = [
+			'id'  => $id,
+			'success_message' =>  __('grievance_submitted_successfully'),
+			'confirmation_message' => $confirmation_message,
+			'status' => 200,
+		];
+		return $response;
 	}
 	public function department_lists()
 	{
 		$departments = Department::where('status', '!=', 2)->get();
 		//echo "<pre>";print_r($departments);die;
+		
 		$data = [];
 		if($departments->count() > 0)
 		{
@@ -378,7 +428,9 @@ class GrievanceController extends Controller
 	{
 		$wardprabhags = Wardprabhag::where('status', '!=', 2)->get();
 		//echo "<pre>";print_r($departments);die;
+		
 		$data = [];
+		
 		if($wardprabhags->count() > 0)
 		{
 			foreach($wardprabhags as $wardprabhag)
