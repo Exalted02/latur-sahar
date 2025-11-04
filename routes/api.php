@@ -44,3 +44,4 @@ Route::post('/submit-rating',[GrievanceController::class, 'submit_rating']);
 
 Route::post('/submit-grievance',[GrievanceController::class, 'submit_grievance']);
 Route::get('/department-lists',[GrievanceController::class, 'department_lists']);
+Route::get('/ward-prabhag-lists',[GrievanceController::class, 'ward_prabhag_lists']);
