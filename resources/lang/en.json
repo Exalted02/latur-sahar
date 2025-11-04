@@ -165,5 +165,6 @@
 	"resubmit_successfully": "Resubmit successfully",
 	"error": "error",
 	"feedback_send_successfully": "Feedback send successfully",
-	"forwarded_successfully": "Forwarded successfully"
+	"forwarded_successfully": "Forwarded successfully",
+	"status_updated_successfully!": "Status updated successfully!"
 }

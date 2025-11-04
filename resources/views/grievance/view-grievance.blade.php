@@ -494,7 +494,7 @@ $(document).ready(function(){
 				//alert(response.html);
 				$.toast({
 					heading: 'Success',
-					text: "Resubmit successfully",
+					text: "{{ __('resubmit_successfully') }}",
 					showHideTransition: 'slide',
 					icon: 'success',
 					position: 'top-right',
@@ -648,7 +648,7 @@ $(document).ready(function(){
 			processData: false, 
 			success: function(response) {
 				
-				let textmsg = 'Status updated successfully!';
+				let textmsg = "{{ __('status_updated_successfully') }}";
 				$.toast({
 					heading: 'Success',
 					text: textmsg,
