@@ -161,5 +161,6 @@
 	"report": "Report",
 	"all": "All",
 	"search": "Search",
-	"forwarded_to": "Forwarded to"
+	"forwarded_to": "Forwarded to",
+	"resubmit_successfully": "Resubmit successfully"
 }

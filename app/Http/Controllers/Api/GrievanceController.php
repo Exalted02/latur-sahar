@@ -130,6 +130,7 @@ class GrievanceController extends Controller
 					'image'	=> $grievance->grievance_image[0]->images ? $APP_URL.'/uploads/greivance_image/' .$grievance->grievance_image[0]->images : null,
 					'issue_description'	=> substr($grievance->issue_description, 0, 50) ?? '',
 					'status'	=>  $status ?? '',
+					'grievance_status'	=>  $grievance->status ?? '',
 				];
 			}
 			
@@ -152,7 +153,7 @@ class GrievanceController extends Controller
 	}
 	public function grievance_view(Request $request)
 	{
-		$id = $request->id;
+		$id = $request->id; // grievance id
 		$lang = $request->lang;
 		$APP_URL = env('APP_URL');
 		$data = [];
@@ -166,10 +167,6 @@ class GrievanceController extends Controller
 			App::setLocale('en');
 		}
 		
-		
-		
-		//$grievance = Grievance::with('get_department','get_grievance_type','grievance_image')->where('id', $id)->first();
-		
 		$grievance = Grievance::with([
 			'get_department',
 			'get_grievance_type',
@@ -181,7 +178,6 @@ class GrievanceController extends Controller
 		//echo "<pre>";print_r($grievance);die;
 		
 		$authority_images = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();
-		//echo "<pre>";print_r($authority_images);die;
 		
 		if($lang == 'mr')
 		{
@@ -232,6 +228,7 @@ class GrievanceController extends Controller
 		$data['feedback_rating'] 	= $grievance->feedback_rating ?? null;
 		$data['feedback_description'] 	= $grievance->feedback_description ?? null;
 		$data['status'] 	= $status ?? null;
+		$data['grievance_status'] 	= $grievance->status ?? null;
 		
 		$data['authority_images'] = [];
 		if(!empty($grievance->grievance_image[0]->images))
@@ -263,6 +260,36 @@ class GrievanceController extends Controller
 			
 		return $response;
 	}
-	
+	public function resubmit_status(Request $request)
+	{
+		$id - $request->id ; // grievance id
+		$lang = $request->lang;
+		$APP_URL = env('APP_URL');
+		$data = [];
+		
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
+		
+		$check_status = Grievance::where('id', $id)->first()->status;
+		
+		if($check_status == 1)
+		{
+			Grievance::where('id', $id)->update(['status'=>2]);
+			
+			$new_status = Grievance::where('id', $id)->first()->status;
+			
+			$response = [
+				'status' => $new_status,
+				'message' => $new_status,
+				'status' => 200,
+			];
+		}
+	}
 	
 }

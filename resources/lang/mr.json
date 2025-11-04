@@ -142,5 +142,12 @@
     "submit": "सबमिट करा",
     "confirmation": "पुष्टीकरण",
     "select_status": "स्थिती निवडा",
-	"example": "Example"
+	"example": "Example",
+	"please_enter": "कृपया प्रविष्ट करा",
+	"select_ward_prabhag": "प्रभाग प्रबळ निवडा",
+	"report": "अहवाल द्या",
+	"all": "सर्व",
+	"search": "शोधा",
+	"forwarded_to": "कडे अग्रेषित केले",
+	"resubmit_successfully": "यशस्वीरित्या पुन्हा सबमिट करा"
 }
