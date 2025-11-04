@@ -300,9 +300,48 @@ class GrievanceController extends Controller
 		
 		return $response;
 	}
-	/*public function submit_rating(Request $request)
+	public function submit_rating(Request $request)
 	{
 		
-	}*/
+		$APP_URL = env('APP_URL');
+		$id = $request->id;
+		$lang = $request->lang;
+		$feedback_rating = $request->feedback_rating;
+		$feedback_description = $request->feedback_description;
+		
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
+		
+		if(!empty($feedback_rating) && !empty($feedback_description))
+		{
+			Grievance::where('id', $id)->update(['feedback_rating'=> $feedback_rating, 'feedback_description'=> $feedback_description]);
+			
+			$grievance = Grievance::where('id', $id)->first();
+			
+			$response = [
+				'grievance_status' => $id ?? null,
+				'feedback_rating' => $feedback_rating,
+				'feedback_description' => $feedback_description,
+				'grievance_status' => $grievance->status,
+				'message' => __('feedback_send_successfully'),
+				'status' => 200,
+			];
+		}
+		else
+		{
+			$response = [
+				'status' => 400,
+				'message' => __('error'),
+			];
+		}
+		
+		return $response;
+	}
 	
 }
