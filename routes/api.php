@@ -37,3 +37,5 @@ Route::post('/change-user-password',[RegisteredUserController::class, 'change_pa
 
 Route::get('/grievance-lists',[GrievanceController::class, 'grievance_lists']);
 Route::post('/grievance-tab-list',[GrievanceController::class, 'grievance_tab_list']);
+
+Route::post('/grievance-view',[GrievanceController::class, 'grievance_view']);
