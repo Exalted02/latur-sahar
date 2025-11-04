@@ -36,3 +36,4 @@ Route::post('/edit-retailer-profile',[RegisteredUserController::class, 'edit_ret
 Route::post('/change-user-password',[RegisteredUserController::class, 'change_password']);
 
 Route::get('/grievance-lists',[GrievanceController::class, 'grievance_lists']);
+Route::post('/grievance-tab-list',[GrievanceController::class, 'grievance_tab_list']);
