@@ -27,6 +27,7 @@ use Carbon\Carbon;
 													</thead>
 													<tbody>
 													@foreach($resubmit_list as  $grievance)
+													@if(isset($grievance->get_forwarded_grievance->greivance_id) && $grievance->get_forwarded_grievance->greivance_id != $grievance->id)
 														<tr class="viewgrievance" data-href="{{ route('view-grievance', ['id' => $grievance->id]) }}" style="cursor:pointer">
 															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">#{{ $grievance->registration_no ?? '' }}</a></td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
@@ -45,6 +46,7 @@ use Carbon\Carbon;
 																</ul>
 															</td>
 														</tr>
+													   @endif
 													@endforeach
 													</tbody>
 												</table>

@@ -155,5 +155,6 @@
 	"forwarded_successfully": "यशस्वीरित्या फॉरवर्ड केले",
 	"status_updated_successfully!": "स्थिती यशस्वीरित्या अपडेट केली!",
 	"success": "यश",
-	"no_record_found": "कोणतेही रेकॉर्ड आढळले नाही"
+	"no_record_found": "कोणतेही रेकॉर्ड आढळले नाही",
+	"forwarded": "फॉरवर्ड केले"
 }

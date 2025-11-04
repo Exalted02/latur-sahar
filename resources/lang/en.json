@@ -168,5 +168,6 @@
 	"forwarded_successfully": "Forwarded successfully",
 	"status_updated_successfully!": "Status updated successfully!",
 	"success": "Success",
-	"no_record_found": "No record found"
+	"no_record_found": "No record found",
+	"forwarded": "Forwarded"
 }
