@@ -262,7 +262,7 @@ class GrievanceController extends Controller
 	}
 	public function resubmit_status(Request $request)
 	{
-		$id - $request->id ; // grievance id
+		$id = $request->id ; // grievance id
 		$lang = $request->lang;
 		$APP_URL = env('APP_URL');
 		$data = [];
@@ -285,11 +285,20 @@ class GrievanceController extends Controller
 			$new_status = Grievance::where('id', $id)->first()->status;
 			
 			$response = [
-				'status' => $new_status,
-				'message' => $new_status,
+				'grievance_status' => $new_status ?? null,
+				'message' => __('resubmit_successfully'),
 				'status' => 200,
 			];
 		}
+		else
+		{
+			$response = [
+				'status' => 400,
+				'message' => __('error'),
+			];
+		}
+		
+		return $response;
 	}
 	
 }

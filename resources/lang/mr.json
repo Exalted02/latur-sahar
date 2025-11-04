@@ -149,5 +149,6 @@
 	"all": "सर्व",
 	"search": "शोधा",
 	"forwarded_to": "कडे अग्रेषित केले",
-	"resubmit_successfully": "यशस्वीरित्या पुन्हा सबमिट करा"
+	"resubmit_successfully": "यशस्वीरित्या पुन्हा सबमिट करा",
+	"error": "त्रुटी"
 }
