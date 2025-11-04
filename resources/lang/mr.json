@@ -154,5 +154,6 @@
 	"feedback_send_successfully": "अभिप्राय यशस्वीरित्या पाठवा",
 	"forwarded_successfully": "यशस्वीरित्या फॉरवर्ड केले",
 	"status_updated_successfully!": "स्थिती यशस्वीरित्या अपडेट केली!",
-	"success": "यश"
+	"success": "यश",
+	"no_record_found": "कोणतेही रेकॉर्ड आढळले नाही"
 }

@@ -11,6 +11,9 @@ use Carbon\Carbon;
 
 use App\Models\Grievance;
 use App\Models\Greivance_image;
+use App\Models\Department;
+use App\Models\Grievance_type;
+use App\Models\Wardprabhag;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\App;
@@ -332,7 +335,75 @@ class GrievanceController extends Controller
 	}
 	public function submit_grievance(Request $request)
 	{
-		
+		$name = $request->name ?? null;
+		$mobile_no = $request->mobile_no ?? null;
+		$name = $request->name ?? null;
+		$name = $request->name ?? null;
+		$name = $request->name ?? null;
+		$name = $request->name ?? null;
+		$name = $request->name ?? null;
+	}
+	public function department_lists()
+	{
+		$departments = Department::where('status', '!=', 2)->get();
+		//echo "<pre>";print_r($departments);die;
+		$data = [];
+		if($departments->count() > 0)
+		{
+			foreach($departments as $department)
+			{
+				
+				$data[] = [
+					'id'  => $department->id,
+					'name'  => $department->name,
+				];
+			}
+			
+			$response = [
+					'data'  => $data,
+					'status' => 200,
+				];
+		}
+		else
+		{
+			$response = [
+				'status' => 400,
+				'message' => __('no_record_found'),
+			];
+		}
+			
+		return $response;
+	}
+	public function ward_prabhag_lists()
+	{
+		$wardprabhags = Wardprabhag::where('status', '!=', 2)->get();
+		//echo "<pre>";print_r($departments);die;
+		$data = [];
+		if($wardprabhags->count() > 0)
+		{
+			foreach($wardprabhags as $wardprabhag)
+			{
+				
+				$data[] = [
+					'id'  => $wardprabhag->id,
+					'name'  => $wardprabhag->name,
+				];
+			}
+			
+			$response = [
+					'data'  => $data,
+					'status' => 200,
+				];
+		}
+		else
+		{
+			$response = [
+				'status' => 400,
+				'message' => __('no_record_found'),
+			];
+		}
+			
+		return $response;
 	}
 	
 }
