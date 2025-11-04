@@ -40,22 +40,22 @@ class DashboardController extends Controller
 			
 			if($tab == 1)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->where('status', '!=', 4)->get();
+				$data['grievances'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->where('status', '!=', 4)->get();
 			}
 			
 			if($tab == 2)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->get();
+				$data['grievances'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->whereIn('status', [1,2])->get();
 			}
 			
 			if($tab == 3)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->where('status', 3)->get();
+				$data['grievances'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->where('status', 3)->get();
 			}
 			
 			if($tab == 4)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->get();
+				$data['grievances'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->get();
 			}
 		}
 		

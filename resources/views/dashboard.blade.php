@@ -2,6 +2,7 @@
 @section('content')
 @php 
 use Carbon\Carbon;
+//echo "<pre>";print_r($grievances);die;
 @endphp
     <div class="main-content-area clearfix">
 		<section class="section-padding no-top gray">
@@ -65,7 +66,7 @@ use Carbon\Carbon;
 															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">#{{ $grievance->registration_no ?? '' }}</a></td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
-															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{!! $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? '<div class="bullet"></div> Resubmit' : 'Solved') !!}</td>
+															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{!! $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? (isset($grievance->get_forwarded_grievance->greivance_id) && $grievance->get_forwarded_grievance->greivance_id == $grievance->id ? '<div class="bullet"></div>' : 'Resubmit') : 'Solved') !!}</td>
 															<td class="text-center">
 																@if(auth()->user()->user_type == 1)
 																<ul class="custom-small-box">
