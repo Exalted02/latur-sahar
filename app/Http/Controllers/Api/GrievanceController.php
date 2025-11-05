@@ -530,7 +530,7 @@ class GrievanceController extends Controller
 					}
 					
 					//$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-					$filename = uniqid() . $file->getClientOriginalExtension();
+					$filename = uniqid() . '.' . $file->getClientOriginalExtension();
 					$file->move($destinationPath, $filename);
 
 					$fileModel = new Greivance_image();
