@@ -171,5 +171,6 @@
 	"success": "Success",
 	"no_record_found": "No record found",
 	"forwarded": "Forwarded",
-	"location_block_message": "Location access is blocked. Please allow location access from your browser settings and try again."
+	"location_block_message": "Location access is blocked. Please allow location access from your browser settings and try again.",
+	"grievance_deleted_successfully":"Grievance deleted successfully"
 }

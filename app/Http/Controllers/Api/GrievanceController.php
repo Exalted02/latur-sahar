@@ -558,5 +558,17 @@ class GrievanceController extends Controller
 		
 		return $response;
 	}
+	public function delete_grievance_list(Request $request)
+	{
+		$data = [];
+		//echo "<pre>";print_r($request->id);die;
+		Grievance::where('id', $request->id)->update(['status'=>4]);
+		$response = [
+			'message'  => __('grievance_deleted_successfully'),
+			'status' => 200,
+		];
+		
+		return $response;
+	}
 	
 }
