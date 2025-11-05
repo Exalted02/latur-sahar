@@ -253,17 +253,17 @@ class GrievanceController extends Controller
 				if(file_exists($filePath)) {
 					$citizenImageShow = $APP_URL.'/uploads/greivance_image/' .$images->images;
 					$imgExistCitizen++;
-					$data['images'][] = $citizenImageShow; //citizen_images
+					$data['images'][] = $citizenImageShow;
 				}
 				
 				
 				if($imgExistCitizen == 0 && $count_citizen_img == $k)
 				{
 					$citizenImageShow =  $APP_URL.'/uploads/img/noimage.png';
+					$data['images'][] = $citizenImageShow;
 				}
-				
-				
 			}
+			
 		}
 		
 		
