@@ -100,7 +100,7 @@
 									  <select class="form-control" name="ward_prabhag" id="ward_prabhag">
 										 <option value=""> {{ __('select_ward_prabhag') }}</option>
 										 @foreach($wardprabhags as $wardprabhag)
-											<option value="{{ $wardprabhag->id ?? '' }}">{{ $wardprabhag->name ?? '' }}</option>
+											<option value="{{ $wardprabhag->id ?? '' }}" {{ $grievance->ward_prabhag == $wardprabhag->id ? 'selected' : ''}}>{{ $wardprabhag->name ?? '' }}</option>
 										 @endforeach
 									  </select>
 									  <div class="clearfix"></div>
