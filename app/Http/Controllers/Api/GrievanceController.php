@@ -127,7 +127,14 @@ class GrievanceController extends Controller
 					}
 				}
 				
-				
+				$filePath = public_path('uploads/greivance_image/' . $grievance->grievance_image[0]->images);
+				if(file_exists($filePath)) {
+					$imageShow = $APP_URL.'/uploads/greivance_image/' .$grievance->grievance_image[0]->images;
+				}
+				else
+				{
+					$imageShow =  $APP_URL.'/uploads/img/noimage.png';
+				}
 				
 				$data[] = [
 					'id'		=> $grievance->id ?? '',
@@ -225,33 +232,78 @@ class GrievanceController extends Controller
 		$data['grievance_pincode'] 	= $grievance->pincode ?? null;
 		
 		$data['solvedImages'] = [];
+		$imgExistCitizen = 0;
+		$k = 0;
 		if(!empty($grievance->grievance_image[0]->images))
 		{
+			$count_citizen_img = $grievance->grievance_image->count();
 			foreach($grievance->grievance_image as $images)
 			{
 				/*$data['citizen_images'][] = [
 					'image' => $APP_URL.'/uploads/greivance_image/' .$images->images,
 					'uploaded_by_user_id' => $images->user_id,
 				];*/
-				$data['images'][] = $APP_URL.'/uploads/greivance_image/' .$images->images; //citizen_images
+				
+				//$data['images'][] = $APP_URL.'/uploads/greivance_image/' .$images->images; //citizen_images
+				
+				$citizenImageShow = '';
+				$k++;
+				
+				$filePath = public_path('uploads/greivance_image/' . $images->images);
+				if(file_exists($filePath)) {
+					$citizenImageShow = $APP_URL.'/uploads/greivance_image/' .$images->images;
+					$imgExistCitizen++;
+				}
+				
+				
+				if($imgExistCitizen == 0 && $count_citizen_img == $k)
+				{
+					$citizenImageShow =  $APP_URL.'/uploads/img/noimage.png';
+				}
+				
+				
+				$data['images'][] = $citizenImageShow; //citizen_images
+				
 			}
 		}
 		
+		
+		$imgExistSolved = 0;
+		$m = 0;
 		if(!empty($authority_images))
 		{
+			$count_solved_img = $authority_images->count();
 			foreach($authority_images as $images)
 			{
 				/*$data['authority_images'][] = [
 					'image' => $APP_URL.'/uploads/greivance_image/' .$images->images,
 					'uploaded_by_user_id' => $images->user_id,
 				];*/
-				$data['solvedImages'][] = $APP_URL.'/uploads/greivance_image/' .$images->images; //authority_images
+				//$data['solvedImages'][] = $APP_URL.'/uploads/greivance_image/' .$images->images; //authority_images
+				
+				$solvedImageShow = '';
+				$m++;
+				
+				$filePath = public_path('uploads/greivance_image/' . $images->images);
+				if(file_exists($filePath)) {
+					$solvedImageShow = $APP_URL.'/uploads/greivance_image/' .$images->images;
+					$imgExistSolved++;
+				}
+				
+				
+				if($imgExistSolved == 0 && $count_solved_img == $m)
+				{
+					$solvedImageShow =  $APP_URL.'/uploads/img/noimage.png';
+				}
+				
+				$data['solvedImages'][] = $solvedImageShow; //authority_images
 			}
 		}
 		
 		$response = [
 				'data' => $data,
 				'status' => 200,
+				'count_img' => $grievance->grievance_image->count(),
 			];
 			
 		return $response;
