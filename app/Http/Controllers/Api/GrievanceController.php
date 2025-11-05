@@ -89,6 +89,7 @@ class GrievanceController extends Controller
 			}
 			
 			//echo "<pre>";print_r($grievances); die;
+			
 			foreach($grievances as $grievance)
 			{
 				if($lang == 'mr')
@@ -127,25 +128,51 @@ class GrievanceController extends Controller
 					}
 				}
 				
-				$filePath = public_path('uploads/greivance_image/' . $grievance->grievance_image[0]->images);
+				//------------------------------
+				    $s = 0;
+					$imgExist = 0;
+					$imageShow = '';
+					$grv_img = Greivance_image::where('greivance_id', $grievance->id)->where('image_type', 1)->get();
+					$cntImg = $grv_img->count();
+					foreach($grv_img as $img)
+					{
+						$s++;
+						
+						$fileImgPath = public_path('uploads/greivance_image/' . $img->images);
+						if(file_exists($fileImgPath)) 
+						{
+							$imageShow = $APP_URL.'/uploads/greivance_image/' .$img->images;
+							$imgExist++;
+						}
+						
+						if($imgExist == 0 && $cntImg == $s)
+						{
+							$imageShow =  $APP_URL.'/uploads/img/noimage.png';
+						}
+					}
+				//-------------------------------
+				
+				/*$filePath = public_path('uploads/greivance_image/' . $grievance->grievance_image[0]->images);
 				if(file_exists($filePath)) {
 					$imageShow = $APP_URL.'/uploads/greivance_image/' .$grievance->grievance_image[0]->images;
 				}
 				else
 				{
 					$imageShow =  $APP_URL.'/uploads/img/noimage.png';
-				}
+				}*/
 				
 				$data[] = [
 					'id'		=> $grievance->id ?? '',
 					'registration_no'	=> $grievance->registration_no ?? '',
 					'submitted_date'	=> Carbon::parse($grievance->submitted_date)->format('d/m/Y') ?? '',
 					'department'=> $grievance->get_department->name ?? '',
-					'image'	=> $grievance->grievance_image[0]->images ? $APP_URL.'/uploads/greivance_image/' .$grievance->grievance_image[0]->images : null,
+					'image'	=> $imageShow,
 					'issue_description'	=> substr($grievance->issue_description, 0, 50) ?? '',
 					'status'	=>  $status ?? '',
 					'grievance_status'	=>  $grievance->status ?? '',
 				];
+				
+				//$grievance->grievance_image[0]->images ? $APP_URL.'/uploads/greivance_image/' .$grievance->grievance_image[0]->images : null,
 			}
 			
 			$response = [

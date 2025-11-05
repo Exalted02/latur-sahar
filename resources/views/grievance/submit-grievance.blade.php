@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <!-- Page Wrapper -->
 <!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
 <div style="background-image: url('{{ asset('front-assets/inner-bg.jpg') }}');
@@ -100,7 +101,7 @@
 									  <select class="form-control" name="ward_prabhag" id="ward_prabhag">
 										 <option value=""> {{ __('select_ward_prabhag') }}</option>
 										 @foreach($wardprabhags as $wardprabhag)
-											<option value="{{ $wardprabhag->id ?? '' }}" {{ $grievance->ward_prabhag == $wardprabhag->id ? 'selected' : ''}}>{{ $wardprabhag->name ?? '' }}</option>
+											<option value="{{ $wardprabhag->id ?? '' }}" {{ isset($grievance) && $grievance->ward_prabhag == $wardprabhag->id ? 'selected' : ''}}>{{ $wardprabhag->name ?? '' }}</option>
 										 @endforeach
 									  </select>
 									  <div class="clearfix"></div>
