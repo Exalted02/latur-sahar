@@ -40,22 +40,22 @@ class DashboardController extends Controller
 			
 			if($tab == 1)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->where('status', '!=', 4)->get();
+				$data['grievances'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->where('status', '!=', 4)->get();
 			}
 			
 			if($tab == 2)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->get();
+				$data['grievances'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->whereIn('status', [1,2])->get();
 			}
 			
 			if($tab == 3)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->where('status', 3)->get();
+				$data['grievances'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->where('status', 3)->get();
 			}
 			
 			if($tab == 4)
 			{
-				$data['grievances'] = Grievance::where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->get();
+				$data['grievances'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->get();
 			}
 		}
 		
@@ -220,7 +220,7 @@ class DashboardController extends Controller
 				}
 				
 				//$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-				$filename = uniqid() . $file->getClientOriginalExtension();
+				$filename = uniqid() . '.'. $file->getClientOriginalExtension();
 				$file->move($destinationPath, $filename);
 
 				$fileModel = new Greivance_image();
@@ -301,6 +301,7 @@ class DashboardController extends Controller
 		])->where('id', $id)->first();
 		//echo "<pre>";print_r($grievance); die;
 		$data['departments'] = Department::where('status', 1)->get();
+		$data['wardprabhags'] = Wardprabhag::where('status', 1)->get();
         return view('grievance.submit-grievance', $data);
 	}
 	public function delete_grievance_image(Request $request)

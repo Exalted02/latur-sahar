@@ -54,6 +54,7 @@
     "solved": "निकाली काढलेली",
     "download": "डाउनलोड करा",
     "grievance_submitted_successfully": "तक्रार यशस्वीरित्या सादर केली गेली आहे",
+	"grievance_updated_successfully": "तक्रार यशस्वीरित्या अपडेट केली",
     "grievance_success_msg1": "आपली तक्रार लातूर शहर महानगरपालिकेकडे यशस्वीरित्या सादर करण्यात आली आहे.",
     "grievance_success_msg2_1": "कृपया आपला नोंदणी क्रमांक नोंद करून ठेवा:",
     "grievance_success_msg2_2": "भविष्यातील संदर्भ व स्थिती तपासणीसाठी.",
@@ -155,5 +156,9 @@
 	"forwarded_successfully": "यशस्वीरित्या फॉरवर्ड केले",
 	"status_updated_successfully!": "स्थिती यशस्वीरित्या अपडेट केली!",
 	"success": "यश",
-	"no_record_found": "कोणतेही रेकॉर्ड आढळले नाही"
+	"no_record_found": "कोणतेही रेकॉर्ड आढळले नाही",
+	"forwarded": "फॉरवर्ड केले",
+	"location_block_message": "स्थान प्रवेश अवरोधित केला आहे. कृपया तुमच्या ब्राउझर सेटिंग्जमधून स्थान प्रवेशास अनुमती द्या आणि पुन्हा प्रयत्न करा.",
+	"grievance_deleted_successfully":"तक्रार यशस्वीरित्या हटवली",
+	"deleted_successfully":"यशस्वीरित्या हटवले"
 }

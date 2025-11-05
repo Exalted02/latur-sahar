@@ -76,7 +76,8 @@
 	"resubmit": "Resubmit",
 	"solved": "Solved",
 	"download": "Download",
-	"grievance_submitted_successfully": "Grievance Submitted Successfully",
+	"grievance_submitted_successfully": "Grievance submitted successfully",
+	"grievance_updated_successfully": "Grievance updated successfully",
 	"grievance_success_msg1": "Your grievance has been successfully submitted to Latur Sahar Municipality.",
 	"grievance_success_msg2_1": "Please note your Registration Number:",
 	"grievance_success_msg2_2": "for future reference and status tracking.",
@@ -168,5 +169,9 @@
 	"forwarded_successfully": "Forwarded successfully",
 	"status_updated_successfully!": "Status updated successfully!",
 	"success": "Success",
-	"no_record_found": "No record found"
+	"no_record_found": "No record found",
+	"forwarded": "Forwarded",
+	"location_block_message": "Location access is blocked. Please allow location access from your browser settings and try again.",
+	"grievance_deleted_successfully":"Grievance deleted successfully",
+	"deleted_successfully":"Deleted successfully"
 }

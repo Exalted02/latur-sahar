@@ -100,7 +100,7 @@
 									  <select class="form-control" name="ward_prabhag" id="ward_prabhag">
 										 <option value=""> {{ __('select_ward_prabhag') }}</option>
 										 @foreach($wardprabhags as $wardprabhag)
-											<option value="{{ $wardprabhag->id ?? '' }}">{{ $wardprabhag->name ?? '' }}</option>
+											<option value="{{ $wardprabhag->id ?? '' }}" {{ $grievance->ward_prabhag == $wardprabhag->id ? 'selected' : ''}}>{{ $wardprabhag->name ?? '' }}</option>
 										 @endforeach
 									  </select>
 									  <div class="clearfix"></div>
@@ -135,12 +135,15 @@
 								<div class="row margin-bottom-10">		
 									<div class="col-md-12 d-flex flex-wrap gap-2" id="preview-container">
 									@if(!empty($grievance->grievance_image))
+										
 										@foreach($grievance->grievance_image as $image)
+									
 										@php 
-										$urlsExp = explode(".", $image->images);
+										$urlsExp = explode(".",  $image->images);
 										$extension = $urlsExp[1];
 										$extension = strtolower($extension);
-										//echo $extension;
+										
+										//echo $extension;die;
 										@endphp
 									
 										<div class="preview-image-wrapper existing-image" data-id="{{ $image->id }}">
@@ -411,11 +414,11 @@ $(document).ready(function() {
 							redirect = "{{ route('grievance-confirmation', ':rgt_no') }}";
 							window.location.href = redirect.replace(':rgt_no', registration_no);
 							
-							textmsg = 'Record inserted successfully!';
+							textmsg = "{{ __('grievance_submitted_successfully') }}";
 						}
 						else
 						{
-							textmsg = 'Record updated successfully!';
+							textmsg = "{{ __('grievance_updated_successfully') }}";
 						}
 						
 						
@@ -442,7 +445,7 @@ $(document).ready(function() {
                 if (error.code === error.PERMISSION_DENIED) {
 					$.toast({
 						heading: 'Error',
-						text: 'Location access is blocked. Please allow location access from your browser settings and try again.',
+						text: "{{ __('location_block_message') }}",
 						showHideTransition: 'slide',
 						icon: 'error',
 						position: 'top-right',

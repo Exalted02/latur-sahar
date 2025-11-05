@@ -47,3 +47,7 @@ Route::get('/department-lists',[GrievanceController::class, 'department_lists'])
 Route::get('/ward-prabhag-lists',[GrievanceController::class, 'ward_prabhag_lists']);
 
 Route::post('/grievance-type',[GrievanceController::class, 'grievance_type']);
+
+Route::post('/edit-grievance',[GrievanceController::class, 'edit_grievance']);
+Route::post('/delete-grievance-list',[GrievanceController::class, 'delete_grievance_list']);
+Route::post('/delete-grievance-image',[GrievanceController::class, 'delete_grievance_image']);
