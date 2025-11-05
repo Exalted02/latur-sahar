@@ -555,6 +555,8 @@ class GrievanceController extends Controller
 				'message' => __('no_record_found'),
 			];
 		}
+		
+		return $response;
 	}
 	
 }
