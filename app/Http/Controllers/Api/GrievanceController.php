@@ -206,6 +206,8 @@ class GrievanceController extends Controller
 		
 		
 		$data['grievance_id'] 	= $grievance->id ?? null;
+		$data['grievance_name'] 	= $grievance->name ?? null;
+		$data['grievance_mobile'] 	= $grievance->mobile_no ?? null;
 		$data['grievance_user_id'] 	= $grievance->user_id ?? null;
 		$data['registration_no'] = $grievance->registration_no ?? null;
 		$data['submitted_date'] 	= Carbon::parse($grievance->submitted_date)->format('d/m/Y') ??  null;
@@ -219,16 +221,19 @@ class GrievanceController extends Controller
 		$data['feedback_description'] 	= $grievance->feedback_description ?? null;
 		$data['status'] 	= $status ?? null;
 		$data['grievance_status'] 	= $grievance->status ?? null;
+		$data['grievance_address'] 	= $grievance->address ?? null;
+		$data['grievance_pincode'] 	= $grievance->pincode ?? null;
 		
-		$data['authority_images'] = [];
+		$data['solvedImages'] = [];
 		if(!empty($grievance->grievance_image[0]->images))
 		{
 			foreach($grievance->grievance_image as $images)
 			{
-				$data['citizen_images'][] = [
+				/*$data['citizen_images'][] = [
 					'image' => $APP_URL.'/uploads/greivance_image/' .$images->images,
 					'uploaded_by_user_id' => $images->user_id,
-				];
+				];*/
+				$data['images'][] = $APP_URL.'/uploads/greivance_image/' .$images->images; //citizen_images
 			}
 		}
 		
@@ -236,10 +241,11 @@ class GrievanceController extends Controller
 		{
 			foreach($authority_images as $images)
 			{
-				$data['authority_images'][] = [
+				/*$data['authority_images'][] = [
 					'image' => $APP_URL.'/uploads/greivance_image/' .$images->images,
 					'uploaded_by_user_id' => $images->user_id,
-				];
+				];*/
+				$data['solvedImages'][] = $APP_URL.'/uploads/greivance_image/' .$images->images; //authority_images
 			}
 		}
 		

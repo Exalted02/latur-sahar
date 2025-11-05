@@ -9,5 +9,5 @@ return [
 //Email Management id
     'RESOURCE_REGISTRATION' => 1,
 // Api product list	interval
-	'GRIEVANCE_LIST_INTERVAL' => 6,
+	'GRIEVANCE_LIST_INTERVAL' => 8,
 ];
