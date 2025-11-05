@@ -414,11 +414,11 @@ $(document).ready(function() {
 							redirect = "{{ route('grievance-confirmation', ':rgt_no') }}";
 							window.location.href = redirect.replace(':rgt_no', registration_no);
 							
-							textmsg = 'Record inserted successfully!';
+							textmsg = "{{ __('grievance_submitted_successfully') }}";
 						}
 						else
 						{
-							textmsg = 'Record updated successfully!';
+							textmsg = "{{ __('grievance_updated_successfully') }}";
 						}
 						
 						
@@ -445,7 +445,7 @@ $(document).ready(function() {
                 if (error.code === error.PERMISSION_DENIED) {
 					$.toast({
 						heading: 'Error',
-						text: 'Location access is blocked. Please allow location access from your browser settings and try again.',
+						text: "{{ __('location_block_message') }}",
 						showHideTransition: 'slide',
 						icon: 'error',
 						position: 'top-right',

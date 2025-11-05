@@ -542,6 +542,11 @@ class GrievanceController extends Controller
 					$fileModel->save();
 				}
 			}
+			
+			$response = [
+				'success_message'  => __('grievance_updated_successfully'),
+				'status' => 200,
+			];
 		}
 		else
 		{
