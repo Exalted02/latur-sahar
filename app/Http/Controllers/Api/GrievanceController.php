@@ -570,5 +570,23 @@ class GrievanceController extends Controller
 		
 		return $response;
 	}
+	public function delete_grievance_image(Request $request)
+	{
+		$imageId = $request->imageId;
+		$imagename = $request->imagename;
+		
+		$filePath = public_path('uploads/greivance_image/' . $imagename);
+		if (file_exists($filePath)) {
+			unlink($filePath);
+			Greivance_image::where('id', $imageId)->where('images', $imagename)->delete();
+		}
+		
+		$response = [
+			'message'  => __('deleted_successfully'),
+			'status' => 200,
+		];
+		
+		return $response;
+	}
 	
 }

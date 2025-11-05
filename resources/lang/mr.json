@@ -159,5 +159,6 @@
 	"no_record_found": "कोणतेही रेकॉर्ड आढळले नाही",
 	"forwarded": "फॉरवर्ड केले",
 	"location_block_message": "स्थान प्रवेश अवरोधित केला आहे. कृपया तुमच्या ब्राउझर सेटिंग्जमधून स्थान प्रवेशास अनुमती द्या आणि पुन्हा प्रयत्न करा.",
-	"grievance_deleted_successfully":"तक्रार यशस्वीरित्या हटवली"
+	"grievance_deleted_successfully":"तक्रार यशस्वीरित्या हटवली",
+	"deleted_successfully":"यशस्वीरित्या हटवले"
 }
