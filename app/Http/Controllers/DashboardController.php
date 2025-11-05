@@ -301,6 +301,7 @@ class DashboardController extends Controller
 		])->where('id', $id)->first();
 		//echo "<pre>";print_r($grievance); die;
 		$data['departments'] = Department::where('status', 1)->get();
+		$data['wardprabhags'] = Wardprabhag::where('status', 1)->get();
         return view('grievance.submit-grievance', $data);
 	}
 	public function delete_grievance_image(Request $request)

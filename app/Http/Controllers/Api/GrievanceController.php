@@ -494,4 +494,62 @@ class GrievanceController extends Controller
 		return $response;
 	}
 	
+	public function edit_grievance(Request $request)
+	{
+		if($request->post('id') > 0)
+		{
+			$model = Grievance::find($request->post('id'));
+			$model->name = $request->post('name');
+			$model->mobile_no = $request->post('mobile_no');
+			$model->ward_prabhag = $request->post('ward_prabhag');
+			$model->department = $request->post('department');
+			$model->grievance_type = $request->post('grievance_type');
+			$model->address = $request->post('address');
+			$model->pincode = $request->post('pincode');
+			$model->issue_description = $request->post('issue_description');
+			$model->gps_location = $request->post('gps_location');
+			$model->latitude = $request->post('latitude');
+			$model->longitude = $request->post('longitude');
+			//$model->feedback_rating = $request->post('feedback_rating');
+			$model->feedback_description = $request->post('feedback_description');
+			$model->submitted_date = date('Y-m-d H:i:s');
+			$model->status = 1;
+			$model->created_at = date('Y-m-d h:i:s');
+			$model->save();
+			$id = $request->post('id');
+			
+			$lo_files = $request->file('lo_files');
+			//echo "<pre>";print_r($lo_files); die;
+			if ($lo_files && is_array($lo_files)) {
+				// save new files
+				foreach ($lo_files as $file) {
+					
+					$destinationPath = public_path('uploads/greivance_image');
+					if (!file_exists($destinationPath)) {
+						mkdir($destinationPath, 0777, true);
+					}
+					
+					//$filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+					$filename = uniqid() . $file->getClientOriginalExtension();
+					$file->move($destinationPath, $filename);
+
+					$fileModel = new Greivance_image();
+					$fileModel->greivance_id = $id;
+					$fileModel->user_id = Auth::guard('sanctum')->user()->id;
+					$fileModel->image_type = 1;
+					$fileModel->images = $filename;
+					//$fileModel->status = 1;
+					$fileModel->save();
+				}
+			}
+		}
+		else
+		{
+			$response = [
+				'status' => 400,
+				'message' => __('no_record_found'),
+			];
+		}
+	}
+	
 }
