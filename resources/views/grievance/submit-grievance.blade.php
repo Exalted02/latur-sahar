@@ -135,12 +135,15 @@
 								<div class="row margin-bottom-10">		
 									<div class="col-md-12 d-flex flex-wrap gap-2" id="preview-container">
 									@if(!empty($grievance->grievance_image))
+										
 										@foreach($grievance->grievance_image as $image)
+									
 										@php 
-										$urlsExp = explode(".", $image->images);
+										$urlsExp = explode(".",  $image->images);
 										$extension = $urlsExp[1];
 										$extension = strtolower($extension);
-										//echo $extension;
+										
+										//echo $extension;die;
 										@endphp
 									
 										<div class="preview-image-wrapper existing-image" data-id="{{ $image->id }}">
