@@ -287,15 +287,17 @@ class GrievanceController extends Controller
 				if(file_exists($filePath)) {
 					$solvedImageShow = $APP_URL.'/uploads/greivance_image/' .$images->images;
 					$imgExistSolved++;
+					$data['solvedImages'][] = $solvedImageShow; 
 				}
 				
 				
 				if($imgExistSolved == 0 && $count_solved_img == $m)
 				{
 					$solvedImageShow =  $APP_URL.'/uploads/img/noimage.png';
+					$data['solvedImages'][] = $solvedImageShow; 
 				}
 				
-				$data['solvedImages'][] = $solvedImageShow; //authority_images
+				//authority_images
 			}
 		}
 		
