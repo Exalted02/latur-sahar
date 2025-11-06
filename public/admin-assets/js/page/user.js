@@ -62,7 +62,7 @@ $(document).ready(function() {
 			$('#password').next('.invalid-feedback').show();
 			isValid = false;
 		}
-		
+		//alert(ward_prabhag_no);
 		if (ward_prabhag_no === '')
 		{
 			$('#ward_prabhag_no').addClass('is-invalid');
@@ -136,6 +136,9 @@ $(document).on('click','.edit-user', function(){
 	var id = $(this).data('id');
 	var URL = $(this).data('url');
 	$('#add_user .modal-title').text('Edit user');
+	
+	$('.invalid-feedback').hide();
+	$('.form-control').removeClass('is-invalid');
 	//alert(URL);
 	$.ajax({
 		url: URL,
@@ -151,7 +154,7 @@ $(document).on('click','.edit-user', function(){
 			$('#mobile').val(response.mobile);
 			$('#email').val(response.email);
 			//$('#password').val(response.password);
-			$('#ward_prabhag_no').val(response.ward_prabhag_no);
+			$('#ward_prabhag_no').val(response.ward_prabhag_no).trigger('change');
 			$('#post').val(response.post);
 			$('#add_user').modal('show');
 			//alert(JSON.stringify(response));

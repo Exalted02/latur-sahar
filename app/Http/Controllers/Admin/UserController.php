@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Grievance;
 use App\Models\Department;
 use App\Models\User;
+use App\Models\Wardprabhag;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -16,6 +17,7 @@ class UserController extends Controller
       $data[] = '';
       $data['users'] = User::where('user_type', '!=', 1)->where('status','!=', 2)->get();
 	  $data['departments'] = Department::where('status','!=', 2)->get();
+	  $data['wardprabhags'] = Wardprabhag::where('status', 1)->get();
       return view('admin.user.user', $data);
     }
     public function save_user_admin(Request $request)
