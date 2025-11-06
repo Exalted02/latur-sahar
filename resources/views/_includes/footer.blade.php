@@ -11,7 +11,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12 copyright">
-					<p class="text-center">© {{ date('Y')}} {{ __('footer_copyright_text') }}</p>
+					<p class="text-center">© {{ date('Y')}} {{ __('copyright') }}</p>
 				</div>	   
 			</div>
 		</div>
