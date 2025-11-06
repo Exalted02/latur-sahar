@@ -10,9 +10,9 @@
 		  <!-- Header Top Left -->
 			<div class="header-top-left col-md-6 col-sm-6">
 				<ul class="listnone">
-					<li><a href="{{ route('about-us')}}"><i class="fa-solid fa-info"></i> About Us</a></li>
-					<li><a href="{{ route('faq')}}"><i class="fa-solid fa-circle-question"></i> FAQs</a></li>
-					<li><a href="{{ route('services')}}"><i class="fa-solid fa-phone-volume"></i> Our Services</a></li>
+					<li><a href="{{ route('about-us')}}"><i class="fa-solid fa-info"></i> {{ __('about_us') }}</a></li>
+					<li><a href="{{ route('faq')}}"><i class="fa-solid fa-circle-question"></i> {{ __('faqs') }}</a></li>
+					<li><a href="{{ route('services')}}"><i class="fa-solid fa-phone-volume"></i> {{ __('our_services') }}</a></li>
 				</ul>
 		  </div>
 		  <!-- Header Top Right Social -->
