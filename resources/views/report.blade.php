@@ -60,7 +60,6 @@ use Carbon\Carbon;
 										<i class="fa fa-download me-2"></i> {{ __('download') }}
 									</button>
 								</div>
-							
 							</div>
 							</form>
 						</div>
@@ -107,14 +106,17 @@ use Carbon\Carbon;
     </div>
 	<form id="frm-download-report" action="{{ route('download-report')}}" method="post">
 		@csrf
-		<input type="hidden" id="download_ward_prabhag" name="download_ward_prabhag" value="{{ isset($src_ward_prabhag) ? $src_ward_prabhag : ''}}">
+		<input type="text" id="download_ward_prabhag" name="download_ward_prabhag" value="{{ isset($src_ward_prabhag) ? $src_ward_prabhag : ''}}">
 		<input type="hidden" id="download_status" name="download_status" value="{{ isset($src_status) ? $src_status : ''}}">
 		<input type="hidden" id="download_date_range_src" name="download_date_range_src" value="{{ isset($date_range_src_ward_prabhag) ? $date_range_src_ward_prabhag : '' }}">
 	</form>
 @endsection 
 @section('scripts')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
 <script src="{{ url('front-assets/js/report-calender.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 <script type="text/javascript">
 	if($('.datatable').length > 0) {
 		$('.datatable').DataTable({
@@ -195,13 +197,25 @@ use Carbon\Carbon;
 		});
 		
 		$(document).on('click', '.download-report', function(){
-			
+			//e.preventDefault();
 			$('#frm-download-report').submit();
 			//redirect = "{{ route('download-report') }}";
 			//window.location.href = redirect;
 		});
 		
-		
+		@if(session('downloadempty') == 'norecord')
+		{
+			$.toast({
+				heading: 'Error',
+				text: "{{ __('no_record_found') }}",
+				showHideTransition: 'slide',
+				icon: 'error',
+				position: 'top-right',
+				loaderBg: '#f2a654',
+				hideAfter: 3000 
+			});
+		}
+		@endif
 		
 	});
 </script>

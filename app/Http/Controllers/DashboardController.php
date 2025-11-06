@@ -525,29 +525,55 @@ class DashboardController extends Controller
 		{
 			$dataArr->where('ward_prabhag', 'like', '%' . $request->src_ward_prabhag . '%');
 			
-			$data['src_ward_prabhag'] = $request->src_ward_prabhag;
+			$ward_data = Grievance::where('ward_prabhag', $request->src_ward_prabhag)->get();
+			if($ward_data->count() > 0)
+			{
+				$data['src_ward_prabhag'] = $request->src_ward_prabhag;
+			}
+			else{
+				$data['src_ward_prabhag'] = '';
+			}
 		}
 		
 		if($request->src_status)
 		{
 			$dataArr->where('status', 'like', '%' . $request->src_status . '%');
-			$data['src_status'] = $request->src_status;
+			
+			$status_data = Grievance::where('status', $request->src_status)->get();
+			if($status_data->count() > 0)
+			{
+				$data['src_status'] = $request->src_status;
+			}
+			else{
+				$data['src_status'] = '';
+			}
+			
 		}
 		
 		if($request->date_range_src_ward_prabhag && $request->date_range_src_ward_prabhag != 'MM/DD/YYYY - MM/DD/YYYY') 
 		{
-		// Explode the date range into start and end dates
-		$dates = explode(' - ', $request->date_range_src_ward_prabhag);
+			// Explode the date range into start and end dates
+			$dates = explode(' - ', $request->date_range_src_ward_prabhag);
 
-		// Convert the start date and end date to Y-m-d format
-		$start_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay()->format('Y-m-d');
-		$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
-		//$contactArr->whereBetween('address_since', [$start_date, $end_date]);
-		
-		$dataArr->whereDate('submitted_date', '>=', $start_date)
-		->whereDate('submitted_date', '<=', $end_date);
-		
-		$data['date_range_src_ward_prabhag'] = $request->date_range_src_ward_prabhag;
+			// Convert the start date and end date to Y-m-d format
+			$start_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay()->format('Y-m-d');
+			$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
+			//$contactArr->whereBetween('address_since', [$start_date, $end_date]);
+			
+			$dataArr->whereDate('submitted_date', '>=', $start_date)
+			->whereDate('submitted_date', '<=', $end_date);
+			
+			
+			$date_range_data = Grievance::whereDate('submitted_date', '>=', $start_date)->whereDate('submitted_date', '<=', $end_date)->get();
+			if($date_range_data->count() > 0)
+			{
+				$data['date_range_src_ward_prabhag'] = $request->date_range_src_ward_prabhag;
+			}
+			else{
+				$data['date_range_src_ward_prabhag'] = '';
+			}
+			
+			
 		}
 		
 		$data['grievances'] = $dataArr->with('get_department')->get();
@@ -567,14 +593,36 @@ class DashboardController extends Controller
 			return back()->withErrors(['Please fill at least one filter field.'])->withInput();
 		}
 		
+		$wardChk= '';
+		$statusChk= '';
+		$dateRChk= '';
+		
+		$dataArr = Grievance::query();
+		
 		if($request->download_ward_prabhag)
 		{
-			$grievances = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->where('status', '!=', 4)->get();
+			//$grievances = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->where('status', '!=', 4)->get();
+			
+			$dataArr->where('ward_prabhag', 'like', '%' . $request->download_ward_prabhag . '%');
+			
+			$ward_data = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->get();
+			if($ward_data->count() > 0)
+			{
+				$wardChk =1;
+			}
 		}
 		
 		if($request->download_status)
 		{
-			$grievances = Grievance::where('status', $request->download_status)->get();
+			//$grievances = Grievance::where('status', $request->download_status)->get();
+			
+			$dataArr->where('status', 'like', '%' . $request->download_status . '%');
+			
+			$status_data = Grievance::where('status', $request->download_status)->get();
+			if($status_data->count() > 0)
+			{
+				$statusChk = 1;
+			}
 		}
 		
 		if($request->download_date_range_src)
@@ -587,14 +635,32 @@ class DashboardController extends Controller
 			$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
 			
 			
-			$grievances = Grievance::whereBetween('submitted_date', [$start_date, $end_date])->get();
+			//$grievances = Grievance::whereBetween('submitted_date', [$start_date, $end_date])->get();
+			
+			$dataArr->whereDate('submitted_date', '>=', $start_date)
+		    ->whereDate('submitted_date', '<=', $end_date);
+			
+			$date_range_data = Grievance::whereDate('submitted_date', '>=', $start_date)->whereDate('submitted_date', '<=', $end_date)->get();
+			if($date_range_data->count() > 0)
+			{
+				$dateRChk =1;
+			}
 			
 		}
 		
-		if(empty($request->download_ward_prabhag) && empty($request->download_status) && empty($request->download_date_range_src))
+		if(empty($wardChk) && empty($statusChk) && empty($dateRChk))
 		{
-			$grievances = Grievance::where('status', '!=', 4)->get();
+			return back()->with('downloadempty', 'norecord');
 		}
+		
+		/*if(empty($request->download_ward_prabhag) && empty($request->download_status) && empty($request->download_date_range_src))
+		{
+			//$grievances = Grievance::where('status', '!=', 4)->get();
+			return back()->with('downloadempty', 'norecord');
+		}*/
+		
+		$grievances = $dataArr->get();
+		//echo "<pre>";print_r($grievances);die;
 		
 		//return view('grievance_report', compact('grievances'));
         $pdf = Pdf::loadView('grievance_report', compact('grievances'))
