@@ -106,7 +106,7 @@ use Carbon\Carbon;
     </div>
 	<form id="frm-download-report" action="{{ route('download-report')}}" method="post">
 		@csrf
-		<input type="text" id="download_ward_prabhag" name="download_ward_prabhag" value="{{ isset($src_ward_prabhag) ? $src_ward_prabhag : ''}}">
+		<input type="hidden" id="download_ward_prabhag" name="download_ward_prabhag" value="{{ isset($src_ward_prabhag) ? $src_ward_prabhag : ''}}">
 		<input type="hidden" id="download_status" name="download_status" value="{{ isset($src_status) ? $src_status : ''}}">
 		<input type="hidden" id="download_date_range_src" name="download_date_range_src" value="{{ isset($date_range_src_ward_prabhag) ? $date_range_src_ward_prabhag : '' }}">
 	</form>

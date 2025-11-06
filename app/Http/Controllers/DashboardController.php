@@ -346,105 +346,42 @@ class DashboardController extends Controller
 		Grievance::where('id', $id)->where('user_id', auth()->user()->id)->update(['status'=>2]);
 		return response()->json(['msg'=>'success']);
 	}
-	public function downloadFiles_one($id)
-	{
-		$images = Greivance_image::where('greivance_id', $id)->get();
-
-		if ($images->isEmpty()) {
-			return back()->with('error', 'No files found for this grievance.');
-		}
-
-		$zip = new ZipArchive();
-		$zipFileName = 'grievance_' . $id . '_images.zip';
-		$zipPath = public_path($zipFileName);
-
-		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
-			foreach ($images as $img) {
-				$filePath = public_path('uploads/greivance_image/' . $img->images);
-				if (File::exists($filePath)) {
-					$zip->addFile($filePath, basename($filePath));
-				}
-			}
-			$zip->close();
-		}
-		
-		$headers = [
-			'Content-Type' => 'application/octet-stream',
-		];
-
-		return response()->download($zipPath, $zipFileName, $headers)->deleteFileAfterSend(true);
-	}
-	public function downloadFiles_bck_not($id)
-	{
-		$images = Greivance_image::where('greivance_id', $id)->get();
-
-		if ($images->isEmpty()) {
-			return back()->with('error', 'No files found for this grievance.');
-		}
-
-		$zip = new ZipArchive;
-		$zipFileName = 'grievance_' . $id . '_images.zip';
-		$zipPath = storage_path('app/public/' . $zipFileName);
-
-		// Delete if old zip exists
-		if (File::exists($zipPath)) {
-			File::delete($zipPath);
-		}
-
-		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
-			foreach ($images as $img) {
-				$filePath = public_path('uploads/greivance_image/' . $img->images);
-				if (File::exists($filePath)) {
-					$zip->addFile($filePath, basename($filePath));
-				}
-			}
-			$zip->close();
-		} else {
-			return back()->with('error', 'Could not create ZIP file.');
-		}
-
-		// Ensure clean output before sending the file
-		if (ob_get_length()) ob_end_clean();
-
-		return response()->download($zipPath)->deleteFileAfterSend(true);
-	}
 	
 	public function downloadFiles($id)
 	{
 		$images = Greivance_image::where('greivance_id', $id)->get();
-		$public_dir = public_path('uploads/greivance_image/zip');
-		$file_dir = public_path('uploads/greivance_image');
 
-		// Make sure zip directory exists
-		if (!file_exists($public_dir)) {
-			mkdir($public_dir, 0777, true);
+		$zipFolder = public_path('uploads/greivance_image/zip');
+		$imageFolder = public_path('uploads/greivance_image');
+
+		if (!File::exists($zipFolder)) {
+			File::makeDirectory($zipFolder, 0777, true);
 		}
 
 		$zipFileName = 'grievance_images_' . $id . '.zip';
-		$zipPath = $public_dir . DIRECTORY_SEPARATOR . $zipFileName;
+		$zipPath = $zipFolder . DIRECTORY_SEPARATOR . $zipFileName;
 
 		$zip = new ZipArchive();
 		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
-
 			foreach ($images as $image) {
-				$fileFullPath = $file_dir . DIRECTORY_SEPARATOR . $image->images;
-
-				if (file_exists($fileFullPath)) {
-					// Add the actual file to the zip with only the filename inside the zip
+				$fileFullPath = $imageFolder . DIRECTORY_SEPARATOR . $image->images;
+				if (File::exists($fileFullPath)) {
 					$zip->addFile($fileFullPath, basename($image->images));
 				}
 			}
-
 			$zip->close();
+		} else {
+			return back()->with('error', 'Unable to create ZIP file.');
 		}
 
-		if (file_exists($zipPath)) {
+		if (File::exists($zipPath)) {
+			ob_end_clean(); // prevent output corruption
 			return response()->download($zipPath, $zipFileName, [
-				'Content-Type' => 'application/octet-stream',
+				'Content-Type' => 'application/zip',
 			])->deleteFileAfterSend(true);
-		} else {
-			return back()->with('error', 'Failed to create ZIP file.');
 		}
+
+		return back()->with('error', 'Failed to create ZIP file.');
 	}
 	public function save_citizen_rating(Request $request)
 	{
@@ -537,7 +474,14 @@ class DashboardController extends Controller
 		
 		if($request->src_status)
 		{
-			$dataArr->where('status', 'like', '%' . $request->src_status . '%');
+			if($request->src_status == 'all')
+			{
+				$dataArr->where('status', '!=', 4);
+			}
+			else
+			{
+				$dataArr->where('status', 'like', '%' . $request->src_status . '%');
+			}
 			
 			$status_data = Grievance::where('status', $request->src_status)->get();
 			if($status_data->count() > 0)
@@ -611,12 +555,21 @@ class DashboardController extends Controller
 				$wardChk =1;
 			}
 		}
+		//echo $request->download_status; die;
 		
 		if($request->download_status)
 		{
 			//$grievances = Grievance::where('status', $request->download_status)->get();
 			
-			$dataArr->where('status', 'like', '%' . $request->download_status . '%');
+			if($request->download_status == 'all')
+			{
+				$dataArr->where('status', '!=', 4);
+				$statusChk = 1;
+			}
+			else
+			{
+				$dataArr->where('status', 'like', '%' . $request->download_status . '%');
+			}
 			
 			$status_data = Grievance::where('status', $request->download_status)->get();
 			if($status_data->count() > 0)
@@ -648,18 +601,13 @@ class DashboardController extends Controller
 			
 		}
 		
-		if(empty($wardChk) && empty($statusChk) && empty($dateRChk))
+		
+		$grievances = $dataArr->get();
+
+		if($grievances->count() == 0)
 		{
 			return back()->with('downloadempty', 'norecord');
 		}
-		
-		/*if(empty($request->download_ward_prabhag) && empty($request->download_status) && empty($request->download_date_range_src))
-		{
-			//$grievances = Grievance::where('status', '!=', 4)->get();
-			return back()->with('downloadempty', 'norecord');
-		}*/
-		
-		$grievances = $dataArr->get();
 		//echo "<pre>";print_r($grievances);die;
 		
 		//return view('grievance_report', compact('grievances'));
