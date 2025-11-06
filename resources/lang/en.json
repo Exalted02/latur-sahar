@@ -94,6 +94,7 @@
 	"grievance_description":"Grievance description",
 	"status":"Status",
 	"action":"Action",
+	"dashboard":"Dashboard",
 	
 	"//": "View Status",
 	"view_status": "View Grievance Status",
@@ -173,5 +174,7 @@
 	"forwarded": "Forwarded",
 	"location_block_message": "Location access is blocked. Please allow location access from your browser settings and try again.",
 	"grievance_deleted_successfully":"Grievance deleted successfully",
-	"deleted_successfully":"Deleted successfully"
+	"deleted_successfully":"Deleted successfully",
+	"footer_title1":"Portal is Compatible with all major Browsers like Google Chrome, Mozilla Firefox, Microsoft Edge, Safari etc.",
+	"footer_title2":"Best Viewed in 1440 x 900 resolution"
 }
