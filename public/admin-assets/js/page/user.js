@@ -62,11 +62,11 @@ $(document).ready(function() {
 			$('#password').next('.invalid-feedback').show();
 			isValid = false;
 		}
-		//alert(ward_prabhag_no);
+		
 		if (ward_prabhag_no === '')
 		{
 			$('#ward_prabhag_no').addClass('is-invalid');
-			$('#ward_prabhag_no').next('.invalid-feedback').show();
+			$('#ward_prabhag_no').siblings('.invalid-feedback').show();
 			isValid = false;
 		}
 		
