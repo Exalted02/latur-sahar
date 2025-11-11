@@ -18,6 +18,8 @@ use App\Models\Wardprabhag;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\App;
 
+use Illuminate\Support\Facades\Log;
+
 class GrievanceController extends Controller
 {
 	public function grievance_lists()
@@ -26,7 +28,7 @@ class GrievanceController extends Controller
 		{
 			$user_id = Auth::guard('sanctum')->user()->id;
 			$data = [];
-			$data['total_grievance'] = Grievance::where('user_id', $user_id)->count();
+			$data['total_grievance'] = Grievance::where('user_id', $user_id)->where('status', '!=', 4)->count();
 			$data['pending_grievance'] = Grievance::where('user_id', $user_id)->whereIn('status', [1,2])->count();
 			$data['solved_grievance'] = Grievance::where('user_id', $user_id)->where('status', 3)->count();
 			$data['alert_grievance'] = Grievance::where('user_id', $user_id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->count();
@@ -130,7 +132,7 @@ class GrievanceController extends Controller
 				
 				//------------------------------
 				    $s = 0;
-					$imgExist = 0;
+					// $imgExist = 0;
 					$imageShow = '';
 					$grv_img = Greivance_image::where('greivance_id', $grievance->id)->where('image_type', 1)->get();
 					$cntImg = $grv_img->count();
@@ -142,13 +144,16 @@ class GrievanceController extends Controller
 						if(file_exists($fileImgPath)) 
 						{
 							$imageShow = $APP_URL.'/uploads/greivance_image/' .$img->images;
-							$imgExist++;
+							// $imgExist++;
 						}
 						
-						if($imgExist == 0 && $cntImg == $s)
+						/*if($imgExist == 0 && $cntImg == $s)
 						{
 							$imageShow =  $APP_URL.'/uploads/img/noimage.png';
-						}
+						}*/
+					}
+					if($imageShow == ''){
+						$imageShow =  $APP_URL.'/uploads/img/noimage.png';
 					}
 				//-------------------------------
 				
@@ -246,8 +251,11 @@ class GrievanceController extends Controller
 		$data['registration_no'] = $grievance->registration_no ?? null;
 		$data['submitted_date'] 	= Carbon::parse($grievance->submitted_date)->format('d/m/Y') ??  null;
 		$data['department'] 		= $grievance->get_department->name ?? null;
+		$data['department_id'] 		= $grievance->department ?? null;
 		$data['grievance_type'] 		= $grievance->get_grievance_type->name ?? null;
+		$data['grievance_type_id'] 		= $grievance->grievance_type ?? null;
 		$data['ward_prabhag'] 		= $grievance->get_ward_prabhag->name ?? null;
+		$data['ward_prabhag_id'] 		= $grievance->ward_prabhag ?? null;
 		$data['issue_description'] 	= $grievance->issue_description ?? null;
 		$data['latitude'] 	= $grievance->latitude ?? null;
 		$data['longitude'] 	= $grievance->longitude ?? null;
@@ -422,6 +430,7 @@ class GrievanceController extends Controller
 	public function submit_grievance(Request $request)
 	{
 		//echo "<pre>";print_r($request->all()); die;
+		// Log::info('Post values are. '. json_encode($request->all()));
 		
 		$registration_no = time();
 		$model = new Grievance();
@@ -582,6 +591,7 @@ class GrievanceController extends Controller
 	
 	public function edit_grievance(Request $request)
 	{
+		// Log::info('Edit values are. '. json_encode($request->all()));
 		if($request->post('id') > 0)
 		{
 			$model = Grievance::find($request->post('id'));
@@ -658,13 +668,14 @@ class GrievanceController extends Controller
 	}
 	public function delete_grievance_image(Request $request)
 	{
-		$imageId = $request->imageId;
+		// $imageId = $request->imageId;
 		$imagename = $request->imagename;
 		
 		$filePath = public_path('uploads/greivance_image/' . $imagename);
 		if (file_exists($filePath)) {
 			unlink($filePath);
-			Greivance_image::where('id', $imageId)->where('images', $imagename)->delete();
+			// Greivance_image::where('id', $imageId)->where('images', $imagename)->delete();
+			Greivance_image::where('images', $imagename)->delete();
 		}
 		
 		$response = [
