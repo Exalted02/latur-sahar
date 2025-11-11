@@ -346,105 +346,42 @@ class DashboardController extends Controller
 		Grievance::where('id', $id)->where('user_id', auth()->user()->id)->update(['status'=>2]);
 		return response()->json(['msg'=>'success']);
 	}
-	public function downloadFiles_one($id)
-	{
-		$images = Greivance_image::where('greivance_id', $id)->get();
-
-		if ($images->isEmpty()) {
-			return back()->with('error', 'No files found for this grievance.');
-		}
-
-		$zip = new ZipArchive();
-		$zipFileName = 'grievance_' . $id . '_images.zip';
-		$zipPath = public_path($zipFileName);
-
-		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
-			foreach ($images as $img) {
-				$filePath = public_path('uploads/greivance_image/' . $img->images);
-				if (File::exists($filePath)) {
-					$zip->addFile($filePath, basename($filePath));
-				}
-			}
-			$zip->close();
-		}
-		
-		$headers = [
-			'Content-Type' => 'application/octet-stream',
-		];
-
-		return response()->download($zipPath, $zipFileName, $headers)->deleteFileAfterSend(true);
-	}
-	public function downloadFiles_bck_not($id)
-	{
-		$images = Greivance_image::where('greivance_id', $id)->get();
-
-		if ($images->isEmpty()) {
-			return back()->with('error', 'No files found for this grievance.');
-		}
-
-		$zip = new ZipArchive;
-		$zipFileName = 'grievance_' . $id . '_images.zip';
-		$zipPath = storage_path('app/public/' . $zipFileName);
-
-		// Delete if old zip exists
-		if (File::exists($zipPath)) {
-			File::delete($zipPath);
-		}
-
-		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
-			foreach ($images as $img) {
-				$filePath = public_path('uploads/greivance_image/' . $img->images);
-				if (File::exists($filePath)) {
-					$zip->addFile($filePath, basename($filePath));
-				}
-			}
-			$zip->close();
-		} else {
-			return back()->with('error', 'Could not create ZIP file.');
-		}
-
-		// Ensure clean output before sending the file
-		if (ob_get_length()) ob_end_clean();
-
-		return response()->download($zipPath)->deleteFileAfterSend(true);
-	}
 	
 	public function downloadFiles($id)
 	{
 		$images = Greivance_image::where('greivance_id', $id)->get();
-		$public_dir = public_path('uploads/greivance_image/zip');
-		$file_dir = public_path('uploads/greivance_image');
 
-		// Make sure zip directory exists
-		if (!file_exists($public_dir)) {
-			mkdir($public_dir, 0777, true);
+		$zipFolder = public_path('uploads/greivance_image/zip');
+		$imageFolder = public_path('uploads/greivance_image');
+
+		if (!File::exists($zipFolder)) {
+			File::makeDirectory($zipFolder, 0777, true);
 		}
 
 		$zipFileName = 'grievance_images_' . $id . '.zip';
-		$zipPath = $public_dir . DIRECTORY_SEPARATOR . $zipFileName;
+		$zipPath = $zipFolder . DIRECTORY_SEPARATOR . $zipFileName;
 
 		$zip = new ZipArchive();
 		if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
-
 			foreach ($images as $image) {
-				$fileFullPath = $file_dir . DIRECTORY_SEPARATOR . $image->images;
-
-				if (file_exists($fileFullPath)) {
-					// Add the actual file to the zip with only the filename inside the zip
+				$fileFullPath = $imageFolder . DIRECTORY_SEPARATOR . $image->images;
+				if (File::exists($fileFullPath)) {
 					$zip->addFile($fileFullPath, basename($image->images));
 				}
 			}
-
 			$zip->close();
+		} else {
+			return back()->with('error', 'Unable to create ZIP file.');
 		}
 
-		if (file_exists($zipPath)) {
+		if (File::exists($zipPath)) {
+			ob_end_clean(); // prevent output corruption
 			return response()->download($zipPath, $zipFileName, [
-				'Content-Type' => 'application/octet-stream',
+				'Content-Type' => 'application/zip',
 			])->deleteFileAfterSend(true);
-		} else {
-			return back()->with('error', 'Failed to create ZIP file.');
 		}
+
+		return back()->with('error', 'Failed to create ZIP file.');
 	}
 	public function save_citizen_rating(Request $request)
 	{
@@ -525,29 +462,62 @@ class DashboardController extends Controller
 		{
 			$dataArr->where('ward_prabhag', 'like', '%' . $request->src_ward_prabhag . '%');
 			
-			$data['src_ward_prabhag'] = $request->src_ward_prabhag;
+			$ward_data = Grievance::where('ward_prabhag', $request->src_ward_prabhag)->get();
+			if($ward_data->count() > 0)
+			{
+				$data['src_ward_prabhag'] = $request->src_ward_prabhag;
+			}
+			else{
+				$data['src_ward_prabhag'] = '';
+			}
 		}
 		
 		if($request->src_status)
 		{
-			$dataArr->where('status', 'like', '%' . $request->src_status . '%');
-			$data['src_status'] = $request->src_status;
+			if($request->src_status == 'all')
+			{
+				$dataArr->where('status', '!=', 4);
+			}
+			else
+			{
+				$dataArr->where('status', 'like', '%' . $request->src_status . '%');
+			}
+			
+			$status_data = Grievance::where('status', $request->src_status)->get();
+			if($status_data->count() > 0)
+			{
+				$data['src_status'] = $request->src_status;
+			}
+			else{
+				$data['src_status'] = '';
+			}
+			
 		}
 		
 		if($request->date_range_src_ward_prabhag && $request->date_range_src_ward_prabhag != 'MM/DD/YYYY - MM/DD/YYYY') 
 		{
-		// Explode the date range into start and end dates
-		$dates = explode(' - ', $request->date_range_src_ward_prabhag);
+			// Explode the date range into start and end dates
+			$dates = explode(' - ', $request->date_range_src_ward_prabhag);
 
-		// Convert the start date and end date to Y-m-d format
-		$start_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay()->format('Y-m-d');
-		$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
-		//$contactArr->whereBetween('address_since', [$start_date, $end_date]);
-		
-		$dataArr->whereDate('submitted_date', '>=', $start_date)
-		->whereDate('submitted_date', '<=', $end_date);
-		
-		$data['date_range_src_ward_prabhag'] = $request->date_range_src_ward_prabhag;
+			// Convert the start date and end date to Y-m-d format
+			$start_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[0])->startOfDay()->format('Y-m-d');
+			$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
+			//$contactArr->whereBetween('address_since', [$start_date, $end_date]);
+			
+			$dataArr->whereDate('submitted_date', '>=', $start_date)
+			->whereDate('submitted_date', '<=', $end_date);
+			
+			
+			$date_range_data = Grievance::whereDate('submitted_date', '>=', $start_date)->whereDate('submitted_date', '<=', $end_date)->get();
+			if($date_range_data->count() > 0)
+			{
+				$data['date_range_src_ward_prabhag'] = $request->date_range_src_ward_prabhag;
+			}
+			else{
+				$data['date_range_src_ward_prabhag'] = '';
+			}
+			
+			
 		}
 		
 		$data['grievances'] = $dataArr->with('get_department')->get();
@@ -567,14 +537,45 @@ class DashboardController extends Controller
 			return back()->withErrors(['Please fill at least one filter field.'])->withInput();
 		}
 		
+		$wardChk= '';
+		$statusChk= '';
+		$dateRChk= '';
+		
+		$dataArr = Grievance::query();
+		
 		if($request->download_ward_prabhag)
 		{
-			$grievances = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->where('status', '!=', 4)->get();
+			//$grievances = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->where('status', '!=', 4)->get();
+			
+			$dataArr->where('ward_prabhag', 'like', '%' . $request->download_ward_prabhag . '%');
+			
+			$ward_data = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->get();
+			if($ward_data->count() > 0)
+			{
+				$wardChk =1;
+			}
 		}
+		//echo $request->download_status; die;
 		
 		if($request->download_status)
 		{
-			$grievances = Grievance::where('status', $request->download_status)->get();
+			//$grievances = Grievance::where('status', $request->download_status)->get();
+			
+			if($request->download_status == 'all')
+			{
+				$dataArr->where('status', '!=', 4);
+				$statusChk = 1;
+			}
+			else
+			{
+				$dataArr->where('status', 'like', '%' . $request->download_status . '%');
+			}
+			
+			$status_data = Grievance::where('status', $request->download_status)->get();
+			if($status_data->count() > 0)
+			{
+				$statusChk = 1;
+			}
 		}
 		
 		if($request->download_date_range_src)
@@ -587,14 +588,27 @@ class DashboardController extends Controller
 			$end_date = \Carbon\Carbon::createFromFormat('m/d/Y', $dates[1])->endOfDay()->format('Y-m-d');
 			
 			
-			$grievances = Grievance::whereBetween('submitted_date', [$start_date, $end_date])->get();
+			//$grievances = Grievance::whereBetween('submitted_date', [$start_date, $end_date])->get();
+			
+			$dataArr->whereDate('submitted_date', '>=', $start_date)
+		    ->whereDate('submitted_date', '<=', $end_date);
+			
+			$date_range_data = Grievance::whereDate('submitted_date', '>=', $start_date)->whereDate('submitted_date', '<=', $end_date)->get();
+			if($date_range_data->count() > 0)
+			{
+				$dateRChk =1;
+			}
 			
 		}
 		
-		if(empty($request->download_ward_prabhag) && empty($request->download_status) && empty($request->download_date_range_src))
+		
+		$grievances = $dataArr->get();
+
+		if($grievances->count() == 0)
 		{
-			$grievances = Grievance::where('status', '!=', 4)->get();
+			return back()->with('downloadempty', 'norecord');
 		}
+		//echo "<pre>";print_r($grievances);die;
 		
 		//return view('grievance_report', compact('grievances'));
         $pdf = Pdf::loadView('grievance_report', compact('grievances'))

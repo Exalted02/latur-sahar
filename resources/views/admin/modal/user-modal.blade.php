@@ -102,7 +102,12 @@
 										<div class="col-sm-12">
 											<div class="input-block mb-3">
 												<label class="col-form-label">{{ __('Ward prabhag no') }}<span class="text-danger">*</span></label>
-												<input class="form-control" type="text" name="ward_prabhag_no" id="ward_prabhag_no">
+												<select class="select" name="ward_prabhag_no" id="ward_prabhag_no">
+												<option value="">{{ __('Please select') }}</option>
+												@foreach($wardprabhags as $wardprabhag)
+													<option value="{{ $wardprabhag->id ?? ''}}">{{ $wardprabhag->name ?? ''}}</option>
+												@endforeach
+												</select>
 												<div class="invalid-feedback">{{ __('Please enter') }} {{ __('ward no')}}.</div>
 											</div>
 										</div>

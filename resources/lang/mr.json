@@ -21,6 +21,7 @@
     "registration_completed_successfully": "नोंदणी यशस्वीरित्या पूर्ण झाली!",
     "registration_completed_successfully_msg": "लातूर शहर महानगरपालिका पोर्टलवर आपले स्वागत आहे. आमच्या ऑनलाइन सेवांचा लाभ घेण्यासाठी कृपया प्रवेश करा.",
 	
+	"home": "घर",
     "home_page_box_register_login_title": "नोंदणी / प्रवेश",
     "home_page_box_register_login_text": "लातूर शहर महानगरपालिकेच्या सर्व ऑनलाइन सेवा आणि सुविधा वापरण्यासाठी नोंदणी करा किंवा प्रवेश करा.",
     
@@ -29,7 +30,8 @@
     
     "home_page_box_contact_us_title": "संपर्क साधा",
     "home_page_box_contact_us_text": "महानगरपालिका सेवांबाबत सहाय्य, अभिप्राय किंवा माहितीकरिता आमच्याशी संपर्क साधा.",
-
+	
+	"change_password": "पासवर्ड बदला",
     "submit_grievance": "तक्रार सादर करा",
     "view_grievance": "तक्रार स्थिती पहा",
     "manage_grievance": "आपली तक्रार व्यवस्थापित करा",
@@ -71,6 +73,7 @@
 	"view_status": "तक्रार स्थिती पाहा",
     "registration_number": "नोंदणी क्रमांक",
     "email_mobile": "ईमेल आयडी किंवा मोबाइल क्रमांक",
+	"dashboard":"डॅशबोर्ड",
 	
     "about_us": "आमच्याबद्दल",
     "about_us_home_heading": "लातूर शहर महानगरपालिका (Latur City Municipal Corporation) बद्दल",
@@ -133,6 +136,8 @@
     
     "terms_conditions_long_content8": "<h3 class='cui-delta'>८. अटींमध्ये बदल</h3><p>लातूर शहर महानगरपालिका कोणत्याही पूर्वसूचनेशिवाय या अटी व शर्तींमध्ये बदल, अद्ययावत किंवा सुधारणा करण्याचा अधिकार राखून ठेवते. वापरकर्त्यांनी वेळोवेळी या पृष्ठाचे पुनरावलोकन करावे.</p>",
 	
+	"log_out": "लॉगआउट करा",
+	"my_account": "माझे खाते",
     "contact_us": "संपर्क साधा",
     "contact_us_title": "आमच्याशी संपर्क साधण्यास मोकळे रहा",
     "contact_us_subject": "विषय",
@@ -160,5 +165,7 @@
 	"forwarded": "फॉरवर्ड केले",
 	"location_block_message": "स्थान प्रवेश अवरोधित केला आहे. कृपया तुमच्या ब्राउझर सेटिंग्जमधून स्थान प्रवेशास अनुमती द्या आणि पुन्हा प्रयत्न करा.",
 	"grievance_deleted_successfully":"तक्रार यशस्वीरित्या हटवली",
-	"deleted_successfully":"यशस्वीरित्या हटवले"
+	"deleted_successfully":"यशस्वीरित्या हटवले",
+	"footer_title1":"पोर्टल Google Chrome, Mozilla Firefox, Microsoft Edge, Safari इत्यादी सर्व प्रमुख ब्राउझरशी सुसंगत आहे.",
+	"footer_title2":"1440 x 900 रिझोल्यूशनमध्ये सर्वोत्तम पाहिले"
 }

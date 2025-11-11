@@ -404,7 +404,7 @@ if($grievance)
 							   
 							@endif
 							
-							@if(auth()->user()->user_type == 2 && $check_dept ==1)
+							@if((auth()->user()->user_type == 2 || auth()->user()->user_type == 3 || auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6) && $check_dept ==1)
 								<div class="category-list-icon">
 								  <i class="orange fa fa-download" aria-hidden="true"></i>
 								  <div class="category-list-title" style="cursor:pointer">

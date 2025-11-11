@@ -64,6 +64,8 @@
 						@foreach($users as $val)
 							@php 
 								$department_name = App\Models\Department::where('id', $val->department)->first()->name;
+								
+								$wardprabhag_name = App\Models\Wardprabhag::where('id', $val->ward_prabhag_no)->first()->name;
 							@endphp
 							<tr>
 								<td>{{ $val->name ?? ''}}</td>
@@ -71,7 +73,7 @@
 								<td>{{ $department_name ?? ''}}</td>
 								<td>{{ $val->mobile ?? ''}}</td>
 								<td>{{ $val->email ?? ''}}</td>
-								<td>{{ $val->ward_prabhag_no ?? ''}}</td>
+								<td>{{ $wardprabhag_name ?? ''}}</td>
 								<td>{{ $val->post ?? ''}}</td>
 								<td>{{ date('d-m-Y', strtotime($val->created_at)) ?? ''}}</td>
 								<td class="text-center">
