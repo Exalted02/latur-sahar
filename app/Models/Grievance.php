@@ -26,6 +26,7 @@ class Grievance extends Model
         'feedback_rating',
         'feedback_description',
         'submitted_date',
+        'resubmitted_date',
         'solve_date',
         'status',
     ];

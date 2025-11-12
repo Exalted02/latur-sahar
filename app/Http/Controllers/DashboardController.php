@@ -260,6 +260,9 @@ class DashboardController extends Controller
 		
 		//$data['solved_image'] = ;
 		$data['solved_image'] = Greivance_image::where('greivance_id', $id)->where('image_type', 2)->get();
+		
+		$data['last_solved'] =  Greivance_image::with(['solved_user'])->where('image_type', 2)->where('greivance_id', $id)->orderByDesc('id')->first();
+		// dd($data['solved_image']);
 		$data['forward_exists'] = Forward_grievance::where('greivance_id', $id)->first();
 		//echo "<pre>";print_r($grievance); die;
         return view('grievance.view-grievance', $data);
@@ -343,7 +346,7 @@ class DashboardController extends Controller
 	public function resubmit_grievance(Request $request)
 	{
 		$id = $request->id;
-		Grievance::where('id', $id)->where('user_id', auth()->user()->id)->update(['status'=>2]);
+		Grievance::where('id', $id)->where('user_id', auth()->user()->id)->update(['status'=>2, 'resubmitted_date'=>date('Y-m-d H:i:s')]);
 		return response()->json(['msg'=>'success']);
 	}
 	

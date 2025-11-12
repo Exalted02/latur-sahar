@@ -15,4 +15,9 @@ class Greivance_image extends Model
         'image_type',
         'images',
     ];
+	
+	public function solved_user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

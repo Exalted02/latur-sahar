@@ -9962,7 +9962,8 @@ footer.footer-bg {
 }
 .category-list-title {
   overflow: hidden;
-    padding: 19px 0 0 15px;
+    /* padding: 19px 0 0 15px; */
+    padding: 10px 0 10px 15px;
     position: relative;
     text-align: left;
 }

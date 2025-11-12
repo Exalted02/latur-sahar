@@ -266,6 +266,8 @@ class GrievanceController extends Controller
 		$data['grievance_status'] 	= $grievance->status ?? null;
 		$data['grievance_address'] 	= $grievance->address ?? null;
 		$data['grievance_pincode'] 	= $grievance->pincode ?? null;
+		$data['grievance_date'] 	= change_date_format($grievance->submitted_date, 'Y-m-d H:i:s', 'd/m/Y h:i A');
+		$data['resubmitted_date'] 	= !empty($grievance->resubmitted_date) ? change_date_format($grievance->resubmitted_date, 'Y-m-d H:i:s', 'd/m/Y h:i A') : null;
 		
 		$data['solvedImages'] = [];
 		$imgExistCitizen = 0;
@@ -336,6 +338,10 @@ class GrievanceController extends Controller
 				//authority_images
 			}
 		}
+		
+		$last_solved =  Greivance_image::with(['solved_user'])->where('image_type', 2)->where('greivance_id', $id)->orderByDesc('id')->first();
+		$data['solved_by'] 	= $last_solved->solved_user->name ?? null;
+		$data['solved_date'] 	= !empty($last_solved->created_at) ? change_date_format($last_solved->created_at, 'Y-m-d H:i:s', 'd/m/Y h:i A') : null;
 		
 		$response = [
 				'data' => $data,

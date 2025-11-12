@@ -51,12 +51,21 @@
 .text_danger{
     color: #da0a17 !important;
 }
-.justify-space-between{
+.justify-space-between {
     justify-content: space-between !important;
+}
+.justify-center {
+    justify-content: center !important;
+}
+.gap-10 {
+	gap: 10px;
 }
 .mtb_0{
     margin-top: 0px !important;
     margin-bottom: 0px !important;
+}
+.mb_0{
+    margin-bottom: 0 !important;
 }
 .mb_10{
     margin-bottom: 10px !important;
@@ -120,6 +129,9 @@
 .text-align-right{
     text-align: right;
 }
+.text-align-end{
+    text-align: end;
+}
 .align-item-center{
     align-items: center;
 }
@@ -134,6 +146,9 @@
 }
 .background-danger {
   background-color: #E52D27;
+}
+.pointer-none {
+  pointer-events: none
 }
 /* =================> Dashboard css class end <=================== */
 .dashboard-card {
