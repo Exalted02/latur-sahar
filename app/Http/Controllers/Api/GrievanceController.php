@@ -172,7 +172,8 @@ class GrievanceController extends Controller
 					'submitted_date'	=> Carbon::parse($grievance->submitted_date)->format('d/m/Y') ?? '',
 					'department'=> $grievance->get_department->name ?? '',
 					'image'	=> $imageShow,
-					'issue_description'	=> substr($grievance->issue_description, 0, 50) ?? '',
+					// 'issue_description'	=> substr($grievance->issue_description, 0, 50) ?? '',
+					'issue_description' => mb_substr($grievance->issue_description ?? '', 0, 50, 'UTF-8'),
 					'status'	=>  $status ?? '',
 					'grievance_status'	=>  $grievance->status ?? '',
 				];
@@ -362,7 +363,7 @@ class GrievanceController extends Controller
 		
 		$check_status = Grievance::where('id', $id)->first()->status;
 		
-		if($check_status == 1)
+		if($check_status == 3)
 		{
 			Grievance::where('id', $id)->update(['status'=>2]);
 			
@@ -431,6 +432,15 @@ class GrievanceController extends Controller
 	{
 		//echo "<pre>";print_r($request->all()); die;
 		// Log::info('Post values are. '. json_encode($request->all()));
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
 		
 		$registration_no = time();
 		$model = new Grievance();
@@ -592,6 +602,15 @@ class GrievanceController extends Controller
 	public function edit_grievance(Request $request)
 	{
 		// Log::info('Edit values are. '. json_encode($request->all()));
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
 		if($request->post('id') > 0)
 		{
 			$model = Grievance::find($request->post('id'));
@@ -658,6 +677,15 @@ class GrievanceController extends Controller
 	{
 		$data = [];
 		//echo "<pre>";print_r($request->id);die;
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
 		Grievance::where('id', $request->id)->update(['status'=>4]);
 		$response = [
 			'message'  => __('grievance_deleted_successfully'),

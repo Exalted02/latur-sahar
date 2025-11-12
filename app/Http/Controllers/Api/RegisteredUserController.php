@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\Notifications;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 
 class RegisteredUserController extends Controller
 {
@@ -29,6 +30,16 @@ class RegisteredUserController extends Controller
 				'status'=>'600',
 			]);
 		}
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
+		
         $email =  $request->input('email');
         $password = $request->input('password');
 		
@@ -40,7 +51,7 @@ class RegisteredUserController extends Controller
         if($user){
 			if(!Hash::check($password, $user->password)){
 				$response['status']=400;
-				$response['message']="Password are not matched";
+				$response['message']=__('password_not_match');
 			}
 			else if($user->phone_verified_at == null) // Comment for otp logic is off now
 			{				
@@ -58,21 +69,22 @@ class RegisteredUserController extends Controller
 				);
 				
 				$response['status']=400;
-				$response['message']="User is not verified";
+				$response['message_status']="not_verified";
+				$response['message']=__('user_not_verified');
 			}
 			else if($user->status != 1)
 			{
 				$response['status']=400;
-				$response['message']="User is inactive";
+				$response['message']=__('user_not_active');
 			}
 			else
 			{
-				$msg = 'Successfully logged in';
+				$msg = __('login_success');
 				return $this->authResponse($user, $msg);
 			}
         }else{
 			$response['status']=400;
-			$response['message']="User does not exist";
+			$response['message']=__('user_not_exists');
 		}
 		return $response;
     }
@@ -208,6 +220,16 @@ class RegisteredUserController extends Controller
 			]);
 		}
 		
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
+		
 		$model = new User();
 		$model->name = $request->name;
 		$model->email = $request->email ?? null;
@@ -233,10 +255,10 @@ class RegisteredUserController extends Controller
 			
 			//-----
 			$response['status'] = 200;
-			$response['message'] = "Citizen added successfully";
+			$response['message'] = __('citizen_added_successfully');
 		} else {
 			$response['status'] = 500;
-			$response['message'] = "Failed to add citizen";
+			$response['message'] = __('failed_to_add_citizen');
 		}
 		
 		return $response;
@@ -255,12 +277,21 @@ class RegisteredUserController extends Controller
 		}
 		
 		$loginField = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
         $email = $request->input('email');
 		
         $user = User::where($loginField, $email)->where('user_type', 1)->first();
 		
 		if (!$user) {
-            return response()->json(['status' => 400, 'message' => 'User not found'], 404);
+            return response()->json(['status' => 400, 'message' => __('user_not_found')], 404);
         }
 		
 		$otp = rand(100000, 999999);
@@ -275,7 +306,7 @@ class RegisteredUserController extends Controller
 				'created_at' => now(),
 			]
 		);
-		return response()->json(['status' => 200, 'message' => 'Password reset otp sent to your phone.']);
+		return response()->json(['status' => 200, 'message' => __('password_reset_otp_sent_to_your_phone')]);
 		
         $otp = mt_rand(1000, 9999); // Generating a 6-digit OTP
 		//echo $otp;die;
@@ -342,6 +373,15 @@ class RegisteredUserController extends Controller
 		}
     
 		$loginField = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
         $email = $request->input('email');
         $otp = $request->input('otp');
         
@@ -349,21 +389,21 @@ class RegisteredUserController extends Controller
         $user = User::where($loginField, $email)->where('user_type', 1)->first();
     
         if (!$user) {
-            return response()->json(['status' => 400, 'message' => 'User not found']);
+            return response()->json(['status' => 400, 'message' => __('user_not_found')]);
         }
 		
 		$record = DB::table('user_otps')->where('user_id', $user->id)->latest()->first();
 
         if (!$record) {
-			return response()->json(['status' => 400, 'message' => 'No OTP found.']);
+			return response()->json(['status' => 400, 'message' => __('no_otp_found')]);
         }
 
         if (now()->greaterThan($record->expires_at)) {
-			return response()->json(['status' => 400, 'message' => 'OTP has expired.']);
+			return response()->json(['status' => 400, 'message' => __('otp_expired')]);
         }
 
         if ($record->otp !== $request->otp) {
-			return response()->json(['status' => 400, 'message' => 'Invalid OTP.']);
+			return response()->json(['status' => 400, 'message' => __('invalid_otp')]);
         }
     
         $user->status = 1;
@@ -373,7 +413,7 @@ class RegisteredUserController extends Controller
 		// Delete OTP
         DB::table('user_otps')->where('user_id', $user->id)->delete();
     
-        return response()->json(['status' => 200, 'message' => 'OTP verified successfully']);
+        return response()->json(['status' => 200, 'message' => __('otp_verified_successfully')]);
     }
 	public function resetpassword(Request $request){
 		$validator = Validator::make($request->all(), [
@@ -390,18 +430,27 @@ class RegisteredUserController extends Controller
 		}
     
 		$loginField = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
         $email = $request->input('email');
     
         // Retrieve the user by email
         $user = User::where($loginField, $email)->where('user_type', 1)->first();
     
         if (!$user) {
-            return response()->json(['status' => 400, 'message' => 'User not found']);
+            return response()->json(['status' => 400, 'message' => __('user_not_found')]);
         }
         $user->password = Hash::make($request->input('password'));
         $user->save();
 		
-		$msg = 'Password updated successfully.';
+		$msg = __('password_updated_successfully');
 		return $this->authResponse($user, $msg);
     }
 	public function delete_customer(Request $request)
@@ -462,6 +511,15 @@ class RegisteredUserController extends Controller
 		}
     
 		$loginField = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
         $email = $request->input('email');
         $otp = $request->input('otp');
         
@@ -469,21 +527,21 @@ class RegisteredUserController extends Controller
         $user = User::where($loginField, $email)->where('user_type', 1)->first();
     
         if (!$user) {
-            return response()->json(['status' => 400, 'message' => 'User not found']);
+            return response()->json(['status' => 400, 'message' => __('user_not_found')]);
         }
 		
 		$record = DB::table('user_otps')->where('user_id', $user->id)->latest()->first();
 
         if (!$record) {
-			return response()->json(['status' => 400, 'message' => 'No OTP found.']);
+			return response()->json(['status' => 400, 'message' => __('no_otp_found')]);
         }
 
         if (now()->greaterThan($record->expires_at)) {
-			return response()->json(['status' => 400, 'message' => 'OTP has expired.']);
+			return response()->json(['status' => 400, 'message' => __('otp_expired')]);
         }
 
         if ($record->otp !== $request->otp) {
-			return response()->json(['status' => 400, 'message' => 'Invalid OTP.']);
+			return response()->json(['status' => 400, 'message' => __('invalid_otp')]);
         }
     
         $user->status = 1;
@@ -493,7 +551,7 @@ class RegisteredUserController extends Controller
 		// Delete OTP
         DB::table('user_otps')->where('user_id', $user->id)->delete();
     
-        return response()->json(['status' => 200, 'message' => 'OTP verified successfully']);
+        return response()->json(['status' => 200, 'message' => __('otp_verified_successfully')]);
     }
 	public function edit_citizen_profile(Request $request)
 	{   
@@ -513,6 +571,15 @@ class RegisteredUserController extends Controller
 					'status' => 600,
 				]);
 			}
+			$lang = $request->currentLang ?? 'en';
+			if ($lang == 'mr') 
+			{
+				App::setLocale('mr');
+			}
+				
+			if ($lang == 'en') {
+				App::setLocale('en');
+			}
 			
 			$model = User::find($user_id);
 			$model->name = $request->name;
@@ -523,7 +590,7 @@ class RegisteredUserController extends Controller
 			
 			$response = [
 				'status' => 200,
-				'message' => 'Record updated successfully',
+				'message' => __('record_updated_successfully'),
 				];
 		}
 		else
@@ -632,7 +699,15 @@ class RegisteredUserController extends Controller
 					'status' => 600,
 				]);
 			}
-			
+			$lang = $request->currentLang ?? 'en';
+			if ($lang == 'mr') 
+			{
+				App::setLocale('mr');
+			}
+				
+			if ($lang == 'en') {
+				App::setLocale('en');
+			}
 			$old_password = $request->old_password;
 			$user = User::where('id', $user_id)->where('user_type', 1)->first();
 			
@@ -644,13 +719,13 @@ class RegisteredUserController extends Controller
 				
 				$response = [
 				'status' => 200,
-				'message' => 'Password change successfully',
+				'message' => __('password_change_successfully'),
 				];
 			}
 			else{
 				$response = [
 				'status' => 400,
-				'message' => 'Old password does not match',
+				'message' => __('old_password_not_match'),
 				];
 			}
 			

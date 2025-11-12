@@ -52,6 +52,26 @@
 	"home_page_box_contact_us_title":"Contact Us",
 	"home_page_box_contact_us_text":"Contact us for assistance, feedback, or information regarding municipal services.",
 	
+	"password_not_match":"Password are not matched",
+	"user_not_verified":"User is not verified",
+	"user_not_active":"User is inactive",
+	"login_success":"Successfully logged in",
+	"user_not_exists":"User does not exist",
+	
+	"user_not_found":"User not found.",
+	"no_otp_found.":"No OTP found.",
+	"otp_expired.":"OTP has expired.",
+	"invalid_otp":"Invalid OTP.",
+	"otp_verified_successfully":"OTP verified successfully.",
+	
+	"password_reset_otp_sent_to_your_phone":"Password reset otp sent to your phone.",
+	"password_updated_successfully":"Password updated successfully.",
+	"citizen_added_successfully":"Citizen added successfully",
+	"failed_to_add_citizen":"Failed to add citizen",
+	"password_change_successfully":"Password change successfully",
+	"old_password_not_match":"Old password does not match",
+	"record_updated_successfully":"Record updated successfully",
+	
 	"//": "Grievance page",
     "submit_grievance": "Submit grievance",
     "view_grievance": "View grievance status",
@@ -82,7 +102,6 @@
 	"grievance_success_msg2_1": "Please note your Registration Number:",
 	"grievance_success_msg2_2": "for future reference and status tracking.",
 	"grievance_success_msg3": "Thank you for reaching out — our team will review and respond as soon as possible.",
-	
 	
 	"//": "Dashboard page",
     "total_grievance": "Total grievance",
