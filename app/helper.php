@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use App\Models\Email_settings;
 use App\Models\EmailManagement;
+use App\Models\Wardprabhag;
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -11,6 +12,11 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\Lang;
 
+//Get ward/prabhag model Data
+    function get_ward_prabhag_model(){
+		$data = Wardprabhag::where('status', 1)->get();
+        return $data;
+    }	
 //Change date format
     function change_date_format($date, $fromFormat, $toFormat){
 		$data = Carbon::createFromFormat($fromFormat, $date)->format($toFormat);

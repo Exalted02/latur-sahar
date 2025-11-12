@@ -40,6 +40,35 @@
 										<div class="text-danger position-absolute">{{ $message }}</div>
 									   @enderror
 									</div>
+								   <div class="col-md-12 margin-bottom-20">
+									  <label>{{ __('email') }} <span class="text-danger">*</span> </label>
+									  <input type="text" name="email" value="{{ isset($account) ? $account->email : old('email')}}" class="form-control" id="email">
+									  @error('email')
+										<div class="text-danger position-absolute">{{ $message }}</div>
+									   @enderror
+									</div>
+									@if(auth()->user()->user_type != 1)
+									<div class="col-md-12 margin-bottom-20">  
+									  <label>{{ __('ward_prabhag') }} <span class="text-danger">*</span></label>
+									  <select class="form-control" name="ward_prabhag_no" id="ward_prabhag_no">
+										 <option value=""> {{ __('select_ward_prabhag') }}</option>
+										 @foreach(get_ward_prabhag_model() as $wardprabhag)
+											<option value="{{ $wardprabhag->id ?? '' }}" {{ isset($account) && $account->ward_prabhag_no == $wardprabhag->id ? 'selected' : ''}}>{{ $wardprabhag->name ?? '' }}</option>
+										 @endforeach
+									  </select>
+									  <div class="clearfix"></div>
+									  @error('ward_prabhag_no')
+										<div class="text-danger position-absolute">{{ $message }}</div>
+									   @enderror
+									</div>
+									<div class="col-md-12 margin-bottom-20">
+									  <label>{{ __('post') }} <span class="text-danger">*</span> </label>
+									  <input type="text" name="post" value="{{ isset($account) ? $account->post : old('post')}}" class="form-control" id="post">
+									  @error('post')
+										<div class="text-danger position-absolute">{{ $message }}</div>
+									   @enderror
+									</div>
+									@endif
 								</div>
 								<div class="clearfix"></div>
 								<div class="row margin-top-10">

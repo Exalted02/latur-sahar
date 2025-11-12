@@ -36,14 +36,30 @@ class ProfileController extends Controller
 	{
 		//echo "<pre>";print_r($request->all());die;
 		$data = [];
-		$request->validate([
-			'name' => 'required',
-			'mobile' => 'required|digits:10|numeric',
-		]);
+		if(auth()->user()->user_type == 1){
+			$request->validate([
+				'name' => 'required',
+				'mobile' => 'required|digits:10|numeric|unique:users,mobile,' . $request->id,
+				'email' => 'required|email|unique:users,email,' . $request->id,
+			]);
+		}else{
+			$request->validate([
+				'name' => 'required',
+				'mobile' => 'required|digits:10|numeric|unique:users,mobile,' . $request->id,
+				'email' => 'required|email|unique:users,email,' . $request->id,
+				'ward_prabhag_no' => 'required',
+				'post' => 'required',
+			]);
+		}
 		
 		$model = User::find($request->id);
 		$model->name = $request->name ?? '';
 		$model->mobile = $request->mobile ?? '';
+		$model->email = $request->email ?? '';
+		if(auth()->user()->user_type != 1){
+			$model->ward_prabhag_no = $request->ward_prabhag_no ?? '';
+			$model->post = $request->post ?? '';
+		}
 		$model->save();
 		
 		$data['account'] = User::where('id', auth()->user()->id)->first();
