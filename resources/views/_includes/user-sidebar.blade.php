@@ -27,7 +27,7 @@
 				<li><a href="{{route('report')}}" class="{{ (request()->routeIs('report')) ? 'active' : '' }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> {{ __('report') }}</a></li>
 				@endif
 								
-				<li><a href="{{ route('logout') }}" class="text-danger logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+				<li><a href="{{ route('logout') }}" class="text-danger logout"><i class="fa fa-sign-out" aria-hidden="true"></i>{{ __('log_out') }}</a></li>
 			</ul>
 		</div>
 	</div>

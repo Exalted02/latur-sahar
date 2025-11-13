@@ -60,8 +60,8 @@
 					  <h2 class="no-span"><b>(OR)</b></h2>--}}
 					
 						<div class="form-group">
-							<label>{{ __('email') }}</label>
-							<input type="email" id="email" name="email"  placeholder="{{ __('email') }}" class="form-control" :value="old('email')" autofocus>
+							<label>{{ __('email_mobile') }}</label>
+							<input type="text" id="email" name="email"  placeholder="{{ __('email_mobile') }}" class="form-control" :value="old('email')" autofocus>
 							<x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
 						</div>
 					   <div class="form-group">

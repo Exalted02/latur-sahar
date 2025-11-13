@@ -206,7 +206,22 @@
 	"mandatory_headline": "* चिन्हांकित केलेली क्षेत्रे आवश्यक आहेत.",
 	"submit": "सबमिट करा",
 	"confirmation": "पुष्टीकरण",
-
+	
+	"//": "Datatable",
+	"Show_MENU_entries": "प्रत्येक पृष्ठावर _MENU_ नोंदी दाखवा",
+	"No records found": "कोणतीही नोंदी आढळल्या नाहीत",
+	"Showing _START_ to _END_ of _TOTAL_ entries": "_TOTAL_ नोंदींपैकी _START_ ते _END_ नोंदी दाखवत आहे",
+	"No entries available": "कोणत्याही नोंदी उपलब्ध नाहीत",
+	"search": "शोधा",
+	
+	"//": "Swal",
+	"are_you_sure": "तुम्हाला खात्री आहे का?",
+    "you_wont_be_able_to_revert_this": "ही कृती परत आणता येणार नाही!",
+    "yes_delete_it": "होय, हटवा!",
+    "cancel": "रद्द करा",
+	"deleted": "हटवले!",
+	"your_record_has_been_deleted": "आपला नोंदवही यशस्वीपणे हटवली गेली आहे.",
+	
 	"select_status": "स्थिती निवडा",
 	"example": "उदाहरण",
 	"please_enter": "कृपया प्रविष्ट करा",

@@ -102,7 +102,7 @@
 							<a href="{{ route('view-status')}}"> {{ __('view_grievance') }}</a>
 						</li>
 					@endauth
-					<li><a href="{{ route('contact-us')}}"></i> Contact Us</a></li>
+					<li><a href="{{ route('contact-us')}}"></i> {{ __('contact_us') }}</a></li>
 				</ul>
 				<ul class="menu-search-bar active">
 				   <li>

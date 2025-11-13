@@ -189,6 +189,21 @@
 	"submit": "Submit",
 	"confirmation": "Confirmation",
 	
+	"//": "Datatable",
+	"Show_MENU_entries": "Show _MENU_ entries",
+	"No records found": "No records found",
+	"Showing _START_ to _END_ of _TOTAL_ entries": "Showing _START_ to _END_ of _TOTAL_ entries",
+	"No entries available": "No entries available",
+	"search": "Search",
+	
+	"//": "Swal",
+	"are_you_sure": "Are you sure?",
+    "you_wont_be_able_to_revert_this": "You won't be able to revert this!",
+    "yes_delete_it": "Yes, delete it!",
+    "cancel": "Cancel",
+	"deleted": "Deleted!",
+	"your_record_has_been_deleted": "Your record has been deleted.",
+	
 	"select_status": "Select status",
 	"example": "Example",
 	"please_enter": "Please enter",

@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -38,7 +38,7 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate(): void
+    /*public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
 		
@@ -59,7 +59,39 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
-    }
+    }*/
+	public function authenticate(): void
+	{
+		$this->ensureIsNotRateLimited();
+
+		// Allowed user types
+		$allowedTypes = [1, 2, 3, 4, 5, 6];
+
+		$loginInput = $this->email; // Same field for email or phone
+		$password = $this->password;
+
+		// Detect whether the input is an email or a mobile number
+		$loginField = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+
+		// Try to get the user manually (because Auth::attempt can't use arrays for whereIn)
+		$user = User::where($loginField, $loginInput)
+			->whereIn('user_type', $allowedTypes)
+			->first();
+
+		if (! $user || ! \Hash::check($password, $user->password)) {
+			RateLimiter::hit($this->throttleKey());
+
+			throw ValidationException::withMessages([
+				'email' => trans('auth.failed'),
+			]);
+		}
+
+		// Log in user
+		Auth::login($user, $this->boolean('remember'));
+
+		RateLimiter::clear($this->throttleKey());
+	}
+
 
     /**
      * Ensure the login request is not rate limited.

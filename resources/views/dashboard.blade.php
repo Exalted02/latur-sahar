@@ -66,8 +66,8 @@ use Carbon\Carbon;
 															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">#{{ $grievance->registration_no ?? '' }}</a></td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
-															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{!! $grievance->status==1 ? 'Pending' : ($grievance->status==2 ? ( (isset($grievance->get_forwarded_grievance->greivance_id) && $grievance->get_forwarded_grievance->greivance_id == $grievance->id) ?  (auth()->user()->user_type == 1 ? __('resubmit') : __('forwarded'))
-                            : __('resubmit') ): 'Solved') !!}</td>
+															<td class="{{ $grievance->status==1 ? 'text-danger' : ($grievance->status==2 ? 'text-info' : 'text-success') }}">{!! $grievance->status==1 ? __('pending') : ($grievance->status==2 ? ( (isset($grievance->get_forwarded_grievance->greivance_id) && $grievance->get_forwarded_grievance->greivance_id == $grievance->id) ?  (auth()->user()->user_type == 1 ? __('resubmit') : __('forwarded'))
+                            : __('resubmit') ): __('solved')) !!}</td>
 															<td class="text-center">
 																@if(auth()->user()->user_type == 1)
 																<ul class="custom-small-box">
@@ -103,11 +103,16 @@ use Carbon\Carbon;
 			"bFilter": true,
 			"pageLength": 50,
 			"language": {
-				paginate: {
-					next: ' <i class=" fa fa-angle-double-right"></i>',
-					previous: '<i class="fa fa-angle-double-left"></i> '
-				},
-			 },
+				"lengthMenu": "{{ __('Show_MENU_entries') }}",
+				"zeroRecords": "{{ __('No records found') }}",
+				"info": "{{ __('Showing _START_ to _END_ of _TOTAL_ entries') }}",
+				"infoEmpty": "{{ __('No entries available') }}",
+				"search": "{{ __('search') }}",
+				"paginate": {
+					"next": '<i class="fa fa-angle-double-right"></i>',
+					"previous": '<i class="fa fa-angle-double-left"></i>'
+				}
+			}
 		});
 		
 	}
@@ -117,14 +122,14 @@ use Carbon\Carbon;
 		});*/
 		$(document).on('click', '.delete-grievance', function(){
 			Swal.fire({
-				title: 'Are you sure?',
-				text: "You won't be able to revert this!",
+				title: "{{ __('are_you_sure') }}",
+				text: "{{ __('you_wont_be_able_to_revert_this') }}",
 				icon: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Yes, delete it!',
-				cancelButtonText: 'Cancel'
+				confirmButtonText: "{{ __('yes_delete_it') }}",
+				cancelButtonText: "{{ __('cancel') }}"
 			}).then((result) => {
 				if (result.isConfirmed) {
 					let URL = $(this).data('url');
@@ -146,8 +151,8 @@ use Carbon\Carbon;
 							//$('#show-list-data').append(response.html);
 							
 							 Swal.fire({
-								title: 'Deleted!',
-								text: 'Your record has been deleted.',
+								title: "{{ __('deleted') }}",
+								text: "{{ __('your_record_has_been_deleted') }}",
 								icon: 'success',
 								timer: 1500,
 								showConfirmButton: false

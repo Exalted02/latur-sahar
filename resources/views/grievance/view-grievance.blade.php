@@ -197,7 +197,7 @@ if($grievance)
 									 </div>
 									 @endif
 									 <div class="col-md-3 col-xs-12 col-sm-12 margin-top-10">
-										<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+										<input class="btn btn-theme btn-block" value="{{__('submit')}}" type="submit"> 
 									 </div>
 								  </div>
 							   </form>
@@ -317,7 +317,7 @@ if($grievance)
 						</div>
 						<div class="row">
 							 <div class="col-md-3 col-xs-12 col-sm-12 margin-top-10">
-								<input class="btn btn-theme btn-block" value="Submit" type="submit"> 
+								<input class="btn btn-theme btn-block" value="{{__('submit')}}" type="submit"> 
 							 </div>
 						  </div>
 					   </form>
@@ -435,7 +435,7 @@ if($grievance)
 								</div>
 								 <div class="row">
 									 <div class="col-md-3 col-xs-12 col-sm-12">
-										<input class="btn btn-theme btn-block update-grievance-status" value="Submit" type="button"> 
+										<input class="btn btn-theme btn-block update-grievance-status" value="{{__('submit')}}" type="button"> 
 									 </div>
 								 </div>
 								 @if(count($solved_image) > 0)
