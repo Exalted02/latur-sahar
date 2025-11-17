@@ -64,6 +64,9 @@
 				<li class="{{ request()->routeIs('admin.email-settings') ? 'active' : '' }}">
 					<a href="{{ route('admin.email-settings') }}"><i class="las la-envelope-open-text"></i> <span>Email Settings</span></a>
 				</li>
+				<li class="{{ request()->routeIs('admin.account-remove-list') ? 'active' : '' }}">
+					<a href="{{ route('admin.account-remove-list')}}"><i class="fa-regular fa-bell"></i> <span> Account Remove </span></a>
+				</li>
 				
 				<li class="{{ request()->routeIs('admin.logout') ? 'active' : '' }}">
 					<a href="{{ route('admin.logout') }}"><i class="las la-sign-out-alt"></i> <span> {{ __('logout') }} </span></a>

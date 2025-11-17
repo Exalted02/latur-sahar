@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\CommonController;
 use App\Http\Controllers\Admin\EmailManagementController;
 use App\Http\Controllers\Admin\EmailSettingsController;
 use App\Http\Controllers\Admin\DepartmentController;
@@ -80,6 +81,17 @@ Route::middleware(['web'])->group(function () {
 		Route::get('email-management', [EmailManagementController::class,'index'])->name('email-management');
 		Route::get('/email-management-edit/{id}', [EmailManagementController::class, 'email_management_edit'])->name('email-management-edit');
 		Route::post('/email-management-edit-save',[EmailManagementController::class,'manage_email_management_process'])->name('email-management-edit-save');
+		
+		// account- remove 
+		// Route::get('account-remove', [CommonController::class,'account_remove'])->name('account-remove');
+		// Route::post('account-remove', [CommonController::class,'save_account_remove'])->name('account-remove');
+		Route::get('account-remove-list', [CommonController::class,'account_remove_list'])->name('account-remove-list');
+		Route::post('remove-account-update-status', [CommonController::class,'account_remove_update_status'])->name('remove-account-update-status');
+		Route::post('remove-account-delete', [CommonController::class,'remove_account_delete'])->name('remove-account-delete');
+		
+		// notification 
+		Route::get('notifications', [CommonController::class,'notifications'])->name('notifications');
+		Route::get('notification-view/{id}', [CommonController::class,'notification_view'])->name('notification-view');
 		
 	});
 

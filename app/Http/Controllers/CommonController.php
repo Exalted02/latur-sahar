@@ -20,6 +20,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Lang;
+use Illuminate\Validation\Rule;
+
 class CommonController extends Controller
 {
 	public function change_multi_status(Request $request)
@@ -186,17 +188,24 @@ class CommonController extends Controller
 	public function save_account_remove(Request $request)
 	{
 		$validatedData = $request->validate([
-        'email'  => 'required|email',
-        'region' => 'required'
+			'email'  => [
+				'required',
+				'email',
+				Rule::exists('users', 'email')->where(function ($query) {
+					$query->where('user_type', 1);
+				}),
+			],
+			'reason' => 'required'
 		], [
 			'email.required'  => 'The email field is required.',
 			'email.email'     => 'Please enter a valid email address.',
-			'region.required' => 'The region field is required.',
+			'email.exists'    => 'This email does not belong to a valid user.',
+			'reason.required' => 'The reason field is required.',
 		]);
 		
 		$model = new Request_account_remove();
 		$model->email = $request->email;
-		$model->region = $request->region;
+		$model->region = $request->reason;
 		$model->status = 2;
 		$model->save();
 		
@@ -225,7 +234,7 @@ class CommonController extends Controller
 	{
 		$data = [];
 		$data['lists'] = Request_account_remove::all();
-		return view('account_remove_list',$data);
+		return view('admin.account_remove_list',$data);
 	}
 	public function account_remove_update_status(Request $request)
 	{

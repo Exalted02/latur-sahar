@@ -106,8 +106,11 @@ Route::middleware(['auth', 'phone.verified'])->group(function () {
 	
 	Route::post('/save-forwarded-to', [DashboardController::class, 'save_forwarded_to'])->name('save-forwarded-to');
 	Route::get('/list-resubmit-status', [DashboardController::class, 'list_resubmit_status'])->name('list-resubmit-status');
+	
 });
-
+// account- remove 
+Route::get('account-remove', [CommonController::class,'account_remove'])->name('account-remove');
+Route::post('account-remove', [CommonController::class,'save_account_remove'])->name('account-remove');
 
 
 require __DIR__.'/auth.php';

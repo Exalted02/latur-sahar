@@ -39,13 +39,13 @@
 						<thead>
 							<tr>
 								<th>{{ __('Name') }}</th>
-								<th>{{ __('User type') }}</th>
-								{{--<th>{{ __('Department') }}</th>--}}
+								{{--<th>{{ __('User type') }}</th>
+								<th>{{ __('Department') }}</th>--}}
 								<th>{{ __('Mobile') }}</th>
 								<th>{{ __('Email') }}</th>
-								<th>{{ __('Ward prabhag no') }}</th>
-								<th>{{ __('Post') }}</th>
-								<th>{{ __('created_date') }}</th>
+								{{--<th>{{ __('Ward prabhag no') }}</th>
+								<th>{{ __('Post') }}</th>--}}
+								<th>Created date</th>
 								<th class="text-center">{{ __('status') }}</th>
 								<th class="text-center">Action</th>
 							</tr>
@@ -55,12 +55,12 @@
 							
 							<tr>
 								<td>{{ $val->name ?? ''}}</td>
-								<td>{{ __('Citizen') }}</td>
+									{{--<td>{{ __('Citizen') }}</td>--}}
 								
 								<td>{{ $val->mobile ?? ''}}</td>
 								<td>{{ $val->email ?? ''}}</td>
-								<td>{{ $val->ward_prabhag_no ?? ''}}</td>
-								<td>{{ $val->post ?? ''}}</td>
+								{{--<td>{{ $val->ward_prabhag_no ?? ''}}</td>
+								<td>{{ $val->post ?? ''}}</td>--}}
 								<td>{{ date('d-m-Y', strtotime($val->created_at)) ?? ''}}</td>
 								<td class="text-center">
 								@if($val->status ==1)
