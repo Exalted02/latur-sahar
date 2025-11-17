@@ -4,10 +4,18 @@
     <meta charset="utf-8">
     <title>Grievance Report</title>
     <style>
-        body {
+        /*body {
             font-family: DejaVu Sans, sans-serif;
             font-size: 12px;
-        }
+        }*/
+		@font-face {
+			font-family: "noto_deva";
+			src: url("{{ public_path('fonts/noto/static/NotoSansDevanagari-Regular.ttf') }}") format("truetype");
+		}
+		body {
+			font-family: 'noto_deva', sans-serif !important;
+            font-size: 12px;
+		}
         table {
             width: 100%;
             border-collapse: collapse;
