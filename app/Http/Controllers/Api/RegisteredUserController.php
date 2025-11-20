@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\Notifications;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use App\Services\SmsService;
 
 class RegisteredUserController extends Controller
 {
@@ -67,6 +68,9 @@ class RegisteredUserController extends Controller
 						'created_at' => now(),
 					]
 				);
+				resolve(SmsService::class)->sendTemplate($user->mobile, 'otp', [
+					'otp' => $otp
+				]);
 				
 				$response['status']=400;
 				$response['message_status']="not_verified";
@@ -252,6 +256,9 @@ class RegisteredUserController extends Controller
 					'created_at' => now(),
 				]
 			);
+			resolve(SmsService::class)->sendTemplate($model->mobile, 'otp', [
+				'otp' => $otp
+			]);
 			
 			//-----
 			$response['status'] = 200;
@@ -306,6 +313,9 @@ class RegisteredUserController extends Controller
 				'created_at' => now(),
 			]
 		);
+		resolve(SmsService::class)->sendTemplate($user->mobile, 'otp', [
+			'otp' => $otp
+		]);
 		return response()->json(['status' => 200, 'message' => __('password_reset_otp_sent_to_your_phone')]);
 		
         $otp = mt_rand(1000, 9999); // Generating a 6-digit OTP

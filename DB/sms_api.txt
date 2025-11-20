@@ -1,0 +1,26 @@
+Template ID : 1007742779198804600
+Template Name : Mobile verification
+Template : OTP for your mobile verification is {#var#}Latur city corporation
+
+Api
+
+http://alldigitalmsg.in/api/SmsApi/SendSingleApi?UserID=NGSOLUTIONS&Password=fmvd2828FM&SenderID=LTRCMC&Phno=9387306030&Msg=OTP for your mobile verification is 12345 Latur city corporation&EntityID=1001568227866742267&TemplateID=1007742779198804600
+
+
+Template ID : 1007965995431207323	
+Template Name : Grievance sms 1
+
+Template : Your grievance has been submitted successfully and complaint No{#var#}Latur City Corporation
+
+Api
+
+http://alldigitalmsg.in/api/SmsApi/SendSingleApi?UserID=NGSOLUTIONS&Password=fmvd2828FM&SenderID=LTRCMC&Phno=9387306030&Msg=Your grievance has been submitted successfully and complaint No 010101Latur City Corporation&EntityID=1001568227866742267&TemplateID=1007965995431207323
+
+Template ID : 1007239595826889396
+Template Name : Grievance sms 2
+
+Template : Your grievance has been re-submitted successfully and complaint No{#var#}Latur City Corporation
+
+Api
+
+http://alldigitalmsg.in/api/SmsApi/SendSingleApi?UserID=NGSOLUTIONS&Password=fmvd2828FM&SenderID=LTRCMC&Phno=9387306030&Msg=Your grievance has been re-submitted successfully and complaint No 010101 Latur City Corporation&EntityID=1001568227866742267&TemplateID=1007239595826889396	

@@ -17,6 +17,7 @@ use App\Models\Wardprabhag;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\App;
+use App\Services\SmsService;
 
 use Illuminate\Support\Facades\Log;
 
@@ -373,6 +374,11 @@ class GrievanceController extends Controller
 		{
 			Grievance::where('id', $id)->update(['status'=>2]);
 			
+			$get_grievance = Grievance::find($id);
+			resolve(SmsService::class)->sendTemplate(Auth::guard('sanctum')->user()->mobile, 'grievance_2', [
+				'complaint_no' => $get_grievance->registration_no
+			]);
+		
 			$new_status = Grievance::where('id', $id)->first()->status;
 			
 			$response = [
@@ -494,6 +500,10 @@ class GrievanceController extends Controller
 		}
 		
 		$confirmation_message =  __('grievance_success_msg1').''. __('grievance_success_msg2_1').' #'.$registration_no.' '. __('grievance_success_msg2_2').''. __('grievance_success_msg3');
+		
+		resolve(SmsService::class)->sendTemplate(Auth::guard('sanctum')->user()->mobile, 'grievance_1', [
+			'complaint_no' => $registration_no
+		]);
 		
 		$response = [
 			'id'  => $id,
