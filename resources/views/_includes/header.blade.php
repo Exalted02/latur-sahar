@@ -106,15 +106,15 @@
 				</ul>
 				<ul class="menu-search-bar active">
 				   <li>
-					  <a>
-						 <div class="contact-in-header clearfix">
-							<i class="flaticon-customer-service"></i>
-							<span>
-							Call Us Now
+					  <a href="">
+						<div class="contact-in-header clearfix">
+							<i class="fa fa-android"></i>
+							<span class="pt_0 text-black">
+							Android App
 							<br>
-							<strong>02382242803</strong>
+							<strong class="text-black">Download</strong>
 							</span>
-						 </div>
+						</div>
 					  </a>
 				   </li>
 				</ul>

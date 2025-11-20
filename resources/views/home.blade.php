@@ -50,7 +50,7 @@
             </div>
          </section>
       <!-- =-=-=-=-=-=-= About CarSpot End =-=-=-=-=-=-= -->
-	  <section class="section-padding-120 our-services">
+	  {{--<section class="section-padding-120 our-services">
             <!--Image One-->
             <div class="background-1"></div>
             <!--Image Two-->
@@ -119,7 +119,7 @@
                   </div>
                </div>
             </div>
-         </section>
+         </section>--}}
 	  </div>
 	  <!-- =-=-=-=-=-=-= Pricing =-=-=-=-=-=-= -->
          <section class="custom-padding gray">
@@ -141,6 +141,15 @@
                         </div>
                         <div class="col-sm-6 col-lg-4 col-md-4">
                            <div class="block featured">
+                              <h3>{{ __('home_page_box_submit_grievance_title') }}</h3>
+                              <span class="type">{{ __('home_page_box_submit_grievance_text') }}</span>
+                           </div>
+                           <div class="selection">
+                              <a href="{{ route('submit-grievance')}}" class="btn btn-block btn-theme">{{ __('home_page_box_submit_grievance_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 col-md-4">
+                           <div class="block featured">
                               <h3>{{ __('home_page_box_view_status_title') }}</h3>
                               <span class="type">{{ __('home_page_box_view_status_text') }}</span>
                            </div>
@@ -148,7 +157,7 @@
                               <a href="{{ route('view-status')}}" class="btn btn-block btn-theme">{{ __('home_page_box_view_status_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
                         </div>
-                        <div class="col-sm-6 col-lg-4 col-md-4">
+                        {{--<div class="col-sm-6 col-lg-4 col-md-4">
                            <div class="block">
                               <h3>{{ __('home_page_box_contact_us_title') }}</h3>
                               <span class="type">{{ __('home_page_box_contact_us_text') }}</span>
@@ -156,7 +165,7 @@
                            <div class="selection">
                               <a href="{{ route('contact-us')}}" class="btn btn-block btn-theme">{{ __('home_page_box_contact_us_title') }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                            </div>
-                        </div>
+                        </div>--}}
                      </div>
                   </div>
                </div>

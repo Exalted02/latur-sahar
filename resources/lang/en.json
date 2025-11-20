@@ -52,6 +52,8 @@
 	"home_page_box_view_status_text":"View and track the current status of your submitted grievance or service request.",
 	"home_page_box_contact_us_title":"Contact Us",
 	"home_page_box_contact_us_text":"Contact us for assistance, feedback, or information regarding municipal services.",
+	"home_page_box_submit_grievance_title":"Submit Grievance",
+	"home_page_box_submit_grievance_text":"Raise and submit your municipal complaint online with us for quick assistance.",
 	
 	"password_not_match":"Password are not matched",
 	"user_not_verified":"User is not verified",
@@ -224,6 +226,6 @@
 	"location_block_message": "Location access is blocked. Please allow location access from your browser settings and try again.",
 	"grievance_deleted_successfully":"Grievance deleted successfully",
 	"deleted_successfully":"Deleted successfully",
-	"footer_title1":"Portal is Compatible with all major Browsers like Google Chrome, Mozilla Firefox, Microsoft Edge, Safari etc.",
+	"footer_title1":"Designed and Maintained by NG Solutions",
 	"footer_title2":"Best Viewed in 1440 x 900 resolution"
 }

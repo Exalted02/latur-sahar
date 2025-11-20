@@ -52,6 +52,8 @@
 	"home_page_box_view_status_text": "तुमच्या सादर केलेल्या तक्रारीची किंवा सेवेची सद्यस्थिती पहा आणि ट्रॅक करा.",
 	"home_page_box_contact_us_title": "संपर्क करा",
 	"home_page_box_contact_us_text": "महानगरपालिका सेवांबद्दल मदत, अभिप्राय किंवा माहिती मिळवण्यासाठी आमच्याशी संपर्क साधा.",
+	"home_page_box_submit_grievance_title":"तक्रार नोंदवा",
+	"home_page_box_submit_grievance_text":"जलद मदतीसाठी तुमची नगरपालिका तक्रार आमच्याकडे ऑनलाइन नोंदवा आणि सबमिट करा.",
 
 	"password_not_match": "पासवर्ड जुळत नाहीत",
 	"user_not_verified": "वापरकर्ता सत्यापित नाही",
@@ -242,6 +244,6 @@
 	"location_block_message": "स्थान प्रवेश अवरोधित केला आहे. कृपया तुमच्या ब्राउझर सेटिंगमधून स्थान प्रवेशाला परवानगी द्या आणि पुन्हा प्रयत्न करा.",
 	"grievance_deleted_successfully": "तक्रार यशस्वीपणे हटवली",
 	"deleted_successfully": "यशस्वीपणे हटवले",
-	"footer_title1": "पोर्टल सर्व प्रमुख ब्राउझर्सवर कार्यक्षम आहे जसे की Google Chrome, Mozilla Firefox, Microsoft Edge, Safari इत्यादी.",
+	"footer_title1": "Designed and Maintained by NG Solutions",
 	"footer_title2": "1440 x 900 रिझोल्यूशनमध्ये सर्वोत्तम दृश्य"
 }

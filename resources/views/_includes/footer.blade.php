@@ -6,7 +6,7 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 					<h4>{{ __('footer_title1') }}</h4>
-					<p>{{ __('footer_title2') }}</p>
+					{{--<p>{{ __('footer_title2') }}</p>--}}
 				</div>	
 			</div>
 			<div class="row">

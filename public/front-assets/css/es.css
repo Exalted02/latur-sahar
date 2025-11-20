@@ -45,6 +45,9 @@
 .text-white{
 	color: #ffffff;
 }
+.text-black{
+	color: #000000 !important;
+}
 .d-flex{
     display: flex !important;
 }
@@ -99,6 +102,9 @@
 }
 .mt_5{
     margin-top: 5px !important;
+}
+.pt_0{
+    padding-top: 0 !important;
 }
 .pt_30{
     padding-top: 30px !important;
