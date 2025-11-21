@@ -140,7 +140,7 @@
                            </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-md-4">
-                           <div class="block featured">
+                           <div class="block">
                               <h3>{{ __('home_page_box_submit_grievance_title') }}</h3>
                               <span class="type">{{ __('home_page_box_submit_grievance_text') }}</span>
                            </div>
@@ -149,7 +149,7 @@
                            </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-md-4">
-                           <div class="block featured">
+                           <div class="block">
                               <h3>{{ __('home_page_box_view_status_title') }}</h3>
                               <span class="type">{{ __('home_page_box_view_status_text') }}</span>
                            </div>
