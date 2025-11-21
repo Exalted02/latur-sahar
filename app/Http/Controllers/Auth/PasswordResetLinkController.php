@@ -73,18 +73,11 @@ class PasswordResetLinkController extends Controller
 			]
 		);
 		
-		/*resolve(SmsService::class)->sendTemplate($user->mobile, 'otp', [
+		resolve(SmsService::class)->sendTemplate($user->mobile, 'otp', [
 			'otp' => $otp
-		]);*/
-		
-		//return redirect()
-        //->route('show.verify.phone.form', ['user' => $user->id])
-        //->with(['otp' => $otp]);
+		]);
 		
 		return view('auth.verify-password-phone', compact('user', 'otp'));
-		
-		//return redirect()->route('verification.password.phone.verify', ['user' => $user, 'otp'=>$otp]);
-                     
 	}
 	
 	public function verify_otp(Request $request, User $user)
