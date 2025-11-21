@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Forward_grievance;
+use App\Services\SmsService;
 
 class DashboardController extends Controller
 {
@@ -206,6 +207,10 @@ class DashboardController extends Controller
 			$model->created_at = date('Y-m-d h:i:s');
 			$model->save();
 			$id = $model->id;
+			
+			resolve(SmsService::class)->sendTemplate(auth()->user()->mobile, 'grievance_1', [
+				'complaint_no' => $registration_no
+			]);
 		}
 		
 		$lo_files = $request->file('lo_file');
@@ -347,6 +352,11 @@ class DashboardController extends Controller
 	{
 		$id = $request->id;
 		Grievance::where('id', $id)->where('user_id', auth()->user()->id)->update(['status'=>2, 'resubmitted_date'=>date('Y-m-d H:i:s')]);
+		
+		$get_grievance = Grievance::find($id);
+		resolve(SmsService::class)->sendTemplate(auth()->user()->mobile, 'grievance_2', [
+			'complaint_no' => $get_grievance->registration_no
+		]);
 		return response()->json(['msg'=>'success']);
 	}
 	

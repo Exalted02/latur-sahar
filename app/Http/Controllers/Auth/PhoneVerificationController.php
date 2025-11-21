@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Services\SmsService;
 
 class PhoneVerificationController extends Controller
 {
@@ -28,6 +29,9 @@ class PhoneVerificationController extends Controller
                 'created_at' => now(),
             ]
         );
+		resolve(SmsService::class)->sendTemplate($user->mobile, 'otp', [
+			'otp' => $otp
+		]);
 
         return view('auth.verify-phone', compact('user', 'otp'));
     }
@@ -80,8 +84,9 @@ class PhoneVerificationController extends Controller
                 'created_at' => now(),
             ]
         );
-
-        // SmsService::send($user->phone, "Your new verification code is $otp");
+		resolve(SmsService::class)->sendTemplate($user->mobile, 'otp', [
+			'otp' => $otp
+		]);
 
         return back()->with('status', 'A new OTP has been sent!');
     }

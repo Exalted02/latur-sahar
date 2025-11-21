@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use DB;
+use App\Services\SmsService;
 
 class RegisteredUserController extends Controller
 {
@@ -60,7 +61,9 @@ class RegisteredUserController extends Controller
 				'created_at' => now(),
 			]
 		);
-
+		resolve(SmsService::class)->sendTemplate($user->mobile, 'otp', [
+			'otp' => $otp
+		]);
         // event(new Registered($user));
 
         // Auth::login($user);

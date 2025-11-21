@@ -372,7 +372,7 @@ class GrievanceController extends Controller
 		
 		if($check_status == 3)
 		{
-			Grievance::where('id', $id)->update(['status'=>2]);
+			Grievance::where('id', $id)->update(['status'=>2, 'resubmitted_date'=>date('Y-m-d H:i:s')]);
 			
 			$get_grievance = Grievance::find($id);
 			resolve(SmsService::class)->sendTemplate(Auth::guard('sanctum')->user()->mobile, 'grievance_2', [

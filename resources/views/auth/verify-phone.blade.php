@@ -50,7 +50,7 @@
 						<div class="text-success">{{ session('status') }}</div>
 					@endif
 						<h4>{{ __('we_sent') }} <strong>{{ $user->mobile }}</strong>. {{ __('enter_below') }}.</h4>
-						<h4>Your OTP is - {{$otp}}</h4>
+						{{--<h4>Your OTP is - {{$otp}}</h4>--}}
 					@csrf
 						<!-- Password Reset Token -->
 						<div class="form-group">
