@@ -1,19 +1,6 @@
 @extends('layouts.app')
 @section('content')
 	<!-- =-=-=-=-=-=-= Breadcrumb =-=-=-=-=-=-= -->
-  {{--<div class="page-header-area-2 gray">
-	 <div class="container">
-		<div class="row">
-		   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			  <div class="small-breadcrumb">
-				 <div class="header-page">
-					<h4>{{ __('forgot_password_text') }}</h4>
-				 </div>
-			  </div>
-		   </div>
-		</div>
-	 </div>
-  </div>--}}
   <!-- =-=-=-=-=-=-= Breadcrumb End =-=-=-=-=-=-= -->
   <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
   <div class="main-content-area auth-body-bg clearfix" style="background-image: url('{{ asset('front-assets/auth-bg.jpg') }}');">
@@ -27,7 +14,7 @@
 				<div class="text-center mb_10">
 					<a href="{{ route('home') }}"><img src="{{ asset('common-assets/img/auth-logo.png') }}" style="height: 125px;" alt="logo"> </a>
 					<div class="hidden-xs">
-						<p class="text-white mt_30 text-justify hidden-sm">{{ __('forgot_password_text') }}</p>
+						<p class="text-white mt_30 text-justify hidden-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
 						<div class="text-center mt_30">
 							<a href="{{ route('login') }}">{{ __('click_here_to_login') }} >></a>
 						</div>
@@ -43,19 +30,27 @@
 				 <!--  Form -->
 				 <div class="form-grid gray box-bg">
 					<div class=" box-header">
-						<h4 class="panel-title">{{ __('forgot_password') }}</h4>
+						<h4 class="panel-title">{{ __('verify_phone_number') }}</h4>
 					</div>
-					<form method="GET" action="{{ route('verify.phone.otp') }}" class="box-content">
-					<x-auth-session-status class="text-success" :status="session('status')" />
+					<form method="POST" action="{{ route('verification.password.phone.verify', $user->id) }}" class="box-content">
+					@if(session('status'))
+						<div class="text-success">{{ session('status') }}</div>
+					@endif
+						<h4>{{ __('we_sent') }} <strong>{{ $user->mobile }}</strong>. {{ __('enter_below') }}.</h4>
+						{{--<h4>Your OTP is - {{$otp}}</h4>--}}
 					@csrf
+						<!-- Password Reset Token -->
 						<div class="form-group">
-							<label>{{ __('Mobile') }}</label>
-							<input type="text" id="mobile" name="mobile"  placeholder="{{ __('Mobile') }}" class="form-control" :value="old('mobile')" autofocus>
-								{{--<input type="email" id="email" name="email"  placeholder="{{ __('email') }}" class="form-control" :value="old('email')"  required autofocus >--}}
-							<x-input-error :messages="$errors->get('mobile')" class="mt-2 text-danger" />
+							<label for="otp">{{ __('otp') }}</label>
+							<input type="text" name="otp" id="otp" class="form-control" required>
+							<x-input-error :messages="$errors->get('otp')" class="mt-2" />
 						</div>
-						<button class="btn btn-theme btn-lg btn-block">{{ __('email_password_reset_link') }}</button>
+						<button class="btn btn-theme btn-lg btn-block">{{ __('verify') }}</button>
 					</form>
+					{{--<form method="POST" action="{{ route('verification.phone.resend', $user->id) }}" class="mt-3 box-content">
+						@csrf
+						<button type="submit" class="btn btn-theme">Resend OTP</button>
+					</form>--}}
 				 </div>
 				 <!-- Form -->
 				<div class="text-center mt_15 hidden-lg hidden-md hidden-sm">
@@ -72,4 +67,3 @@
 @section('component-scripts')
 
 @endsection
-

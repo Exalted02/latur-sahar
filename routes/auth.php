@@ -36,6 +36,14 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
+				
+	//Route::post('forgot-password', [PasswordResetLinkController::class, 'store_phone'])->name('password.phone');
+	
+	Route::get('/verify-phone-otp', [PasswordResetLinkController::class, 'store_phone'])->name('verify.phone.otp');
+
+	//Route::post('/verify-phone-otp', [PasswordResetLinkController::class, 'store_phone'])->name('verify.phone.otp');
+	
+	Route::post('/verify-password-phone/{user}', [PasswordResetLinkController::class, 'verify_otp'])->name('verification.password.phone.verify');
 });
 
 Route::middleware('auth')->group(function () {
