@@ -98,8 +98,7 @@ class PasswordResetLinkController extends Controller
 		DB::table('user_otps')->where('user_id', $user->id)->delete();
 		
 		$token = Password::broker()->createToken($user);
-		 
-		return redirect()->route('password.reset', ['token' => $token])
-                     ->with(['email' => $user->email]);
+		 // dd($user);
+		return redirect()->route('password.reset', ['token' => $token,'mobile'=>$user->mobile]);
     }
 }

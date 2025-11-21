@@ -11,37 +11,37 @@ use Carbon\Carbon;
 					@include('_includes/user-sidebar')
 					<div class="col-md-8 col-md-push-4- col-lg-9 col-xs-12">
 						<div class="row">
-							<a href="{{ route('dashboard',['tab' => 1]) }}">
 							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
+							<a href="{{ route('dashboard',['tab' => 1]) }}">
 							   <div class="dashboard-card background-info">
 								  <h2>{{ $total_geievance ?? ''}}</h2>
 								  <small>{{ __('total_grievance') }}</small>
-							   </div>
-							</div></a>
+							   </div></a>
+							</div>
 							
-							<a href="{{ route('dashboard',['tab' => 2]) }}">
 							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
+							<a href="{{ route('dashboard',['tab' => 2]) }}">
 							   <div class="dashboard-card background-warning">
 								  <h2>{{ $pending_grievance ?? ''}}</h2>
 								  <small>{{ __('pending_grievance') }}</small>
-							   </div>
-							</div></a>
+							   </div></a>
+							</div>
 							
-							<a href="{{ route('dashboard',['tab' => 3]) }}">
 							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
+							<a href="{{ route('dashboard',['tab' => 3]) }}">
 							   <div class="dashboard-card background-success">
 								  <h2>{{ $solved_grievance ?? ''}}</h2>
 								  <small>{{ __('solved_grievance') }}</small>
-							   </div>
-							</div></a>
+							   </div></a>
+							</div>
 							
-							<a href="{{ route('dashboard',['tab' => 4]) }}">
 							<div class="col-md-3 col-sm-3 col-xs-12 margin-bottom-10">
+							<a href="{{ route('dashboard',['tab' => 4]) }}">
 							   <div class="dashboard-card background-danger">
 								  <h2>{{ $alert_grievance ?? ''}}</h2>
 								  <small>{{ __('alert_grievance') }}</small>
-							   </div>
-							</div></a>
+							   </div></a>
+							</div>
 						</div>
 						
 						<div class="row">

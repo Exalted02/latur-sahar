@@ -50,9 +50,9 @@
 						<!-- Password Reset Token -->
 						<input type="hidden" name="token" value="{{ $request->route('token') }}">
 						<div class="form-group">
-							<label>{{ __('email') }}</label>
-							<x-text-input id="email" class="form-control" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-							<x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
+							<label>{{ __('mobile') }}</label>
+							<x-text-input id="mobile" class="form-control" type="text" name="mobile" :value="old('mobile', $request->mobile)" required autofocus autocomplete="username" />
+							<x-input-error :messages="$errors->get('mobile')" class="mt-2 text-danger" />
 						</div>
 						<div class="form-group">
 							<label>{{ __('password') }}</label>

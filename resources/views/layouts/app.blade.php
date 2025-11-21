@@ -78,13 +78,13 @@
 		@yield('component-style')
 	</head>
 	<body>
-		@if(!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('password.request') && !request()->routeIs('password.reset') && !request()->routeIs('verification.phone'))
+		@if(!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('password.request') && !request()->routeIs('password.reset') && !request()->routeIs('verification.phone') && !request()->routeIs('verify.phone.otp'))
 			@include('_includes/header')
 		@endif
 		
 			@yield('content')
 			
-		@if(!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('password.request') && !request()->routeIs('password.reset') && !request()->routeIs('verification.phone'))
+		@if(!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('password.request') && !request()->routeIs('password.reset') && !request()->routeIs('verification.phone') && !request()->routeIs('verify.phone.otp'))
 			@include('_includes/footer')
 		@endif
 		<!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
