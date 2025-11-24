@@ -191,16 +191,12 @@
          	    slider.control('arrows');
          	  
          	     slider.setup('masterslider' , {
-         	         width:1400,    // slider standard width
-         	         height:560,   // slider standard height
-         	         layout:'fullwidth',
-         	         loop:true,
-         	         preload:0,
-         fillMode:'fill',
-         	         instantStartLayers:true,
-         	         autoplay:true,
-         view:"basic"
-         
+         	        width: 1600,
+					height: 500,
+					layout: 'fullwidth',
+					loop: true,
+					fillMode: 'fit',
+					autoplay: true
          	    });
          // add scroll parallax effect
          

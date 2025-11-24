@@ -10,9 +10,9 @@
 		  <!-- Header Top Left -->
 			<div class="header-top-left col-md-6 col-sm-6">
 				<ul class="listnone">
-					<li><a href="{{ route('about-us')}}"><i class="fa-solid fa-info"></i> {{ __('about_us') }}</a></li>
-					<li><a href="{{ route('faq')}}"><i class="fa-solid fa-circle-question"></i> {{ __('faqs') }}</a></li>
-					<li><a href="{{ route('services')}}"><i class="fa-solid fa-phone-volume"></i> {{ __('our_services') }}</a></li>
+					<li><a href="{{ config('custom.ABOUT_US_LINK')}}" target="_blank"><i class="fa-solid fa-info"></i> {{ __('about_us') }}</a></li>
+					<li><a href="{{ config('custom.CORPORATION_LINK')}}" target="_blank"><i class="fa-solid fa-circle-question"></i> {{ __('corporation') }}</a></li>
+					<li><a href="{{ config('custom.CITY_SERVICES_LINK')}}" target="_blank"><i class="fa-solid fa-phone-volume"></i> {{ __('city_services') }}</a></li>
 				</ul>
 		  </div>
 		  <!-- Header Top Right Social -->
@@ -102,7 +102,7 @@
 							<a href="{{ route('view-status')}}"> {{ __('view_grievance') }}</a>
 						</li>
 					@endauth
-					<li><a href="{{ route('contact-us')}}"></i> {{ __('contact_us') }}</a></li>
+					<li><a href="{{ config('custom.CONTACT_US_LINK')}}" target="_blank"></i> {{ __('contact_us') }}</a></li>
 				</ul>
 				<ul class="menu-search-bar active">
 				   <li>
