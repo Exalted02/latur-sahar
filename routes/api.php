@@ -34,6 +34,7 @@ Route::post('register-verify-otp', [RegisteredUserController::class, 'register_v
 Route::post('/edit-citizen-profile',[RegisteredUserController::class, 'edit_citizen_profile']);
 Route::post('/edit-retailer-profile',[RegisteredUserController::class, 'edit_retailer_profile']);
 Route::post('/change-user-password',[RegisteredUserController::class, 'change_password']);
+Route::post('/resend-otp',[RegisteredUserController::class, 'resend_otp']);
 
 Route::get('/grievance-lists',[GrievanceController::class, 'grievance_lists']);
 Route::post('/grievance-tab-list',[GrievanceController::class, 'grievance_tab_list']);

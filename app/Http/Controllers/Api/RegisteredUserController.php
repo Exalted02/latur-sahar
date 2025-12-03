@@ -369,6 +369,42 @@ class RegisteredUserController extends Controller
 			}
         }
     }
+	public function resend_otp(Request $request){
+		$loginField = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+		$lang = $request->currentLang ?? 'en';
+		if ($lang == 'mr') 
+		{
+			App::setLocale('mr');
+		}
+			
+		if ($lang == 'en') {
+			App::setLocale('en');
+		}
+        $email = $request->input('email');
+		
+		$user = User::where($loginField, $email)->where('user_type', 1)->first();
+		
+		if (!$user) {
+            return response()->json(['status' => 400, 'message' => __('user_not_found')], 404);
+        }
+		
+		$otp = rand(100000, 999999);
+				
+		// Save OTP with expiry
+		DB::table('user_otps')->updateOrInsert(
+			['user_id' => $user->id],
+			[
+				'otp' => $otp,
+				'expires_at' => now()->addMinutes(5), // expires in 5 mins
+				'updated_at' => now(),
+				'created_at' => now(),
+			]
+		);
+		resolve(SmsService::class)->sendTemplate($user->mobile, 'otp', [
+			'otp' => $otp
+		]);
+		return response()->json(['status' => 200, 'message' => '']);
+	}
 	public function forget_password_verify_otp(Request $request){
 		$validator = Validator::make($request->all(), [
 			'email' => 'required',
