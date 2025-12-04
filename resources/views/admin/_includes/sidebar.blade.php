@@ -58,12 +58,13 @@
 					<a href="{{ route('admin.grievances',['tab'=>1]) }}"><i class="la la-edit"></i> <span>Grievances</span></a>
 				</li>
 				
-				<li class="{{ request()->routeIs('admin.email-management','admin.email-management-edit') ? 'active' : '' }}">
+				{{--<li class="{{ request()->routeIs('admin.email-management','admin.email-management-edit') ? 'active' : '' }}">
 					<a href="{{ route('admin.email-management') }}"><i class="las la-envelope-open"></i> <span>Email Management</span></a>
 				</li>
 				<li class="{{ request()->routeIs('admin.email-settings') ? 'active' : '' }}">
 					<a href="{{ route('admin.email-settings') }}"><i class="las la-envelope-open-text"></i> <span>Email Settings</span></a>
-				</li>
+				</li>--}}
+				
 				<li class="{{ request()->routeIs('admin.account-remove-list') ? 'active' : '' }}">
 					<a href="{{ route('admin.account-remove-list')}}"><i class="fa-regular fa-bell"></i> <span> Account Remove </span></a>
 				</li>
