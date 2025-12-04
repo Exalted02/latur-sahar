@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('styles')
-<link rel="stylesheet" href="{{ url('front-assets/plugins/summernote/summernote-bs4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('front-assets/plugins/summernote/summernote-bs4.min.css') }}">
 @endsection 
 @section('content')
 <!-- Page Wrapper -->
@@ -59,8 +59,8 @@
 @include('admin.modal.common')
 @endsection 
 @section('scripts')
-<script src="{{ url('front-assets/js/page/email_management.js') }}"></script>
-<script src="{{ url('front-assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('front-assets/js/page/email_management.js') }}"></script>
+<script src="{{ asset('front-assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script>
 //var csrfToken = "{{ csrf_token() }}";
 $( document ).ready(function() {

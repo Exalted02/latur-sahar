@@ -182,8 +182,8 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
-<script src="{{ url('admin-assets/js/page/department.js') }}"></script>
-<script src="{{ url('front-assets/js/report-calender.js') }}"></script>
+<script src="{{ asset('admin-assets/js/page/department.js') }}"></script>
+<script src="{{ asset('front-assets/js/report-calender.js') }}"></script>
 <script>
 $(document).ready(function() {
 	

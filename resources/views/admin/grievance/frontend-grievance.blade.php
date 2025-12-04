@@ -60,7 +60,7 @@
 								<td>{{ $val->get_department->name ?? ''}}</td>
 								<td>{{ $val->get_grievance_type->name ?? ''}}</td>
 								<td class="text-center">{{ $val->pincode ?? ''}}</td>
-								<td class="text-center"><img src="{{ isset($val->grievance_image[0]->images) ? url('uploads/greivance_image/'. $val->grievance_image[0]->images ) : url('uploads/img/noimage.png') }}" height="70" width="70"></td>
+								<td class="text-center"><img src="{{ isset($val->grievance_image[0]->images) ? asset('uploads/greivance_image/'. $val->grievance_image[0]->images ) : asset('uploads/img/noimage.png') }}" height="70" width="70"></td>
 								<td class="text-center">{{ date('d-m-Y', strtotime($val->created_at)) ?? ''}}</td>
 								<td class="text-center">
 								@if($val->status ==1)
@@ -98,14 +98,14 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
-<link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
-<link rel="stylesheet" href="http://localhost:8000/admin-assets/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="{{ asset('admin-assets/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin-assets/css/dataTables.bootstrap4.min.css') }}">
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ url('front-assets/js/report-calender.js') }}"></script>
-<script src="{{ url('admin-assets/js/select2.min.js') }}"></script>
-<script src="http://localhost:8000/admin-assets/js/jquery.dataTables.min.js"></script>
-<script src="http://localhost:8000/admin-assets/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('front-assets/js/report-calender.js') }}"></script>
+<script src="{{ asset('admin-assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('admin-assets/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin-assets/js/dataTables.bootstrap4.min.js') }}"></script>
 <script>
 $(document).ready(function() {
 	$(document).on('click', '.delete-grievance', function(){
