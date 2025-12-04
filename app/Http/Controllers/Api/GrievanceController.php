@@ -58,7 +58,8 @@ class GrievanceController extends Controller
 		$data = [];
 		$tab = $request->tab;
 		$lang = $request->lang ?? 'en';
-		$APP_URL = env('APP_URL');
+		$APP_URL = env('APP_URL').env('ASSET_URL');
+		
 		
 		if(Auth::guard('sanctum')->check()) 
 		{
@@ -203,7 +204,8 @@ class GrievanceController extends Controller
 	{
 		$id = $request->id; // grievance id
 		$lang = $request->lang ?? 'en';
-		$APP_URL = env('APP_URL');
+		//$APP_URL = env('APP_URL');
+		$APP_URL = env('APP_URL').env('ASSET_URL');
 		$data = [];
 		
 		if ($lang == 'mr') 
@@ -356,7 +358,8 @@ class GrievanceController extends Controller
 	{
 		$id = $request->id ; // grievance id
 		$lang = $request->lang ?? 'en';
-		$APP_URL = env('APP_URL');
+		//$APP_URL = env('APP_URL');
+		$APP_URL = env('APP_URL').env('ASSET_URL');
 		$data = [];
 		
 		if ($lang == 'mr') 
@@ -400,7 +403,8 @@ class GrievanceController extends Controller
 	public function submit_rating(Request $request)
 	{
 		
-		$APP_URL = env('APP_URL');
+		//$APP_URL = env('APP_URL');
+		$APP_URL = env('APP_URL').env('ASSET_URL');
 		$id = $request->id;
 		$lang = $request->lang ?? 'en';
 		$feedback_rating = $request->feedback_rating;

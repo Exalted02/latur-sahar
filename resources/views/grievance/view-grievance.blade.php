@@ -69,7 +69,7 @@ if($grievance)
 					<div id="single-slider" class="flexslider">
 					   <ul class="slides" style="display: flex;">
 					    @foreach($grievance->grievance_image as $images)
-						  <li><a href="{{ url('uploads/greivance_image/'. $images->images )}}" data-fancybox="group"><img alt="" src="{{ url('uploads/greivance_image/'. $images->images )}}" /></a></li>
+						  <li><a href="{{ asset('uploads/greivance_image/'. $images->images )}}" data-fancybox="group"><img alt="" src="{{ asset('uploads/greivance_image/'. $images->images )}}" /></a></li>
 						@endforeach
 						  
 						  {{--<li><a href="images/single-page/2.jpg" data-fancybox="group"><img alt="" src="images/single-page/2.jpg" /></a></li>
@@ -82,7 +82,7 @@ if($grievance)
 					<div id="carousel" class="flexslider">
 					   <ul class="slides">
 					    @foreach($grievance->grievance_image as $images)
-						  <li><img alt="" src="{{ url('uploads/greivance_image/'. $images->images )}}"></li>
+						  <li><img alt="" src="{{ asset('uploads/greivance_image/'. $images->images )}}"></li>
 						@endforeach
 						  {{--<li><img alt="" src="images/single-page/2_thumb.jpg"></li>
 						  <li><img alt="" src="images/single-page/3_thumb.jpg"> </li>
@@ -346,7 +346,7 @@ if($grievance)
 								
 									<div class="preview-image-wrapper existing-image" data-id="{{ $image->id }}">
 										@if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp']))
-										<a href="{{ url('uploads/greivance_image/'.$image->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
+										<a href="{{ asset('uploads/greivance_image/'.$image->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
 										<img src="{{ asset('uploads/greivance_image/'.$image->images) }}" class="preview-image" />
 										</a>
 										@elseif(in_array($extension, ['mp4', 'webm', 'ogg']))
@@ -420,7 +420,7 @@ if($grievance)
 									
 										<div class="preview-image-wrapper existing-image" data-id="{{ $image->id }}">
 											@if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp']))
-											<a href="{{ url('uploads/greivance_image/'.$image->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
+											<a href="{{ asset('uploads/greivance_image/'.$image->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
 											<img src="{{ asset('uploads/greivance_image/'.$image->images) }}" class="preview-image" /></a>
 											<button type="button" class="remove-existing-image" data-id="{{ $image->id }}" data-image="{{ $image->images }}">&times;</button>
 											@elseif(in_array($extension, ['mp4', 'webm', 'ogg']))

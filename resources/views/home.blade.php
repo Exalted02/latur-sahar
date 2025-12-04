@@ -1,27 +1,27 @@
 @extends('layouts.app')
 @section('content')
 	<!-- Base MasterSlider style sheet -->
-      <link rel="stylesheet" href="{{ url('front-assets/js/masterslider/style/masterslider.css') }}" />
-      <link rel="stylesheet" href="{{ url('front-assets/js/masterslider/skins/default/style.css') }}" />
-      <link rel="stylesheet" href="{{ url('front-assets/js/masterslider/style/style.css') }}" />
+      <link rel="stylesheet" href="{{ asset('front-assets/js/masterslider/style/masterslider.css') }}" />
+      <link rel="stylesheet" href="{{ asset('front-assets/js/masterslider/skins/default/style.css') }}" />
+      <link rel="stylesheet" href="{{ asset('front-assets/js/masterslider/style/style.css') }}" />
 	<!-- Master Slider -->
       <div class="master-slider ms-skin-default" id="masterslider">
          <!-- slide 1 -->
          <div class="ms-slide slide-1"  data-delay="5">
             <!-- slide background --> 
-            <img src="{{ url('front-assets/js/masterslider/style/blank.gif') }}" data-src="{{ url('front-assets/images/slider/slider1.jpg') }}" alt="Slide1 background"/>
+            <img src="{{ asset('front-assets/js/masterslider/style/blank.gif') }}" data-src="{{ asset('front-assets/images/slider/slider1.jpg') }}" alt="Slide1 background"/>
          </div>
          <!-- end of slide --> 
          <!-- slide 2 -->
          <div class="ms-slide slide-3" data-delay="5">
             <!-- slide background --> 
-            <img src="{{ url('front-assets/js/masterslider/style/blank.gif') }}" data-src="{{ url('front-assets/images/slider/slider2.jpg') }}" alt="Slide1 background"/> 
+            <img src="{{ asset('front-assets/js/masterslider/style/blank.gif') }}" data-src="{{ asset('front-assets/images/slider/slider2.jpg') }}" alt="Slide1 background"/> 
          </div>
          <!-- end of slide --> 
          <div class="ms-slide slide-2" data-delay="4">
             <div class="ms-overlay-layers"></div>
             <!-- slide background --> 
-            <img src="{{ url('front-assets/js/masterslider/style/blank.gif') }}" data-src="{{ url('front-assets/images/slider/slider3.jpg') }}" alt="Slide1 background"/> 
+            <img src="{{ asset('front-assets/js/masterslider/style/blank.gif') }}" data-src="{{ asset('front-assets/images/slider/slider3.jpg') }}" alt="Slide1 background"/> 
             
          </div>
          <!-- slide 2 -->
@@ -44,7 +44,7 @@
                      </div>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                     <img  class="wow slideInRight center-block img-responsive" data-wow-delay="0ms" data-wow-duration="3000ms" alt="" src="{{ url('front-assets/images/about.jpg') }}" >
+                     <img  class="wow slideInRight center-block img-responsive" data-wow-delay="0ms" data-wow-duration="3000ms" alt="" src="{{ asset('front-assets/images/about.jpg') }}" >
                   </div>
                </div>
             </div>
@@ -179,7 +179,7 @@
 @endsection 
 @section('scripts')
 <!-- MasterSlider --> 
-      <script src="{{ url('front-assets/js/masterslider/masterslider.min.js') }}"></script> 
+      <script src="{{ asset('front-assets/js/masterslider/masterslider.min.js') }}"></script> 
       <script type="text/javascript">	
          (function($) {
            "use strict";	
