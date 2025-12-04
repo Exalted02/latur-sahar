@@ -54,7 +54,7 @@
 								{{--<input type="email" id="email" name="email"  placeholder="{{ __('email') }}" class="form-control" :value="old('email')"  required autofocus >--}}
 							<x-input-error :messages="$errors->get('mobile')" class="mt-2 text-danger" />
 						</div>
-						<button class="btn btn-theme btn-lg btn-block">{{ __('email_password_reset_link') }}</button>
+						<button class="btn btn-theme btn-lg btn-block">{{ __('Send') }}</button>
 					</form>
 				 </div>
 				 <!-- Form -->
