@@ -46,11 +46,13 @@
 							<x-input-error :messages="$errors->get('otp')" class="mt-2" />
 						</div>
 						<button class="btn btn-theme btn-lg btn-block">{{ __('verify') }}</button>
+						<a href="javascript:void(0)"><span id="resendTimer">Resend in 60s</span></a>
+						<a href="javascript:void(0)" class="resend-otp"><span id="resendotplink">Resend OTP</span></a>
 					</form>
-					{{--<form method="POST" action="{{ route('verification.phone.resend', $user->id) }}" class="mt-3 box-content">
+					<form method="POST" action="{{ route('verification.phone.resend', $user->id) }}" class="mt-3 box-content"  id="resendOTPsubmit">
 						@csrf
-						<button type="submit" class="btn btn-theme">Resend OTP</button>
-					</form>--}}
+						{{--<button type="submit" class="btn btn-theme">Resend OTP</button>--}}
+					</form>
 				 </div>
 				 <!-- Form -->
 				<div class="text-center mt_15 hidden-lg hidden-md hidden-sm">
@@ -65,5 +67,32 @@
 	</div>
 @endsection
 @section('component-scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let timeLeft = 60; // seconds
+    const timerSpan = document.getElementById("resendTimer");
+
+    const countdown = setInterval(function () {
+        timerSpan.textContent = "Resend in " + timeLeft + "s";
+        
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            timerSpan.textContent = "Resend";
+        }
+
+        timeLeft--;
+		if(timeLeft == 0)
+		{
+			$('#resendotplink').show();
+			$('#resendTimer').hide();
+		}
+    }, 1000);
+	
+	$('#resendotplink').hide();
+	$(document).on('click', '.resend-otp', function(){
+		$('#resendOTPsubmit').submit();
+	})
+});
+</script>
 
 @endsection
