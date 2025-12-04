@@ -10,7 +10,7 @@
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-		<link href="{{ url('admin-assets/css/responsive-media.css') }}" rel="stylesheet">-->
+		<link href="{{ asset('admin-assets/css/responsive-media.css') }}" rel="stylesheet">-->
 		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Smarthr - Bootstrap Admin Template">
@@ -19,44 +19,44 @@
         <title>{{ __('project_title') }}</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{ url('common-assets/img/favicon.png') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('common-assets/img/favicon.png') }}">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{{ url('admin-assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin-assets/css/bootstrap.min.css') }}">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="{{ url('admin-assets/plugins/fontawesome/css/fontawesome.min.css') }}">
-    	<link rel="stylesheet" href="{{ url('admin-assets/plugins/fontawesome/css/all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin-assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+    	<link rel="stylesheet" href="{{ asset('admin-assets/plugins/fontawesome/css/all.min.css') }}">
 
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="{{ url('admin-assets/css/line-awesome.min.css') }}">
-		<link rel="stylesheet" href="{{ url('admin-assets/css/material.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin-assets/css/line-awesome.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/css/material.css') }}">
 
 		<!-- Daterangepikcer CSS -->
-		<link rel="stylesheet" href="{{ url('admin-assets/plugins/daterangepicker/daterangepicker.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/plugins/daterangepicker/daterangepicker.css') }}">
 
 		<!-- Bootstrap Tagsinput CSS -->
-		<link rel="stylesheet" href="{{ url('admin-assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
 
 		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="{{ url('admin-assets/css/dataTables.bootstrap4.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/css/dataTables.bootstrap4.min.css') }}">
 		
 		<!-- Feather CSS -->
-		<link rel="stylesheet" href="{{ url('admin-assets/css/feather.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/css/feather.css') }}">
 		
 		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="{{ url('admin-assets/css/bootstrap-datetimepicker.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/css/bootstrap-datetimepicker.min.css') }}">
 		
 		<!-- Lineawesome CSS -->
-		<link rel="stylesheet" href="{{ url('admin-assets/css/line-awesome.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/css/line-awesome.min.css') }}">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/css/select2.min.css') }}">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="{{ url('admin-assets/css/style.css') }}">
-		<link rel="stylesheet" href="{{ url('admin-assets/css/custom-css.css') }}">
-		<link rel="stylesheet" href="{{ url('admin-assets/plugins/morris/morris.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin-assets/css/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/css/custom-css.css') }}">
+		<link rel="stylesheet" href="{{ asset('admin-assets/plugins/morris/morris.css') }}">
 		
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		@yield('styles')
@@ -74,39 +74,39 @@
 			
 		</div>
 		<!-- jQuery -->
-        <script src="{{ url('admin-assets/js/jquery-3.7.1.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/js/jquery-3.7.1.min.js') }}"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="{{ url('admin-assets/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('admin-assets/js/bootstrap.bundle.min.js') }}"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="{{ url('admin-assets/js/jquery.slimscroll.min.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/jquery.slimscroll.min.js') }}"></script>
 
 		<!-- Datatable JS -->
-		<script src="{{ url('admin-assets/js/jquery.dataTables.min.js') }}"></script>
-		<script src="{{ url('admin-assets/js/dataTables.bootstrap4.min.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/jquery.dataTables.min.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/dataTables.bootstrap4.min.js') }}"></script>
 
 		<!-- Bootstrap Tagsinput JS -->
-		<script src="{{ url('admin-assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
+		<script src="{{ asset('admin-assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script>
 
 		<!-- Datetimepicker JS -->
-		<script src="{{ url('admin-assets/js/moment.min.js') }}"></script>
-		<script src="{{ url('admin-assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/moment.min.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/bootstrap-datetimepicker.min.js') }}"></script>
 
 		<!-- Daterangepikcer JS -->
-		<script src="{{ url('admin-assets/js/moment.min.js') }}"></script>
-		<script src="{{ url('admin-assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/moment.min.js') }}"></script>
+		<script src="{{ asset('admin-assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
 		
 		<!-- Select2 JS -->
-		<script src="{{ url('admin-assets/js/select2.min.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/select2.min.js') }}"></script>
 		
 		 <!-- Theme Settings JS -->
-		<script src="{{ url('admin-assets/js/layout.js') }}"></script>
-		<script src="{{ url('admin-assets/js/theme-settings.js') }}"></script>
-		<script src="{{ url('admin-assets/js/greedynav.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/layout.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/theme-settings.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/greedynav.js') }}"></script>
 		<!-- Custom JS -->
-		<script src="{{ url('admin-assets/js/app.js') }}"></script>
-		<script src="{{ url('admin-assets/js/page/multi-action.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/app.js') }}"></script>
+		<script src="{{ asset('admin-assets/js/page/multi-action.js') }}"></script>
 		
 		
 		

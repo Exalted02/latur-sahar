@@ -111,10 +111,10 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
-<link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
-<script src="{{ url('admin-assets/js/page/user.js') }}"></script>
-<script src="{{ url('admin-assets/js/report-calender.js') }}"></script>
-<script src="{{ url('admin-assets/js/select2.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('admin-assets/css/select2.min.css') }}">
+<script src="{{ asset('admin-assets/js/page/user.js') }}"></script>
+<script src="{{ asset('admin-assets/js/report-calender.js') }}"></script>
+<script src="{{ asset('admin-assets/js/select2.min.js') }}"></script>
 <script>
 $(document).ready(function() {
 	

@@ -114,7 +114,7 @@
 										<ul class="attachments clearfix">
 											@foreach($grievance->grievance_image as $images)
 											<li>
-												<div class="attach-file"><a href="{{ url('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image"><img src="{{ url('uploads/greivance_image/'.$images->images )}}"  style="height:132px"></a></div>
+												<div class="attach-file"><a href="{{ asset('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image"><img src="{{ asset('uploads/greivance_image/'.$images->images )}}"  style="height:132px"></a></div>
 												<div class="attach-info"> <a href="#" class="attach-filename">{{$images->images}}</a> <div class="attach-fileize"> 
 												@php
 													$size = filesize(public_path('uploads/greivance_image/'.$images->images));
@@ -144,7 +144,7 @@
 										<ul class="attachments clearfix">
 											@foreach($solved_image as $images)
 											<li>
-												<div class="attach-file"><a href="{{ url('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image"><img src="{{ url('uploads/greivance_image/'.$images->images )}}"  style="height:132px"></a></div>
+												<div class="attach-file"><a href="{{ asset('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image"><img src="{{ asset('uploads/greivance_image/'.$images->images )}}"  style="height:132px"></a></div>
 												<div class="attach-info"> <a href="#" class="attach-filename">{{$images->images}}</a> <div class="attach-fileize"> 
 												@php
 													$size = filesize(public_path('uploads/greivance_image/'.$images->images));
@@ -185,8 +185,8 @@
 															@foreach($grievance->grievance_image as $images)
                                                             <div class="col-md-2 col-lg-2 col-sm-12 mt-2">
 															<div class="mt-1">
-															<a href="{{ url('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
-															<img src="{{ url('uploads/greivance_image/'.$images->images )}}" height="150" width="150"></a></div>
+															<a href="{{ asset('uploads/greivance_image/'.$images->images) }}" data-lightbox="grievance-gallery" data-title="Grievance Image">
+															<img src="{{ asset('uploads/greivance_image/'.$images->images )}}" height="150" width="150"></a></div>
                                                             </div>
 															@endforeach
 															
@@ -207,13 +207,13 @@
 @include('modal.common')
 @endsection 
 @section('scripts')
-<link rel="stylesheet" href="{{ url('admin-assets/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin-assets/css/select2.min.css') }}">
 <!-- Lightbox CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 <!--/-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="{{ url('front-assets/js/report-calender.js') }}"></script>
-<script src="{{ url('admin-assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('front-assets/js/report-calender.js') }}"></script>
+<script src="{{ asset('admin-assets/js/select2.min.js') }}"></script>
 
 <!-- Lightbox JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
