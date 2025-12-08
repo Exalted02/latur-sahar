@@ -12,6 +12,21 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\Lang;
 
+//User type array Data
+    function get_user_type($user_type = ''){
+		$data = array(
+			2 => 'SI/ Ward/ Zone Officer',
+			3 => 'Department HOD',
+			4 => 'Assistant Commissioner',
+			5 => 'Deputy Commissioner',
+			6 => 'Commissioner',
+		);
+		if($user_type == ''){
+			return $data;
+		}else{
+			return $data[$user_type];
+		}
+    }
 //Get ward/prabhag model Data
     function get_ward_prabhag_model(){
 		$data = Wardprabhag::where('status', 1)->get();

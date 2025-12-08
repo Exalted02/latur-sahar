@@ -47,11 +47,9 @@
 												<label class="col-form-label">{{ __('User type') }}<span class="text-danger">*</span></label>
 												<select class="select form-control" name="user_type" id="user_type">
 													<option value="">Select user</option>
-													<option value="2">SI or Ward Officer</option>
-													<option value="3">Department HOD</option>
-													<option value="4">Assistant Commissioner</option>
-													<option value="5">Deputy Commissioner</option>
-													<option value="6">Commissioner</option>
+													@foreach(get_user_type() as $i=>$get_user_type_val)
+													<option value="{{ $i }}">{{ $get_user_type_val }}</option>
+													@endforeach
 												</select>
 												<div class="invalid-feedback">{{ __('Please enter') }} {{ __('user type')}}.</div>
 											</div>

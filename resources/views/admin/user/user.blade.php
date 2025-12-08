@@ -69,7 +69,8 @@
 							@endphp
 							<tr>
 								<td>{{ $val->name ?? ''}}</td>
-								<td>{{ $val->user_type == 2 ? 'SI or Ward Officer' : ($val->user_type == 3 ? 'Department HOD' : ($val->user_type == 4 ? 'Assistant Commissioner' : ($val->user_type == 5 ? 'Deputy Commissioner' : 'Commissioner')))}}</td>
+								{{--<td>{{ $val->user_type == 2 ? 'SI or Ward Officer' : ($val->user_type == 3 ? 'Department HOD' : ($val->user_type == 4 ? 'Assistant Commissioner' : ($val->user_type == 5 ? 'Deputy Commissioner' : 'Commissioner')))}}</td>--}}
+								<td>{{ get_user_type($val->user_type) }}</td>
 								<td>{{ $department_name ?? ''}}</td>
 								<td>{{ $val->mobile ?? ''}}</td>
 								<td>{{ $val->email ?? ''}}</td>
