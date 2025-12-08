@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Department;
 
 class ProfileController extends Controller
 {
@@ -29,6 +30,7 @@ class ProfileController extends Controller
 	{
 		$data = [];
 		$data['account'] = User::where('id', auth()->user()->id)->first();
+		$data['departments'] = Department::where('status', 1)->get();
 		//echo "<pre>";print_r($account);die;
 		return view('my-profile.my-profile', $data);
 	}
@@ -48,6 +50,7 @@ class ProfileController extends Controller
 				'mobile' => 'required|digits:10|numeric|unique:users,mobile,' . $request->id,
 				'email' => 'required|email|unique:users,email,' . $request->id,
 				'ward_prabhag_no' => 'required',
+				'department' => 'required',
 				'post' => 'required',
 			]);
 		}
@@ -58,6 +61,7 @@ class ProfileController extends Controller
 		$model->email = $request->email ?? '';
 		if(auth()->user()->user_type != 1){
 			$model->ward_prabhag_no = $request->ward_prabhag_no ?? '';
+			$model->department = $request->department ?? '';
 			$model->post = $request->post ?? '';
 		}
 		$model->save();

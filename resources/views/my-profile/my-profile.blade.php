@@ -21,8 +21,10 @@
 							<p class="text-danger">{{ __('mandatory_headline') }}</p>
 							<div class="clearfix"></div>
 							<span id="msg" class="success-msg"></span>
+							@if(auth()->user()->user_type == 1)
 							<form name="frmgrievanve" action="{{ route('my-account') }}" method="post">
 							@csrf
+							@endif
 							<input type="hidden" name="id" id="id" value="{{ isset($account) ? $account->id : '' }}">
 							
 								<div class="row">
@@ -61,6 +63,19 @@
 										<div class="text-danger position-absolute">{{ $message }}</div>
 									   @enderror
 									</div>
+									<div class="col-md-12 margin-bottom-20">  
+									  <label>{{ __('department') }} <span class="text-danger">*</span></label>
+									  <select class="form-control" name="department" id="department">
+										 <option value=""> {{ __('select_department') }}</option>
+										 @foreach($departments as $departments_val)
+											<option value="{{ $departments_val->id ?? '' }}" {{ isset($account) && $account->department == $departments_val->id ? 'selected' : ''}}>{{ $departments_val->name ?? '' }}</option>
+										 @endforeach
+									  </select>
+									  <div class="clearfix"></div>
+									  @error('ward_prabhag_no')
+										<div class="text-danger position-absolute">{{ $message }}</div>
+									   @enderror
+									</div>
 									<div class="col-md-12 margin-bottom-20">
 									  <label>{{ __('post') }} <span class="text-danger">*</span> </label>
 									  <input type="text" name="post" value="{{ isset($account) ? $account->post : old('post')}}" class="form-control" id="post">
@@ -71,12 +86,14 @@
 									@endif
 								</div>
 								<div class="clearfix"></div>
+								@if(auth()->user()->user_type == 1)
 								<div class="row margin-top-10">
 								   <div class="col-md-12 col-sm-12 col-xs-12 text-center">
 									  <button type="submit" class="btn btn-theme btn-lg">{{ __('submit_account') }}</button>
 								   </div>
 								</div>
 							</form>
+								@endif
 				</div>
 			</div>
 			
