@@ -7,7 +7,7 @@ Version      : 4.0
 $(document).ready(function() {
 	
 	$(document).on('click','.save-user', function(){
-		let department = $('#department').val().trim();
+		/*let department = $('#department').val().trim();
 		let name = $('#name').val().trim();
 		let user_type = $('#user_type').val().trim();
 		let mobile = $('#mobile').val().trim();
@@ -77,7 +77,7 @@ $(document).ready(function() {
 			isValid = false;
 		}
 		
-		if (isValid) {
+		if (isValid) {*/
 			var form = $("#frmuser");
 			var URL = $('#frmuser').attr('action');
 			//alert(URL);
@@ -115,8 +115,48 @@ $(document).ready(function() {
 						}, "2000");
 					}
 				},
+				error: function (xhr) {
+					if (xhr.status === 422) {
+						const errors = xhr.responseJSON.errors;
+						$('.invalid-feedback').hide();
+						$('.form-control').removeClass('is-invalid');
+						
+						$.each(errors, function(key, value) {
+							// Check the key received from the server
+							//alert('Key:', key); // E.g., "owner_primary_mobile_number.0"
+
+							// Escape dot notation for array keys
+							let fieldName = key.replace(/\./g, '\\.').replace(/\*/g, '');
+							let field = $('[name="' + fieldName + '"]');
+													
+							if (field.length > 0) {
+								field.addClass('is-invalid');
+								if (field.is('select')) {
+									//field.closest('.form-group').find('.invalid-feedback').show().text(value[0]);
+									
+									field.closest('.input-block').find('.invalid-feedback').show().text(value[0]);
+									//alert(value[0]);
+								} else {
+									//alert(value[0]);
+									// Handle other fields
+									field.next('.invalid-feedback').show().text(value[0]);
+								}
+								/*field.addClass('is-invalid');
+								field.next('.invalid-feedback').show().text(value[0]);*/
+							} else {
+								var fieldNames = key.split('.')[0]; // Get the base field name (e.g., product_sale_price)
+								var index = key.split('.').pop();
+								var inputField = $('input[name="' + fieldNames + '[]"]').eq(index);
+								inputField.addClass('is-invalid');
+								inputField.next('.invalid-feedback').show().text(value[0]);
+							}
+						});
+					}else {
+						alert('An unexpected error occurred.');
+					}
+				}
 			});
-		}
+		// }
 	});
 	
 $(document).on('click','.add_user', function(){

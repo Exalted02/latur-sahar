@@ -530,6 +530,24 @@ if($grievance)
 <!-- Lightbox JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
+<script>
+  // Detect if device is mobile
+  function isMobileDevice() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+ 
+  window.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('lo_file');
+ 
+    if (isMobileDevice()) {
+      // Add capture attribute (forces camera)
+      fileInput.setAttribute('capture', 'camera');
+    } else {
+      // Remove capture attribute (normal browse)
+      fileInput.removeAttribute('capture');
+    }
+  });
+</script>
 <script type="text/javascript">
  (function($) {
 	"use strict";

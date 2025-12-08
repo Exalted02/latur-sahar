@@ -203,6 +203,24 @@
 <script src="{{ url('front-assets/js/page/user.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 <script>
+  // Detect if device is mobile
+  function isMobileDevice() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+ 
+  window.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('lo_file');
+ 
+    if (isMobileDevice()) {
+      // Add capture attribute (forces camera)
+      fileInput.setAttribute('capture', 'camera');
+    } else {
+      // Remove capture attribute (normal browse)
+      fileInput.removeAttribute('capture');
+    }
+  });
+</script>
+<script>
 $(document).ready(function() {
 	let get_department_id = $('#get_department_id').val();
 	if(get_department_id !='')

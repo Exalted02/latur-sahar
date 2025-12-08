@@ -22,16 +22,7 @@ class UserController extends Controller
     }
     public function save_user_admin(Request $request)
     {
-		//echo $request->post('id'); die;
-		// dd($request->all());
-      /*$existingStage = User::where('name', $request->post('name'))->where('status', '!=', 2)
-        ->when($request->post('id'), function ($query) use ($request) {
-            $query->where('id', '!=', $request->post('id'));
-        })
-        ->first();*/
-		$edit_id = $request->post('id'); // edit id
-		
-		$existingEmail = User::where('id', '!=', $request->post('id'))->where('email', $request->post('email'))->where('status', '!=', 2)->exists();
+		/*$existingEmail = User::where('id', '!=', $request->post('id'))->where('email', $request->post('email'))->where('status', '!=', 2)->exists();
 		
 		if($existingEmail)
 		{
@@ -40,21 +31,21 @@ class UserController extends Controller
 				'field' => 'email',
 				'message' => 'email already exists.'
 			]);
-		}
-		
-		/*if ($existingStage) {
-			return response()->json([
-				'success' => false,
-				'field' => 'name',
-				'message' => 'user already exists.'
-			]);
 		}*/
-		
-		
-		
-		
 		if($request->post('id')>0)
 		{
+			$edit_id = $request->post('id');
+			$request->validate([
+				'name' => ['required', 'string', 'max:255'],
+				'user_type' => ['required'],
+				'department' => ['required'],
+				'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email,' . $edit_id],
+				'mobile' => ['required', 'string', 'max:15', 'unique:users,mobile,' . $edit_id],
+				'password' => ['nullable'], // or remove if not changing password
+				'ward_prabhag_no' => ['required'],
+				'post' => ['required'],
+			]);
+
 			$model= User::find($request->post('id'));
 			$model->name		=	$request->post('name');
 			$model->user_type	=	$request->post('user_type');
@@ -74,6 +65,16 @@ class UserController extends Controller
 			$model->save();
 		}
 		else{
+			$request->validate([
+				'name' => ['required', 'string', 'max:255'],
+				'user_type' => ['required'],
+				'department' => ['required'],
+				'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+				'mobile' => ['required', 'string', 'max:15', 'unique:users'],
+				'password' => ['required'],
+				'ward_prabhag_no' => ['required'],
+				'post' => ['required'],
+			]);
 			$model=new User();
 			$model->name		=	$request->post('name');
 			$model->user_type	=	$request->post('user_type');
