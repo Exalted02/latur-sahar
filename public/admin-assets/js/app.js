@@ -787,10 +787,20 @@ $(document).ready(function() {
 		
 			var img = $(this);
 			$.each(attributes, function(i, item) {
-			img.removeAttr(item);
+			// img.removeAttr(item);
 			});
 		});
 	}	
+	function fixFooter() {
+        if ($(window).width() < 992) {
+            $('.footer-main').css('margin-left', '0');
+        }
+    }
+	fixFooter();
+	// Run when window is resized
+    $(window).on('resize', function() {
+        fixFooter();
+    });
 	
 	// $(document).on('click', '#customizer-layout02', function() {
 	// 	location.reload();

@@ -71,7 +71,7 @@
 			
 				@yield('content')
 
-			
+			@include('admin/_includes/footer')
 		</div>
 		<!-- jQuery -->
         <script src="{{ asset('admin-assets/js/jquery-3.7.1.min.js') }}"></script>

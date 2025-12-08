@@ -324,6 +324,17 @@
 .dash-widget .card-body .dash-widget-info span {
 	font-size: 15px;
 }	
+.footer-main {
+	background: #fff;
+    padding: 15px;
+    color: #444;
+    border-top: 1px solid #d2d6de;
+    margin-left: 250px;
+	text-align: center;
+}
+.mini-sidebar .footer-main {
+    margin-left: 60px !important;
+}
 
 
 
