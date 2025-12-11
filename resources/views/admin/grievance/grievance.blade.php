@@ -61,7 +61,7 @@
 						<tbody>
 						@foreach($grievances as $val)
 							@php 
-								$department_name = App\Models\Department::where('id', $val->department)->first()->name;
+								$department_name = App\Models\Department::find($val->department)?->name;
 							@endphp
 							<tr>
 								<td class="contact-details">{{ $department_name ?? ''}}</td>

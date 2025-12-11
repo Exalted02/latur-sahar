@@ -63,9 +63,9 @@
 						<tbody>
 						@foreach($users as $val)
 							@php 
-								$department_name = App\Models\Department::where('id', $val->department)->first()->name;
+								$department_name = App\Models\Department::find($val->department)?->name;
 								
-								$wardprabhag_name = App\Models\Wardprabhag::where('id', $val->ward_prabhag_no)->first()->name;
+								$wardprabhag_name = App\Models\Wardprabhag::find($val->ward_prabhag_no)?->name;
 							@endphp
 							<tr>
 								<td>{{ $val->name ?? ''}}</td>
