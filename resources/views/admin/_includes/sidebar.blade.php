@@ -70,7 +70,7 @@
 				</li>
 				
 				<li class="{{ request()->routeIs('admin.logout') ? 'active' : '' }}">
-					<a href="{{ route('admin.logout') }}"><i class="las la-sign-out-alt"></i> <span> {{ __('logout') }} </span></a>
+					<a href="{{ route('admin.logout') }}"><i class="las la-sign-out-alt"></i> <span> Logout </span></a>
 				</li>
 			</ul>
 			
