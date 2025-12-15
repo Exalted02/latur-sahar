@@ -471,6 +471,7 @@ class DashboardController extends Controller
 			$data['grievances'] = Grievance::where('status', '!=', 4)->where('user_id', auth()->user()->id)->get();
 		}
 		$data['wardprabhag'] = Wardprabhag::where('status', '!=', 2)->get();
+		$data['department'] = Department::where('status', '!=', 2)->get();
 		return view('report', $data);
 	}
 	public function src_report(Request $request)
@@ -479,7 +480,7 @@ class DashboardController extends Controller
 	    $src_date = $request->date_range_src_ward_prabhag == 'MM/DD/YYYY - MM/DD/YYYY' ? '' : $request->date_range_src_ward_prabhag;
 		
 		if (
-			empty($request->src_ward_prabhag) &&
+			empty($request->src_department) &&
 			empty($request->src_status) &&
 			empty($src_date)
 		) {
@@ -487,19 +488,19 @@ class DashboardController extends Controller
 		}
 
 		$data = [];
-		$dataArr = Grievance::query();
+		$dataArr = Grievance::query()->where('status', '!=', 4);
 		
-		if($request->src_ward_prabhag)
+		if($request->src_department)
 		{
-			$dataArr->where('ward_prabhag', 'like', '%' . $request->src_ward_prabhag . '%');
+			$dataArr->where('department', 'like', '%' . $request->src_department . '%');
 			
-			$ward_data = Grievance::where('ward_prabhag', $request->src_ward_prabhag)->get();
+			$ward_data = Grievance::where('department', $request->src_department)->get();
 			if($ward_data->count() > 0)
 			{
-				$data['src_ward_prabhag'] = $request->src_ward_prabhag;
+				$data['src_department'] = $request->src_department;
 			}
 			else{
-				$data['src_ward_prabhag'] = '';
+				$data['src_department'] = '';
 			}
 		}
 		
@@ -554,6 +555,7 @@ class DashboardController extends Controller
 		$data['grievances'] = $dataArr->with('get_department')->get();
 		
 		$data['wardprabhag'] = Wardprabhag::where('status', '!=', 2)->get();
+		$data['department'] = Department::where('status', '!=', 2)->get();
 		return view('report', $data);
 	}
 	public function download_report(Request $request)
@@ -561,7 +563,7 @@ class DashboardController extends Controller
 		$src_date = $request->download_date_range_src == 'MM/DD/YYYY - MM/DD/YYYY' ? '' : $request->download_date_range_src;
 		
 		if (
-			empty($request->download_ward_prabhag) &&
+			empty($request->download_department) &&
 			empty($request->download_status) && 
 			empty($src_date)
 		) {
@@ -572,15 +574,15 @@ class DashboardController extends Controller
 		$statusChk= '';
 		$dateRChk= '';
 		
-		$dataArr = Grievance::query();
+		$dataArr = Grievance::query()->where('status', '!=', 4);
 		
-		if($request->download_ward_prabhag)
+		if($request->download_department)
 		{
 			//$grievances = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->where('status', '!=', 4)->get();
 			
-			$dataArr->where('ward_prabhag', 'like', '%' . $request->download_ward_prabhag . '%');
+			$dataArr->where('department', 'like', '%' . $request->download_department . '%');
 			
-			$ward_data = Grievance::where('ward_prabhag', $request->download_ward_prabhag)->get();
+			$ward_data = Grievance::where('department', $request->download_department)->get();
 			if($ward_data->count() > 0)
 			{
 				$wardChk =1;

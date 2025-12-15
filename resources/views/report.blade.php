@@ -25,16 +25,20 @@ use Carbon\Carbon;
 							<form name="frm" action="{{ route('report') }}" method="post">
 							@csrf
 							<div class="row filter-row">
+								@if(auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
 								<div class="col-lg-4 col-md-4 p-r-0 margin-bottom-10">
 									<div class="input-block">
-										<select name="src_ward_prabhag"  id="src_ward_prabhag" class="select">
-											<option value="">{{ __('select_ward_prabhag') }}</option>
-											@foreach($wardprabhag as $prabhag)
-											<option value="{{ $prabhag->id ?? ''}}"  {{ isset($src_ward_prabhag) && $src_ward_prabhag == $prabhag->id ? 'selected' : '' }}>{{ $prabhag->name ?? ''}}</option>
+										<select name="src_department"  id="src_department" class="select">
+											<option value="">{{ __('select_department') }}</option>
+											@foreach($department as $department_val)
+											<option value="{{ $department_val->id ?? ''}}"  {{ isset($src_department) && $src_department == $department_val->id ? 'selected' : '' }}>{{ $department_val->name ?? ''}}</option>
 											@endforeach
 									   </select>
 									</div>
 								</div>
+								@else
+								<input type="hidden" value="{{ auth()->user()->department }}">	
+								@endif
 								<div class="col-lg-4 col-md-4 p-r-0 margin-bottom-10">
 									<div class="input-block">
 										<select name="src_status" class="select" id="src_status">
@@ -106,7 +110,11 @@ use Carbon\Carbon;
     </div>
 	<form id="frm-download-report" action="{{ route('download-report')}}" method="post">
 		@csrf
-		<input type="hidden" id="download_ward_prabhag" name="download_ward_prabhag" value="{{ isset($src_ward_prabhag) ? $src_ward_prabhag : ''}}">
+		@if(auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
+		<input type="hidden" id="download_department" name="download_department" value="{{ isset($src_department) ? $src_department : ''}}">
+		@else
+		<input type="hidden" id="download_department" name="download_department" value="{{ isset($src_department) ? $src_department : auth()->user()->department }}">	
+		@endif
 		<input type="hidden" id="download_status" name="download_status" value="{{ isset($src_status) ? $src_status : ''}}">
 		<input type="hidden" id="download_date_range_src" name="download_date_range_src" value="{{ isset($date_range_src_ward_prabhag) ? $date_range_src_ward_prabhag : '' }}">
 	</form>
@@ -186,9 +194,9 @@ use Carbon\Carbon;
 			});
 		});
 		
-		$(document).on('change','#src_ward_prabhag', function(){
+		$(document).on('change','#src_department', function(){
 			let id = $(this).val();
-			$('#download_ward_prabhag').val(id)
+			$('#download_department').val(id)
 		});
 		
 		$(document).on('change','#src_status', function(){
