@@ -38,12 +38,15 @@ class UserController extends Controller
 			$request->validate([
 				'name' => ['required', 'string', 'max:255'],
 				'user_type' => ['required'],
-				'department' => ['required'],
+				'department' => ['required_unless:user_type,4,5,6'],
 				'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email,' . $edit_id],
 				'mobile' => ['required', 'string', 'max:15', 'unique:users,mobile,' . $edit_id],
 				'password' => ['nullable'], // or remove if not changing password
 				'ward_prabhag_no' => ['required'],
 				'post' => ['required'],
+			],
+			[
+				'department.required_unless' => 'The department field is required.',
 			]);
 
 			$model= User::find($request->post('id'));
@@ -68,12 +71,15 @@ class UserController extends Controller
 			$request->validate([
 				'name' => ['required', 'string', 'max:255'],
 				'user_type' => ['required'],
-				'department' => ['required'],
+				'department' => ['required_unless:user_type,4,5,6'],
 				'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
 				'mobile' => ['required', 'string', 'max:15', 'unique:users,mobile'],
 				'password' => ['required'],
 				'ward_prabhag_no' => ['required'],
 				'post' => ['required'],
+			],
+			[
+				'department.required_unless' => 'The department field is required.',
 			]);
 			$model=new User();
 			$model->name		=	$request->post('name');

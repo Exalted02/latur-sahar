@@ -68,7 +68,7 @@ class DashboardController extends Controller
 			}
 		}
 		
-		if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3 || auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
+		if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3)
 		{
 			$tot_grievance = Grievance::where('department', auth()->user()->department)->where('status', '!=', 4)->count();
 			$pending_grievance = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->count();
@@ -95,6 +95,35 @@ class DashboardController extends Controller
 			if($tab == 4)
 			{
 				$data['grievances'] = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays($alert_interval))->get();
+				/*$data['grievances'] = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subMonth())->get();*/
+			}
+		}
+		
+		if(auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
+		{
+			$tot_grievance = Grievance::where('status', '!=', 4)->count();
+			$pending_grievance = Grievance::whereIn('status', [1,2])->count();
+			$solved_grievance = Grievance::where('status', 3)->count();
+			$alert_grievance = Grievance::whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays($alert_interval))->count();
+			
+			if($tab == 1)
+			{
+				$data['grievances'] = Grievance::where('status', '!=', 4)->get();
+			}
+			
+			if($tab == 2)
+			{
+				$data['grievances'] = Grievance::whereIn('status', [1,2])->get();
+			}
+			
+			if($tab == 3)
+			{
+				$data['grievances'] = Grievance::where('status', 3)->get();
+			}
+			
+			if($tab == 4)
+			{
+				$data['grievances'] = Grievance::whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays($alert_interval))->get();
 				/*$data['grievances'] = Grievance::where('department', auth()->user()->department)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subMonth())->get();*/
 			}
 		}

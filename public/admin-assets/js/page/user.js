@@ -198,9 +198,22 @@ $(document).on('click','.edit-user', function(){
 			$('#post').val(response.post);
 			$('#add_user').modal('show');
 			//alert(JSON.stringify(response));
+			if(response.user_type == 4 || response.user_type == 5 || response.user_type == 6){
+				$('#department_row').hide();
+				$('#department').val('').trigger('change');
+			}
 			
 		},
 	});
+}); 
+$(document).on('change','#user_type', function(){
+	var user_type_val = $(this).val();
+	if(user_type_val == 4 || user_type_val == 5 || user_type_val == 6){
+		$('#department_row').hide();
+		$('#department').val('').trigger('change');
+	}else{
+		$('#department_row').show();
+	}
 }); 
 
 

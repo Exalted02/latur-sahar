@@ -63,6 +63,7 @@
 										<div class="text-danger position-absolute">{{ $message }}</div>
 									   @enderror
 									</div>
+									@if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3)
 									<div class="col-md-12 margin-bottom-20">  
 									  <label>{{ __('department') }} <span class="text-danger">*</span></label>
 									  <select class="form-control" name="department" id="department">
@@ -76,6 +77,7 @@
 										<div class="text-danger position-absolute">{{ $message }}</div>
 									   @enderror
 									</div>
+									@endif
 									<div class="col-md-12 margin-bottom-20">
 									  <label>{{ __('post') }} <span class="text-danger">*</span> </label>
 									  <input type="text" name="post" value="{{ isset($account) ? $account->post : old('post')}}" class="form-control" id="post">

@@ -55,7 +55,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="row">
+									<div class="row" id="department_row">
 										<div class="col-sm-12">
 											<div class="input-block mb-3">
 												<label class="col-form-label">{{ __('Department') }}<span class="text-danger">*</span></label>
