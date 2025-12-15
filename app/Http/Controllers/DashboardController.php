@@ -462,7 +462,14 @@ class DashboardController extends Controller
 	public function report()
 	{
 		$data = [];
-		$data['grievances'] = Grievance::where('status', '!=', 4)->get();
+		if(auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
+		{
+			$data['grievances'] = Grievance::where('status', '!=', 4)->get();
+		}else if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3){
+			$data['grievances'] = Grievance::where('status', '!=', 4)->where('department', auth()->user()->department)->get();
+		}else{
+			$data['grievances'] = Grievance::where('status', '!=', 4)->where('user_id', auth()->user()->id)->get();
+		}
 		$data['wardprabhag'] = Wardprabhag::where('status', '!=', 2)->get();
 		return view('report', $data);
 	}
@@ -663,8 +670,10 @@ class DashboardController extends Controller
 		if(auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
 		{
 			$data['resubmit_list'] = Grievance::with('get_forwarded_grievance')->where('status', 2)->get();
-		}else{
+		}else if(auth()->user()->user_type == 2 || auth()->user()->user_type == 3){
 			$data['resubmit_list'] = Grievance::with('get_forwarded_grievance')->where('department', auth()->user()->department)->where('status', 2)->get();
+		}else{
+			$data['resubmit_list'] = Grievance::with('get_forwarded_grievance')->where('user_id', auth()->user()->id)->where('status', 2)->get();
 		}
 		return view('resubmit-list', $data);
 	}
