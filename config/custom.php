@@ -11,6 +11,7 @@ return [
 // Api product list	interval
 	'GRIEVANCE_LIST_INTERVAL' => 8,
 	
+	'ALERT_GRIEVANCE_DURE_PERIOD' => 21,	
 //Custom link	
 	'CITY_SERVICES_LINK' => 'https://mclatur.org/city-services/',
 	'CORPORATION_LINK' => 'https://mclatur.org/corporation-map/',

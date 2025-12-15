@@ -83,7 +83,7 @@ use Carbon\Carbon;
 													<tbody>
 													@foreach($grievances as  $grievance)
 														<tr class="viewgrievance" data-href="{{ route('view-grievance', ['id' => $grievance->id]) }}" style="cursor:pointer">
-															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">#{{ $grievance->registration_no ?? '' }}</a></td>
+															<td><a href="{{ route('view-grievance', ['id' => $grievance->id]) }}">{{ $grievance->registration_no ?? '' }}</a></td>
 															<td>{{ $grievance->get_department->name ?? '' }}</td>
 															<td>{{ Carbon::parse($grievance->created_at)->format('d/m/y') }}</td>
 															<td>{{ \Illuminate\Support\Str::words($grievance->issue_description, 15, '...') }}</td>
@@ -113,7 +113,7 @@ use Carbon\Carbon;
 @endsection 
 @section('scripts')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
-<script src="{{ url('front-assets/js/report-calender.js') }}"></script>
+<script src="{{ asset('front-assets/js/report-calender.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>

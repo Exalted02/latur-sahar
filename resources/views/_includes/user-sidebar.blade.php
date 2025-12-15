@@ -15,7 +15,7 @@
 				<li><a href="{{route('list-resubmit-status')}}" class="{{ (request()->routeIs('list-resubmit-status')) ? 'active' : '' }}"><i class="green fa fa-repeat" aria-hidden="true"></i> {{ __('resubmit') }}</a></li>
 				@endif
 				<li><a href="{{route('my-account')}}" class="{{ (request()->routeIs('my-account')) ? 'active' : '' }}"><i class="fa fa-user" aria-hidden="true"></i> {{ __('my_account') }}</a></li>
-				<li><a href="{{route('change-password')}}" class="{{ (request()->routeIs('change-password')) ? 'active' : '' }}"><i class="fa fa-key" aria-hidden="true"></i> {{ __('change_password') }}</a></li>
+				{{--<li><a href="{{route('change-password')}}" class="{{ (request()->routeIs('change-password')) ? 'active' : '' }}"><i class="fa fa-key" aria-hidden="true"></i> {{ __('change_password') }}</a></li>--}}
 				@if(auth()->user()->user_type == 1)
 				<li><a href="{{route('submit-grievance')}}" class="{{ (request()->routeIs('submit-grievance')) ? 'active' : '' }}"><i class="fa fa-address-card-o" aria-hidden="true"></i> {{ __('submit_grievance') }}</a></li>
 				@endif
