@@ -658,7 +658,14 @@ class DashboardController extends Controller
 	public function list_resubmit_status()
 	{
 		$data = [];
-		$data['resubmit_list'] = Grievance::with('get_forwarded_grievance')->where('department', auth()->user()->department)->where('status', 2)->get();
+		// $data['resubmit_list'] = Grievance::with('get_forwarded_grievance')->where('department', auth()->user()->department)->where('status', 2)->get();
+		
+		if(auth()->user()->user_type == 4 || auth()->user()->user_type == 5 || auth()->user()->user_type == 6)
+		{
+			$data['resubmit_list'] = Grievance::with('get_forwarded_grievance')->where('status', 2)->get();
+		}else{
+			$data['resubmit_list'] = Grievance::with('get_forwarded_grievance')->where('department', auth()->user()->department)->where('status', 2)->get();
+		}
 		return view('resubmit-list', $data);
 	}
 }
