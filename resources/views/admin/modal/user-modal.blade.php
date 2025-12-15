@@ -91,7 +91,7 @@
 										<div class="col-sm-12">
 											<div class="input-block mb-3">
 												<label class="col-form-label">{{ __('Password') }}<span class="text-danger">*</span></label>
-												<input class="form-control" type="password" name="password" id="password">
+												<input class="form-control" type="password" name="password" id="password" autocomplete="new-password">
 												<div class="invalid-feedback">{{ __('Please enter') }} {{ __('password')}}.</div>
 											</div>
 										</div>
