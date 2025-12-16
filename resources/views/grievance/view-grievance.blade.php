@@ -398,7 +398,7 @@ if($grievance)
 								 <div class="col-md-9 col-xs-12 col-sm-12">
 									<label for="lo_file"></label>
 									<div class="upload-wrapper">
-									  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg">
+									  <input type="file" name="lo_file[]" id="lo_file" multiple style="display: none;" accept="image/png, image/gif, image/jpeg" capture="null">
 									  <label for="lo_file" class="custom-upload-label">
 										<span class="upload-text">{{ __('upload_image') }}</span>
 										<i class="fa fa-upload upload-icon"></i>
@@ -532,7 +532,7 @@ if($grievance)
 
 <script>
   // Detect if device is mobile
-  function isMobileDevice() {
+  /*function isMobileDevice() {
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   }
  
@@ -546,7 +546,7 @@ if($grievance)
       // Remove capture attribute (normal browse)
       fileInput.removeAttribute('capture');
     }
-  });
+  });*/
 </script>
 <script type="text/javascript">
  (function($) {
