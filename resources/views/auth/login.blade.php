@@ -25,9 +25,9 @@
 			  <!-- Middle Content Area -->
 			  <div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="text-center mb_10">
-					<a href="{{ route('home') }}"><img src="{{ asset('common-assets/img/auth-logo.png') }}" style="height: 125px;" alt="logo"> </a>
+					<a href="{{ route('home') }}"><img src="{{ asset('common-assets/img/auth-logo.png') }}" style="height: 175px;" alt="logo"> </a>
 					<div class="hidden-xs">
-						<p class="text-white mt_30 text-justify hidden-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+						{{--<p class="text-white mt_30 text-justify hidden-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>--}}
 						<div class="text-center mt_30">
 							<a href="{{ route('register') }}">{{ __('click_here_to_sign_up') }} >></a>
 						</div>

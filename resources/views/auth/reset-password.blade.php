@@ -27,7 +27,7 @@
 				<div class="text-center mb_10">
 					<a href="{{ route('home') }}"><img src="{{ asset('common-assets/img/auth-logo.png') }}" style="height: 125px;" alt="logo"> </a>
 					<div class="hidden-xs">
-						<p class="text-white mt_30 text-justify hidden-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+						{{--<p class="text-white mt_30 text-justify hidden-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>--}}
 						<div class="text-center mt_30">
 							<a href="{{ route('login') }}">{{ __('click_here_to_login') }} >></a>
 						</div>
