@@ -27,12 +27,13 @@ class GrievanceController extends Controller
 	{
 		if(Auth::guard('sanctum')->check()) 
 		{
+			$alert_interval = config('custom.ALERT_GRIEVANCE_DURE_PERIOD');
 			$user_id = Auth::guard('sanctum')->user()->id;
 			$data = [];
 			$data['total_grievance'] = Grievance::where('user_id', $user_id)->where('status', '!=', 4)->count();
 			$data['pending_grievance'] = Grievance::where('user_id', $user_id)->whereIn('status', [1,2])->count();
 			$data['solved_grievance'] = Grievance::where('user_id', $user_id)->where('status', 3)->count();
-			$data['alert_grievance'] = Grievance::where('user_id', $user_id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->count();
+			$data['alert_grievance'] = Grievance::where('user_id', $user_id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays($alert_interval))->count();
 			
 			$response = [
 				'data' => $data,
@@ -59,7 +60,7 @@ class GrievanceController extends Controller
 		$tab = $request->tab;
 		$lang = $request->lang ?? 'en';
 		$APP_URL = env('APP_URL').env('ASSET_URL');
-		
+		$alert_interval = config('custom.ALERT_GRIEVANCE_DURE_PERIOD');
 		
 		if(Auth::guard('sanctum')->check()) 
 		{
@@ -81,7 +82,7 @@ class GrievanceController extends Controller
 			
 			if($tab == 4)
 			{
-				$grievances = Grievance::with('get_department','get_grievance_type','grievance_image')->where('user_id', $user_id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays(3))->skip($offset)->take($interval)->get();
+				$grievances = Grievance::with('get_department','get_grievance_type','grievance_image')->where('user_id', $user_id)->whereIn('status', [1,2])->where('created_at', '<=', Carbon::now()->subDays($alert_interval))->skip($offset)->take($interval)->get();
 			}
 			
 			if ($lang == 'mr') {

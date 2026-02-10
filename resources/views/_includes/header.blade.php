@@ -106,7 +106,7 @@
 				</ul>
 				<ul class="menu-search-bar active">
 				   <li>
-					  <a href="">
+					  <a href="{{ asset('app-release.apk') }}">
 						<div class="contact-in-header clearfix">
 							<i class="fa fa-android"></i>
 							<span class="pt_0 text-black">
