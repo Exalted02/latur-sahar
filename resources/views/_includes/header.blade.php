@@ -77,6 +77,17 @@
 				<ul class="menu-logo">
 				   <li>
 					  <a href="{{ route('home') }}"><img src="{{ asset('common-assets/img/-logo1.png') }}" style="height: 55px;" alt="logo"> </a>
+					  
+					  <a href="{{ asset('app-release.apk') }}" class="mobile-download-apk">
+						<div class="contact-in-header clearfix">
+							<i class="fa fa-android"></i>
+							<span class="pt_0 text-black">
+							Android App
+							<br>
+							<strong class="text-black">Download</strong>
+							</span>
+						</div>
+					  </a>
 				   </li>
 				</ul>
 				<!-- menu links -->

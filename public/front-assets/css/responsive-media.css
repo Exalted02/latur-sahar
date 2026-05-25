@@ -492,10 +492,10 @@
 	margin-top: 15px;
 }
 .mega-menu .menu-search-bar {
-	 border-top: 1px solid #dfdfdf;
+	 /* border-top: 1px solid #dfdfdf; */
     margin-top: 10px;
     padding-top: 10px;
-	display:none;
+	/* display:none; */
 }
 
 .mega-menu .menu-search-bar li{
@@ -771,8 +771,22 @@ margin-bottom: 30px;
 }
 
 
+@media (max-width: 992px) {
+	.mega-menu .menu-search-bar {
+		display:none;
+	}
+	.mobile-download-apk {
+		display: block
+	}
+	.mobile-download-apk .contact-in-header {
+		margin-left: 20px;
+		margin-top: 4px;
+	}
+}
 @media (min-width: 320px) and (max-width: 767px) {
-	
+	.mobile-download-apk .contact-in-header {
+		margin-top: 0;
+	}
 	.main-search.home {
     min-height: 570px;
 }
